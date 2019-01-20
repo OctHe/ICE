@@ -8,7 +8,7 @@ This is a repo for shiyue's linux configuration
 
 Packages:
 
-1. some basic packs for writing program. 
+1. some basic packs for programming. 
+2. vim and plugins.
 2. GNURadio dependeces.
-3. vim and some related plugins.
 3. upgrade all packs.

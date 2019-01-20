@@ -6,7 +6,7 @@ sudo apt update
 sudo apt install -y make cmake vim-gnome zsh qemu ctags
 
 # install python development tool
-sudo apt install -y python-dev python3-dev python-pip python3-pip
+sudo apt install -y python-dev python3-dev python-pip python3-pip ipython
 
 # This is the dir for my prjects
 mkdir ~/Projects
@@ -27,10 +27,9 @@ cd      # come back to the home dir
 
 # Download deepin-wine for TIM and Wechat
 https://github.com/wszqkzqk/deepin-wine-ubuntu.git ~/Projects/DeepinWine
-# To do list: add tim and wechat deb file
 
 # Install deepin-wine
-~/Projects/DeepinWine/install.sh
+sudo ~/Projects/DeepinWine/install.sh
 
 # Install vundle for vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -42,24 +41,17 @@ cp ./vim_setup.vim ~/.vimrc
 sudo apt install -y texlive latexmk
 
 # GNURadio dependences. These dependences are from the gnuradio site
-# Bionic Beaver (18.04) https://wiki.gnuradio.org/index.php/UbuntuInstall#Bionic_Beaver_.2818.04.29
-# apt -y install git cmake g++ swig doxygen pkg-config 
-# apt -y install libfftw3-dev libboost-all-dev libcppunit-dev libgsl-dev libusb-dev libsdl1.2-dev libxi-dev libqt4-opengl-dev libqwt-dev libfontconfig1-dev libxrender-dev libusb-1.0-0-dev libcomedi-dev libzmq3-dev
-# apt -y install python-dev python-wxgtk3.0 python-numpy python-cheetah python-lxml python-sip python-mako python-gtk2 python-sip-dev python-qt4 python-sphinx 
-
-# GNURadio dependences. These dependences are from the gnuradio site
 # Xenial Xerus (16.04) https://wiki.gnuradio.org/index.php/UbuntuInstall#Bionic_Beaver_.2818.04.29
-sudo apt-get -y install git-core cmake g++ python-dev swig \
-pkg-config libfftw3-dev libboost-all-dev libcppunit-dev libgsl0-dev \
-libusb-dev libsdl1.2-dev python-wxgtk3.0 python-numpy \
-python-cheetah python-lxml doxygen libxi-dev python-sip \
-libqt4-opengl-dev libqwt-dev libfontconfig1-dev libxrender-dev \
-python-sip python-sip-dev python-qt4 python-sphinx libusb-1.0-0-dev \
-libcomedi-dev libzmq-dev 
+# sudo apt-get -y install git-core cmake g++ python-dev swig \
+# pkg-config libfftw3-dev libboost-all-dev libcppunit-dev libgsl0-dev \
+# libusb-dev libsdl1.2-dev python-wxgtk3.0 python-numpy \
+# python-cheetah python-lxml doxygen libxi-dev python-sip \
+# libqt4-opengl-dev libqwt-dev libfontconfig1-dev libxrender-dev \
+# python-sip python-sip-dev python-qt4 python-sphinx libusb-1.0-0-dev \
+# libcomedi-dev libzmq-dev
 
 # install libnl for iw
 sudo apt install libnl-3-dev libnl-genl-3-dev
-
 
 # upgrate installed packages
 sudo apt full-upgrade -y
