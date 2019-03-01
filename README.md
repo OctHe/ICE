@@ -10,5 +10,6 @@ Packages:
 
 1. some basic packs for programming. 
 2. vim and plugins.
-2. GNURadio dependeces.
+2. gnuradio install from apt
 3. upgrade all packs.
+

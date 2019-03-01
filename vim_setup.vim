@@ -1,34 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" basic setting
-set nu			" display line numbers
-set tabstop=4  
-set shiftwidth=4  
-set expandtab		" expand tab to space 
-set mouse=          " default close mouse
-" set foldmethod=indent " indentation represents fold
-set tags=tags       " set the tags in the work directory
-
-"""""""""""
-" Quickly Run
-"""""""""""
-map <F5> :call QuickRunGcc()<CR>
-func! QuickRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'sh'
-        :!time sh %
-    elseif &filetype == 'python'
-        exec "!time python2.7 %"
-    endif
-endfunc
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -57,11 +29,14 @@ Plugin 'vim-latex/vim-latex'
 Plugin 'iamcco/mathjax-support-for-mkdp'
 Plugin 'iamcco/markdown-preview.vim'
 
+" vim-syntastic
+Plugin 'Vim-syntastic/syntastic'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
+" filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -70,14 +45,58 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
+
 " Put your non-Plugin stuff after this line
+" basic setting
+set nu			" display line numbers
+set tabstop=4  
+set shiftwidth=4  
+set expandtab		" expand tab to space 
+set mouse=a         " default close mouse
+" set foldmethod=indent " indentation represents fold
+set tags=tags       " set the tags in the work directory
+set spell
+
+" color scheme
+colorscheme desert
+
+" config the top of the window to display the dir and file
+" let &titlestring = expand("%:p")
+" if &term == "screen"
+"     set t_ts=^[k
+"     set t_fs=^[\
+" endif
+" if &term == "screen" || &term == "xterm"
+"     set title
+" endif
+"
+
+"""""""""""
+" Quickly Run
+"""""""""""
+map <F5> :call QuickRunGcc()<CR>
+func! QuickRunGcc()
+    exec "w"
+    if &filetype == 'c'
+        exec "!gcc % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'cpp'
+        exec "!g++ % -o %<"
+        exec "!time ./%<"
+    elseif &filetype == 'sh'
+        :!time sh %
+    elseif &filetype == 'python'
+        exec "!time python2.7 %"
+    endif
+endfunc
 
 " import from $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/vimrc_example.vim
 
+
 " NERDTree setting
 " automatic open NERDTree when open vim with a file
-autocmd vimenter * NERDTree 
+" autocmd vimenter * NERDTree
 autocmd vimenter * wincmd w
 " set hot key for NERDTree
 map <C-n> :NERDTreeToggle<CR>  
@@ -88,6 +107,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " YCM setting
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 nnoremap <leader>g :YcmCompleter GoTo<CR>
+
 
 " Nerdcommenter setting
 " Add spaces after comment delimiters by default
@@ -123,6 +143,7 @@ let Tlist_Use_Right_Window = 1
 " hotkey for Taglist
 map <C-l> :TlistToggle<CR>  
 
+
 "-- vim latex-suite setting --
 "" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
@@ -144,6 +165,10 @@ filetype indent on
 " " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
+
+" vim-latex setting
+" g:Tex_CompileRule_pdf
+
 
 
 " vim-markdown-preview setting
