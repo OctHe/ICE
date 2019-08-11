@@ -1,75 +1,15 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" YouComleteMe
-Plugin 'valloric/YouCompleteMe'
-
-" Nerdtree
-Plugin 'scrooloose/nerdtree'
-
-" Nerdcommenter
-Plugin 'scrooloose/nerdcommenter'
-
-" taglist 
-Plugin 'taglist.vim'
-
-" vim-latex
-Plugin 'vim-latex/vim-latex'
-
-" vim-markdown
-Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-
-" vim-syntastic
-Plugin 'Vim-syntastic/syntastic'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-
-" Put your non-Plugin stuff after this line
 " basic setting
 set nu			" display line numbers
 set tabstop=4  
 set shiftwidth=4  
 set expandtab		" expand tab to space 
-set mouse=a         " default close mouse
+set mouse=          " default close mouse
 " set foldmethod=indent " indentation represents fold
 set tags=tags       " set the tags in the work directory
-set spell
-
-" color scheme
-colorscheme desert
-
-" config the top of the window to display the dir and file
-" let &titlestring = expand("%:p")
-" if &term == "screen"
-"     set t_ts=^[k
-"     set t_fs=^[\
-" endif
-" if &term == "screen" || &term == "xterm"
-"     set title
-" endif
-"
+set bg=light
 
 """""""""""
 " Quickly Run
@@ -90,52 +30,77 @@ func! QuickRunGcc()
     endif
 endfunc
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Nerdtree
+Plugin 'scrooloose/nerdtree'
+
+" Nerdcommenter
+Plugin 'scrooloose/nerdcommenter'
+
+" taglist 
+Plugin 'taglist.vim'
+
+" vim-latex
+Plugin 'vim-latex/vim-latex'
+
+" vim-markdown
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
 " import from $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/vimrc_example.vim
 
-
+""""""""""""""""""""""""""""""""""""""""
 " NERDTree setting
+""""""""""""""""""""""""""""""""""""""""
+
 " automatic open NERDTree when open vim with a file
 " autocmd vimenter * NERDTree
-autocmd vimenter * wincmd w
-" set hot key for NERDTree
-map <C-n> :NERDTreeToggle<CR>  
+" autocmd vimenter * wincmd w
+
+map <C-n> :NERDTreeToggle<CR>  " set hot key for NERDTree
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-" YCM setting
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-
-
+""""""""""""""""""""""""""""""""""""""""
 " Nerdcommenter setting
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+""""""""""""""""""""""""""""""""""""""""
+" This plugin is to add comment for different files
+let g:NERDSpaceDelims = 1   " Add spaces after comment delimiters by default
+let g:NERDCompactSexyComs = 1   " Use compact syntax for prettified multi-line comments
+let g:NERDDefaultAlign = 'left' " Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDAltDelims_java = 1    " Set a language to use its alternate delimiters by default
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }   " Add your own custom formats or override the defaults
+let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDTrimTrailingWhitespace = 1    " Enable trimming of trailing whitespace when uncommenting
+let g:NERDToggleCheckAllLines = 1   " Enable NERDCommenterToggle to check all selected lines is commented or not 
 
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
-
-
+""""""""""""""""""""""""""""""""""""""""
 " Taglist setting
+""""""""""""""""""""""""""""""""""""""""
 let Tlist_Auto_Open = 0 "auto open Tlist
 let Tlist_Exit_OnlyWindow = 1 "exit Tlist if taglist is the only file
 let Tlist_Show_One_File = 1 "only show current file's Tlist
@@ -143,8 +108,9 @@ let Tlist_Use_Right_Window = 1
 " hotkey for Taglist
 map <C-l> :TlistToggle<CR>  
 
-
+""""""""""""""""""""""""""""""""""""""""
 "-- vim latex-suite setting --
+""""""""""""""""""""""""""""""""""""""""
 "" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
 filetype plugin on
 
@@ -166,12 +132,9 @@ filetype indent on
 " " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-" vim-latex setting
-" g:Tex_CompileRule_pdf
-
-
-
+""""""""""""""""""""""""""""""""""""""""
 " vim-markdown-preview setting
+""""""""""""""""""""""""""""""""""""""""
 let g:mkdp_path_to_chrome = ""
 " path to the chrome or the command to open chrome(or other modern browsers)
 " if set, g:mkdp_browserfunc would be ignored

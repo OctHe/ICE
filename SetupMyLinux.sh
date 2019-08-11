@@ -25,38 +25,31 @@ sudo make install
 sudo make package
 cd      # come back to the home dir
 
-# Download deepin-wine for TIM and Wechat
-https://github.com/wszqkzqk/deepin-wine-ubuntu.git ~/Projects/DeepinWine
-
-# Install deepin-wine
-sudo ~/Projects/DeepinWine/install.sh
-
 # Install vundle for vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-# copy the default config file for vim, the other plugin is not installed
+# Copy the default config file for vim, the other plugin is not installed
 cp ./vim_setup.vim ~/.vimrc
 
-# install tex
+# Install YouCompleteMe
+git clone --recursive https://github.com/ycm-core/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
+
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer
+
+# Install tex
 sudo apt install -y texlive latexmk
 
-# GNURadio dependences. These dependences are from the gnuradio site
-# Xenial Xerus (16.04) https://wiki.gnuradio.org/index.php/UbuntuInstall#Bionic_Beaver_.2818.04.29
-# sudo apt-get -y install git-core cmake g++ python-dev swig \
-# pkg-config libfftw3-dev libboost-all-dev libcppunit-dev libgsl0-dev \
-# libusb-dev libsdl1.2-dev python-wxgtk3.0 python-numpy \
-# python-cheetah python-lxml doxygen libxi-dev python-sip \
-# libqt4-opengl-dev libqwt-dev libfontconfig1-dev libxrender-dev \
-# python-sip python-sip-dev python-qt4 python-sphinx libusb-1.0-0-dev \
-# libcomedi-dev libzmq-dev
+# Install libnl for iw
+sudo apt install -y libnl-3-dev libnl-genl-3-dev
 
-# install libnl for iw
-sudo apt install libnl-3-dev libnl-genl-3-dev
-
-# upgrate installed packages
+# Upgrate installed packages
 sudo apt full-upgrade -y
 
 sudo pip install --upgrade pip
+
+# Install shadowsocks
+sudo pip install shadowsocks
 
 # Finally, install oh-my-zsh and change the default shell to zsh
 # This is must be the final process
