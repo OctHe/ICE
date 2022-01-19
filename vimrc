@@ -11,7 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Plugin for list the tags
 Plug 'yegappan/taglist', {'for': ['python', 'c', 'cpp', 'vim']}
 
-" Lint plugins
+" Lint plugin
 Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
 " NERDTree plugin and others
@@ -20,10 +20,10 @@ Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle' }
 
 Plug 'scrooloose/nerdcommenter'
 
-" Markdown plugins
+" Markdown plugin
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" Snip plugins
+" Snip plugin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
