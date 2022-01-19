@@ -30,32 +30,12 @@ Plug 'honza/vim-snippets'
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe'
 
+" vimtex plugin
+Plug 'lervag/vimtex'
+
 " Initialize plugin system
 call plug#end()
 
-
-
-"""""""""""""""""""""""""""""""""
-" Put your non-Plugin stuff after this line
-" Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-source $VIMRUNTIME/vimrc_example.vim
-
-set nu  			        " display line numbers
-set tabstop=4  
-set shiftwidth=4  
-set expandtab		        " expand tab to space 
-set mouse=a                 " default close mouse
-set tags=tags               " set the tags in the work directory
-set spell                   " spell check
-set splitbelow              " split the window at below
-set guioptions=aegrLt       " set the gui option
-set lines=999 columns=999   " maximize the display when open vim
-
-colorscheme desert          " color scheme
-
-filetype indent on          " This enables automatic indentation as you type.
-set autoindent
 
 """""""""""""""""""""""""""""""""
 " Customized function
@@ -106,21 +86,6 @@ function! PreventReplacingNERDTree()
     endif
 
 endfunction
-
-
-"""""""""""""""""""""""""""""""""
-" YCM setting
-" Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-
-map <leader>g :YcmCompleter GoTo<CR>
-
-
-" Color of the dialog
-highlight PMenu ctermfg=56 ctermbg=255 guifg=darkblue guibg=darkgrey
-highlight PMenuSel ctermfg=255 ctermbg=56 guifg=darkgreen guibg=lightblue
 
 
 """""""""""""""""""""""""""""""""
@@ -277,7 +242,8 @@ let g:ale_linters = {
 " vim-snippets setting
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
-" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" Trigger configuration. You need to change this to something other than <tab> 
+" if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -286,3 +252,72 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+"""""""""""""""""""""""""""""""""
+" vimtex setting
+" Update: 2022.01.19
+"""""""""""""""""""""""""""""""""
+" This is necessary for VimTeX to load properly. The "indent" is optional.
+" Note that most plugin managers will do this automatically.
+filetype plugin indent on
+
+" This enables Vim's and neovim's syntax-related features. Without this, some
+" VimTeX features will not work (see ":help vimtex-requirements" for more
+" info).
+syntax enable
+
+" Viewer options
+let g:vimtex_view_method = 'zathura'
+
+" VimTeX uses latexmk as the default compiler backend. If you use it, which is
+" strongly recommended, you probably don't need to configure anything. If you
+" want another compiler backend, you can change it as follows. The list of
+" supported backends and further explanation is provided in the documentation,
+" see ":help vimtex-compiler".
+let g:vimtex_compiler_method = 'latexmk'
+
+" Most VimTeX mappings rely on localleader and this can be changed with the
+" following line. The default is usually fine and is the symbol "\".
+let maplocalleader = "\\"
+
+" IMPORTANT: Project with multiple files.
+" To support multiple files (with '\input') in a project, you must open the 
+" main file (e.g., main.tex) at first. For more details, please see the help
+" document with ':h vimtex-multi-file'
+
+
+"""""""""""""""""""""""""""""""""
+" YCM setting
+" Update: 2021.11.28
+"""""""""""""""""""""""""""""""""
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+
+map <leader>g :YcmCompleter GoTo<CR>
+
+
+"""""""""""""""""""""""""""""""""
+" Put your non-Plugin stuff after this line
+" Update: 2022.01.18
+"""""""""""""""""""""""""""""""""
+source $VIMRUNTIME/vimrc_example.vim
+
+set nu  			        " display line numbers
+set tabstop=4  
+set shiftwidth=4  
+set expandtab		        " expand tab to space 
+set mouse=a                 " default close mouse
+set tags=tags               " set the tags in the work directory
+set spell                   " spell check
+set splitbelow              " split the window at below
+set guioptions=aegrLt       " set the gui option
+set lines=999 columns=999   " maximize the display when open vim
+
+colorscheme desert          " color scheme
+
+" Color of the dialog
+highlight PMenu ctermfg=56 ctermbg=255 guifg=darkblue guibg=darkgrey
+highlight PMenuSel ctermfg=255 ctermbg=56 guifg=darkgreen guibg=lightblue
+
+filetype indent on          " This enables automatic indentation as you type.
+set autoindent
