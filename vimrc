@@ -1,5 +1,24 @@
+"""""""""""""""""""""""""""""""""
+" 
+" This is Shiyue's vim configuration file.
+" The first thing for the file is to install vim-plug.
+" It will install all plugins by vim-plug with “:PlugInstall"
+" It provides some customized configurations at final.
+" 
+"""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
+
+
+"""""""""""""""""""""""""""""""""
+" Install vim-plug if not found
+" Update: 2022.10.30
+"""""""""""""""""""""""""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
 
 """""""""""""""""""""""""""""""""
 " -- vim-plug --
@@ -28,7 +47,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " YouCompleteMe
-Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
 " vimtex plugin
 Plug 'lervag/vimtex'
@@ -38,7 +57,7 @@ call plug#end()
 
 
 """""""""""""""""""""""""""""""""
-" Customized function
+" Customized functions
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
 
