@@ -1,8 +1,8 @@
-## Introduction
+## MD-Config
 
-This project is a total configurations of Shiyue for his multiple Linux distributions.
+MD-COnfig (means multi-dimensional configuration) project is Shiyue's configuration for multiple projects, multiple languages, and multiple Linux distributions.
 It provides configurations about *zsh, vim, neovim* on Ubuntu, Deepin, OpenSuse, and Manjora.
-The goal of the configuration is to support Projects *Linux kernel, GNURadio, Latex, Markdown, Python, and C++*.
+The goal of this configuration is to support *Linux kernel, GNURadio, iw* projects and *Latex, Markdown, Python, C+* languages.
 
 ## Basic packets
 
@@ -65,14 +65,9 @@ Neovim has been used in OpenSUSE for Python projects.
 The plugin manager is *packer*.
 It provides pyright as the language server protocol (LSP).
 
-## Blog and jekyll
+## To Be Done
 
-(TBD)
+- Blog and jekyll
+- Python and jupyter
+- xv6 operating system
 
-## Python and jupyter
-
-(TBD)
-
-## xv6 operating system
-
-(TBD)
