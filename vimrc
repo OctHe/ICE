@@ -42,6 +42,9 @@ Plug 'scrooloose/nerdcommenter'
 " Markdown plugin
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+" vimux plugin
+Plug 'preservim/vimux'
+
 " Snip plugin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -55,26 +58,6 @@ Plug 'lervag/vimtex'
 " Initialize plugin system
 call plug#end()
 
-
-"""""""""""""""""""""""""""""""""
-" Customized functions
-" Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-
-function! QuickRunGcc()
-    exec "w"
-    if &filetype == 'c'
-        exec "!gcc % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
-        exec "!time ./%<"
-    elseif &filetype == 'sh'
-        :!time sh %
-    elseif &filetype == 'python'
-        exec "!time python3 %"
-    endif
-endfunc
 
 """""""""""""""""""""""""""""""""
 " NERDTree setting
