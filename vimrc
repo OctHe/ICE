@@ -22,22 +22,37 @@ endif
 
 """""""""""""""""""""""""""""""""
 " -- vim-plug --
+"  Update: 2022.12.31
 """""""""""""""""""""""""""""""""
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" Plugin for list the tags
+" taglist
 Plug 'yegappan/taglist', {'for': ['python', 'c', 'cpp', 'vim']}
 
-" Lint plugin
-Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
+" vista is more powerful than taglist. However, it requires universal-ctags (u-ctags), :w
+" but the
+" default ctags version with apt is e-ctags which is not maintained.
+" Plug 'liuchengxu/vista.vim'
+
+" Lean and mean status bar
+Plug 'vim-airline/vim-airline'
 
 " NERDTree plugin and others
 Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle' }
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
-Plug 'scrooloose/nerdcommenter'
+" YouCompleteMe
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
+
+" Commenter plugins: Tcomment_vim, nerdcommenter, and commentary
+" commentary is similar to tcomment_vim and is extremely lightweight within 200 lines code.
+Plug 'tpope/vim-commentary'
+" Plug 'scrooloose/nerdcommenter'
+
+" Lint plugin
+Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
 " Markdown plugin
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -48,9 +63,6 @@ Plug 'preservim/vimux'
 " Snip plugin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" YouCompleteMe
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
 " vimtex plugin
 Plug 'lervag/vimtex'
@@ -90,33 +102,33 @@ function! PreventReplacingNERDTree()
 endfunction
 
 
-"""""""""""""""""""""""""""""""""
-" Nerdcommenter setting 
-" Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
-let g:NERDToggleCheckAllLines = 1
+" """"""""""""""""""""""""""""""""
+" " Nerdcommenter setting
+" " Update: 2021.11.28
+" """""""""""""""""""""""""""""""""
+" " Add spaces after comment delimiters by default
+" let g:NERDSpaceDelims = 1
+"
+" " Use compact syntax for prettified multi-line comments
+" let g:NERDCompactSexyComs = 1
+"
+" " Align line-wise comment delimiters flush left instead of following code indentation
+" let g:NERDDefaultAlign = 'left'
+"
+" " Set a language to use its alternate delimiters by default
+" let g:NERDAltDelims_java = 1
+"
+" " Add your own custom formats or override the defaults
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+"
+" " Allow commenting and inverting empty lines (useful when commenting a region)
+" let g:NERDCommentEmptyLines = 1
+"
+" " Enable trimming of trailing whitespace when uncommenting
+" let g:NERDTrimTrailingWhitespace = 1
+"
+" " Enable NERDCommenterToggle to check all selected lines is commented or not
+" let g:NERDToggleCheckAllLines = 1
 
 """""""""""""""""""""""""""""""""
 " Taglist setting
