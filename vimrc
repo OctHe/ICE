@@ -22,49 +22,60 @@ endif
 
 """""""""""""""""""""""""""""""""
 " -- vim-plug --
-"  Update: 2022.12.31
+"  Update: 2023.01.05
 """""""""""""""""""""""""""""""""
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" taglist
-Plug 'yegappan/taglist', {'for': ['python', 'c', 'cpp', 'vim']}
+" taglist:
+" Plug 'yegappan/taglist', {'for': ['python', 'c', 'cpp', 'vim']}
+" Vista: View and search tags in vim/Neovim
+Plug 'liuchengxu/vista.vim'
 
-" vista is more powerful than taglist. However, it requires universal-ctags (u-ctags), :w
-" but the
-" default ctags version with apt is e-ctags which is not maintained.
-" Plug 'liuchengxu/vista.vim'
-
-" Lean and mean status bar
+" vim-airline: Lean and mean status bar
 Plug 'vim-airline/vim-airline'
+" " lightline: A light and configurable statusline/tabline plugin for Vim 
+" Plug 'itchyny/lightline.vim'
 
-" NERDTree plugin and others
+" LeaderF: 
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" NERDTree:
 Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle' }
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
-" Commenter plugins: Tcomment_vim, nerdcommenter, and commentary
-" commentary is similar to tcomment_vim and is extremely lightweight within 200 lines code.
+" " tcomment: A easy-to-use commenter
+" Plug 'tomtom/tcomment_vim'
+" commentary: commentary is similar to tcomment_vim and is extremely lightweight within 200 lines code.
 Plug 'tpope/vim-commentary'
+" " nerdcommenter:
 " Plug 'scrooloose/nerdcommenter'
 
-" Lint plugin
+" LeaderF: An efficient fuzzy finder
+Plug 'yggdroot/LeaderF'
+
+" ALE: Asynchronous Lint Engine
+" ALE works as an LSP client, so the OS must have some language servers
+" It is recommended to install pyright for python and clangd for c/cpp
+" pyright: pip3/pip install pyright
+" clangd: 'sudo apt install clangd' in ubuntu
 Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
-" Markdown plugin
+" Markdown-preview:
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" vimux plugin
+" vimux:
 Plug 'preservim/vimux'
 
 " Snip plugin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-" vimtex plugin
+" vimtex:
 Plug 'lervag/vimtex'
 
 " Initialize plugin system
@@ -72,7 +83,7 @@ call plug#end()
 
 
 """""""""""""""""""""""""""""""""
-" NERDTree setting
+" NERDTree settings
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
 " automatic open NERDTree when open vim with a file
@@ -103,7 +114,7 @@ endfunction
 
 
 " """"""""""""""""""""""""""""""""
-" " Nerdcommenter setting
+" " Nerdcommenter settings
 " " Update: 2021.11.28
 " """""""""""""""""""""""""""""""""
 " " Add spaces after comment delimiters by default
@@ -130,18 +141,36 @@ endfunction
 " " Enable NERDCommenterToggle to check all selected lines is commented or not
 " let g:NERDToggleCheckAllLines = 1
 
-"""""""""""""""""""""""""""""""""
-" Taglist setting
-" Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-let Tlist_Auto_Open = 0         "auto open Tlist
-let Tlist_Exit_OnlyWindow = 1   "exit Tlist if taglist is the only file
-let Tlist_Show_One_File = 1     "only show current file's Tlist
-let Tlist_Use_Right_Window = 1
-let g:Tlist_WinWidth = 50
+
+" """"""""""""""""""""""""""""""""""
+" " Taglist settings
+" " Update: 2021.11.28
+" """""""""""""""""""""""""""""""""
+" let Tlist_Auto_Open = 0         "auto open Tlist
+" let Tlist_Exit_OnlyWindow = 1   "exit Tlist if taglist is the only file
+" let Tlist_Show_One_File = 1     "only show current file's Tlist
+" let Tlist_Use_Right_Window = 1
+" let g:Tlist_WinWidth = 50
+
 
 """""""""""""""""""""""""""""""""
-" Markdown-preview.nvim setting
+" Vista.vim settings
+" Update: 2023.01.05
+"""""""""""""""""""""""""""""""""
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+
+"""""""""""""""""""""""""""""""""
+" Markdown-preview.nvim settings
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -235,25 +264,21 @@ let g:mkdp_page_title = '「${name}」'
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
 
+
 """""""""""""""""""""""""""""""""
-" ale setting
+" ale settings
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
 let g:ale_linters = {
-\   'python': ['pylint'],
-\   'c': ['clang'],
-\   'c++': ['clang'],
+\   'python': ['pyright'],
+\   'c': ['clangd'],
+\   'c++': ['clangd'],
 \}
+
 
 """""""""""""""""""""""""""""""""
 " Ultrisnips and 
-" vim-snippets setting
+" vim-snippets settings
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
 " Trigger configuration. You need to change this to something other than <tab> 
@@ -267,8 +292,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+
 """""""""""""""""""""""""""""""""
-" vimtex setting
+" vimtex settings
 " Update: 2022.01.19
 """""""""""""""""""""""""""""""""
 " This is necessary for VimTeX to load properly. The "indent" is optional.
@@ -301,7 +327,7 @@ let maplocalleader = "\\"
 
 
 """""""""""""""""""""""""""""""""
-" YCM setting
+" YCM settings
 " Update: 2021.11.28
 """""""""""""""""""""""""""""""""
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
@@ -309,6 +335,11 @@ let g:ycm_show_diagnostics_ui = 0
 
 map <leader>g :YcmCompleter GoTo<CR>
 
+"""""""""""""""""""""""""""""""""
+" LeaderF settings
+" Update: 2023.01.05
+"""""""""""""""""""""""""""""""""
+let g:Lf_WindowPosition = 'popup'
 
 """""""""""""""""""""""""""""""""
 " Put your non-Plugin stuff after this line
