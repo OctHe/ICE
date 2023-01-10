@@ -58,6 +58,12 @@ Plug 'tpope/vim-commentary'
 " LeaderF: An efficient fuzzy finder
 Plug 'yggdroot/LeaderF'
 
+" surround: A plugin about surroundings
+Plug 'tpope/vim-surround'
+
+" vim-dispatch: Asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch' 
+
 " ALE: Asynchronous Lint Engine
 " ALE works as an LSP client, so the OS must have some language servers
 " It is recommended to install pyright for python and clangd for c/cpp
@@ -65,18 +71,21 @@ Plug 'yggdroot/LeaderF'
 " clangd: 'sudo apt install clangd' in ubuntu
 Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
+" auto-pairs: Operate brackets in pair
+Plug 'jiangmiao/auto-pairs'
+
 " Markdown-preview:
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" vimux:
-Plug 'preservim/vimux'
+" vimtex:
+Plug 'lervag/vimtex'
+
+" " vimux: Interact with tmux from vim
+" Plug 'preservim/vimux'
 
 " Snip plugin
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
-" vimtex:
-Plug 'lervag/vimtex'
 
 " Initialize plugin system
 call plug#end()
@@ -168,6 +177,7 @@ set statusline+=%{NearestMethodOrFunction()}
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
+let g:vista_sidebar_width = 50
 
 """""""""""""""""""""""""""""""""
 " Markdown-preview.nvim settings
@@ -353,12 +363,16 @@ set shiftwidth=4
 set expandtab		        " expand tab to space 
 set mouse=a                 " default close mouse
 set tags=tags               " set the tags in the work directory
-set spell                   " spell check
 set splitbelow              " split the window at below
 set guioptions=aegrLt       " set the gui option
 set lines=999 columns=999   " maximize the display when open vim
 
 colorscheme desert          " color scheme
+
+" Spell check
+set spell                           " Set spell check
+highlight clear SpellBad            " Clear the default highlight
+highlight SpellBad cterm=underline  " Set the highlight style as underline
 
 " Color of the dialog
 highlight PMenu ctermfg=56 ctermbg=255 guifg=darkblue guibg=darkgrey
