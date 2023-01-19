@@ -1,9 +1,6 @@
 """""""""""""""""""""""""""""""""
 " 
-" This is Shiyue's vim configuration file.
-" The first thing for the file is to install vim-plug.
-" It will install all plugins by vim-plug with “:PlugInstall"
-" It provides some customized configurations at final.
+" This is Shiyue's vim configuration.
 " 
 """""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
@@ -33,8 +30,8 @@ call plug#begin('~/.vim/plugged')
 " Vista: View and search tags in vim/Neovim
 Plug 'liuchengxu/vista.vim'
 
-" vim-airline: Lean and mean status bar
-Plug 'vim-airline/vim-airline'
+" " vim-airline: Lean and mean status bar
+" Plug 'vim-airline/vim-airline'
 " " lightline: A light and configurable statusline/tabline plugin for Vim 
 " Plug 'itchyny/lightline.vim'
 
@@ -101,13 +98,13 @@ autocmd vimenter *.{py,cc,h,c} NERDTree | wincmd p
 " set hot key for NERDTree
 noremap <C-n> :NERDTreeToggle<CR>  
 
-" close vim if the only window left open is a NERDTree
-autocmd BufEnter * :call CloseNERDTree()
-function! CloseNERDTree()
-    if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-        quit
-    endif
-endfunction
+" " close vim if the only window left open is a NERDTree
+" autocmd BufEnter * :call CloseNERDTree()
+" function! CloseNERDTree()
+"     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+"         quit
+"     endif
+" endfunction
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * :call PreventReplacingNERDTree()
@@ -175,7 +172,9 @@ set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+if exists('g:loaded_vista')
+  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+endif
 
 let g:vista_sidebar_width = 50
 
