@@ -18,7 +18,7 @@ We can set a sock5 proxy with the following command
 We choose vim as the editor in Ubuntu and Deepin.
 
 All vim configurations are in the 'vimrc' file.
-Copy the file into the home directory `cp vimrc ~/.vimrc`
+Copy the file into the '.vim/' directory `cp vimrc ~/.vim/vimrc`
 The *vim-plug* can be automatically installed to manage plugins when vim is firstly started.
 All plugins can be installed by vim-plug with “:PlugInstall"
 vimrc provides some customized configurations at final.
