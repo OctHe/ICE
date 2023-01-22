@@ -364,7 +364,6 @@ set mouse=a                 " default close mouse
 set tags=tags               " set the tags in the work directory
 set splitbelow              " split the window at below
 set guioptions=aegrLt       " set the gui option
-set lines=999 columns=999   " maximize the display when open vim
 
 colorscheme desert          " color scheme
 
