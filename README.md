@@ -11,6 +11,12 @@ zterm requires zsh and oh-my-zsh with the following
     sudo apt zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+### Proxy
+
+Use the following command in `.zshrc`
+
+    export http_proxy="socks5://127.0.0.1:7890"
+    export https_proxy="socks5://127.0.0.1:7890"
 
 ### Plugins
 
