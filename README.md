@@ -1,9 +1,12 @@
-## MultiVim
+## Aim
 
-MultiVim is Shiyue's Vim distribution for Linux kernel, GNURadio, iw projects.
-It aims to support C/C++, Latex, Markdown, python on Ubuntu, Deepin, and OpenSuse.
+All-in-vim, or Aim in short, is Shiyue's Vim configuration.
+It aims to support multiple projects including Linux kernel, GNURadio and iw in C/C++.
+It also wants to support languages of Latex, Markdown, python on Ubuntu, Deepin, and OpenSuse.
 
 ## Ubuntu and Deepin
+
+### Prerequist
 The useful packets that can be install from *apt* to support vim
 
     sudo apt update
@@ -15,7 +18,8 @@ We can set a sock5 proxy with the following command
     git config --global http.proxy 'socks5://127.0.0.1:8088' 
     git config --global https.proxy 'socks5://127.0.0.1:8088' 
 
-We choose vim as the editor in Ubuntu and Deepin.
+
+### Plugins
 
 All vim configurations are in the 'vimrc' file.
 Copy the file into the '.vim/' directory `cp vimrc ~/.vim/vimrc`
@@ -25,9 +29,19 @@ vimrc provides some customized configurations at final.
 
 Note that vim (or gvim) in Deepin cannot install YouCompleteMe because the version is old.
 
-### OpenSUSE
+### Note
 
-OpenSUSE uses *zypper* as the packet managerr
+[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) is a complex plugin to install.
+It requires multiple dependencies that should be downloaded.
+To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
+The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
+
+    export http_proxy="socks5://127.0.0.1:7890"
+    export https_proxy="socks5://127.0.0.1:7890"
+
+## OpenSUSE
+
+OpenSUSE uses *zypper* as the packet manager
 
     sudo zypper update
     sudo zypper install git zsh cmake make vim

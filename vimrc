@@ -58,8 +58,8 @@ Plug 'yggdroot/LeaderF'
 " surround: A plugin about surroundings
 Plug 'tpope/vim-surround'
 
-" vim-dispatch: Asynchronous build and test dispatcher
-Plug 'tpope/vim-dispatch' 
+" " vim-dispatch: Asynchronous build and test dispatcher
+" Plug 'tpope/vim-dispatch' 
 
 " ALE: Asynchronous Lint Engine
 " ALE works as an LSP client, so the OS must have some language servers
@@ -344,14 +344,16 @@ let g:ycm_show_diagnostics_ui = 0
 
 map <leader>g :YcmCompleter GoTo<CR>
 
+
 """""""""""""""""""""""""""""""""
 " LeaderF settings
 " Update: 2023.01.05
 """""""""""""""""""""""""""""""""
 let g:Lf_WindowPosition = 'popup'
 
+
 """""""""""""""""""""""""""""""""
-" Put your non-Plugin stuff after this line
+" Put non-Plugin stuff after this line
 " Update: 2022.01.18
 """""""""""""""""""""""""""""""""
 source $VIMRUNTIME/vimrc_example.vim
@@ -368,13 +370,20 @@ set guioptions=aegrLt       " set the gui option
 colorscheme desert          " color scheme
 
 " Spell check
-set spell                           " Set spell check
-highlight clear SpellBad            " Clear the default highlight
-highlight SpellBad cterm=underline  " Set the highlight style as underline
+set spell
+" Clear the default highlight of the Spell check
+highlight clear SpellBad
+" Set the highlight style as underline
+highlight SpellBad cterm=underline  
 
-" Color of the dialog
-highlight PMenu ctermfg=56 ctermbg=255 guifg=darkblue guibg=darkgrey
-highlight PMenuSel ctermfg=255 ctermbg=56 guifg=darkgreen guibg=lightblue
+" Color scheme
+" Buffer background
+highlight Normal ctermbg=black
+" Dialog
+highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
+highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
+" Vertical split
+highlight VertSplit ctermfg=None
 
 filetype indent on          " This enables automatic indentation as you type.
 set autoindent
