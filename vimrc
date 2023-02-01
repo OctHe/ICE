@@ -383,7 +383,7 @@ highlight Normal ctermbg=black
 highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
 highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
 " Vertical split
-highlight VertSplit ctermfg=None
+highlight VertSplit ctermfg=black ctermbg=white
 
 filetype indent on          " This enables automatic indentation as you type.
 set autoindent
