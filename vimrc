@@ -1,26 +1,26 @@
-"""""""""""""""""""""""""""""""""
+" ============================
 " 
-" This is Shiyue's vim configuration.
+" This is the configuration file of Project AIM
+" Author: Shiyue He
+" Copyright (C): 2020-2023
 " 
-"""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" ============================
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " Install vim-plug if not found
 " Update: 2022.10.30
-"""""""""""""""""""""""""""""""""
+" ============================
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " -- vim-plug --
-"  Update: 2023.01.05
-"""""""""""""""""""""""""""""""""
+"  Update: 2023.02.02
+" ============================
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -30,9 +30,9 @@ call plug#begin('~/.vim/plugged')
 " Vista: View and search tags in vim/Neovim
 Plug 'liuchengxu/vista.vim'
 
-" " vim-airline: Lean and mean status bar
+" vim-airline: Lean and mean status bar
 " Plug 'vim-airline/vim-airline'
-" " lightline: A light and configurable statusline/tabline plugin for Vim 
+" lightline: A light and configurable statusline/tabline plugin for Vim 
 " Plug 'itchyny/lightline.vim'
 
 " LeaderF: 
@@ -45,11 +45,11 @@ Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle' }
 " YouCompleteMe
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
-" " tcomment: A easy-to-use commenter
+" tcomment: A easy-to-use commenter
 " Plug 'tomtom/tcomment_vim'
 " commentary: commentary is similar to tcomment_vim and is extremely lightweight within 200 lines code.
 Plug 'tpope/vim-commentary'
-" " nerdcommenter:
+" nerdcommenter:
 " Plug 'scrooloose/nerdcommenter'
 
 " LeaderF: An efficient fuzzy finder
@@ -58,14 +58,18 @@ Plug 'yggdroot/LeaderF'
 " surround: A plugin about surroundings
 Plug 'tpope/vim-surround'
 
-" " vim-dispatch: Asynchronous build and test dispatcher
+" Color table: Display the color table in terminal with command
+Plug 'guns/xterm-color-table.vim'
+
+" vim-dispatch: Asynchronous build and test dispatcher
 " Plug 'tpope/vim-dispatch' 
 
 " ALE: Asynchronous Lint Engine
-" ALE works as an LSP client, so the OS must have some language servers
-" It is recommended to install pyright for python and clangd for c/cpp
-" pyright: pip3/pip install pyright
-" clangd: 'sudo apt install clangd' in ubuntu
+" ALE works as an LSP client, so the OS must install the corresponding language
+" servers.
+" Recommendation: 
+"     pyright: pip3/pip install pyright
+"     clangd: 'sudo apt install clangd' in ubuntu
 Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
 " auto-pairs: Operate brackets in pair
@@ -77,7 +81,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " vimtex:
 Plug 'lervag/vimtex'
 
-" " vimux: Interact with tmux from vim
+" vimux: Interact with tmux from vim
 " Plug 'preservim/vimux'
 
 " Snip plugin
@@ -88,17 +92,17 @@ Plug 'honza/vim-snippets'
 call plug#end()
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " NERDTree settings
 " Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
+" ============================
 " automatic open NERDTree when open vim with a file
 autocmd vimenter *.{py,cc,h,c} NERDTree | wincmd p
 
 " set hot key for NERDTree
 noremap <C-n> :NERDTreeToggle<CR>  
 
-" " close vim if the only window left open is a NERDTree
+" close vim if the only window left open is a NERDTree
 " autocmd BufEnter * :call CloseNERDTree()
 " function! CloseNERDTree()
 "     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
@@ -120,38 +124,38 @@ endfunction
 
 
 " """"""""""""""""""""""""""""""""
-" " Nerdcommenter settings
-" " Update: 2021.11.28
-" """""""""""""""""""""""""""""""""
-" " Add spaces after comment delimiters by default
+" Nerdcommenter settings
+" Update: 2021.11.28
+" ============================
+" Add spaces after comment delimiters by default
 " let g:NERDSpaceDelims = 1
 "
-" " Use compact syntax for prettified multi-line comments
+" Use compact syntax for prettified multi-line comments
 " let g:NERDCompactSexyComs = 1
 "
-" " Align line-wise comment delimiters flush left instead of following code indentation
+" Align line-wise comment delimiters flush left instead of following code indentation
 " let g:NERDDefaultAlign = 'left'
 "
-" " Set a language to use its alternate delimiters by default
+" Set a language to use its alternate delimiters by default
 " let g:NERDAltDelims_java = 1
 "
-" " Add your own custom formats or override the defaults
+" Add your own custom formats or override the defaults
 " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
 "
-" " Allow commenting and inverting empty lines (useful when commenting a region)
+" Allow commenting and inverting empty lines (useful when commenting a region)
 " let g:NERDCommentEmptyLines = 1
 "
-" " Enable trimming of trailing whitespace when uncommenting
+" Enable trimming of trailing whitespace when uncommenting
 " let g:NERDTrimTrailingWhitespace = 1
 "
-" " Enable NERDCommenterToggle to check all selected lines is commented or not
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 " let g:NERDToggleCheckAllLines = 1
 
 
-" """"""""""""""""""""""""""""""""""
-" " Taglist settings
-" " Update: 2021.11.28
-" """""""""""""""""""""""""""""""""
+" ============================
+" Taglist settings
+" Update: 2021.11.28
+" ============================
 " let Tlist_Auto_Open = 0         "auto open Tlist
 " let Tlist_Exit_OnlyWindow = 1   "exit Tlist if taglist is the only file
 " let Tlist_Show_One_File = 1     "only show current file's Tlist
@@ -159,10 +163,10 @@ endfunction
 " let g:Tlist_WinWidth = 50
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " Vista.vim settings
 " Update: 2023.01.05
-"""""""""""""""""""""""""""""""""
+" ============================
 function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
@@ -178,10 +182,10 @@ endif
 
 let g:vista_sidebar_width = 50
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " Markdown-preview.nvim settings
 " Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
+" ============================
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 0
@@ -274,10 +278,10 @@ let g:mkdp_page_title = '「${name}」'
 let g:mkdp_filetypes = ['markdown']
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " ale settings
 " Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
+" ============================
 let g:ale_linters = {
 \   'python': ['pyright'],
 \   'c': ['clangd'],
@@ -285,13 +289,13 @@ let g:ale_linters = {
 \}
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " Ultrisnips and 
 " vim-snippets settings
 " Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
-" Trigger configuration. You need to change this to something other than <tab> 
-" if you use one of the following:
+" ============================
+" Trigger configuration. Change this to something other than <tab> if use one 
+" of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -302,10 +306,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " vimtex settings
 " Update: 2022.01.19
-"""""""""""""""""""""""""""""""""
+" ============================
 " This is necessary for VimTeX to load properly. The "indent" is optional.
 " Note that most plugin managers will do this automatically.
 filetype plugin indent on
@@ -335,39 +339,41 @@ let maplocalleader = "\\"
 " document with ':h vimtex-multi-file'
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " YCM settings
 " Update: 2021.11.28
-"""""""""""""""""""""""""""""""""
+" ============================
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui = 0
 
 map <leader>g :YcmCompleter GoTo<CR>
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " LeaderF settings
 " Update: 2023.01.05
-"""""""""""""""""""""""""""""""""
+" ============================
 let g:Lf_WindowPosition = 'popup'
 
 
-"""""""""""""""""""""""""""""""""
+" ============================
 " Put non-Plugin stuff after this line
-" Update: 2022.01.18
-"""""""""""""""""""""""""""""""""
-source $VIMRUNTIME/vimrc_example.vim
+" Update: 2023.02.02
+" ============================
+" Most of the uses want these configurations
+source $VIMRUNTIME/defaults.vim
 
-set nu  			        " display line numbers
+set number  		        " Line numbers
 set tabstop=4  
 set shiftwidth=4  
 set expandtab		        " expand tab to space 
 set mouse=a                 " default close mouse
 set tags=tags               " set the tags in the work directory
-set splitbelow              " split the window at below
 set guioptions=aegrLt       " set the gui option
 
-colorscheme desert          " color scheme
+" A new buffer splits below and right by default
+set splitbelow
+set splitright
 
 " Spell check
 set spell
@@ -376,14 +382,21 @@ highlight clear SpellBad
 " Set the highlight style as underline
 highlight SpellBad cterm=underline  
 
-" Color scheme
 " Buffer background
-highlight Normal ctermbg=black
+highlight Normal ctermbg=234
 " Dialog
 highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
 highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
 " Vertical split
-highlight VertSplit ctermfg=black ctermbg=white
+highlight VertSplit ctermfg=black ctermbg=darkgreen
 
-filetype indent on          " This enables automatic indentation as you type.
+" Highlight column
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=6
+
+" This enables automatic indentation as you type.
+filetype indent on
 set autoindent
+
+" By default, AIM wants to open the help file at the right side
+command! -nargs=?  AimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 80 | endif

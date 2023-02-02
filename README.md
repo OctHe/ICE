@@ -1,18 +1,49 @@
-## Aim
+## All-In-Vim
 
-All-in-vim, or Aim in short, is Shiyue's Vim configuration.
-It aims to support multiple projects including Linux kernel, GNURadio and iw in C/C++.
-It also wants to support languages of Latex, Markdown, python on Ubuntu, Deepin, and OpenSuse.
+All-in-vim, or AIM in short, is Shiyue He's project-oriented coding environment that uses Vim as the editor.
+Here is the list of the target projects:
+- C/C++
+    - *Linux kernel*
+    - *iw*
+    - *xv6*
+    - *GNURadio*
+- Python
+    - *Leetcode_unit*
+    - *MoreWireless*
+- VimScript/Lua
+    - *AIM*
+- Latex
+    - *xelatex -> bibtex -> xelatex -> xelatex* (Thsis)
+    - *pdflatex -> bibtex -> pdflatex -> pdflatex* (paper)
+    - *xelatex*
+- Markdown
+    - *MoreWireless*
+    - *README.md*
+    - *jekyll*
 
-## Ubuntu and Deepin
+Naturally, AIM does not want to build the toolchain from scratch.
+It will contains lots existing tools, while this projects focuses on the following processes of each project: reading, writing, compiling (If needed), and debugging.
 
-### Prerequist
+## Ubuntu
+
+### Prerequisites
+
 The useful packets that can be install from *apt* to support vim
 
     sudo apt update
     sudo apt install git zsh cmake make vim
 
-After installing *git*, it is recommended to set a proxy for git if a proxy is used in the system.
+### Proxy
+
+[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) is a complex plugin to install.
+It requires multiple dependencies that should be downloaded.
+To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
+The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
+
+    export http_proxy="socks5://127.0.0.1:7890"
+    export https_proxy="socks5://127.0.0.1:7890"
+
+After installing *git*, it is recommended to set a proxy to avoid some network issues.
 We can set a sock5 proxy with the following command
 
     git config --global http.proxy 'socks5://127.0.0.1:8088' 
@@ -29,15 +60,16 @@ vimrc provides some customized configurations at final.
 
 Note that vim (or gvim) in Deepin cannot install YouCompleteMe because the version is old.
 
-### Note
 
-[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) is a complex plugin to install.
-It requires multiple dependencies that should be downloaded.
-To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
-The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
+## Deepin
 
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
+Deepin is based on Ubuntu, so it has similar packet manager, while the applications are most outdated.
+    sudo apt update
+    sudo apt install git zsh cmake make vim
+
+Therefore, Deepin is recommended to use SpaceVim as the configuration.
+
+    curl -sLf https://spacevim.org/install.sh | bash
 
 ## OpenSUSE
 
@@ -55,10 +87,4 @@ It provides pyright as the language server protocol (LSP).
 pyright can be installed with
 
     pip3 install pyright
-
-## To Be Done
-
-- Blog and jekyll
-- Python and jupyter
-- xv6 operating system
 
