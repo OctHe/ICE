@@ -19,31 +19,42 @@ endif
 
 " ============================
 " -- vim-plug --
-"  Update: 2023.02.02
+"  Update: 2023.02.04
 " ============================
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-" taglist:
-" Plug 'yegappan/taglist', {'for': ['python', 'c', 'cpp', 'vim']}
+" ========== Reading =========
+
+" NERDTree:
+Plug 'preservim/nerdtree', {'on':  'NERDTreeToggle' }
+
+" tagbar: A class outline viewer for vim
+" tagbar is based on Universal Ctags, install it by
+"   sudo apt install universal-ctags
+Plug 'preservim/tagbar'
 " Vista: View and search tags in vim/Neovim
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 
 " vim-airline: Lean and mean status bar
 " Plug 'vim-airline/vim-airline'
 " lightline: A light and configurable statusline/tabline plugin for Vim 
 " Plug 'itchyny/lightline.vim'
 
-" LeaderF: 
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+" fzf: fzf is the most well-known fuzzy finder command line written in go.
+" fzf has a built-in vim configuration file.
+" The installation program will download the newest version without building.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" CtriP: CtrlP is a fuzzy finder in pure vimscript
+" Plug 'ctrlpvim/ctrlp.vim' 
+" LeaderF: An efficient fuzzy finder based on python
+" Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
-" NERDTree:
-Plug 'scrooloose/nerdtree', {'on':  'NERDTreeToggle' }
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+" ========== Writing =========
 
-" YouCompleteMe
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
+" auto-pairs: Operate brackets in pair
+Plug 'jiangmiao/auto-pairs'
 
 " tcomment: A easy-to-use commenter
 " Plug 'tomtom/tcomment_vim'
@@ -52,17 +63,9 @@ Plug 'tpope/vim-commentary'
 " nerdcommenter:
 " Plug 'scrooloose/nerdcommenter'
 
-" LeaderF: An efficient fuzzy finder
-Plug 'yggdroot/LeaderF'
-
 " surround: A plugin about surroundings
 Plug 'tpope/vim-surround'
 
-" Color table: Display the color table in terminal with command
-Plug 'guns/xterm-color-table.vim'
-
-" vim-dispatch: Asynchronous build and test dispatcher
-" Plug 'tpope/vim-dispatch' 
 
 " ALE: Asynchronous Lint Engine
 " ALE works as an LSP client, so the OS must install the corresponding language
@@ -72,8 +75,20 @@ Plug 'guns/xterm-color-table.vim'
 "     clangd: 'sudo apt install clangd' in ubuntu
 Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
 
-" auto-pairs: Operate brackets in pair
-Plug 'jiangmiao/auto-pairs'
+" YouCompleteMe
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
+
+" Snip plugin
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" ========== Compilation ====== 
+
+" vim-dispatch: Asynchronous build and test dispatcher
+" Plug 'tpope/vim-dispatch' 
+
+" vimux: Interact with tmux from vim
+" Plug 'preservim/vimux'
 
 " Markdown-preview:
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -81,12 +96,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " vimtex:
 Plug 'lervag/vimtex'
 
-" vimux: Interact with tmux from vim
-" Plug 'preservim/vimux'
+" ========== Others =========== 
 
-" Snip plugin
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Color table: Display the color table in terminal with command
+Plug 'guns/xterm-color-table.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -94,24 +107,33 @@ call plug#end()
 
 " ============================
 " NERDTree settings
-" Update: 2021.11.28
+" Update: 2023.02.04
 " ============================
-" automatic open NERDTree when open vim with a file
-autocmd vimenter *.{py,cc,h,c} NERDTree | wincmd p
+if exists('loaded_nerd_tree')
+    " Automatic open NERDTree when open vim and go to the previous window
+    autocmd VimEnter *.{py,h,c} NERDTree | wincmd p
 
-" set hot key for NERDTree
-noremap <C-n> :NERDTreeToggle<CR>  
+    " Shortcut for NERDTree
+    noremap <C-n> :NERDTreeToggle<CR>  
 
-" close vim if the only window left open is a NERDTree
-" autocmd BufEnter * :call CloseNERDTree()
-" function! CloseNERDTree()
-"     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-"         quit
-"     endif
-" endfunction
+    let NERTTreeCaseSensitiveSort = 1
+    let NERDTreeWinSize = 35
 
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * :call PreventReplacingNERDTree()
+    " Close vim if the only window left open is a NERDTree
+    autocmd BufEnter * :call CloseNERDTree()
+
+    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+    autocmd BufEnter * :call PreventReplacingNERDTree()
+
+endif
+
+function! CloseNERDTree()
+    if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+        quit
+    endif
+
+endfunction
+
 function! PreventReplacingNERDTree()
     if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
         let buf=bufnr('%') 
@@ -123,7 +145,42 @@ function! PreventReplacingNERDTree()
 endfunction
 
 
-" """"""""""""""""""""""""""""""""
+" ============================
+" Vista.vim settings
+" Update: 2023.01.05
+" ============================
+" function! NearestMethodOrFunction() abort
+"   return get(b:, 'vista_nearest_method_or_function', '')
+" endfunction
+
+" set statusline+=%{NearestMethodOrFunction()}
+
+" " By default vista.vim never run if you don't call it explicitly.
+" " If you want to show the nearest function in your statusline automatically,
+" " you can add the following line to your vimrc
+" if exists('g:loaded_vista')
+"   autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" endif
+
+" let g:vista_sidebar_width = 50
+
+" ============================
+" LeaderF settings
+" Update: 2023.01.05
+" ============================
+" let g:Lf_WindowPosition = 'popup'
+
+" ============================
+" YCM settings
+" Update: 2021.11.28
+" ============================
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui = 0
+
+map <leader>g :YcmCompleter GoTo<CR>
+
+
+" ============================
 " Nerdcommenter settings
 " Update: 2021.11.28
 " ============================
@@ -151,36 +208,6 @@ endfunction
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 " let g:NERDToggleCheckAllLines = 1
 
-
-" ============================
-" Taglist settings
-" Update: 2021.11.28
-" ============================
-" let Tlist_Auto_Open = 0         "auto open Tlist
-" let Tlist_Exit_OnlyWindow = 1   "exit Tlist if taglist is the only file
-" let Tlist_Show_One_File = 1     "only show current file's Tlist
-" let Tlist_Use_Right_Window = 1
-" let g:Tlist_WinWidth = 50
-
-
-" ============================
-" Vista.vim settings
-" Update: 2023.01.05
-" ============================
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-
-set statusline+=%{NearestMethodOrFunction()}
-
-" By default vista.vim never run if you don't call it explicitly.
-" If you want to show the nearest function in your statusline automatically,
-" you can add the following line to your vimrc
-if exists('g:loaded_vista')
-  autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-endif
-
-let g:vista_sidebar_width = 50
 
 " ============================
 " Markdown-preview.nvim settings
@@ -333,28 +360,10 @@ let g:vimtex_compiler_method = 'latexmk'
 " following line. The default is usually fine and is the symbol "\".
 let maplocalleader = "\\"
 
-" IMPORTANT: Project with multiple files.
-" To support multiple files (with '\input') in a project, you must open the 
-" main file (e.g., main.tex) at first. For more details, please see the help
-" document with ':h vimtex-multi-file'
-
-
-" ============================
-" YCM settings
-" Update: 2021.11.28
-" ============================
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
-
-map <leader>g :YcmCompleter GoTo<CR>
-
-
-" ============================
-" LeaderF settings
-" Update: 2023.01.05
-" ============================
-let g:Lf_WindowPosition = 'popup'
-
+" Project with multiple files.
+"   To support multiple files (with '\input') in a project, user must open the 
+"   main file (e.g., main.tex) at first. For more details, please see the help
+"   document with ':h vimtex-multi-file'
 
 " ============================
 " Put non-Plugin stuff after this line
@@ -399,4 +408,4 @@ filetype indent on
 set autoindent
 
 " By default, AIM wants to open the help file at the right side
-command! -nargs=?  AimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 80 | endif
+command! -nargs=?  AimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif

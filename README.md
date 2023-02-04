@@ -1,6 +1,6 @@
 ## All-In-Vim
 
-All-in-vim, or AIM in short, is Shiyue He's project-oriented coding environment that uses Vim as the editor.
+All-in-vim, or AIM in short, is Shiyue He's project-oriented coding environment that integrates all toolchains into the terminal around the famous Vim editor.
 Here is the list of the target projects:
 - C/C++
     - *Linux kernel*
@@ -8,8 +8,7 @@ Here is the list of the target projects:
     - *xv6*
     - *GNURadio*
 - Python
-    - *Leetcode_unit*
-    - *MoreWireless*
+    - *leetcode_unit*
 - VimScript/Lua
     - *AIM*
 - Latex
@@ -22,18 +21,44 @@ Here is the list of the target projects:
     - *jekyll*
 
 Naturally, AIM does not want to build the toolchain from scratch.
-It will contains lots existing tools, while this projects focuses on the following processes of each project: reading, writing, compiling (If needed), and debugging.
+It contains lots existing tools, while this projects focuses on the following processes of each project: reading, writing, compilation (If needed), debug, and test.
 
 ## Ubuntu
 
-### Prerequisites
+AIM provides the coding environment of Projects iw, xv6, and Linux kernel on Ubuntu.
+All these projects are based on C/C++, and uses `make` as their compile tool.
 
-The useful packets that can be install from *apt* to support vim
 
-    sudo apt update
-    sudo apt install git zsh cmake make vim
+## Prerequisite
 
-### Proxy
+To read the code, AIM uses Vim as the editor, zsh is the recommended shell.
+The compilation toolchain is *make*.
+
+They can be installed by
+
+    sudo apt install git zsh vim make
+
+After installing *git*, it is recommended to set a proxy to avoid some network issues.
+We can set a sock5 proxy with the following command
+
+    git config --global http.proxy 'socks5://127.0.0.1:8088' 
+    git config --global https.proxy 'socks5://127.0.0.1:8088' 
+
+The *vim-plug* can be automatically installed to manage plugins when vim is firstly started.
+All plugins can be installed by vim-plug with `:PlugInstall`
+vimrc provides some customized configurations at final.
+
+Then, Aim can be installed by git
+
+    git clone https://github.com/OctHe/All-in-Vim ~/.vim/
+
+### Reading
+
+AIM selects four plugins to support the code reading: NERDTree, fzf, tagbar, and vim-airline.
+
+
+
+### Writing
 
 [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) is a complex plugin to install.
 It requires multiple dependencies that should be downloaded.
@@ -43,22 +68,8 @@ The proxy can be set with the following command in the `~/.zshrc` file (suppose 
     export http_proxy="socks5://127.0.0.1:7890"
     export https_proxy="socks5://127.0.0.1:7890"
 
-After installing *git*, it is recommended to set a proxy to avoid some network issues.
-We can set a sock5 proxy with the following command
 
-    git config --global http.proxy 'socks5://127.0.0.1:8088' 
-    git config --global https.proxy 'socks5://127.0.0.1:8088' 
-
-
-### Plugins
-
-All vim configurations are in the 'vimrc' file.
-Copy the file into the '.vim/' directory `cp vimrc ~/.vim/vimrc`
-The *vim-plug* can be automatically installed to manage plugins when vim is firstly started.
-All plugins can be installed by vim-plug with `:PlugInstall`
-vimrc provides some customized configurations at final.
-
-Note that vim (or gvim) in Deepin cannot install YouCompleteMe because the version is old.
+### Compilation
 
 
 ## Deepin
