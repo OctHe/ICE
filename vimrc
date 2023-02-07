@@ -38,7 +38,7 @@ Plug 'preservim/tagbar'
 " Plug 'liuchengxu/vista.vim'
 
 " vim-airline: Lean and mean status bar
-" Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 " lightline: A light and configurable statusline/tabline plugin for Vim 
 " Plug 'itchyny/lightline.vim'
 
@@ -54,7 +54,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " ========== Writing =========
 
 " auto-pairs: Operate brackets in pair
-Plug 'jiangmiao/auto-pairs'
+Plug 'LunarWatcher/auto-pairs'
 
 " tcomment: A easy-to-use commenter
 " Plug 'tomtom/tcomment_vim'
@@ -66,17 +66,19 @@ Plug 'tpope/vim-commentary'
 " surround: A plugin about surroundings
 Plug 'tpope/vim-surround'
 
-
 " ALE: Asynchronous Lint Engine
 " ALE works as an LSP client, so the OS must install the corresponding language
 " servers.
 " Recommendation: 
 "     pyright: pip3/pip install pyright
 "     clangd: 'sudo apt install clangd' in ubuntu
-Plug 'dense-analysis/ale', {'for': ['python', 'c', 'cpp']}
+" clangd lSP requires bear to generate compile_commands.json for make-based
+" projects
+"     sudo apt install bear 
+Plug 'dense-analysis/ale'
 
 " YouCompleteMe
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
+" Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
 
 " Snip plugin
 Plug 'SirVer/ultisnips'
@@ -109,23 +111,18 @@ call plug#end()
 " NERDTree settings
 " Update: 2023.02.04
 " ============================
-if exists('loaded_nerd_tree')
-    " Automatic open NERDTree when open vim and go to the previous window
-    autocmd VimEnter *.{py,h,c} NERDTree | wincmd p
 
-    " Shortcut for NERDTree
-    noremap <C-n> :NERDTreeToggle<CR>  
+noremap <C-n> :NERDTreeToggle<CR>  
 
-    let NERTTreeCaseSensitiveSort = 1
-    let NERDTreeWinSize = 35
+let NERTTreeCaseSensitiveSort = 1
+let NERDTreeWinSize = 35
 
-    " Close vim if the only window left open is a NERDTree
-    autocmd BufEnter * :call CloseNERDTree()
-
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-    autocmd BufEnter * :call PreventReplacingNERDTree()
-
-endif
+" Automatic open NERDTree when open vim and go to the previous window
+autocmd VimEnter *.{py,h,c} NERDTree | wincmd p
+" Close vim if the only window left open is a NERDTree
+autocmd BufEnter * :call CloseNERDTree()
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * :call PreventReplacingNERDTree()
 
 function! CloseNERDTree()
     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
@@ -143,6 +140,14 @@ function! PreventReplacingNERDTree()
     endif
 
 endfunction
+
+
+" ============================
+" vim-airline settings
+" Update: 2023.02.05
+" ============================
+
+let g:airline#extensions#tabline#enabled = 1
 
 
 " ============================
@@ -164,20 +169,22 @@ endfunction
 
 " let g:vista_sidebar_width = 50
 
+
 " ============================
 " LeaderF settings
 " Update: 2023.01.05
 " ============================
 " let g:Lf_WindowPosition = 'popup'
 
+
 " ============================
 " YCM settings
 " Update: 2021.11.28
 " ============================
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+" let g:ycm_show_diagnostics_ui = 0
 
-map <leader>g :YcmCompleter GoTo<CR>
+" map <leader>g :YcmCompleter GoTo<CR>
 
 
 " ============================
@@ -317,8 +324,7 @@ let g:ale_linters = {
 
 
 " ============================
-" Ultrisnips and 
-" vim-snippets settings
+" Ultrisnips settings
 " Update: 2021.11.28
 " ============================
 " Trigger configuration. Change this to something other than <tab> if use one 
@@ -367,20 +373,25 @@ let maplocalleader = "\\"
 
 " ============================
 " Put non-Plugin stuff after this line
-" Update: 2023.02.02
+" Update: 2023.02.05
 " ============================
 " Most of the uses want these configurations
 source $VIMRUNTIME/defaults.vim
 
-set number  		        " Line numbers
+" Line numbers
+set number
+" Expand tag to space
+set expandtab
 set tabstop=4  
+" The width of '<' and '>'
 set shiftwidth=4  
-set expandtab		        " expand tab to space 
-set mouse=a                 " default close mouse
-set tags=tags               " set the tags in the work directory
-set guioptions=aegrLt       " set the gui option
-
-" A new buffer splits below and right by default
+" Set the tags in the work directory
+set tags=tags
+" GUI options
+set guioptions=aegrLt
+" Enable mouse in all mode
+set mouse=a                 
+" New buffer splits below and right by default
 set splitbelow
 set splitright
 
@@ -396,8 +407,8 @@ highlight Normal ctermbg=234
 " Dialog
 highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
 highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
-" Vertical split
-highlight VertSplit ctermfg=black ctermbg=darkgreen
+" Vertical split: 
+highlight VertSplit ctermfg=234 ctermbg=darkgreen
 
 " Highlight column
 " set colorcolumn=80
@@ -405,7 +416,7 @@ highlight VertSplit ctermfg=black ctermbg=darkgreen
 
 " This enables automatic indentation as you type.
 filetype indent on
-set autoindent
+set smartindent
 
 " By default, AIM wants to open the help file at the right side
 command! -nargs=?  AimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif

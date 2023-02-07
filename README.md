@@ -20,8 +20,7 @@ Here is the list of the target projects:
     - *README.md*
     - *jekyll*
 
-Naturally, AIM does not want to build the toolchain from scratch.
-It contains lots existing tools, while this projects focuses on the following processes of each project: reading, writing, compilation (If needed), debug, and test.
+The workflow contains reading, writing, compilation, and debug.
 
 ## Ubuntu
 
@@ -44,6 +43,12 @@ We can set a sock5 proxy with the following command
     git config --global http.proxy 'socks5://127.0.0.1:8088' 
     git config --global https.proxy 'socks5://127.0.0.1:8088' 
 
+To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
+The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
+
+    export http_proxy="socks5://127.0.0.1:7890"
+    export https_proxy="socks5://127.0.0.1:7890"
+
 The *vim-plug* can be automatically installed to manage plugins when vim is firstly started.
 All plugins can be installed by vim-plug with `:PlugInstall`
 vimrc provides some customized configurations at final.
@@ -54,20 +59,31 @@ Then, Aim can be installed by git
 
 ### Reading
 
-AIM selects four plugins to support the code reading: NERDTree, fzf, tagbar, and vim-airline.
-
+The following plugins are used to support the code reading:
+- [NERDTree](https://github.com/preservim/nerdtree)
+- [fzf](https://github.com/junegunn/fzf)
+- [tagbar](https://github.com/preservim/tagbar)
+- [vim-airline](https://github.com/vim-airline/vim-airline)
 
 
 ### Writing
 
-[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe) is a complex plugin to install.
-It requires multiple dependencies that should be downloaded.
-To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
-The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
+Coding writing includes common edit functions and language-specific functions.
 
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
+AIM support common plugins include
+- [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
+- [vim-commentary](https://github.com/tpope/vim-commentary)
+- [vim-surround](https://github.com/tpope/vim-surround)
 
+Language-specific functions requires autocompletion, linter, goto, and snippet functions.
+These functions have been integrated into the language protocol server (LSP).
+Therefore, AIM uses two famous LSP for C/C++ and python projects: clangd and pyright.
+To install them, uses
+
+    sudo apt install clangd
+    sudo pip3 install pyright
+
+As the client, AIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
 
 ### Compilation
 
