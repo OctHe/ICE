@@ -77,13 +77,18 @@ AIM support common plugins include
 
 Language-specific functions requires autocompletion, linter, goto, and snippet functions.
 These functions have been integrated into the language protocol server (LSP).
-Therefore, AIM uses two famous LSP for C/C++ and python projects: clangd and pyright.
+Therefore, AIM uses two famous LSP for C/C++ and python projects: [clangd](https://clangd.llvm.org/) and [pyright](https://github.com/microsoft/pyright).
 To install them, uses
 
     sudo apt install clangd
     sudo pip3 install pyright
 
 As the client, AIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
+
+clangd requires [bear](https://github.com/rizsotto/Bear) to automatically generate `complie_commands.json` file for make-based projects.
+To install it
+
+    sudo apt install bear
 
 ### Compilation
 

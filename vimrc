@@ -395,6 +395,9 @@ set mouse=a
 set splitbelow
 set splitright
 
+" Highlight the search results
+set hlsearch
+
 " Spell check
 set spell
 " Clear the default highlight of the Spell check
