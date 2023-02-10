@@ -1,6 +1,6 @@
-## All-In-Vim
+## Coding-In-Vim
 
-All-in-vim, or AIM in short, is Shiyue He's project-oriented coding environment that integrates all toolchains into the terminal around the famous Vim editor.
+Coding-in-vim, or CIM in short, is [Shiyue He](https://octhe.github.io/)'s project-oriented coding environment that integrates the workflow around VIM editor.
 Here is the list of the target projects:
 - C/C++
     - *Linux kernel*
@@ -10,7 +10,7 @@ Here is the list of the target projects:
 - Python
     - *leetcode_unit*
 - VimScript/Lua
-    - *AIM*
+    - *CIM*
 - Latex
     - *xelatex -> bibtex -> xelatex -> xelatex* (Thsis)
     - *pdflatex -> bibtex -> pdflatex -> pdflatex* (paper)
@@ -24,13 +24,13 @@ The workflow contains reading, writing, compilation, and debug.
 
 ## Ubuntu
 
-AIM provides the coding environment of Projects iw, xv6, and Linux kernel on Ubuntu.
+CIM provides the coding environment of Projects iw, xv6, and Linux kernel on Ubuntu.
 All these projects are based on C/C++, and uses `make` as their compile tool.
 
 
 ## Prerequisite
 
-To read the code, AIM uses Vim as the editor, zsh is the recommended shell.
+To read the code, CIM uses Vim as the editor, zsh is the recommended shell.
 The compilation toolchain is *make*.
 
 They can be installed by
@@ -53,7 +53,7 @@ The *vim-plug* can be automatically installed to manage plugins when vim is firs
 All plugins can be installed by vim-plug with `:PlugInstall`
 vimrc provides some customized configurations at final.
 
-Then, Aim can be installed by git
+Then, CIM can be installed by git
 
     git clone https://github.com/OctHe/All-in-Vim ~/.vim/
 
@@ -70,20 +70,20 @@ The following plugins are used to support the code reading:
 
 Coding writing includes common edit functions and language-specific functions.
 
-AIM support common plugins include
+CIM support common plugins include
 - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
 - [vim-commentary](https://github.com/tpope/vim-commentary)
 - [vim-surround](https://github.com/tpope/vim-surround)
 
 Language-specific functions requires autocompletion, linter, goto, and snippet functions.
 These functions have been integrated into the language protocol server (LSP).
-Therefore, AIM uses two famous LSP for C/C++ and python projects: [clangd](https://clangd.llvm.org/) and [pyright](https://github.com/microsoft/pyright).
+Therefore, CIM uses two famous LSP for C/C++ and python projects: [clangd](https://clangd.llvm.org/) and [pyright](https://github.com/microsoft/pyright).
 To install them, uses
 
     sudo apt install clangd
     sudo pip3 install pyright
 
-As the client, AIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
+As the client, CIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
 
 clangd requires [bear](https://github.com/rizsotto/Bear) to automatically generate `complie_commands.json` file for make-based projects.
 To install it

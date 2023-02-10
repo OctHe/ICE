@@ -1,6 +1,6 @@
 " ============================
 " 
-" This is the configuration file of Project AIM
+" This is the configuration file of Project CIM
 " Author: Shiyue He
 " Copyright (C): 2020-2023
 " 
@@ -421,5 +421,5 @@ highlight VertSplit ctermfg=234 ctermbg=darkgreen
 filetype indent on
 set smartindent
 
-" By default, AIM wants to open the help file at the right side
-command! -nargs=?  AimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
+" By default, CIM wants to open the help file at the right side
+command! -nargs=?  CimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
