@@ -5,7 +5,17 @@
 " Copyright (C): 2020-2023
 " 
 " ============================
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+  set nocompatible
+endif
 
+" Enable file type detection.
+filetype plugin on
+" Enable automatic indentation as you type.
+filetype indent on
 
 " ============================
 " Install vim-plug if not found
@@ -343,9 +353,9 @@ let g:UltiSnipsEditSplit="vertical"
 " vimtex settings
 " Update: 2022.01.19
 " ============================
-" This is necessary for VimTeX to load properly. The "indent" is optional.
+" The follows is necessary for VimTeX to load properly. The "indent" is optional.
 " Note that most plugin managers will do this automatically.
-filetype plugin indent on
+" filetype plugin indent on
 
 " This enables Vim's and neovim's syntax-related features. Without this, some
 " VimTeX features will not work (see ":help vimtex-requirements" for more
@@ -373,30 +383,33 @@ let maplocalleader = "\\"
 
 " ============================
 " Put non-Plugin stuff after this line
-" Update: 2023.02.05
+" Update: 2023.02.11
 " ============================
-" Most of the uses want these configurations
-source $VIMRUNTIME/defaults.vim
 
-" Line numbers
-set number
-" Expand tag to space
-set expandtab
-set tabstop=4  
-" The width of '<' and '>'
-set shiftwidth=4  
-" Set the tags in the work directory
-set tags=tags
+set history=200		" keep 200 lines of command line history
+set ruler		    " show the cursor position all the time
+set showcmd		    " display incomplete commands
+set wildmenu		" display completion matches in a status line
+set number          " Show line number
+set shiftwidth=4    " The width of '<' and '>'
+set expandtab       " Expand tag to space
+set tabstop=4       " One tab includes four spaces
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set hlsearch        " Highlight the search results
+set mouse=a         " Enable mouse in all mode
+set smartindent     " Do smart autoindenting
+set scrolloff=5     " Show a few lines around the cursor
+
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
+
+" Show @@@ in the last line if it is truncated.
+set display=truncate
+
+
 " GUI options
 set guioptions=aegrLt
-" Enable mouse in all mode
-set mouse=a                 
-" New buffer splits below and right by default
-set splitbelow
-set splitright
-
-" Highlight the search results
-set hlsearch
 
 " Spell check
 set spell
@@ -417,9 +430,29 @@ highlight VertSplit ctermfg=234 ctermbg=darkgreen
 " set colorcolumn=80
 " highlight ColorColumn ctermbg=6
 
-" This enables automatic indentation as you type.
-filetype indent on
-set smartindent
+augroup CimStartup
+    au!
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+    autocmd BufReadPost *
+        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |   exe "normal! g`\""
+        \ | endif
+
+    autocmd CmdwinEnter *
+        \ echohl Todo | 
+        \ echo 'You discovered the command-line window! You can close it with ":q".' |
+        \ echohl None
+augroup END
+
+" Command to see the difference between the current buffer and the file loaded from.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
 
 " By default, CIM wants to open the help file at the right side
 command! -nargs=?  CimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
