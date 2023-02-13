@@ -26,7 +26,16 @@ b/B         Word-level movement: backward to the begin of the word/WORD
 {count}_    Line-level movement: Downward {count}-1 lines, on the first non-blank character
 H/M/L       Window-level movement: Top/Middle/Bottom of the window
 G           Document-level movement: End of the document
+m{A-Za-z}   Document-level movement: Set mark
+'           Document-level movement: Jump to the line of the mark
+`           Document-level movement: Jump to the mark
 K           Run an external predefined program with word (i.e., !{Program} {word})
+```
+
+Mark-related Command-line mode command 
+
+```
+:delmarks   Delete mark
 ```
 
 ### Edit and Register
@@ -45,11 +54,19 @@ Y           Line-level edit: Yank the line
 J           Line-level edit: Join the forward line to the current one
 P/p         Document-level edit: Put (Paste) the text before/after the cursor
 u/U         Document-level edit: Undo the last change / Undo all changes in the line
+q{reg}      Recording: Record operations into {reg} until `q` is typed in normal mode
+@{reg}      Recording: Run the operations in {reg}
 .           Repeat: The last edit command
 "{reg}      Use {reg} for d/y/p
 ```
 
-`d/c/y/</>` are operators.
+Recording-related command
+
+```
+@@          Repeat: The last @{reg}
+```
+
+In normal mode, `d/c/y/</>` are operators.
 If an operator is typed, it will wait for a motion, like `h/j/k/l/w/W/e/E/b/B`.
 Type an operator twice indicates line-level edit.
 
@@ -70,20 +87,13 @@ Register-related Command-line mode command
 :reg        Show the registers
 ```
 
-### Recording
-
-```
-q{reg}      Recording operations into {reg} register until `q` is typed in normal mode
-@{reg}      Run the operations in {reg}
-@@          Repeat: The last @{reg}
-```
 
 ### Commands start with 'Z' and 'z'
 
 ```
 ZZ          Save and close the current window
 ZQ          Close and quit vim without saving
-zc          Create a fold
+zc          Close a fold
 ```
 
 ### Commands start with 'g'
@@ -94,12 +104,6 @@ Part of the commands have been listed.
 ge/gE       Word-level movement: Backward to the end of the word/WORD
 {count}g_   Line-level movement: Downward {count}-1 lines, on the last non-blank character
 gg          Document-level movement: The first character
-```
-### Mark
-
-```
-m{A-Za-z}   Set mark
-`/'         Jump to the mark
 ```
 
 ### Window 
@@ -118,11 +122,12 @@ m{A-Za-z}   Set mark
 \               It is the default value of <Leader>
 <Alt>           It can be used for customization
 <Tab>           It can be used for autocompletion
+<Space>         It works like `l` with slightly difference
 ```
 
 ## Visual Mode
 
-Most edit commands in normal mode are the same as in the visual mode, but part of them have slightly difference.
+Most commands in normal mode are the same as in the visual mode, but part of the edit commands have slightly difference.
 
 ```
 v               Enter visual mode from normal mode.
@@ -171,7 +176,10 @@ n/N             Repeat: '/' or '?' in the same/opposite direction
 ```
 
 ### Substitute
-The substitute command is `:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]`.
+The substitute command is 
+```
+:[range]s[ubstitute]/{pattern}/{string}/[flags] [count]
+```
 It has one repeat single-character command in normal mode.
 ```
 &               Repeat: The last substitute
