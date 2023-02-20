@@ -1,22 +1,32 @@
-## zterm
+# Integrated Command-Line Environment (ICE)
 
-zterm is a terminal configuration of Shiyue.
-It is based on zsh, and it uses the famous [oh-my-zsh](https://ohmyz.sh/) framework.
+There are lots of useful integrated development environments (IDEs) that based on graphical user interfaces (GUI).
+They are awesome, but the command-line interface (CLI) also has advantages that cannot be ignored.
+For example, CLI can be used for most servers with ssh command.
+Therefore, ICE is an IDE based on CLI. 
+The goal of ICE is to get as much work done in CLI as possible, not to replace GUI entirely.
+So it would still use some GUI tools because some formatted text cannot be displayed in CLI (such as pdf and markdown).
 
-### Installation
+The prerequisites of ICE is bash and one of the package managers (e.g., apt, zypper, etc.).
+It will provide detail manual and scripts to install all the tools.
 
-zterm requires zsh and oh-my-zsh with the following
+So, let's begin!
 
-    sudo apt update
+# Features
+
+- Only require bash and a package manager at first.
+- Provide multiple modes according to the installed packages.
+
+## Shell
+
+### zsh and oh-my-zsh
+
+ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework.
+ICE installs zsh and oh-my-zsh with the following
+
     sudo apt zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-### Proxy
-
-Use the following command in `.zshrc`
-
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
+    source ~/.zshrc     # Activate oh-my-zsh
 
 ### Plugins
 
@@ -30,4 +40,10 @@ The following command should replace the default command (i.e., `plugins=(git)`)
 
     plugins=(git sudo z wd zsh-autosuggestions zsh-syntax-highlighting)
 
-Finally, run `source ~/.zshrc` to activate the file or restart the system.
+### Proxy
+
+Use the following command in `.zshrc`
+
+    export http_proxy="socks5://127.0.0.1:7890"
+    export https_proxy="socks5://127.0.0.1:7890"
+
