@@ -17,14 +17,91 @@ So, let's begin!
 - Only require bash and a package manager at first.
 - Provide multiple modes according to the installed packages.
 
-## Shell
+## Toolchain
 
-### zsh and oh-my-zsh
+- Shell
+    - Bash
+        - Bash-it
+    - zsh
+        - oh-my-zsh
+        - Plugin
+        - Completion
+        - Alias
+        - Theme
+    - Python
+        - python shell
+        - ipython
+- Environment manager
+    - Package manager
+        - apt
+        - zypper
+    - File
+        - find
+        - fzf
+    - Text search tool
+        - grep
+        - ack
+        - ag
+        - ripgrep (rg)
+    - Version management
+        - git
+    - Job control
+        - tmux
+    - Network
+        - iw
+- Editor
+    - vim/rvim/evim/gvim
+        - Editing
+        - LSP-client
+        - Compilation
+        - Version management
+        - Debug
+        - Colorscheme
+    - neovim
+    - emacs
+- Language server
+    - C/C++
+        - clangd
+        - ccls
+    - Python
+        - pyright
+    - Bash
+        - shellcheck
+- Compilation
+    - make
+        - bear
+    - cmake
+    - c/c++
+        - gcc
+        - clang
+- Debuger
+    - gdb
+    - lldb
 
-ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework.
+# Shell
+
+In Ubuntu/Debian, the follow command can be used to install packages
+
+    sudo apt install zsh git
+
+In OpenSuse, it uses `zypper` as the manager, so 
+
+    sudo zypper install zsh git
+
+## Bash and bash-it
+
+Bash is the default shell for most Linux distribution.
+The first things for ICE is to config a graceful shell environment with bash-it.
+
+    git clone https://github.com/Bash-it/bash-it.git ~/.bash_it
+    cd .bash_it
+    ~/.bash_it/install.sh       # Active bash-it
+
+## zsh and oh-my-zsh
+
+ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh.
 ICE installs zsh and oh-my-zsh with the following
 
-    sudo apt zsh
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     source ~/.zshrc     # Activate oh-my-zsh
 
@@ -46,4 +123,6 @@ Use the following command in `.zshrc`
 
     export http_proxy="socks5://127.0.0.1:7890"
     export https_proxy="socks5://127.0.0.1:7890"
+
+# Package manager
 
