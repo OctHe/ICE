@@ -12,12 +12,12 @@ It will provide detail manual and scripts to install all the tools.
 
 So, let's begin!
 
-# Features
+## Features
 
 - Only require bash and a package manager at first.
 - Provide multiple modes according to the installed packages.
 
-## Environment
+### Environment
 
 - Shell
     - Bash
@@ -85,7 +85,7 @@ So, let's begin!
     - gdb
     - lldb
 
-## File tree
+### File tree
 
 The file tree after installing ice will be
 
@@ -101,7 +101,7 @@ The file tree after installing ice will be
 			|-- micro
 
 
-# Shell
+## Shell
 
 In Ubuntu/Debian, the follow command can be used to install packages
 
@@ -113,7 +113,7 @@ In OpenSUSE, it uses `zypper` as the manager, so
 
 In the above command, only git is installed.
 
-## Bash and bash-it
+### Bash and bash-it
 
 Bash is the default shell for most Linux distribution.
 The first things for ICE is to config a graceful shell environment with bash-it.
@@ -122,7 +122,7 @@ The first things for ICE is to config a graceful shell environment with bash-it.
     cd .bash_it
     ~/.bash_it/install.sh       # Active bash-it
 
-## zsh and oh-my-zsh
+### zsh and oh-my-zsh
 
 ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh.
 ICE installs zsh and oh-my-zsh with the following
@@ -130,7 +130,7 @@ ICE installs zsh and oh-my-zsh with the following
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     source ~/.zshrc     # Activate oh-my-zsh
 
-### Plugin
+#### Plugin
 
 The useful plugins of oh-my-zsh include *git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)*.
 Some of them is pre-installed with oh-my-zsh, but the following plugins are required to install from github.
@@ -142,16 +142,16 @@ The following command should replace the default command (i.e., `plugins=(git)`)
 
     plugins=(git sudo z wd zsh-autosuggestions zsh-syntax-highlighting)
 
-### Proxy
+#### Proxy
 
 Use the following command in `.zshrc`
 
     export http_proxy="socks5://127.0.0.1:7890"
     export https_proxy="socks5://127.0.0.1:7890"
 
-# Editor
+## Editor
 
-## Micro
+### Micro
 
 Micro is a easily used terminal editor compared to Vim/Emacs.
 It provides intuitive key bindings as well as modern build-in features including command line, auto-pair and linter.
@@ -162,7 +162,7 @@ Install it in OpenSUSE
 
 The configuration files are in `~/.config/micro/*`
 
-### Plugins
+#### Plugins
 
 The linter requires out-of-box support for each language (see, `help linter` in the command line mode).
 
