@@ -49,6 +49,8 @@ So, let's begin!
         - tmux
     - Network
         - iw
+    - Web
+    	- lynx
 - Editor
     - vim/rvim/evim/gvim
         - Editing
@@ -59,6 +61,7 @@ So, let's begin!
         - Colorscheme
     - neovim
     - emacs
+    - micro
 - Language server
     - C/C++
         - clangd
