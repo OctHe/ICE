@@ -1,6 +1,9 @@
 # Backup files
 *~
 
+# VIM netrw history file
+.netrwhist
+
 # Plugin manager and installed plugins
 autoload/plug.vim
 plugged/
