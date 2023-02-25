@@ -45,7 +45,7 @@
 # Example: echo -e '\e[9;38;2;255;0;0;48;2;0;0;255mHello'
 #   A cross-out red "Hello" with blue background.
 
-function set_color()
+easy_color()
 {
     BLACK='\e[30m'
     RED='\e[31m'
@@ -65,7 +65,7 @@ function set_color()
     LGREY='\e[97m'
 }
 
-function color_value()
+color_check()
 {
     for bgcl in {40..47} {100..107} ; do
     	for fgcl in {30..37} {90..97} ; do
@@ -76,6 +76,4 @@ function color_value()
     	done
     done 
 }
-
-set_color
 
