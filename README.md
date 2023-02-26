@@ -28,13 +28,13 @@ So, let's begin!
         - Completion
         - Alias
         - Theme
+            - Nerdfont
     - Python
-        - python shell
         - ipython
-- Environment manager
-    - Package manager
-        - apt
-        - zypper
+- Package manager
+    - apt
+    - zypper
+- Tools
     - File
         - find
         - fzf
@@ -43,16 +43,16 @@ So, let's begin!
         - ack
         - ag
         - ripgrep (rg)
-    - Version management
+    - Code management
+        - tokei
         - git
     - Job control
         - tmux
     - Network
         - iw
-    - Web
-    	- lynx
+        - lynx
 - Editor
-    - vim/rvim/evim/gvim
+    - vim/gvim
         - Editing
         - LSP-client
         - Compilation
@@ -66,6 +66,19 @@ So, let's begin!
         - filemanager
         - wc
         - quickfix
+- Compiler/Interpreter
+    - make
+        - bear
+    - cmake
+    - c/c++
+        - gcc
+        - clang
+    - Python
+        - python2
+        - python3
+- Debugger
+    - gdb
+    - lldb
 - Language server
     - C/C++
         - clangd
@@ -74,17 +87,6 @@ So, let's begin!
         - pyright
     - Bash
         - shellcheck
-- Compilation
-    - make
-        - bear
-    - cmake
-    - c/c++
-        - gcc
-        - clang
-- Debuger
-    - gdb
-    - lldb
-
 ### File tree
 
 The file tree after installing ice will be
