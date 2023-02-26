@@ -3,8 +3,8 @@
 # Check the prerequisites of ICE
 
 
-ICE_SHELL=(bash zsh ipython)
-ICE_PKT=(apt zypper)
+ICE_SHELL=(bash zsh ipython ipython3)
+ICE_PKT=(flatpak snap apt zypper pacman)
 ICE_TOOL=(
     find fzf
     grep ack ag rg
@@ -18,6 +18,7 @@ ICE_COMPILER=(
     cmake make
     gcc clang
     python python3
+    ruby
 )
 ICE_DEBUGGER=(gdb lldb)
 ICE_LS=(
