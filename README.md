@@ -1,76 +1,92 @@
-## Coding-In-Vim
+## Coding-in-Vim
 
-Coding-in-vim, or CIM in short, is [Shiyue He](https://octhe.github.io/)'s project-oriented coding environment that integrates the workflow around VIM editor.
-Here is the list of the target projects:
-- C/C++
-    - *Linux kernel*
-    - *iw*
-    - *xv6*
-    - *GNURadio*
-- Python
-    - *leetcode_unit*
-- VimScript/Lua
-    - *CIM*
-- Latex
-    - *xelatex -> bibtex -> xelatex -> xelatex* (Thsis)
-    - *pdflatex -> bibtex -> pdflatex -> pdflatex* (paper)
-    - *xelatex*
-- Markdown
-    - *MoreWireless*
-    - *README.md*
-    - *jekyll*
+Coding-in-vim, or CIM in short, is [Shiyue He](https://octhe.github.io/)'s terminal-based coding environment that uses vim/neovimm as the editor.
+It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers and debuggers and other useful tools.
+The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh, Latex, Markdown.
 
-The workflow contains reading, writing, compilation, and debug.
+### Structure
 
-## Ubuntu
+CIM provides an LW mode and an ICE mode.
+ICE includes a powerful environment that requires lots of out-of-box installation, while LW is only based on pure vimscript/lua plugins.
 
-CIM provides the coding environment of Projects iw, xv6, and Linux kernel on Ubuntu.
-All these projects are based on C/C++, and uses `make` as their compile tool.
+In each mode, CIM implements common edit, language-specific features (provided by language servers), compile and debug modules by giving options, key mappings and commands.
+The options can be used to configure the default configuration of CIM.
 
+- Vim
+    - LW (Lightweight)
+        - Plugin manager
+            - [vim-plug](https://github.com/junegunn/vim-plug)
+            - Vit: A lightweight vim plugin manager based on git (TBD)
+        - Colorscheme
+            - Built-in `:colorscheme desert`
+        - Edit
+            - [tagbar](https://github.com/preservim/tagbar)
+                - based on universal-ctags
+            - [vim-airline](https://github.com/vim-airline/vim-airline)
+            - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
+            - [vim-commentary](https://github.com/tpope/vim-commentary)
+            - [vim-surround](https://github.com/tpope/vim-surround)
+        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
+            - LSP-client
+        - Compile
+            - built-in `:make`
+            - [neomake](https://github.com/neomake/neomake)
+        - Debug
+            - Debug adapter
+        - Version management
+    - ICE (Integrated Command-line Environment)
+        - Plugin manager
+            - [vim-plug](https://github.com/junegunn/vim-plug)
+        - Colorscheme
+        - Edit
+        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
+            - LSP-client
+        - Compile
+        - Debug
+            - Debug adapter
+        - Version management
+- Neovim
+    - LW (Lightweight)
+        - Plugin manager
+        - Colorscheme
+        - Edit
+        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
+            - LSP-client
+        - Compile
+        - Debug
+            - Debug adapter
+        - Version management
+    - ICE (Integrated Command-line Environment)
+        - Plugin manager
+        - Colorscheme
+        - Edit
+        - Highlight
+            - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+        - Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
+            - LSP-client
+        - Compile
+        - Debug
+            - Debug adapter
+        - Version management
 
 ## Prerequisite
 
-To read the code, CIM uses Vim as the editor, zsh is the recommended shell.
-The compilation toolchain is *make*.
-
-They can be installed by
+### Ubuntu
 
     sudo apt install git zsh vim make
-
-After installing *git*, it is recommended to set a proxy to avoid some network issues.
-We can set a sock5 proxy with the following command
-
-    git config --global http.proxy 'socks5://127.0.0.1:8088' 
-    git config --global https.proxy 'socks5://127.0.0.1:8088' 
-
-To avoid the network problem, it is recommended to set a proxy for the terminal, similar to the proxy in git.
-The proxy can be set with the following command in the `~/.zshrc` file (suppose the shell is `zsh`).
-
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
-
-The *vim-plug* can be automatically installed to manage plugins when vim is firstly started.
-All plugins can be installed by vim-plug with `:PlugInstall`
-vimrc provides some customized configurations at final.
 
 Then, CIM can be installed by git
 
     git clone https://github.com/OctHe/All-in-Vim ~/.vim/
 
-### Reading
+### Edit
 
-The following plugins are used to support the code reading:
+The following plugins are used to support the common edit
 - [NERDTree](https://github.com/preservim/nerdtree)
 - [fzf](https://github.com/junegunn/fzf)
 - [tagbar](https://github.com/preservim/tagbar)
 - [vim-airline](https://github.com/vim-airline/vim-airline)
 
-
-### Writing
-
-Coding writing includes common edit functions and language-specific functions.
-
-CIM support common plugins include
 - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
 - [vim-commentary](https://github.com/tpope/vim-commentary)
 - [vim-surround](https://github.com/tpope/vim-surround)
@@ -92,31 +108,23 @@ To install it
 
 ### Compilation
 
+## Projects
 
-## Deepin
-
-Deepin is based on Ubuntu, so it has similar packet manager, while the applications are most outdated.
-    sudo apt update
-    sudo apt install git zsh cmake make vim
-
-Therefore, Deepin is recommended to use SpaceVim as the configuration.
-
-    curl -sLf https://spacevim.org/install.sh | bash
-
-## OpenSUSE
-
-OpenSUSE uses *zypper* as the packet manager
-
-    sudo zypper update
-    sudo zypper install git zsh cmake make vim
-
-Similarily, We can set a sock5 proxy with the same commands, if needed.
-
-Neovim has been used in OpenSUSE for Python projects.
-The plugin manager is *packer*.
-It provides pyright as the language server protocol (LSP).
-
-pyright can be installed with
-
-    pip3 install pyright
-
+Here is the list of the target projects:
+- C/C++
+    - *Linux kernel*
+    - *iw*
+    - *xv6*
+    - *GNURadio*
+- Python
+    - *leetcode_unit*
+- VimScript/Lua
+    - *CIM*
+- Latex
+    - *xelatex -> bibtex -> xelatex -> xelatex* (Thsis)
+    - *pdflatex -> bibtex -> pdflatex -> pdflatex* (paper)
+    - *xelatex*
+- Markdown
+    - *MoreWireless*
+    - *README.md*
+    - *jekyll*

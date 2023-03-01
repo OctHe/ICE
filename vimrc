@@ -407,9 +407,15 @@ set backspace=indent,eol,start
 " Show @@@ in the last line if it is truncated.
 set display=truncate
 
+" Color schemes: desert, peachpuff, quiet, slate
+colorscheme desert
 
 " GUI options
 set guioptions=aegrLt
+
+" Dialog
+highlight PMenu guifg=darkblue guibg=darkgrey
+highlight PMenuSel guifg=darkgreen guibg=lightblue
 
 " Spell check
 set spell
@@ -418,13 +424,11 @@ highlight clear SpellBad
 " Set the highlight style as underline
 highlight SpellBad cterm=underline  
 
-" Buffer background
-highlight Normal ctermbg=234
 " Dialog
-highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
-highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
+highlight PMenu ctermfg=56 ctermbg=white
+highlight PMenuSel ctermfg=white ctermbg=56
 " Vertical split: 
-highlight VertSplit ctermfg=234 ctermbg=darkgreen
+" highlight VertSplit ctermfg=234 ctermbg=darkgrey
 
 " Highlight column
 " set colorcolumn=80
