@@ -6,6 +6,27 @@ The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh,
 
 ### Structure
 
+    ------------------------------
+    |             |              |
+    | commands    | colorschemes |
+    | keymappings | windows      |
+    |             | statuslines  |
+    |             |              |
+    ------------------------------
+    |                            |
+    |        Adaptors            |
+    | edit,                      |
+    | tag, goto, hover,          |
+    | lint, fix, format,         |
+    | completion, snippet,       | 
+    | compile, debug             |
+    |                            |
+    ------------------------------
+    |             |              |
+    | options     | plugins      |
+    |             |              |
+    ------------------------------
+
 CIM provides an LW mode and an ICE mode.
 ICE includes a powerful environment that requires lots of out-of-box installation, while LW is only based on pure vimscript/lua plugins.
 
@@ -68,6 +89,22 @@ The options can be used to configure the default configuration of CIM.
         - Debug
             - Debug adapter
         - Version management
+
+### Code Tree
+
+    .vim/
+    |-- vimrc
+    |-- autoload/
+        |-- options.vim
+        |-- adapters.vim
+        |-- adapters/
+            |-- edit.vim
+            |-- lint
+            |-- completion
+            |-- debug
+        |-- commands.vim
+        |-- keymappings.vim
+        |-- colorscheme.vim
 
 ## Prerequisite
 
