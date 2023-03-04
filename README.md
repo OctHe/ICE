@@ -7,14 +7,15 @@ The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh,
 ### Structure
 
     ------------------------------
+    |             |   theme      |
     |             |              |
     | commands    | colorschemes |
     | keymappings | windows      |
-    |             | statuslines  |
+    | options     | statuslines  |
     |             |              |
     ------------------------------
+    |          adaptors          |
     |                            |
-    |        Adaptors            |
     | edit,                      |
     | tag, goto, hover,          |
     | lint, fix, format,         |
@@ -22,9 +23,7 @@ The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh,
     | compile, debug             |
     |                            |
     ------------------------------
-    |             |              |
-    | options     | plugins      |
-    |             |              |
+    |         plugins            |
     ------------------------------
 
 CIM provides an LW mode and an ICE mode.
