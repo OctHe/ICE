@@ -17,9 +17,7 @@ The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh,
     |          adaptors          |
     |                            |
     | edit,                      |
-    | tag, goto, hover,          |
-    | lint, fix, format,         |
-    | completion, snippet,       | 
+    | tag, lint, format, snippet | 
     | compile, debug             |
     |                            |
     ------------------------------
@@ -50,10 +48,11 @@ The options can be used to configure the default configuration of CIM.
             - [NERDTree](https://github.com/preservim/nerdtree)
         - Tag: Require universal-ctags
             - [tagbar](https://github.com/preservim/tagbar)
-        - Lint and completion: Require linters or LSPs
+        - Lint: Require linters or LSPs
+            - [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
             - [neomake](https://github.com/neomake/neomake)
             - [ALE](https://github.com/dense-analysis/ale)
-        - Format: Require external format programs
+        - Format: Require `astyle` or LSPs
             - Built-in `gg=G` and `gq`
             - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
         - Snippet
@@ -77,10 +76,10 @@ The options can be used to configure the default configuration of CIM.
             - [NERDTree](https://github.com/preservim/nerdtree)
         - Tag: Require universal-ctags
             - [tagbar](https://github.com/preservim/tagbar)
-        - Lint and completion: Require linters or LSPs
+        - Lint: Require linters or LSPs
             - [neomake](https://github.com/neomake/neomake)
             - [ALE](https://github.com/dense-analysis/ale)
-        - Format: Require external format programs
+        - Format: Require `astyle` or LSPs
             - Built-in `gg=G` and `gq`
             - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
         - Compile
@@ -94,11 +93,12 @@ The options can be used to configure the default configuration of CIM.
         - Plugin manager
         - Theme
         - Edit
-        - Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
-            - LSP-client
+        - Tag
+        - Lint
+        - Format
+        - Snippet
         - Compile
         - Debug
-            - Debug adapter
         - Version management
     - ICE (Integrated Command-line Environment)
         - Plugin manager
@@ -106,11 +106,12 @@ The options can be used to configure the default configuration of CIM.
         - Edit
         - Highlight
             - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-        - Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
-            - LSP-client
+        - Tag
+        - LSP
+            - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+        - Snippet
         - Compile
         - Debug
-            - Debug adapter
         - Version management
 
 ### Code Tree
