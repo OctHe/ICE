@@ -53,12 +53,12 @@ So, let's begin!
         - lynx
 - Editor
     - vim/gvim
-        - Editing
-        - LSP-client
-        - Compilation
-        - Version management
-        - Debug
         - Colorscheme
+        - Edit
+        - LSP-client
+        - Compile
+        - Debug
+        - Version management
     - neovim
     - emacs
     - micro
@@ -143,13 +143,6 @@ Some of them is pre-installed with oh-my-zsh, but the following plugins are requ
 The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
 
     plugins=(git sudo z wd zsh-autosuggestions zsh-syntax-highlighting)
-
-#### Proxy
-
-Use the following command in `.zshrc`
-
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
 
 ## Editor
 

@@ -23,7 +23,6 @@ ICE_COMPILER=(
 ICE_DEBUGGER=(gdb lldb)
 ICE_LS=(
     clangd ccls
-    pyright
     shellcheck
 )
 
