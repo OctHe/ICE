@@ -37,40 +37,64 @@ The options can be used to configure the default configuration of CIM.
         - Plugin manager
             - [vim-plug](https://github.com/junegunn/vim-plug)
             - Vit: A lightweight vim plugin manager based on git (TBD)
-        - Colorscheme
-            - Built-in `:colorscheme desert`
+        - Theme
+            - Color scheme
+                - Built-in `:colorscheme desert`
+            - Status line
+                - [vim-airline](https://github.com/vim-airline/vim-airline)
+            - Window
         - Edit
-            - [tagbar](https://github.com/preservim/tagbar)
-                - based on universal-ctags
-            - [vim-airline](https://github.com/vim-airline/vim-airline)
             - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
             - [vim-commentary](https://github.com/tpope/vim-commentary)
             - [vim-surround](https://github.com/tpope/vim-surround)
-        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
-            - LSP-client
-        - Compile
-            - built-in `:make`
+            - [NERDTree](https://github.com/preservim/nerdtree)
+        - Tag: Require universal-ctags
+            - [tagbar](https://github.com/preservim/tagbar)
+        - Lint and completion: Require linters or LSPs
             - [neomake](https://github.com/neomake/neomake)
-        - Debug
-            - Debug adapter
+            - [ALE](https://github.com/dense-analysis/ale)
+        - Format: Require external format programs
+            - Built-in `gg=G` and `gq`
+            - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
+        - Snippet
+        - Compile
+            - Built-in `:make`
+        - Debug and run
         - Version management
     - ICE (Integrated Command-line Environment)
         - Plugin manager
             - [vim-plug](https://github.com/junegunn/vim-plug)
-        - Colorscheme
+            - Vit: A lightweight vim plugin manager based on git (TBD)
+        - Theme
+            - Color scheme
+                - Built-in `:colorscheme desert`
+            - Status line
+                - [vim-airline](https://github.com/vim-airline/vim-airline)
         - Edit
-        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
-            - LSP-client
+            - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
+            - [vim-commentary](https://github.com/tpope/vim-commentary)
+            - [vim-surround](https://github.com/tpope/vim-surround)
+            - [NERDTree](https://github.com/preservim/nerdtree)
+        - Tag: Require universal-ctags
+            - [tagbar](https://github.com/preservim/tagbar)
+        - Lint and completion: Require linters or LSPs
+            - [neomake](https://github.com/neomake/neomake)
+            - [ALE](https://github.com/dense-analysis/ale)
+        - Format: Require external format programs
+            - Built-in `gg=G` and `gq`
+            - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
         - Compile
-        - Debug
-            - Debug adapter
+            - Built-in `:make`
+        - Debug and run
+            - [vimspector](https://github.com/puremourning/vimspector)
+            - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
         - Version management
 - Neovim
     - LW (Lightweight)
         - Plugin manager
-        - Colorscheme
+        - Theme
         - Edit
-        - Highlight, Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
+        - Tags, GoTo, Hover, Lint, Fix, Format, Completion, Snippet
             - LSP-client
         - Compile
         - Debug
@@ -78,7 +102,7 @@ The options can be used to configure the default configuration of CIM.
         - Version management
     - ICE (Integrated Command-line Environment)
         - Plugin manager
-        - Colorscheme
+        - Theme
         - Edit
         - Highlight
             - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -94,16 +118,16 @@ The options can be used to configure the default configuration of CIM.
     .vim/
     |-- vimrc
     |-- autoload/
-        |-- options.vim
+        |-- CIM.vim
+            |-- commands
+            |-- keymappings
+            |-- theme
         |-- adapters.vim
         |-- adapters/
             |-- edit.vim
-            |-- lint
-            |-- completion
-            |-- debug
-        |-- commands.vim
-        |-- keymappings.vim
-        |-- colorscheme.vim
+            |-- lint.vim
+            |-- completion.vim
+            |-- debug.vim
 
 ## Prerequisite
 

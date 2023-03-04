@@ -20,11 +20,11 @@ function! adapter#init()
     " NERDTree:
     Plug 'preservim/nerdtree', {'on':  'NERDTreeToggle' }
 
-    " tagbar: A class outline viewer for vim
+    " tagbar: A symbol viewer for vim
     " tagbar is based on Universal Ctags, install it by
     "   sudo apt install universal-ctags
     Plug 'preservim/tagbar'
-    " Vista: View and search tags in vim/Neovim
+    " Vista: View and search tags in vim/Neovim. It supports LSP
     " Plug 'liuchengxu/vista.vim'
 
     " vim-airline: Lean and mean status bar
@@ -81,10 +81,10 @@ function! adapter#init()
     " Plug 'preservim/vimux'
 
     " Markdown-preview:
-    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+    Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown']}
 
     " vimtex:
-    Plug 'lervag/vimtex'
+    Plug 'lervag/vimtex', {'for': ['tex', 'bib']}
 
     " ========== Others =========== 
 
@@ -304,10 +304,9 @@ function! adapter#init()
     " ale settings
     " Update: 2023.03.04
     " ============================
+    " :ALEInfo can find the linters that are successfully enabled
     let g:ale_linters = {
     \   'python': ['pyflakes'],
-    \   'c': ['clangd'],
-    \   'c++': ['clangd'],
     \}
 
 

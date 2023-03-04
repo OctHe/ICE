@@ -28,11 +28,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-call CIM#options()
-call CIM#command()
-call CIM#theme()
-
 call adapter#init()
+
+call CIM#options()
+call CIM#theme()
+call CIM#command()
+call CIM#keymapping()
 
 " Vertical split: 
 " highlight VertSplit ctermfg=234 ctermbg=darkgrey
