@@ -14,6 +14,13 @@ ICE_TOOL=(
     lynx
 )
 ICE_EDITOR=(vim gvim nvim emacs micro)
+ICE_LINTER=(
+    clangd ccls
+    shellcheck
+)
+ICE_FORMATTER=(
+    astyle
+)
 ICE_COMPILER=(
     cmake make
     gcc clang
@@ -21,10 +28,6 @@ ICE_COMPILER=(
     ruby
 )
 ICE_DEBUGGER=(gdb lldb)
-ICE_LS=(
-    clangd ccls
-    shellcheck
-)
 
 ice_environment()
 {
@@ -44,14 +47,17 @@ ice_environment()
         editor)
             prog_list=${ICE_EDITOR[@]}
             ;;
+        linter)
+            prog_list=${ICE_LINTER[@]}
+            ;;
+        formatter)
+            prog_list=${ICE_FORMATTER[@]}
+            ;;
         compiler)
             prog_list=${ICE_COMPILER[@]}
             ;;
         debugger)
             prog_list=${ICE_DEBUGGER[@]}
-            ;;
-        server)
-            prog_list=${ICE_LS[@]}
             ;;
         *)
           ;;
@@ -66,8 +72,9 @@ ice_environment()
             echo -e "  [ ] ${prog}"
         fi
     done
+    echo
   done
 }
 
 ice_environment shell pm tool 
-ice_environment editor compiler debugger server
+ice_environment editor linter formatter compiler debugger
