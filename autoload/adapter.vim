@@ -7,6 +7,18 @@
 " =====================================================================
 
 function! adapter#init()
+
+    " Init adapters
+    call adapter#theme#init()
+    call adapter#edit#init()
+    call adapter#completion#init()
+
+    " Install vim-plug if not found
+    if empty(glob('~/.vim/autoload/plug.vim'))
+      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    endif
+
     " Specify a directory for plugins
     " - Avoid using standard Vim directory names like 'plugin'
     call plug#begin('~/.vim/plugged')
@@ -15,44 +27,19 @@ function! adapter#init()
     " Note that vim-plug (the plug.vim file) in this file is not working.
     Plug 'junegunn/vim-plug'
 
+    " =========== Theme ==========
+    
+    for plugins in g:adapter#theme
+        Plug plugins[0], plugins[1]
+    endfor
+
     " ============ Edit ==========
 
-    " NERDTree:
-    Plug 'preservim/nerdtree', {'on':  'NERDTreeToggle' }
+    for plugins in g:adapter#edit
+        Plug plugins[0], plugins[1]
+    endfor
 
-    " tagbar: A symbol viewer for vim
-    " tagbar is based on Universal Ctags, install it by
-    "   sudo apt install universal-ctags
-    Plug 'preservim/tagbar'
-    " Vista: View and search tags in vim/Neovim. It supports LSP
-    " Plug 'liuchengxu/vista.vim'
-
-    " vim-airline: Lean and mean status bar
-    Plug 'vim-airline/vim-airline'
-    " lightline: A light and configurable statusline/tabline plugin for Vim 
-    " Plug 'itchyny/lightline.vim'
-
-    " fzf: fzf is the most well-known fuzzy finder command line written in go.
-    " fzf has a built-in vim configuration file.
-    " The installation program will download the newest version without building.
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    " CtriP: CtrlP is a fuzzy finder in pure vimscript
-    " Plug 'ctrlpvim/ctrlp.vim' 
-    " LeaderF: An efficient fuzzy finder based on python
-    " Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-
-    " auto-pairs: Operate brackets in pair
-    Plug 'LunarWatcher/auto-pairs'
-
-    " tcomment: A easy-to-use commenter
-    " Plug 'tomtom/tcomment_vim'
-    " commentary: commentary is similar to tcomment_vim and is extremely lightweight within 200 lines code.
-    Plug 'tpope/vim-commentary'
-    " nerdcommenter:
-    " Plug 'scrooloose/nerdcommenter'
-
-    " surround: A plugin about surroundings
-    Plug 'tpope/vim-surround'
+    " ========== Lint =========== 
 
     " ALE: Asynchronous Lint Engine
     " ALE works as an LSP client, so the OS must install the corresponding language
@@ -65,143 +52,29 @@ function! adapter#init()
     "     sudo apt install bear 
     Plug 'dense-analysis/ale'
 
-    " YouCompleteMe
-    " Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
+    " ========== Completion ========== 
+    
+    for plugins in g:adapter#completion
+        Plug plugins[0], plugins[1]
+    endfor
 
-    " Snip plugin
-    Plug 'SirVer/ultisnips'
-    Plug 'honza/vim-snippets'
-
-    " ========== Compilation ====== 
+    " ========== Compile ====== 
 
     " vim-dispatch: Asynchronous build and test dispatcher
     " Plug 'tpope/vim-dispatch' 
 
-    " vimux: Interact with tmux from vim
-    " Plug 'preservim/vimux'
+    " vimtex:
+    " Requirement: PDF reader
+    "   i.e., zatlura
+    Plug 'lervag/vimtex', {'for': ['tex', 'bib']}
 
+    " ========== Debug  =========== 
+    
     " Markdown-preview:
     Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown']}
 
-    " vimtex:
-    Plug 'lervag/vimtex', {'for': ['tex', 'bib']}
-
-    " ========== Others =========== 
-
-    " Color table: Display the color table in terminal with command
-    Plug 'guns/xterm-color-table.vim'
-
     " Initialize plugin system
     call plug#end()
-
-
-    " ============================
-    " NERDTree settings
-    " Update: 2023.02.04
-    " ============================
-
-    noremap <C-n> :NERDTreeToggle<CR>  
-
-    let NERTTreeCaseSensitiveSort = 1
-    let NERDTreeWinSize = 35
-
-    " Automatic open NERDTree when open vim and go to the previous window
-    autocmd VimEnter *.{py,h,c} NERDTree | wincmd p
-    " Close vim if the only window left open is a NERDTree
-    autocmd BufEnter * :call CloseNERDTree()
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-    autocmd BufEnter * :call PreventReplacingNERDTree()
-
-    function! CloseNERDTree()
-        if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-            quit
-        endif
-
-    endfunction
-
-    function! PreventReplacingNERDTree()
-        if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
-            let buf=bufnr('%') 
-            buffer# 
-            execute "normal! \<C-W>w"
-            execute 'buffer'.buf
-        endif
-
-    endfunction
-
-
-    " ============================
-    " vim-airline settings
-    " Update: 2023.02.05
-    " ============================
-
-    let g:airline#extensions#tabline#enabled = 1
-
-
-    " ============================
-    " Vista.vim settings
-    " Update: 2023.01.05
-    " ============================
-    " function! NearestMethodOrFunction() abort
-    "   return get(b:, 'vista_nearest_method_or_function', '')
-    " endfunction
-
-    " set statusline+=%{NearestMethodOrFunction()}
-
-    " " By default vista.vim never run if you don't call it explicitly.
-    " " If you want to show the nearest function in your statusline automatically,
-    " " you can add the following line to your vimrc
-    " if exists('g:loaded_vista')
-    "   autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-    " endif
-
-    " let g:vista_sidebar_width = 50
-
-
-    " ============================
-    " LeaderF settings
-    " Update: 2023.01.05
-    " ============================
-    " let g:Lf_WindowPosition = 'popup'
-
-
-    " ============================
-    " YCM settings
-    " Update: 2021.11.28
-    " ============================
-    " let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-    " let g:ycm_show_diagnostics_ui = 0
-
-    " map <leader>g :YcmCompleter GoTo<CR>
-
-
-    " ============================
-    " Nerdcommenter settings
-    " Update: 2021.11.28
-    " ============================
-    " Add spaces after comment delimiters by default
-    " let g:NERDSpaceDelims = 1
-    "
-    " Use compact syntax for prettified multi-line comments
-    " let g:NERDCompactSexyComs = 1
-    "
-    " Align line-wise comment delimiters flush left instead of following code indentation
-    " let g:NERDDefaultAlign = 'left'
-    "
-    " Set a language to use its alternate delimiters by default
-    " let g:NERDAltDelims_java = 1
-    "
-    " Add your own custom formats or override the defaults
-    " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-    "
-    " Allow commenting and inverting empty lines (useful when commenting a region)
-    " let g:NERDCommentEmptyLines = 1
-    "
-    " Enable trimming of trailing whitespace when uncommenting
-    " let g:NERDTrimTrailingWhitespace = 1
-    "
-    " Enable NERDCommenterToggle to check all selected lines is commented or not
-    " let g:NERDToggleCheckAllLines = 1
 
 
     " ============================
@@ -308,22 +181,6 @@ function! adapter#init()
     let g:ale_linters = {
     \   'python': ['pyflakes'],
     \}
-
-
-    " ============================
-    " Ultrisnips settings
-    " Update: 2021.11.28
-    " ============================
-    " Trigger configuration. Change this to something other than <tab> if use one 
-    " of the following:
-    " - https://github.com/Valloric/YouCompleteMe
-    " - https://github.com/nvim-lua/completion-nvim
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-    " If you want :UltiSnipsEdit to split your window.
-    let g:UltiSnipsEditSplit="vertical"
 
 
     " ============================

@@ -79,6 +79,11 @@ The options can be used to configure the default configuration of CIM.
         - Lint: Require linters or LSPs
             - [neomake](https://github.com/neomake/neomake)
             - [ALE](https://github.com/dense-analysis/ale)
+        - Completion
+            - Engine
+                - [UltiSnip](https://github.com/SirVer/ultisnips)
+            - Database
+                - [vim-snippet](https://github.com/honza/vim-snippets)
         - Format: Require `astyle` or LSPs
             - Built-in `gg=G` and `gq`
             - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)

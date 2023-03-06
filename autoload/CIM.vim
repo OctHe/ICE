@@ -7,6 +7,7 @@
 " =====================================================================
 
 function! CIM#options()
+
     set history=200		" keep 200 lines of command line history
     set ruler		    " show the cursor position all the time
     set showcmd		    " display incomplete commands
@@ -32,9 +33,15 @@ function! CIM#options()
     " GUI options
     set guioptions=aegrLt
 
+    " Adapter options
+    call adapter#theme#options()
+    call adapter#edit#options()
+    call adapter#completion#options()
+
 endfunction
 
 function! CIM#command()
+
     augroup CimStartup
         au!
 
@@ -73,24 +80,3 @@ function! CIM#keymapping()
 
 endfunction
 
-function! CIM#theme()
-
-    " Color schemes: desert, peachpuff, quiet, slate
-    colorscheme desert
-
-    " Dialog
-    highlight PMenu guifg=darkblue guibg=darkgrey
-    highlight PMenuSel guifg=darkgreen guibg=lightblue
-
-    " Spell check
-    set spell
-    " Clear the default highlight of the Spell check
-    highlight clear SpellBad
-    " Set the highlight style as underline
-    highlight SpellBad cterm=underline  
-
-    " Dialog
-    highlight PMenu ctermfg=56 ctermbg=white
-    highlight PMenuSel ctermfg=white ctermbg=56
-
-endfunction
