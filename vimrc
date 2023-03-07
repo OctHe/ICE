@@ -18,8 +18,16 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
+let g:loaded_edit_plugins = [
+    \ 'surround',
+    \ 'autopair',
+    \ 'nerdtree',
+    \ 'tagbar', 
+    \ 'fzf',
+    \]
+
 " call adapters
-call adapter#init()
+call adapter#init(g:loaded_edit_plugins)
 
 " Options
 set history=200		" keep 200 lines of command line history
@@ -49,7 +57,7 @@ set guioptions=aegrLt
 
 " Adapter options
 call adapter#theme#options()
-call adapter#edit#options()
+source ./autoload/adapter/edit.vimrc
 call adapter#lint#options()
 call adapter#completion#options()
 
