@@ -7,18 +7,17 @@ The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh,
 ### Structure
 
     ------------------------------
-    |             |   theme      |
+    |             |   Theme      |
     |             |              |
     | commands    | colorschemes |
     | keymappings | windows      |
     | options     | statuslines  |
     |             |              |
     ------------------------------
-    |          adaptors          |
     |                            |
-    | edit,                      |
-    | tag, lint, format, snippet | 
-    | compile, debug             |
+    | Edit,                      |
+    | Lint, Completion           | 
+    | Compile                    |
     |                            |
     ------------------------------
     |         plugins            |
