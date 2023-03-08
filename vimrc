@@ -18,18 +18,48 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
-let g:loaded_edit_plugins = [
+let g:enable_text_plugins = [
     \ 'surround',
     \ 'autopair',
     \ 'nerdtree',
+    \ 'commentary',
     \ 'tagbar', 
     \ 'fzf',
-    \]
+    \ ]
 
-" call adapters
-call adapter#init(g:loaded_edit_plugins)
+let g:enable_theme_plugins = [
+    \ 'airline',
+    \ 'vimux',
+    \ 'colortable',
+    \ ]
 
+let g:enable_lint_plugins = [
+    \ 'ale', 
+    \ ]
+
+let g:enable_completion_plugins = [
+    \ 'vimsnippets', 
+    \ 'ultisnips', 
+    \ ]
+
+let g:enable_compilation_plugins = [
+    \ 'mdview',
+    \ ]
+
+
+call CIM#PluginInstall(
+            \ g:enable_text_plugins + 
+            \ g:enable_theme_plugins + 
+            \ g:enable_lint_plugins + 
+            \ g:enable_completion_plugins +
+            \ g:enable_compilation_plugins
+            \ )
+
+" ---------------------------------------------------------------------
+"
 " Options
+"
+" ---------------------------------------------------------------------
 set history=200		" keep 200 lines of command line history
 set ruler		    " show the cursor position all the time
 set showcmd		    " display incomplete commands
@@ -55,13 +85,35 @@ set display=truncate
 " GUI options
 set guioptions=aegrLt
 
-" Adapter options
-call adapter#theme#options()
-source ./autoload/adapter/edit.vimrc
-call adapter#lint#options()
-call adapter#completion#options()
+" Vertical split: 
+" highlight VertSplit ctermfg=234 ctermbg=darkgrey
 
+" Highlight column
+" set colorcolumn=80
+" highlight ColorColumn ctermbg=6
+
+" plugins options
+source ~/.vim/config/theme.vimrc
+source ~/.vim/config/text.vimrc
+source ~/.vim/config/lint.vimrc
+source ~/.vim/config/completion.vimrc
+source ~/.vim/config/compilation.vimrc
+
+" ---------------------------------------------------------------------
+"
 " Commands
+"
+" ---------------------------------------------------------------------
+
+" Command to see the difference between the current buffer and the file loaded from.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+          \ | wincmd p | diffthis
+endif
+
+" CimHelp open the help file at the right side
+command! -nargs=?  CimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
+
 augroup Cim
     au!
 
@@ -80,26 +132,14 @@ augroup Cim
         \ echohl None
 augroup END
 
-" Command to see the difference between the current buffer and the file loaded from.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
-endif
-
-" CimHelp open the help file at the right side
-command! -nargs=?  CimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
-
+" ---------------------------------------------------------------------
+"
 " Keymappings
+"
+" ---------------------------------------------------------------------
 " Remap windows keymapping
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 
-
-" Vertical split: 
-" highlight VertSplit ctermfg=234 ctermbg=darkgrey
-
-" Highlight column
-" set colorcolumn=80
-" highlight ColorColumn ctermbg=6

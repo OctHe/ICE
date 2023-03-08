@@ -1,8 +1,7 @@
 ## Coding-in-Vim
 
-Coding-in-vim, or CIM in short, is [Shiyue He](https://octhe.github.io/)'s terminal-based coding environment that uses vim/neovimm as the editor.
-It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers and debuggers and other useful tools.
-The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh, Latex, Markdown.
+Coding-in-vim, or CIM in short, is a terminal-based coding environment that uses vim/neovimm as the editor.
+It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
 
 ### Structure
 
@@ -118,22 +117,6 @@ The options can be used to configure the default configuration of CIM.
         - Debug
         - Version management
 
-### Code Tree
-
-    .vim/
-    |-- vimrc
-    |-- autoload/
-        |-- CIM.vim
-            |-- commands
-            |-- keymappings
-            |-- theme
-        |-- adapters.vim
-        |-- adapters/
-            |-- edit.vim
-            |-- lint.vim
-            |-- completion.vim
-            |-- debug.vim
-
 ## Prerequisite
 
 ### Ubuntu
@@ -156,24 +139,28 @@ The following plugins are used to support the common edit
 - [vim-commentary](https://github.com/tpope/vim-commentary)
 - [vim-surround](https://github.com/tpope/vim-surround)
 
-Language-specific functions requires autocompletion, linter, goto, and snippet functions.
+### Lint and Completion
+
+Language-specific functions requires completion, and lint.
 These functions have been integrated into the language protocol server (LSP).
-Therefore, CIM uses two famous LSP for C/C++ and python projects: [clangd](https://clangd.llvm.org/) and [pyright](https://github.com/microsoft/pyright).
+Therefore, CIM uses [clangd](https://clangd.llvm.org/) and pyflacks.
 To install them, uses
 
     sudo apt install clangd
-    sudo pip3 install pyright
-
-As the client, CIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
+    sudo pip3 install pyflacks
 
 clangd requires [bear](https://github.com/rizsotto/Bear) to automatically generate `complie_commands.json` file for make-based projects.
 To install it
 
     sudo apt install bear
 
+As the client, CIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
+
 ### Compilation
 
 ## Projects
+
+The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh, Latex, Markdown.
 
 Here is the list of the target projects:
 - C/C++
@@ -186,10 +173,8 @@ Here is the list of the target projects:
 - VimScript/Lua
     - *CIM*
 - Latex
-    - *xelatex -> bibtex -> xelatex -> xelatex* (Thsis)
-    - *pdflatex -> bibtex -> pdflatex -> pdflatex* (paper)
+    - *xelatex -> bibtex -> xelatex -> xelatex*
+    - *pdflatex -> bibtex -> pdflatex -> pdflatex*
     - *xelatex*
 - Markdown
     - *MoreWireless*
-    - *README.md*
-    - *jekyll*

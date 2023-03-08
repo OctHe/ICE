@@ -1,12 +1,12 @@
 " =====================================================================
 " 
-" Edit adapter of CIM
+" Comfiguration of text plugins 
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
 " =====================================================================
 
-if index(g:loaded_edit_plugins, 'nerdtree') != -1
+if index(g:enable_text_plugins, 'nerdtree') != -1
     " NERDTree: 
     noremap <C-n> :NERDTreeToggle<CR>  
 
@@ -40,7 +40,7 @@ if index(g:loaded_edit_plugins, 'nerdtree') != -1
 endif
 
 " LeaderF: 
-if index(g:loaded_edit_plugins, 'leaderf') != -1
+if index(g:enable_text_plugins, 'leaderf') != -1
     let g:Lf_WindowPosition = 'popup'
 
     " Vista.vim:
@@ -53,11 +53,11 @@ if index(g:loaded_edit_plugins, 'leaderf') != -1
 endif
 
 
-if index(g:loaded_edit_plugins, 'vista') != -1
+if index(g:enable_text_plugins, 'vista') != -1
     let g:vista_sidebar_width = 50
 
 endif
 
 " Nerdcommenter: 
-if index(g:loaded_edit_plugins, 'nerdcomment') != -1
+if index(g:enable_text_plugins, 'nerdcomment') != -1
 endif

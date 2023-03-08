@@ -1,6 +1,7 @@
 # Backup files
 *~
-.swp
+*swp
+*swo
 
 # VIM netrw history file
 .netrwhist

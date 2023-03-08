@@ -1,34 +1,22 @@
 " =====================================================================
 " 
-" Compile adapter of CIM
+" Comfiguration of compile plugins
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
-" This adapter includes plugins to easily compile code and display the 
-" result.
+" The plugins that can easily compile code and display the result
+" are included.
 "
 " =====================================================================
 
-function! adapter#compile#init()
+
+if index(g:enable_compilation_plugins, 'vimtex') != -1
 
     " vimtex:
     " Requirement: PDF reader
     "   i.e., zatlura
-    let g:adapter#compile = [
-        \ ['lervag/vimtex', {'for': ['tex', 'bib']}],
-        \ ['iamcco/markdown-preview.nvim', 
-            \ { 'do': { -> mkdp#util#install() }, 'for': ['markdown']}
-            \ ],
-        \ ]
-
-endfunction
-
-function! adapter#compile#options()
-
-    " vimtex:
-    " The follows is necessary for VimTeX to load properly. The "indent" is optional.
+    " plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
     " Note that most plugin managers will do this automatically.
-    " filetype plugin indent on
 
     " This enables Vim's and neovim's syntax-related features. Without this, some
     " VimTeX features will not work (see ":help vimtex-requirements" for more
@@ -54,4 +42,4 @@ function! adapter#compile#options()
     "   main file (e.g., main.tex) at first. For more details, please see the help
     "   document with ':h vimtex-multi-file'
 
-endfunction
+endif
