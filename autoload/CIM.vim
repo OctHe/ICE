@@ -1,4 +1,10 @@
-
+" =====================================================================
+" 
+" Utilities of CIM
+" Author: Shiyue He (hsy1995313@gmail.com)
+" Copyright (C): 2023
+" 
+" =====================================================================
 function! CIM#PluginInstall(plugins)
 
     let l:plugin_list = {
@@ -10,7 +16,7 @@ function! CIM#PluginInstall(plugins)
         \ 'tcomment'    : ['tomtom/tcomment_vim',       {}],
         \ 'nerdcomment' : ['scrooloose/nerdcommenter',  {}],
         \ 'commentary'  : ['tpope/vim-commentary',      {}],
-        \ 'fzf'         : ['junegunn/fzf',      { 'do': { -> fzf#install() } }],
+        \ 'fzf'         : ['junegunn/fzf',              {}],
         \ 'leaderf'     : ['Yggdroot/LeaderF',  { 'do': ':LeaderfInstallCExtension' }],
         \ 'ctrlp'       : ['ctrlpvim/ctrlp.vim',        {}],
         \ 'colortable'  : ['guns/xterm-color-table.vim',{}],
@@ -23,6 +29,8 @@ function! CIM#PluginInstall(plugins)
         \ 'ycm'         : ['ycm-core/YouCompleteMe', 
                             \ {'do': './install.py --clangd-completer'}
                             \ ],
+        \ 'genutils'    : ['vim-scripts/genutils',      {}],
+        \ 'breakpts'    : ['albfan/vim-breakpts',       {}],
         \ 'vimtex'      : ['lervag/vimtex',     { 'for': ['tex', 'bib'] }],
         \ 'mdview'      : ['iamcco/markdown-preview.nvim', 
                             \ { 'do': { -> mkdp#util#install() }, 'for': ['markdown'] }
@@ -51,4 +59,11 @@ function! CIM#PluginInstall(plugins)
 
     " Initialize plugin system
     call plug#end()
+    
+    " Run PlugInstall if there are missing plugins
+    if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+       PlugInstall --sync 
+       source $MYVIMRC
+    endif
+
 endfunction

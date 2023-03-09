@@ -1,6 +1,6 @@
 " =====================================================================
 " 
-" VIM run command file of CIM
+" Vim run command file of CIM
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " It includes options, commands, keymappings.
@@ -29,7 +29,6 @@ let g:enable_text_plugins = [
 
 let g:enable_theme_plugins = [
     \ 'airline',
-    \ 'vimux',
     \ 'colortable',
     \ ]
 
@@ -43,6 +42,8 @@ let g:enable_completion_plugins = [
     \ ]
 
 let g:enable_compilation_plugins = [
+    \ 'genutils',
+    \ 'breakpts',
     \ 'mdview',
     \ ]
 
