@@ -67,6 +67,9 @@ It will provide detail manual and scripts to install all the other tools.
         - filemanager
         - wc
         - quickfix
+- Linter
+    - Python
+        - pyflacks
 - Compiler/Interpreter
     - make
         - bear
@@ -85,7 +88,6 @@ It will provide detail manual and scripts to install all the other tools.
         - clangd
         - ccls
     - Python
-        - pyright
     - Bash
         - shellcheck
 ### File tree

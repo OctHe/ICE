@@ -22,6 +22,9 @@ ICE_TOOL=(
     lynx
 )
 ICE_EDITOR=(vim gvim nvim emacs micro)
+ICE_FORMATTER=(
+    astyle
+)
 ICE_COMPILER=(
     cmake make bear
     gcc g++ clang
@@ -35,7 +38,7 @@ ICE_LS=(
     lua-language-server
 )
 
-ice_checkhealth()
+ice_environment()
 {
   for arg in $@
   do
@@ -53,14 +56,17 @@ ice_checkhealth()
         editor)
             prog_list=${ICE_EDITOR[@]}
             ;;
+        server)
+            prog_list=${ICE_LS[@]}
+            ;;
+        formatter)
+            prog_list=${ICE_FORMATTER[@]}
+            ;;
         compiler)
             prog_list=${ICE_COMPILER[@]}
             ;;
         debugger)
             prog_list=${ICE_DEBUGGER[@]}
-            ;;
-        server)
-            prog_list=${ICE_LS[@]}
             ;;
         *)
           ;;
@@ -75,8 +81,9 @@ ice_checkhealth()
             echo -e "  [ ] ${prog}"
         fi
     done
+    echo
   done
 }
 
-ice_checkhealth shell pm tool 
-ice_checkhealth editor compiler debugger server
+ice_environment shell pm tool 
+ice_environment editor formatter compiler debugger server
