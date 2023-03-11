@@ -1,33 +1,41 @@
 #!/usr/bin/bash
 #
-# Check the prerequisites of ICE
-
+# Check the environment of ICE
+#
 
 ICE_SHELL=(bash zsh ipython ipython3)
 ICE_PKT=(flatpak snap apt zypper pacman)
+
+# screen has some unknown issue for nvim highlight
+# Specifically, in OpenSUSE version of WSL, when open 
+# nvim in screen, all the highlight cannot correctly
+# display. It might be a issue between screen and nvim, 
+# but it is unknown whether other distributions have 
+# the same problem
 ICE_TOOL=(
-    find fzf
+    find vifm
     grep ack ag rg
     git tokei
-    tmux
+    screen tmux
+    dict
     iw
     lynx
 )
 ICE_EDITOR=(vim gvim nvim emacs micro)
 ICE_COMPILER=(
-    cmake make
-    gcc clang
+    cmake make bear
+    gcc g++ clang
     python python3
     ruby
 )
 ICE_DEBUGGER=(gdb lldb)
 ICE_LS=(
     clangd ccls
-    pyright
     shellcheck
+    lua-language-server
 )
 
-ice_environment()
+ice_checkhealth()
 {
   for arg in $@
   do
@@ -70,5 +78,5 @@ ice_environment()
   done
 }
 
-ice_environment shell pm tool 
-ice_environment editor compiler debugger server
+ice_checkhealth shell pm tool 
+ice_checkhealth editor compiler debugger server

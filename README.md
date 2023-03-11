@@ -1,20 +1,16 @@
 # Integrated Command-Line Environment (ICE)
 
 There are lots of useful integrated development environments (IDEs) that based on graphical user interfaces (GUI).
-They are awesome, but the command-line interface (CLI) also has advantages that cannot be ignored.
-For example, CLI can be used for most servers with ssh command.
-Therefore, ICE is an IDE based on CLI. 
+They are awesome, but the command-line interface (CLI) also can meet the requirement in most time.
+
 The goal of ICE is to get as much work done in CLI as possible, not to replace GUI entirely.
-So it would still use some GUI tools because some formatted text cannot be displayed in CLI (such as pdf and markdown).
+So it would still use some GUI tools if terminal cannot correctly display some formatted text (such as latex and markdown).
 
 The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
-It will provide detail manual and scripts to install all the tools.
-
-So, let's begin!
+It will provide detail manual and scripts to install all the other tools.
 
 ## Features
 
-- Only require bash and a package manager at first.
 - Provide multiple modes according to the installed packages.
 
 ### Environment
@@ -34,10 +30,13 @@ So, let's begin!
 - Package manager
     - apt
     - zypper
+    - snap
+    - flatpack
+    - pacman
 - Tools
     - File
+        - vifm
         - find
-        - fzf
     - Text search tool
         - grep
         - ack
@@ -47,18 +46,20 @@ So, let's begin!
         - tokei
         - git
     - Job control
+        - screen
         - tmux
+    - Help
+        - dict
     - Network
         - iw
         - lynx
 - Editor
     - vim/gvim
-        - Editing
-        - LSP-client
-        - Compilation
-        - Version management
-        - Debug
+        - Text
         - Colorscheme
+        - Lint
+        - Completion
+        - Compilation
     - neovim
     - emacs
     - micro
@@ -143,13 +144,6 @@ Some of them is pre-installed with oh-my-zsh, but the following plugins are requ
 The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
 
     plugins=(git sudo z wd zsh-autosuggestions zsh-syntax-highlighting)
-
-#### Proxy
-
-Use the following command in `.zshrc`
-
-    export http_proxy="socks5://127.0.0.1:7890"
-    export https_proxy="socks5://127.0.0.1:7890"
 
 ## Editor
 
