@@ -93,13 +93,6 @@ set guioptions=aegrLt
 " set colorcolumn=80
 " highlight ColorColumn ctermbg=6
 
-" plugins options
-source ~/.vim/config/theme.vimrc
-source ~/.vim/config/text.vimrc
-source ~/.vim/config/lint.vimrc
-source ~/.vim/config/completion.vimrc
-source ~/.vim/config/compilation.vimrc
-
 " ---------------------------------------------------------------------
 "
 " Commands
@@ -143,4 +136,15 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+
+" ---------------------------------------------------------------------
+"
+" Plugin configuration
+"
+" ---------------------------------------------------------------------
+source ~/.vim/config/theme.vimrc
+source ~/.vim/config/text.vimrc
+source ~/.vim/config/lint.vimrc
+source ~/.vim/config/completion.vimrc
+source ~/.vim/config/compilation.vimrc
 
