@@ -19,11 +19,24 @@ It will provide detail manual and scripts to install all the other tools.
     - Bash
         - Bash-it
     - zsh
-        - oh-my-zsh
-        - Plugin
+        - Directory
+            - z
+            - wd
+            - Fold
         - Completion
+            - [gitignore](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/gitignore/gitignore.plugin.zsh)
+            - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+            - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
         - Alias
+            - git
+        - Keybinding (bindkey)
+            - sudo, man, less
         - Theme
+            - [colored-man-pages](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh)
+            - prompt
+                - common
+                - git
+                    - (<branch><branch tracking>|<local status>)
             - Nerdfont
     - Python
         - ipython
@@ -54,13 +67,8 @@ It will provide detail manual and scripts to install all the other tools.
         - iw
         - lynx
 - Editor
-    - vim/gvim
-        - Text
-        - Colorscheme
-        - Lint
-        - Completion
-        - Compilation
-    - neovim
+    - vim/neovim
+        - Project CIM
     - emacs
     - micro
         - linter (default install)
@@ -90,6 +98,7 @@ It will provide detail manual and scripts to install all the other tools.
     - Python
     - Bash
         - shellcheck
+
 ### File tree
 
 The file tree after installing ice will be
@@ -101,6 +110,7 @@ The file tree after installing ice will be
 	|-- .config/
 		|-- nvim/
 		|-- micro/
+    |-- .share/nvim/
 	|--.local/
 		|-- bin/
 			|-- micro
@@ -137,17 +147,22 @@ ICE installs zsh and oh-my-zsh with the following
 
 #### Plugin
 
-The useful plugins of oh-my-zsh include *git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)*.
+The useful plugins of oh-my-zsh include git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git), zsh-command-time.
 Some of them is pre-installed with oh-my-zsh, but the following plugins are required to install from github.
 
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/popstas/zsh-command-time ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/zsh-command-time
 
 The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
 
-    plugins=(git sudo z wd zsh-autosuggestions zsh-syntax-highlighting)
+    plugins=(git sudo z wd colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-command-time)
 
 ## Editor
+
+### Vim
+
+Vim and Neovim are based on Project CIM.
 
 ### Micro
 

@@ -18,8 +18,7 @@ ICE_TOOL=(
     git tokei
     screen tmux
     dict
-    iw
-    lynx
+    iw xrdp lynx
 )
 ICE_EDITOR=(vim gvim nvim emacs micro)
 ICE_FORMATTER=(
@@ -47,7 +46,7 @@ ice_environment()
         shell)
             prog_list=${ICE_SHELL[@]}
             ;;
-        pm)
+        package_manage)
             prog_list=${ICE_PKT[@]}
             ;;
         tool)
@@ -85,5 +84,5 @@ ice_environment()
   done
 }
 
-ice_environment shell pm tool 
+ice_environment shell package_manage tool 
 ice_environment editor formatter compiler debugger server
