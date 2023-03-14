@@ -64,7 +64,22 @@ It will provide detail manual and scripts to install all the other tools.
     - Help
         - dict
     - Network
-        - iw
+        - mac80211
+            - iw
+            - iwd
+                - NetworkManager
+                    - Clients: nmcli, nm-connection-editor, nm-applet
+                - ConnMan
+            - wpa_supplicant
+                - Clients: wpa_supplicant, wpa_cli
+            - hostapd
+        - wext
+            - wireless-tools
+                - iwconfig: manipulate the basic wireless parameters
+                - iwlist: allow to initiate scanning and list frequencies, bit-rates, encryption keys...
+                - iwspy: allow to get per node link quality
+                - iwpriv: allow to manipulate the Wireless Extensions specific to a driver (private)
+                - ifrename: allow to name interfaces based on various static criteria
         - lynx
 - Editor
     - vim/neovim

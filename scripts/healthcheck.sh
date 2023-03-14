@@ -17,9 +17,15 @@ ICE_TOOL=(
     grep ack ag rg
     git tokei
     screen tmux
+    less watch
     dict
-    iw xrdp lynx
 )
+ICE_NETWORK=(
+    iwconfig iwlist iwspy iwpriv ifrename
+    iw iwd wpa_supplicant hostapd nmcli nm-connection-editor nm-applet
+    xrdp 
+    lynx
+    )
 ICE_EDITOR=(vim gvim nvim emacs micro)
 ICE_FORMATTER=(
     astyle
@@ -48,6 +54,9 @@ ice_environment()
             ;;
         package_manage)
             prog_list=${ICE_PKT[@]}
+            ;;
+        network)
+            prog_list=${ICE_NETWORK[@]}
             ;;
         tool)
             prog_list=${ICE_TOOL[@]}
@@ -84,5 +93,5 @@ ice_environment()
   done
 }
 
-ice_environment shell package_manage tool 
+ice_environment shell package_manage tool network
 ice_environment editor formatter compiler debugger server
