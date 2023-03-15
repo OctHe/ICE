@@ -17,6 +17,7 @@ ICE_TOOL=(
     grep ack ag rg
     git tokei
     screen tmux
+    top htop
     less watch
     dict
 )
