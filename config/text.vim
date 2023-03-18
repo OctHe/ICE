@@ -1,6 +1,7 @@
 " =====================================================================
 " 
-" Comfiguration of text plugins 
+" Configuration of basic edit plugins 
+" 
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
@@ -35,8 +36,8 @@ if index(g:enable_text_plugins, 'nerdtree') != -1
 
     endfunction
 
-    " T means tree
-    noremap <Leader>t :NERDTreeToggle<CR>  
+    " t means tree
+    nnoremap <Leader>t :NERDTreeToggle<CR>  
 
 endif
 

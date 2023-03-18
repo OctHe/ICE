@@ -1,6 +1,7 @@
 " =====================================================================
 " 
-" Comfiguration of compile plugins
+" Configuration of dynamic analysis plugins
+"
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
@@ -10,7 +11,7 @@
 " =====================================================================
 
 
-if index(g:enable_compilation_plugins, 'vimtex') != -1
+if index(g:enable_debug_plugins, 'vimtex') != -1
 
     " vimtex:
     " Requirement: PDF reader

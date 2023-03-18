@@ -3,6 +3,7 @@
 " UI options and plugins
 " CIM puts UI options after plugin installation since UI requires
 " plugins
+"
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 

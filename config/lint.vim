@@ -1,10 +1,10 @@
 " =====================================================================
 " 
-" Configuration file of linters
+" Not only linter
+" Configuration of static analysis plugins
+"
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
-" 
-" This adapter contains lint, fix, etc.
 "
 " =====================================================================
 

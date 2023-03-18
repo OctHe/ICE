@@ -1,31 +1,32 @@
 " =====================================================================
 " 
-" Configuration of completion and snippet 
+" Configuration of plugins about completion and snippet 
+"
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
 " =====================================================================
 
+" Ycm: a powerful completion plugin based on LSP
+if index(g:enable_completion_plugins, 'ycm') != -1
 
+    let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+    let g:ycm_show_diagnostics_ui = 0
 
-if index(g:enable_text_plugins, 'ultisnips') != -1
+endif
+
+" Ultisnips: snippets engine that uses snippet database
+" vim-snippets: snippet database
+if index(g:enable_completion_plugins, 'ultisnips') != -1
 
     " Trigger configuration. Change this to something other than <tab> if use one 
     " of the following:
     " - https://github.com/Valloric/YouCompleteMe
     " - https://github.com/nvim-lua/completion-nvim
-    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsExpandTrigger="<CR>"
 
     " If you want :UltiSnipsEdit to split your window.
     let g:UltiSnipsEditSplit="vertical"
 
 endif
 
-if index(g:enable_text_plugins, 'ycm') != -1
-
-    let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-    let g:ycm_show_diagnostics_ui = 0
-
-    map <leader>g :YcmCompleter GoTo<CR>
-
-endif

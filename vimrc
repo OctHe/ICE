@@ -44,7 +44,7 @@ let g:enable_completion_plugins = [
     \ 'ultisnips',
     \ ]
 
-let g:enable_compilation_plugins = [
+let g:enable_debug_plugins = [
     \ 'genutils',
     \ 'breakpts',
     \ 'mdview',
@@ -58,11 +58,11 @@ let g:enable_vcs_plugins = [
 
 call CIM#PluginInstall(
             \ g:enable_text_plugins + 
-            \ g:enable_ui_plugins + 
             \ g:enable_lint_plugins + 
             \ g:enable_completion_plugins +
-            \ g:enable_compilation_plugins +
-            \ g:enable_vcs_plugins
+            \ g:enable_debug_plugins +
+            \ g:enable_vcs_plugins +
+            \ g:enable_ui_plugins 
             \ )
 
 " Options {{{1
@@ -109,7 +109,7 @@ endif
 " CimHelp open the help file at the right side
 if !exists(":CimHelp")
     command! -nargs=? -complete=help  CimHelp 
-        \ :help <args> | if &filetype == 'help' | wincmd L 
+        \ help <args> | if &filetype == 'help' | wincmd L 
         \ | vertical resize 90 | set number | endif
 
 endif
@@ -136,22 +136,26 @@ augroup END
 
 " Keymappings {{{1
 
-" Remap windows keymapping
+" Remap window keymappings
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 
-" }}}1
+" Easy-nohlsearch
+nnoremap <Esc> :nohlsearch<CR>
 
-" Plugins {{{1
-
-source ~/.vim/config/ui.vimrc
-source ~/.vim/config/text.vimrc
-source ~/.vim/config/lint.vimrc
-source ~/.vim/config/completion.vimrc
-source ~/.vim/config/compilation.vimrc
+" Show mappings
+nnoremap <Leader>m :verbose map 
 
 " }}}1
+
+" Plugins
+source ~/.vim/config/text.vim
+source ~/.vim/config/lint.vim
+source ~/.vim/config/completion.vim
+source ~/.vim/config/debug.vim
+source ~/.vim/config/vcs.vim
+source ~/.vim/config/ui.vim
 
 " vim: set sw=4 sts=4 et fdm=marker:
