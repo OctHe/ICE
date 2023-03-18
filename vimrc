@@ -53,6 +53,7 @@ let g:enable_compilation_plugins = [
 
 let g:enable_vcs_plugins = [
     \ 'fugitive',
+    \ 'gitgutter',
     \ ]
 
 call CIM#PluginInstall(
@@ -84,10 +85,16 @@ set scrolloff=5     " Show a few lines around the cursor
 set guioptions=aegrLt
 
 " Use <Space> as the <Leader>
+" This command must be before all keymappings
 let mapleader = ' '
 
 " Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
+
+" This enables Vim's and neovim's syntax-related features. Without this, some
+" VimTeX features will not work (see ":help vimtex-requirements" for more
+" info).
+syntax enable
 
 " }}}1
 

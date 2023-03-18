@@ -6,10 +6,8 @@
 " 
 " =====================================================================
 
+" NERDTree: 
 if index(g:enable_text_plugins, 'nerdtree') != -1
-    " NERDTree: 
-    noremap <C-n> :NERDTreeToggle<CR>  
-
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 
@@ -37,6 +35,9 @@ if index(g:enable_text_plugins, 'nerdtree') != -1
 
     endfunction
 
+    " T means tree
+    noremap <Leader>t :NERDTreeToggle<CR>  
+
 endif
 
 " LeaderF: 
@@ -58,6 +59,6 @@ if index(g:enable_text_plugins, 'vista') != -1
 
 endif
 
-" Nerdcommenter: 
+" Nerdcomment: 
 if index(g:enable_text_plugins, 'nerdcomment') != -1
 endif

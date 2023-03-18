@@ -52,6 +52,7 @@ function s:PluginList()
                 \ }
             \ },
         \ 'fugitive'    : {'link': 'tpope/vim-fugitive',            },
+        \ 'gitgutter'   : {'link': 'airblade/vim-gitgutter',        },
         \ }
 
     " }}}1
@@ -90,14 +91,13 @@ function! CIM#PluginInstall(plugins)
             endif
         endfor
 
-
         " Initialize plugin system
         call plug#end()
         
         " Run PlugInstall if there are missing plugins
         if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-           PlugInstall --sync 
-           source $MYVIMRC
+            PlugInstall --sync 
+            echo "Please reboot to enable the plugins"
         endif
 
     endif
