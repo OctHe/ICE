@@ -18,18 +18,20 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
+let g:plugin_manager = 'plug'
+
 let g:enable_text_plugins = [
     \ 'surround',
     \ 'autopair',
     \ 'nerdtree',
+    \ 'easymotion',
     \ 'commentary',
     \ 'tagbar', 
     \ 'fzf',
     \ ]
 
-let g:enable_theme_plugins = [
+let g:enable_ui_plugins = [
     \ 'airline',
-    \ 'colortable',
     \ ]
 
 let g:enable_lint_plugins = [
@@ -37,8 +39,9 @@ let g:enable_lint_plugins = [
     \ ]
 
 let g:enable_completion_plugins = [
-    \ 'vimsnippets', 
-    \ 'ultisnips', 
+    \ 'ycm',
+    \ 'vimsnippets',
+    \ 'ultisnips',
     \ ]
 
 let g:enable_compilation_plugins = [
@@ -48,22 +51,22 @@ let g:enable_compilation_plugins = [
     \ ]
 
 
+let g:enable_vcs_plugins = [
+    \ 'fugitive',
+    \ ]
+
 call CIM#PluginInstall(
             \ g:enable_text_plugins + 
-            \ g:enable_theme_plugins + 
+            \ g:enable_ui_plugins + 
             \ g:enable_lint_plugins + 
             \ g:enable_completion_plugins +
-            \ g:enable_compilation_plugins
+            \ g:enable_compilation_plugins +
+            \ g:enable_vcs_plugins
             \ )
 
-" ---------------------------------------------------------------------
-"
-" Options
-"
-" ---------------------------------------------------------------------
-set history=200		" keep 200 lines of command line history
-set ruler		    " show the cursor position all the time
-set showcmd		    " display incomplete commands
+" Options {{{1
+
+set ruler		    " show the cursor position 
 set wildmenu		" display completion matches in a status line
 set number          " Show line number
 set shiftwidth=4    " The width of '<' and '>'
@@ -77,36 +80,32 @@ set mouse=a         " Enable mouse in all mode
 set smartindent     " Do smart autoindenting
 set scrolloff=5     " Show a few lines around the cursor
 
-" Allow backspacing over everything in insert mode.
-set backspace=indent,eol,start
-
-" Show @@@ in the last line if it is truncated.
-set display=truncate
-
 " GUI options
 set guioptions=aegrLt
 
-" Vertical split: 
-" highlight VertSplit ctermfg=234 ctermbg=darkgrey
+" Use <Space> as the <Leader>
+let mapleader = ' '
 
-" Highlight column
-" set colorcolumn=80
-" highlight ColorColumn ctermbg=6
+" Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start
 
-" ---------------------------------------------------------------------
-"
-" Commands
-"
-" ---------------------------------------------------------------------
+" }}}1
+
+" Commends {{{1
 
 " Command to see the difference between the current buffer and the file loaded from.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-          \ | wincmd p | diffthis
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
 endif
 
 " CimHelp open the help file at the right side
-command! -nargs=?  CimHelp :help <args> | if &filetype == 'help' | wincmd L | vertical resize 90 | set number | endif
+if !exists(":CimHelp")
+    command! -nargs=? -complete=help  CimHelp 
+        \ :help <args> | if &filetype == 'help' | wincmd L 
+        \ | vertical resize 90 | set number | endif
+
+endif
 
 augroup Cim
     au!
@@ -126,25 +125,26 @@ augroup Cim
         \ echohl None
 augroup END
 
-" ---------------------------------------------------------------------
-"
-" Keymappings
-"
-" ---------------------------------------------------------------------
+" }}}1
+
+" Keymappings {{{1
+
 " Remap windows keymapping
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 
-" ---------------------------------------------------------------------
-"
-" Plugin configuration
-"
-" ---------------------------------------------------------------------
-source ~/.vim/config/theme.vimrc
+" }}}1
+
+" Plugins {{{1
+
+source ~/.vim/config/ui.vimrc
 source ~/.vim/config/text.vimrc
 source ~/.vim/config/lint.vimrc
 source ~/.vim/config/completion.vimrc
 source ~/.vim/config/compilation.vimrc
 
+" }}}1
+
+" vim: set sw=4 sts=4 et fdm=marker:

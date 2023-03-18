@@ -5,65 +5,104 @@
 " Copyright (C): 2023
 " 
 " =====================================================================
-function! CIM#PluginInstall(plugins)
 
-    let l:plugin_list = {
-        \ 'surround'    : ['tpope/vim-surround',        {}],
-        \ 'nerdtree'    : ['preservim/nerdtree',        {}],
-        \ 'autopair'    : ['LunarWatcher/auto-pairs',   {}],
-        \ 'vista'       : ['liuchengxu/vista.vim',      {}],
-        \ 'tagbar'      : ['preservim/tagbar',          {}],
-        \ 'tcomment'    : ['tomtom/tcomment_vim',       {}],
-        \ 'nerdcomment' : ['scrooloose/nerdcommenter',  {}],
-        \ 'commentary'  : ['tpope/vim-commentary',      {}],
-        \ 'fzf'         : ['junegunn/fzf',              {}],
-        \ 'leaderf'     : ['Yggdroot/LeaderF',  { 'do': ':LeaderfInstallCExtension' }],
-        \ 'ctrlp'       : ['ctrlpvim/ctrlp.vim',        {}],
-        \ 'colortable'  : ['guns/xterm-color-table.vim',{}],
-        \ 'airline'     : ['vim-airline/vim-airline',   {}],
-        \ 'lightline'   : ['itchyny/lightline.vim',     {}],
-        \ 'vimux'       : ['preservim/vimux',           {}],
-        \ 'ale'         : ['dense-analysis/ale',        {}],
-        \ 'vimsnippets' : ['honza/vim-snippets',        {}],
-        \ 'ultisnips'   : ['SirVer/ultisnips',          {}],
-        \ 'ycm'         : ['ycm-core/YouCompleteMe', 
-                            \ {'do': './install.py --clangd-completer'}
-                            \ ],
-        \ 'genutils'    : ['vim-scripts/genutils',      {}],
-        \ 'breakpts'    : ['albfan/vim-breakpts',       {}],
-        \ 'vimtex'      : ['lervag/vimtex',     { 'for': ['tex', 'bib'] }],
-        \ 'mdview'      : ['iamcco/markdown-preview.nvim', 
-                            \ { 'do': { -> mkdp#util#install() }, 'for': ['markdown'] }
-                            \ ],
+function s:PluginList()
+
+    " CIM give each plugin an alias
+    " link is the github link for each plugin
+    " plughook is the installation hook for vim-plugin
+    " additional installation option can be added for different plugin
+    " managers
+    " {{{1
+    let l:plugin_installation = {
+        \ 'surround'    : { 'link': 'tpope/vim-surround',           },
+        \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
+        \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
+        \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
+        \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
+        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
+        \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
+        \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
+        \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
+        \ 'fzf'         : { 'link': 'junegunn/fzf',                 },
+        \ 'leaderf'     : { 'link': 'Yggdroot/LeaderF',  
+            \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
+            \ },
+        \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
+        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
+        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
+        \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
+        \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
+        \ 'vimux'       : { 'link': 'preservim/vimux',              },
+        \ 'ale'         : { 'link': 'dense-analysis/ale',           },
+        \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
+        \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
+        \ 'ycm'         : { 'link': 'ycm-core/YouCompleteMe',  
+            \ 'plughook': {'do': './install.py --clangd-completer'},
+            \ },
+        \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
+        \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
+        \ 'vimtex'      : {'link' : 'lervag/vimtex',
+            \ 'plughook': { 'for': ['tex', 'bib'] }
+            \ },
+        \ 'mdview'      : {'link': 'iamcco/markdown-preview.nvim', 
+            \ 'plughook': { 
+                \ 'do': { -> mkdp#util#install() }, 
+                \ 'for': ['markdown'] 
+                \ }
+            \ },
+        \ 'fugitive'    : {'link': 'tpope/vim-fugitive',            },
         \ }
 
-
-    " Install vim-plug if not found
-    if empty(glob('~/.vim/autoload/plug.vim'))
-      silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    endif
-
-    " Specify a directory for plugins
-    " - Avoid using standard Vim directory names like 'plugin'
-    call plug#begin('~/.vim/plugged')
-
-    " Register vim-plug as a plugin to get the help doc.
-    " Note that vim-plug (the plug.vim file) in this file is not working.
-    Plug 'junegunn/vim-plug'
-
-    " Install plugins
-    for plugins in a:plugins
-        Plug l:plugin_list[plugins][0], l:plugin_list[plugins][1]
-    endfor
-
-    " Initialize plugin system
-    call plug#end()
+    " }}}1
     
-    " Run PlugInstall if there are missing plugins
-    if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-       PlugInstall --sync 
-       source $MYVIMRC
-    endif
+    return l:plugin_installation
 
 endfunction
+
+function! CIM#PluginInstall(plugins)
+
+    let l:plugin_list = s:PluginList()
+
+    " vim-plug is the plugin manager {{{1
+    if g:plugin_manager == 'plug'
+
+        " Install vim-plug if not found
+        if empty(glob('~/.vim/autoload/plug.vim'))
+          silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        endif
+
+        " Specify a directory for plugins
+        " - Avoid using standard Vim directory names like 'plugin'
+        call plug#begin('~/.vim/plugged')
+
+        " Register vim-plug as a plugin to get the help doc.
+        " Note that vim-plug (the plug.vim file) in this file is not working.
+        Plug 'junegunn/vim-plug'
+
+        " Install plugins
+        for plugin in a:plugins
+            if exists('l:plugin_installation.'..plugin..'.plughook')
+                Plug l:plugin_list[plugin].link, l:plugin_list[plugins].plug_hook
+            else
+                Plug l:plugin_list[plugin].link
+            endif
+        endfor
+
+
+        " Initialize plugin system
+        call plug#end()
+        
+        " Run PlugInstall if there are missing plugins
+        if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+           PlugInstall --sync 
+           source $MYVIMRC
+        endif
+
+    endif
+    " }}}1
+    
+endfunction
+
+" vim: set sw=4 sts=4 et fdm=marker:

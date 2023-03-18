@@ -10,10 +10,6 @@
 " Color schemes: desert, peachpuff, quiet, slate
 colorscheme desert
 
-" Dialog
-highlight PMenu ctermfg=56 ctermbg=white guifg=darkblue guibg=darkgrey
-highlight PMenuSel ctermfg=white ctermbg=56 guifg=darkgreen guibg=lightblue
-
 " Spell check
 set spell
 " Clear the default highlight of the Spell check
@@ -22,7 +18,7 @@ highlight clear SpellBad
 highlight SpellBad cterm=underline  
 
 " airline:
-if index(g:enable_theme_plugins, 'airline') != -1
+if index(g:enable_ui_plugins, 'airline') != -1
     " Enhanced tabline
     let g:airline#extensions#tabline#enabled = 1
 endif
