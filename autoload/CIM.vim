@@ -29,11 +29,6 @@ function s:PluginList()
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
-        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
-        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
-        \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
-        \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
-        \ 'vimux'       : { 'link': 'preservim/vimux',              },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
@@ -51,8 +46,14 @@ function s:PluginList()
                 \ 'for': ['markdown'] 
                 \ }
             \ },
-        \ 'fugitive'    : {'link': 'tpope/vim-fugitive',            },
-        \ 'gitgutter'   : {'link': 'airblade/vim-gitgutter',        },
+        \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
+        \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
+        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
+        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
+        \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
+        \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
+        \ 'vim-smoothie': { 'link': 'psliwka/vim-smoothie',         },
+        \ 'vimux'       : { 'link': 'preservim/vimux',              },
         \ }
 
     " }}}1
