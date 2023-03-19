@@ -36,13 +36,17 @@
     git remote add <remote> <link>      # Add a remote reposiory named as <remote> 
     git remote                          # Show remote
     git remote -v                       # Show more details about the remote 
-    git remote add <remote> <link>      # Create a remote 
-    git remote rm <remote>              # Remove a remote
+    git remote rm <remote>              # Remove a remote repository
 
     git clone <link> <path>             # Clone a remote repo to local <Path>
+
+The following commands require git-remote-add
+
     git push                            # Push this branch to the remote origin repo
-    git push <remote> <remotebranch>:<localbranch>          # Push <localbranch> to the <remotebranch> from the <remote> repo
+    git push <remote> <remotebranch>:<localbranch>
+                                        # Push <localbranch> to the <remotebranch> from the <remote> repo
     git fetch                           # Fetch remote to the branch
-    git pull                            # Fetch and merge 
-    git pull <remote> <remotebranch:<localbranch>           # Pull <remotebranch> from <remote> to <localbranch>
+    git pull                            # Fetch and merge
+    git pull <remote> <remotebranch:<localbranch>
+                                        # Pull <remotebranch> from <remote> to <localbranch>
 
