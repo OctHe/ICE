@@ -1,20 +1,34 @@
+## Configuration
+
+git always uses `--global` option to config for all repos.
+
+    git config --global user.name <name>    # Set user name
+    git config --global user.email <email>@gmail.com
+                                            # Set user email
+
+    git config --global http.proxy <proxy>  # Set proxy of http to <proxy>
+    git config --global https.proxy <proxy> # Set proxy of https to <proxy>
+    git config --global --unset http.proxy  # Unset the http.proxy
+
+    git config --global diff.tool vimdiff   # Set vimdiff as the tool to edit diff
+
 ## Commit
 
-    git init            # Initialize an empty file
-    git status          # Show the changed and unstaged files
-    git add <file>      # Add(Stage) <file>
-    git reset <file>    # Remove <file> from the stage
-    git reset --hard    # Remove all uncommitted changes
-    git rm <file>       # Removes <file> from both git and system
-    git rm --cached     # Removes <file> from git
-    git commit          # Commit staged file, it opens an editor
-    git commit -m "<msg>"   
-                        # Commit with message <msg>
+    git init            		# Initialize an empty repo
+    git init --bare     		# Initialize a bare repo. It is useful for the dotfile projcet
+    git status          		# Show the changed and unstaged files
+    git add <file>      		# Add(Stage) <file>
+    git reset <file>    		# Remove <file> from the stage
+    git reset --hard    		# Remove all uncommitted changes
+    git rm <file>       		# Removes <file> from both git and system
+    git rm --cached             # Removes <file> from git
+    git commit                  # Commit staged file, it opens an editor
+    git commit -m "<msg>"       # Commit with message <msg>
 
-    git log             # Show the comment log
-    git log --oneline   # Show the commit log in one line
+    git log                     # Show the comment log
+    git log --oneline           # Show the commit log in one line
 
-    git tag             # List all tags
+    git tag                     # List all tags
     git tag -a v1.0 -m "msg"    # Create an annotated tag
     git show <tag>              # Show the description of <tag>
     git tag --delete <tag>      # Delete the tag
@@ -34,10 +48,12 @@
                                 # Checkout the file to <branch>
     git merge <branch>          # Merge <branch> to the current branch
 
-    git diff            # Differences (unstaged files) between now and HEAD
+    git diff                    # Differences (unstaged files) between now and HEAD
     git diff <other> <branch> -- <file>
-                        # Differences between the same file in <other> and <branch>
-    git diff -cached    # Differences between staged files and HEAD
+                                # Differences between the same file in <other> and <branch>
+    git diff -cached            # Differences between staged files and HEAD
+    git difftool <branch> <file>
+                                # Use difftool (e.g., vimdiff) to open and edit the file
 
 ## Remote
 
@@ -57,3 +73,4 @@ The following commands require git-remote-add
     git pull                            # Fetch and merge
     git pull <remote> <remotebranch:<localbranch>
                                         # Pull <remotebranch> from <remote> to <localbranch>
+
