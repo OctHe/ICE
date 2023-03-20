@@ -36,6 +36,7 @@ function s:PluginList()
             \ 'plughook': {'do': './install.py --clangd-completer'},
             \ },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
+        \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
         \ 'vimtex'      : {'link' : 'lervag/vimtex',
             \ 'plughook': { 'for': ['tex', 'bib'] }
@@ -94,12 +95,6 @@ function! CIM#PluginInstall(plugins)
 
         " Initialize plugin system
         call plug#end()
-        
-        " Run PlugInstall if there are missing plugins
-        if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-            PlugInstall --sync 
-            echo "Please reboot to enable the plugins"
-        endif
 
     endif
     " }}}1

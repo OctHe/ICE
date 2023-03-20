@@ -45,6 +45,7 @@ let g:enable_completion_plugins = [
     \ ]
 
 let g:enable_debug_plugins = [
+    \ 'asyncrun',
     \ 'genutils',
     \ 'breakpts',
     \ 'mdview',
