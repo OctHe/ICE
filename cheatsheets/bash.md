@@ -90,7 +90,13 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
 ## Disk
 
     df                  # Disk free
+    df -h               # Echo the result with human-readable output
     du                  # Disk used
+    du -h -d 1 . 2&> /dev/null | grep "G\s"
+                        # Echo the size of directories and files of the 
+                        # current folder. Ignore errors. Grep a space 
+                        # after 'G'. Useful command to show the large 
+                        # directories and files
 
 # Process and Job
 
@@ -111,8 +117,8 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
 
 ## Variables
 
-    var=value           # Variables, NO SPACE
-    export VAR=value    # Environment variable to child, NO SPACE
+    var=value           # Variables, NO <SPACE>
+    export VAR=value    # Environment variable to child, NO <SPACE>
     ${#var}             # Length of var
 
     list=(a b c)        # List
@@ -200,7 +206,6 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
 
 
 # Debug
-
 
 Run the script
 
