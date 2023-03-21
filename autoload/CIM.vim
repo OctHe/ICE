@@ -54,6 +54,7 @@ function s:PluginList()
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
         \ 'vim-smoothie': { 'link': 'psliwka/vim-smoothie',         },
+        \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
         \ 'vimux'       : { 'link': 'preservim/vimux',              },
         \ }
 

@@ -1,6 +1,7 @@
 " =====================================================================
 " 
-" Configuration of basic edit plugins 
+" Configuration of search-related plugins 
+" Plugins to search files, directories, buffers, etc.
 " 
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
@@ -8,7 +9,7 @@
 " =====================================================================
 
 " NERDTree: 
-if index(g:enable_text_plugins, 'nerdtree') != -1
+if index(g:enable_search_plugins, 'nerdtree') != -1
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 
@@ -36,13 +37,13 @@ if index(g:enable_text_plugins, 'nerdtree') != -1
 
     endfunction
 
-    " t means tree
-    nnoremap <Leader>t :NERDTreeToggle<CR>  
+    " e means explore 
+    nnoremap <Leader>e :NERDTreeToggle<CR>  
 
 endif
 
 " LeaderF: 
-if index(g:enable_text_plugins, 'leaderf') != -1
+if index(g:enable_search_plugins, 'leaderf') != -1
     let g:Lf_WindowPosition = 'popup'
 
     " Vista.vim:
@@ -54,12 +55,3 @@ if index(g:enable_text_plugins, 'leaderf') != -1
 
 endif
 
-
-if index(g:enable_text_plugins, 'vista') != -1
-    let g:vista_sidebar_width = 50
-
-endif
-
-" Nerdcomment: 
-if index(g:enable_text_plugins, 'nerdcomment') != -1
-endif

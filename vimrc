@@ -1,4 +1,3 @@
-" =====================================================================
 " 
 " Vim run command file of CIM
 " Author: Shiyue He (hsy1995313@gmail.com)
@@ -23,15 +22,19 @@ let g:plugin_manager = 'plug'
 let g:enable_text_plugins = [
     \ 'surround',
     \ 'autopair',
-    \ 'nerdtree',
     \ 'easymotion',
     \ 'commentary',
     \ 'tagbar', 
+    \ ]
+
+let g:enable_search_plugins = [
     \ 'fzf',
+    \ 'nerdtree',
     \ ]
 
 let g:enable_ui_plugins = [
     \ 'airline',
+    \ 'rainbow',
     \ ]
 
 let g:enable_lint_plugins = [
@@ -59,6 +62,7 @@ let g:enable_vcs_plugins = [
 
 call CIM#PluginInstall(
             \ g:enable_text_plugins + 
+            \ g:enable_search_plugins + 
             \ g:enable_lint_plugins + 
             \ g:enable_completion_plugins +
             \ g:enable_debug_plugins +
@@ -68,34 +72,40 @@ call CIM#PluginInstall(
 
 " Options {{{1
 
+" Search
+set hlsearch        " Highlight the search results
+set incsearch       " Show the pattern while typing
+
+" UI
 set ruler		    " show the cursor position 
 set wildmenu		" display completion matches in a status line
 set number          " Show line number
-set shiftwidth=4    " The width of '<' and '>'
-set expandtab       " Expand tag to space
-set tabstop=4       " One tab includes four spaces
 set splitbelow      " New buffer splits below by default
 set splitright      " New buffer splits right by default
-set hlsearch        " Highlight the search results
-set incsearch       " Show the pattern while typing
 set mouse=a         " Enable mouse in all mode
-set smartindent     " Do smart autoindenting
 set scrolloff=5     " Show a few lines around the cursor
 
 " GUI options
-set guioptions=aegrLt
+if has('gui_running')
+    set guioptions=aegrLt
+endif
 
-" Use <Space> as the <Leader>
-" This command must be before all keymappings
-let mapleader = ' '
-
-" Allow backspacing over everything in insert mode.
+" Text
+set expandtab       " Expand tag to space
+set tabstop=4       " One tab includes four spaces
+set shiftwidth=4    " The width of '<' and '>'
 set backspace=indent,eol,start
+                    " Allow backspacing over everything in insert mode.
 
-" This enables Vim's and neovim's syntax-related features. Without this, some
-" VimTeX features will not work (see ":help vimtex-requirements" for more
-" info).
-syntax enable
+let mapleader = ' '
+                    " Use <Space> as the <Leader>
+                    " This command must be before all keymappings
+
+" Lint 
+set smartindent     " Do smart autoindenting
+
+syntax enable       " This enables Vim's syntax-related features. 
+                    " Without this, some VimTeX features will not work 
 
 " }}}1
 
@@ -150,13 +160,5 @@ nnoremap <Esc> :nohlsearch<CR>
 nnoremap <Leader>m :verbose map 
 
 " }}}1
-
-" Plugins
-source ~/.vim/config/text.vim
-source ~/.vim/config/lint.vim
-source ~/.vim/config/completion.vim
-source ~/.vim/config/debug.vim
-source ~/.vim/config/vcs.vim
-source ~/.vim/config/ui.vim
 
 " vim: set sw=4 sts=4 et fdm=marker:
