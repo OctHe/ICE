@@ -6,12 +6,10 @@
 ICE_SHELL=(bash zsh ipython ipython3)
 ICE_PKT=(flatpak snap apt zypper pacman)
 
-# screen has some unknown issue for nvim highlight
+# screen has some unknown issue for nvim highlight.
 # Specifically, in OpenSUSE version of WSL, when open 
 # nvim in screen, all the highlight cannot correctly
-# display. It might be a issue between screen and nvim, 
-# but it is unknown whether other distributions have 
-# the same problem
+# display.
 ICE_TOOL=(
     find vifm
     grep ack ag rg
@@ -22,12 +20,13 @@ ICE_TOOL=(
     dict
 )
 ICE_NETWORK=(
-    iwconfig iwlist iwspy iwpriv ifrename
-    iw iwd wpa_supplicant hostapd nmcli nm-connection-editor nm-applet
+    iw iwctl wpa_cli hostapd nmcli
+    iwconfig iwlist ifconfig
+    ip tc
     xrdp 
     lynx
     )
-ICE_EDITOR=(vim gvim nvim emacs micro)
+ICE_EDITOR=(vim nvim emacs kate micro)
 ICE_FORMATTER=(
     astyle
 )
