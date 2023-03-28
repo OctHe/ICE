@@ -9,3 +9,4 @@
 # Plugin manager and installed plugins
 autoload/plug.vim
 plugged/
+lazy-lock.json
