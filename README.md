@@ -17,7 +17,17 @@ It will provide detail manual and scripts to install all the other tools.
 
 - Shell
     - Bash
-        - Bash-it
+        - git
+        - Alias
+        - Color
+        - Bind
+        - Fold
+        - history
+        - Completion
+        - Help
+            - help
+            - man
+            - info
     - zsh
         - Directory
             - z
@@ -32,12 +42,15 @@ It will provide detail manual and scripts to install all the other tools.
         - Keybinding (bindkey)
             - sudo, man, less
         - Theme
-            - [colored-man-pages](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh)
             - prompt
                 - common
                 - git
-                    - (<branch><branch tracking>|<local status>)
+                    - (branch, branch tracking|local status)
             - Nerdfont
+        - Help
+            - run-help
+            - man
+            - info
     - Python
         - ipython
 - Package manager
@@ -46,41 +59,49 @@ It will provide detail manual and scripts to install all the other tools.
     - snap
     - flatpack
     - pacman
+- GNU software
+    - coreutils
+    - findutils
+        - find
+    - grep
+- Process
+    - [procps](https://gitlab.com/procps-ng/procps/)
+        - ps
+        - top
+- Kernel
+    - [kmod](https://man7.org/linux/man-pages/man8/kmod.8.html)
 - Tools
     - File
         - vifm
-        - find
     - Text search tool
-        - grep
         - ack
         - ag
         - ripgrep (rg)
     - Code management
-        - tokei
         - git
     - Job control
         - screen
         - tmux
     - Help
         - dict
-    - Network
-        - netlink
-            - iw
-            - iwd
-                - iwctl
-            - wpa_supplicant, wpa_cli
-            - hostapd
-            - NetworkManager: Rely on wpa_supplicant or iwd as backend
-                - Clients: nmcli, nm-connection-editor, nm-applet
-            - ConnMan: Rely on iwd as backend
-            - iproute2
-                - ip, tc
-        - wext
-            - net-tools
-                - ifconfig, arp, etc.
-            - wireless-tools
-                - iwconfig, iwlist, etc.
-        - lynx
+- Network
+    - netlink
+        - iw
+        - iwd
+            - iwctl
+        - wpa_supplicant, wpa_cli
+        - hostapd
+        - NetworkManager: Rely on wpa_supplicant or iwd as backend
+            - Clients: nmcli, nm-connection-editor, nm-applet
+        - ConnMan: Rely on iwd as backend
+        - iproute2
+            - ip, tc
+    - wext
+        - net-tools
+            - ifconfig, arp, etc.
+        - wireless-tools
+            - iwconfig, iwlist, etc.
+    - lynx
 - Editor
     - vim/neovim
         - Project CIM

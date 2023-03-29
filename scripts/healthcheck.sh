@@ -13,7 +13,7 @@ ICE_PKT=(flatpak snap apt zypper pacman)
 ICE_TOOL=(
     find vifm
     grep ack ag rg
-    git tokei
+    git
     screen tmux
     top htop
     less watch
