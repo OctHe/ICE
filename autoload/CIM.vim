@@ -87,8 +87,8 @@ function! CIM#PluginInstall(plugins)
 
         " Install plugins
         for plugin in a:plugins
-            if exists('l:plugin_installation.'..plugin..'.plughook')
-                Plug l:plugin_list[plugin].link, l:plugin_list[plugins].plug_hook
+            if exists('l:plugin_list.'..plugin..'.plughook')
+                Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plughook
             else
                 Plug l:plugin_list[plugin].link
             endif
