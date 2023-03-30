@@ -23,7 +23,6 @@ let g:enable_text_plugins = [
     \ 'surround',
     \ 'easymotion',
     \ 'commentary',
-    \ 'tagbar', 
     \ 'nerdtree',
     \ ]
 
@@ -37,6 +36,7 @@ let g:enable_ui_plugins = [
     \ ]
 
 let g:enable_lint_plugins = [
+    \ 'tagbar', 
     \ 'ale', 
     \ ]
 

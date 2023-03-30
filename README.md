@@ -1,6 +1,6 @@
 ## Coding-in-Vim
 
-Coding-in-vim, or CIM in short, is a terminal-based coding environment that uses vim/neovimm as the editor.
+Coding-in-vim, or CIM in short, is a terminal-based coding environment that uses vim as the editor.
 It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
 
 ### Structure
@@ -27,68 +27,37 @@ In each mode, CIM implements common edit, language-specific features (provided b
 The options can be used to configure the default configuration of CIM.
 
 - Vim
-    - LW (Lightweight)
-        - Plugin manager
-            - [vim-plug](https://github.com/junegunn/vim-plug)
-            - Vit: A lightweight vim plugin manager based on git (TBD)
-        - Theme
-            - Color scheme
-                - Built-in `:colorscheme desert`
-            - Status line
-                - [vim-airline](https://github.com/vim-airline/vim-airline)
-            - Window
-        - Edit
-            - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
-            - [vim-commentary](https://github.com/tpope/vim-commentary)
-            - [vim-surround](https://github.com/tpope/vim-surround)
-            - [NERDTree](https://github.com/preservim/nerdtree)
-        - Tag: Require universal-ctags
-            - [tagbar](https://github.com/preservim/tagbar)
-        - Lint: Require linters or LSPs
-            - [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)
-            - [neomake](https://github.com/neomake/neomake)
-            - [ALE](https://github.com/dense-analysis/ale)
-        - Format: Require `astyle` or LSPs
-            - Built-in `gg=G` and `gq`
-            - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
-        - Snippet
-        - Compile
-            - Built-in `:make`
-        - Debug and run
-        - Version management
-    - ICE (Integrated Command-line Environment)
-        - Plugin manager
-            - [vim-plug](https://github.com/junegunn/vim-plug)
-            - Vit: A lightweight vim plugin manager based on git (TBD)
-        - Theme
-            - Color scheme
-                - Built-in `:colorscheme desert`
-            - Status line
-                - [vim-airline](https://github.com/vim-airline/vim-airline)
-        - Edit
-            - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
-            - [vim-commentary](https://github.com/tpope/vim-commentary)
-            - [vim-surround](https://github.com/tpope/vim-surround)
-            - [NERDTree](https://github.com/preservim/nerdtree)
-        - Tag: Require universal-ctags
-            - [tagbar](https://github.com/preservim/tagbar)
-        - Lint: Require linters or LSPs
-            - [neomake](https://github.com/neomake/neomake)
-            - [ALE](https://github.com/dense-analysis/ale)
-        - Completion
-            - Engine
-                - [UltiSnip](https://github.com/SirVer/ultisnips)
-            - Database
-                - [vim-snippet](https://github.com/honza/vim-snippets)
-        - Format: Require `astyle` or LSPs
-            - Built-in `gg=G` and `gq`
-            - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
-        - Compile
-            - Built-in `:make`
-        - Debug and run
-            - [vimspector](https://github.com/puremourning/vimspector)
-            - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
-        - Version management
+    - Plugin manager
+        - [vim-plug](https://github.com/junegunn/vim-plug)
+        - dein
+    - UI
+        - Built-in `:colorscheme desert`
+        - [vim-airline](https://github.com/vim-airline/vim-airline)
+    - Text
+        - [vim-commentary](https://github.com/tpope/vim-commentary)
+        - [vim-surround](https://github.com/tpope/vim-surround)
+        - [NERDTree](https://github.com/preservim/nerdtree)
+    - Lint: Require linters or LSPs
+        - [tagbar](https://github.com/preservim/tagbar)
+        - [neomake](https://github.com/neomake/neomake)
+        - [ALE](https://github.com/dense-analysis/ale)
+    - Format: Require `astyle` or LSPs
+        - Built-in `gg=G` and `gq`
+        - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
+    - Completion
+        - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
+        - YouCompleteMe
+        - Engine
+            - [UltiSnip](https://github.com/SirVer/ultisnips)
+        - Database
+            - [vim-snippet](https://github.com/honza/vim-snippets)
+        - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
+    - Debug
+        - Built-in `:make`
+        - [vimspector](https://github.com/puremourning/vimspector)
+        - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
+    - Version management
+
 ## Prerequisite
 
 ### Ubuntu
