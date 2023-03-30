@@ -21,15 +21,14 @@ let g:plugin_manager = 'plug'
 
 let g:enable_text_plugins = [
     \ 'surround',
-    \ 'autopair',
     \ 'easymotion',
     \ 'commentary',
     \ 'tagbar', 
+    \ 'nerdtree',
     \ ]
 
 let g:enable_search_plugins = [
     \ 'fzf',
-    \ 'nerdtree',
     \ ]
 
 let g:enable_ui_plugins = [
@@ -42,6 +41,7 @@ let g:enable_lint_plugins = [
     \ ]
 
 let g:enable_completion_plugins = [
+    \ 'autopair',
     \ 'ycm',
     \ 'vimsnippets',
     \ 'ultisnips',

@@ -5,22 +5,20 @@ It is benefited by the powerful plugin ecosystem of vim and integrates open-sour
 
 ### Structure
 
-    ------------------------------
-    |             |   Theme      |
-    |             |              |
-    | commands    | colorschemes |
-    | keymappings | windows      |
-    | options     | statuslines  |
-    |             |              |
-    ------------------------------
-    |                            |
-    | Edit,                      |
-    | Lint, Completion           | 
-    | Compile                    |
-    |                            |
-    ------------------------------
-    |         plugins            |
-    ------------------------------
+    ---------------------------------
+    |            |                  |
+    | Keymapping |       Option     |
+    | Function   | Text, UI, Search |
+    | Command    | Completion, Debug|
+    |            |                  |
+    ---------------------------------
+    |       Plugins                 |
+    |                               |
+    | Text, UI, Search              |
+    | Lint, Completion              |
+    | Debug, VCS                    |
+    |                               |
+    ---------------------------------
 
 CIM provides an LW mode and an ICE mode.
 ICE includes a powerful environment that requires lots of out-of-box installation, while LW is only based on pure vimscript/lua plugins.
@@ -91,32 +89,6 @@ The options can be used to configure the default configuration of CIM.
             - [vimspector](https://github.com/puremourning/vimspector)
             - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
         - Version management
-- Neovim
-    - LW (Lightweight)
-        - Plugin manager
-        - Theme
-        - Edit
-        - Tag
-        - Lint
-        - Format
-        - Snippet
-        - Compile
-        - Debug
-        - Version management
-    - ICE (Integrated Command-line Environment)
-        - Plugin manager
-        - Theme
-        - Edit
-        - Highlight
-            - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-        - Tag
-        - LSP
-            - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-        - Snippet
-        - Compile
-        - Debug
-        - Version management
-
 ## Prerequisite
 
 ### Ubuntu
@@ -127,17 +99,18 @@ Then, CIM can be installed by git
 
     git clone https://github.com/OctHe/All-in-Vim ~/.vim/
 
-### Edit
+### Text
 
 The following plugins are used to support the common edit
 - [NERDTree](https://github.com/preservim/nerdtree)
 - [fzf](https://github.com/junegunn/fzf)
 - [tagbar](https://github.com/preservim/tagbar)
-- [vim-airline](https://github.com/vim-airline/vim-airline)
-
-- [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
 - [vim-commentary](https://github.com/tpope/vim-commentary)
 - [vim-surround](https://github.com/tpope/vim-surround)
+
+### UI
+
+- [vim-airline](https://github.com/vim-airline/vim-airline)
 
 ### Lint and Completion
 
@@ -156,7 +129,9 @@ To install it
 
 As the client, CIM uses [ALE](https://github.com/dense-analysis/ale) plugin instead of [YouCompleteMe](https://github.com/ycm-core/YouCompleteMe).
 
-### Compilation
+- [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
+
+### Debug
 
 ## Projects
 
