@@ -22,13 +22,13 @@ require("lazy").setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
-        config = function() require "lualine".setup() end,
+        config = function() require "lualine".setup({}) end,
     },
 
     {
         'akinsho/bufferline.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
-        config = function() require("bufferline").setup{} end,
+        config = function() require("bufferline").setup({}) end,
     },
 
     {
@@ -60,7 +60,7 @@ require("lazy").setup({
                 long_message_to_split = true, -- long messages will be sent to a split
                 inc_rename = false, -- enables an input dialog for inc-rename.nvim
                 lsp_doc_border = false, -- add a border to hover docs and signature help
-              },        
+              },
           })
         end,
     },
@@ -108,7 +108,12 @@ require("lazy").setup({
 
     {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        config = function() require("nvim-autopairs").setup() end
+    },
+
+    {
+        "phaazon/hop.nvim",
+        config = function() require("text.hop") end
     },
 
     {
