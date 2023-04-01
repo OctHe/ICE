@@ -26,7 +26,7 @@ require("lazy").setup({
     },
 
     {
-        'akinsho/bufferline.nvim', 
+        'akinsho/bufferline.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
         config = function() require("bufferline").setup{} end,
     },
@@ -116,25 +116,50 @@ require("lazy").setup({
       config = function() require('aerial').setup() end,
     },
 
-    -- Lint
-    { 
-        'neovim/nvim-lspconfig',
-        config = function() 
-            require 'lint.lspconfig'
-        end,
+    {
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     },
 
+    -- Lint
+    {
+        'neovim/nvim-lspconfig',
+        config = function() require 'lint.lspconfig' end,
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+    },
+
+    { "RRethy/vim-illuminate" },
+
     -- Completion
-    
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
+            'neovim/nvim-lspconfig',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+        },
+        config = function() require 'completion.cmp' end,
+    },
+
     -- Debug
 
     -- VCS
-    { 
-        'TimUntersberger/neogit', 
+    {
+        'TimUntersberger/neogit',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
 
-    { 
+    {
         'sindrets/diffview.nvim', 
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
