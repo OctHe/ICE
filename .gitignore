@@ -10,3 +10,4 @@
 autoload/plug.vim
 plugged/
 lazy-lock.json
+.luarc.json

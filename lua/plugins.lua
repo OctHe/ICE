@@ -19,16 +19,20 @@ require("lazy").setup({
     -- UI
     { "catppuccin/nvim", name = "catppuccin" },
 
+    { "lukas-reineke/indent-blankline.nvim" },
+
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require "lualine".setup({}) end,
     },
 
     {
-        'akinsho/bufferline.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' },
-        config = function() require("bufferline").setup({}) end,
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
     },
 
     {
@@ -40,43 +44,31 @@ require("lazy").setup({
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
-        
         },
 
         config = function()
-            require("noice").setup({
-              lsp = {
-                -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-                override = {
-                  ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                  ["vim.lsp.util.stylize_markdown"] = true,
-                  ["cmp.entry.get_documentation"] = true,
-                },
-              },
-              -- you can enable a preset for easier configuration
-              presets = {
-                bottom_search = true, -- use a classic bottom cmdline for search
-                command_palette = true, -- position the cmdline and popupmenu together
-                long_message_to_split = true, -- long messages will be sent to a split
-                inc_rename = false, -- enables an input dialog for inc-rename.nvim
-                lsp_doc_border = false, -- add a border to hover docs and signature help
-              },
-          })
+            require"ui.noice"
         end,
+    },
+
+    {
+        'akinsho/bufferline.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function() require('bufferline').setup() end,
     },
 
     -- Search
     {
         "nvim-tree/nvim-tree.lua",
         config = function() require "nvim-tree".setup() end,
-        dependencies = { "kyazdani42/nvim-web-devicons" },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
           { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "File Explorer" },
         },
     },
 
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require('telescope.builtin')
@@ -154,6 +146,11 @@ require("lazy").setup({
             'hrsh7th/cmp-cmdline',
         },
         config = function() require 'completion.cmp' end,
+    },
+
+    {
+        "ray-x/lsp_signature.nvim",
+        config = function() require 'lsp_signature'.setup() end,
     },
 
     -- Debug
