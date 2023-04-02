@@ -15,7 +15,7 @@ ICE_TOOL=(
     grep ack ag rg
     git
     screen tmux
-    top htop
+    top htop neofetch
     less watch
     dict
 )
@@ -24,7 +24,7 @@ ICE_NETWORK=(
     iwconfig iwlist ifconfig
     ip tc
     xrdp 
-    lynx
+    lynx nyxt vimb
     )
 ICE_EDITOR=(vim nvim emacs kate micro)
 ICE_FORMATTER=(
