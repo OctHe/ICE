@@ -28,14 +28,6 @@ require("lazy").setup({
     },
 
     {
-        'goolord/alpha-nvim',
-        requires = { 'nvim-tree/nvim-web-devicons' },
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.startify'.config)
-        end
-    },
-
-    {
         "folke/noice.nvim",
         dependencies = {
             -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -55,6 +47,14 @@ require("lazy").setup({
         'akinsho/bufferline.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function() require('bufferline').setup() end,
+    },
+
+    {
+        'goolord/alpha-nvim',
+        requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
     },
 
     -- Search
@@ -85,9 +85,7 @@ require("lazy").setup({
           vim.o.timeout = true
           vim.o.timeoutlen = 300
           require("which-key").setup({
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
+            -- Leave it empty to use the default settings
           })
         end,
     },
@@ -122,6 +120,11 @@ require("lazy").setup({
         end
     },
 
+    {
+        'akinsho/toggleterm.nvim', 
+        config = true,
+    },
+
     -- Lint
     {
         'neovim/nvim-lspconfig',
@@ -133,6 +136,20 @@ require("lazy").setup({
         build = ":TSUpdate",
     },
 
+    -- List to show the trouble in code.
+    -- It relies on LSP
+    {
+      "folke/trouble.nvim",
+      dependencies = "nvim-tree/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- leave it empty to use the default settings
+        }
+      end
+    },
+
+    -- Highlight other uses of word.
+    -- It relies on treesitter and LSP
     { "RRethy/vim-illuminate" },
 
     -- Completion
@@ -154,6 +171,10 @@ require("lazy").setup({
     },
 
     -- Debug
+    {
+         'michaelb/sniprun',
+        build = "bash ./install.sh",
+    },
 
     -- VCS
     {
@@ -162,7 +183,14 @@ require("lazy").setup({
     },
 
     {
-        'sindrets/diffview.nvim', 
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup()
+      end
+    },
+
+    {
+        'sindrets/diffview.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
 
