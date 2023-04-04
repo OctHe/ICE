@@ -52,6 +52,7 @@ let g:enable_debug_plugins = [
     \ 'genutils',
     \ 'breakpts',
     \ 'mdview',
+    \ 'vimtex',
     \ ]
 
 
@@ -96,6 +97,10 @@ set tabstop=4       " One tab includes four spaces
 set shiftwidth=4    " The width of '<' and '>'
 set backspace=indent,eol,start
                     " Allow backspacing over everything in insert mode.
+" Spell check
+set spell
+" Spell check for chinese
+set spelllang+=cjk
 
 let mapleader = ' '
                     " Use <Space> as the <Leader>

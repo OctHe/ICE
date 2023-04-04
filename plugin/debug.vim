@@ -15,7 +15,7 @@ if index(g:enable_debug_plugins, 'vimtex') != -1
 
     " vimtex:
     " Requirement: PDF reader
-    "   i.e., zatlura
+    "   i.e., evince in Ubuntu, okular, or zathura
     " plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
     " Note that most plugin managers will do this automatically.
 
@@ -33,5 +33,12 @@ if index(g:enable_debug_plugins, 'vimtex') != -1
     "   To support multiple files (with '\input') in a project, user must open the 
     "   main file (e.g., main.tex) at first. For more details, please see the help
     "   document with ':h vimtex-multi-file'
+
+    " Most VimTeX mappings rely on localleader and this can be changed with the
+    " following line. The default is usually fine and is the symbol "\".
+    let maplocalleader = " "
+
+    " Automatically open quickfix when have errors
+    let g:vimtex_quickfix_mode = 1
 
 endif

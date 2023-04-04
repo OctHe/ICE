@@ -29,6 +29,7 @@ function s:PluginList()
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
+        \ 'fcitx'       : { 'link': 'lilydjwg/fcitx.vim',           },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
@@ -38,9 +39,7 @@ function s:PluginList()
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
-        \ 'vimtex'      : {'link' : 'lervag/vimtex',
-            \ 'plughook': { 'for': ['tex', 'bib'] }
-            \ },
+        \ 'vimtex'      : { 'link' : 'lervag/vimtex',               },
         \ 'mdview'      : {'link': 'iamcco/markdown-preview.nvim', 
             \ 'plughook': { 
                 \ 'do': { -> mkdp#util#install() }, 

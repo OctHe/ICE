@@ -9,8 +9,6 @@
 " 
 " =====================================================================
 
-" Spell check
-set spell
 " Clear the default highlight of the Spell check
 highlight clear SpellBad
 " Set the highlight style as underline
