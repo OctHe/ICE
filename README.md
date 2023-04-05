@@ -218,3 +218,17 @@ The linter requires out-of-box support for each language (see, `help linter` in 
 Enter the command line mode by typing <C-e>, run
 
 	plugin install filemanager wc quickfix
+
+## Swap keys in Linux
+
+Usually, someone wants to swap Caplock and left Ctrl since the latter is more useful.
+In Ubuntu, download tweak to swap them in GUI.
+
+    sudo apt install gnome-tweaks
+
+This method is only useful in gnome-based GUI.
+Windows has a similar tool that named as [PowerToys](https://github.com/microsoft/PowerToys).
+A general method in Linux is use xmodmap and the GUI helper xkeycaps.
+After change the keys in xkeycaps, write out the configuration file of xmodmap in the HOME diretory, and add the follows in the shell
+
+    xmodmap ~/.xmodmap-`uname -n`
