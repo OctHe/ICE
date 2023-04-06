@@ -9,48 +9,38 @@ So it would still use some GUI tools if terminal cannot correctly display some f
 The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
 It will provide detail manual and scripts to install all the other tools.
 
-## Features
-
-- Provide multiple modes according to the installed packages.
-
-### Environment
+## Environment
 
 - Shell
     - Bash
-        - git
-        - Alias
+        - Prompt
+            - Fold directory
+            - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
+        - Alias: ls, git
         - Color
-        - Bind
-        - Fold
-        - history
+        - History
+        - Keybinding: bulit-in `bind`
         - Completion
-        - Help
-            - help
-            - man
-            - info
+            - Bash-completion
+        - Help: Built-in `help`
     - zsh
+        - Prompt
+            - common
+            - git
+                - (branch, branch tracking|local status)
+        - Alias: ls, git
+        - Color
+        - History
+        - Keybinding (bindkey)
+            - sudo, man, less
         - Directory
             - z
             - wd
-            - Fold
         - Completion
             - [gitignore](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/gitignore/gitignore.plugin.zsh)
             - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
             - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
-        - Alias
-            - git
-        - Keybinding (bindkey)
-            - sudo, man, less
-        - Theme
-            - prompt
-                - common
-                - git
-                    - (branch, branch tracking|local status)
-            - Nerdfont
-        - Help
-            - run-help
-            - man
-            - info
+        - Help: Built-in `run-help`
     - Python
         - ipython
 - Package manager
@@ -59,31 +49,42 @@ It will provide detail manual and scripts to install all the other tools.
     - snap
     - flatpack
     - pacman
-- GNU software
-    - coreutils
-    - findutils
-        - find
-    - grep
+- coreutils (GNU software)
 - Process
     - [procps](https://gitlab.com/procps-ng/procps/)
         - ps
         - top
 - Kernel
     - [kmod](https://man7.org/linux/man-pages/man8/kmod.8.html)
-- Tools
-    - File
+- File
+    - Finder
+        - findutils (GNU software)
+            - find
+        - fzf
+    - File manager
         - vifm
-    - Text search tool
-        - ack
-        - ag
-        - ripgrep (rg)
-    - Code management
-        - git
-    - Job control
-        - screen
-        - tmux
-    - Help
-        - dict
+    - Viewer
+        - zathura
+- Help
+    - cheat.sh
+    - dict
+    - man
+    - info
+- Desktop
+    - GNOME
+        - GNOME session
+        - GNOME Shell
+        - gdm (GNOME Display Manager)
+    - KDE
+    - LXQT
+        - Openbox
+    - Xfce
+        - LightDM
+    - Tile window manager
+        - i3
+        - Termial multiplex
+            - screen
+            - tmux
 - Network
     - netlink
         - iw
@@ -101,7 +102,13 @@ It will provide detail manual and scripts to install all the other tools.
             - ifconfig, arp, etc.
         - wireless-tools
             - iwconfig, iwlist, etc.
-    - lynx
+    - Web
+        - lynx
+- Text search tool
+    - grep (GNU software)
+    - ack
+    - ag
+    - ripgrep (rg)
 - Editor
     - vim/neovim
         - Project CIM
@@ -134,10 +141,12 @@ It will provide detail manual and scripts to install all the other tools.
     - Python
     - Bash
         - shellcheck
+- Version control
+    - git
 
-### File tree
+## Dotfile
 
-The file tree after installing ice will be
+Configuration files of ice
 
 	~
 	|-- .bashrc
