@@ -1,6 +1,9 @@
 # bashrc for ICE
 # Copyright (c) Shiyue He
 
+# Alias
+alias ls='ls --color=auto'
+
 # Enable a fold work directory in PS1
 function fold_pwd() 
 {
@@ -27,6 +30,9 @@ function fold_pwd()
 
     echo "${words[*]}"
 }
+
+# Swap Ctrl and Caplock, if available
+[[ -f ~/.xmodmap-`uname -n` ]] && xmodmap ~/.xmodmap-`uname -n`
 
 # Enable \u and \h to show the user and host
 export PS1='\[\e[32m\]$(fold_pwd)\[\e[0m\]> '
