@@ -93,7 +93,7 @@ require("lazy").setup({
     -- Text
     {
         'numToStr/Comment.nvim',
-        config = function() require('Comment').setup() end,
+        config = function() require('text.comment') end,
     },
 
     {
