@@ -51,7 +51,7 @@ require("lazy").setup({
 
     {
         'goolord/alpha-nvim',
-        requires = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function ()
             require'alpha'.setup(require'alpha.themes.startify'.config)
         end
@@ -134,6 +134,7 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
+        config = function() require 'lint.treesitter' end,
     },
 
     -- List to show the trouble in code.

@@ -4,8 +4,9 @@ if not ok then
   return
 end
 
-local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local cmp_nvim_lsp
 local capabilities = {}
+ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if ok then
     -- Set up lspconfig for nvim-cmp
     capabilities = cmp_nvim_lsp.default_capabilities()
