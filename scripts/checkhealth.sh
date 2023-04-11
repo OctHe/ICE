@@ -4,14 +4,15 @@
 #
 
 ICE_SHELL=(bash zsh ipython ipython3)
-ICE_PKT=(flatpak snap apt zypper pacman)
+ICE_PKT=(flatpak snap apt zypper pacman yay)
 
 # screen has some unknown issue for nvim highlight.
 # Specifically, in OpenSUSE version of WSL, when open 
 # nvim in screen, all the highlight cannot correctly
 # display.
 ICE_TOOL=(
-    find vifm
+    find fd
+    vifm
     grep ack ag rg
     git
     screen tmux
@@ -21,7 +22,6 @@ ICE_TOOL=(
 )
 ICE_NETWORK=(
     iw iwctl wpa_cli hostapd nmcli
-    iwconfig iwlist ifconfig
     ip tc
     xrdp 
     lynx nyxt vimb
@@ -35,6 +35,7 @@ ICE_COMPILER=(
     gcc g++ clang
     python python3
     ruby
+    go
 )
 ICE_DEBUGGER=(gdb lldb)
 ICE_LS=(
