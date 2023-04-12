@@ -37,16 +37,7 @@ require("lazy").setup({
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
         },
-
-        config = function()
-            require"ui.noice"
-        end,
-    },
-
-    {
-        'akinsho/bufferline.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons',
-        config = function() require('bufferline').setup() end,
+        config = function() require"ui.noice" end,
     },
 
     {
@@ -61,6 +52,8 @@ require("lazy").setup({
     {
         "nvim-tree/nvim-tree.lua",
         config = function() require "nvim-tree".setup() end,
+        -- nvim-web-devicons requires Hack Nerd font
+        -- You should install it manual
         dependencies = { "nvim-tree/nvim-web-devicons" },
         keys = {
           { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "File Explorer" },
@@ -84,21 +77,8 @@ require("lazy").setup({
         config = function()
           vim.o.timeout = true
           vim.o.timeoutlen = 300
-          require("which-key").setup({
-            -- Leave it empty to use the default settings
-          })
+          require("which-key").setup({})
         end,
-    },
-
-    -- Text
-    {
-        'numToStr/Comment.nvim',
-        config = function() require('text.comment') end,
-    },
-
-    {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup() end
     },
 
     {
@@ -107,21 +87,28 @@ require("lazy").setup({
     },
 
     {
+        'akinsho/bufferline.nvim',
+        dependencies = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('bufferline').setup()
+            vim.keymap.set('n', '<Leader>b', '<CMD>BufferLinePick<CR>')
+        end,
+    },
+
+
+    -- Text
+    {
+        'numToStr/Comment.nvim',
+        config = function() require('text.comment') end,
+    },
+
+    {
       'stevearc/aerial.nvim',
       config = function() require('aerial').setup() end,
     },
 
     {
-        "kylechui/nvim-surround",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    },
-
-    {
-        'akinsho/toggleterm.nvim', 
+        'akinsho/toggleterm.nvim',
         config = true,
     },
 
@@ -143,10 +130,7 @@ require("lazy").setup({
       "folke/trouble.nvim",
       dependencies = "nvim-tree/nvim-web-devicons",
       config = function()
-        require("trouble").setup {
-          -- leave it empty to use the default settings
-        }
-      end
+        require("trouble").setup {} end
     },
 
     -- Highlight other uses of word.
@@ -154,6 +138,17 @@ require("lazy").setup({
     { "RRethy/vim-illuminate" },
 
     -- Completion
+    {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup() end
+    },
+
+    {
+        "kylechui/nvim-surround",
+        config = function() require("nvim-surround").setup({}) end
+    },
+
+
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
