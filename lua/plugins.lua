@@ -17,7 +17,26 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
     -- UI
+
+    -- tokyonight contains multiple themes
+    -- colorscheme tokyonight
+    -- colorscheme tokyonight-night
+    -- colorscheme tokyonight-storm
+    -- colorscheme tokyonight-day
+    -- colorscheme tokyonight-moon
+    { 'folke/tokyonight.nvim' },
+
+    -- colorscheme nightfox
+    -- colorscheme dayfox
+    -- colorscheme dawnfox
+    -- colorscheme duskfox
+    -- colorscheme nordfox
+    -- colorscheme terafox
+    -- colorscheme carbonfox
+    { "EdenEast/nightfox.nvim" },
     { "catppuccin/nvim", name = "catppuccin" },
+    { "ellisonleao/gruvbox.nvim" },
+    { 'navarasu/onedark.nvim' },
 
     { "lukas-reineke/indent-blankline.nvim" },
 
@@ -191,4 +210,25 @@ require("lazy").setup({
     },
 
 }, {
+    checker = {
+        -- automatically check for plugin updates
+        enabled = true,
+        notify = true, -- get a notification when new updates are found
+        frequency = 3600, -- check for updates every hour
+    },
+    performance = {
+        rtp = {
+            ---@type string[] list any plugins you want to disable here
+            disabled_plugins = {
+                -- "gzip",
+                -- "matchit",
+                -- "matchparen",
+                "netrwPlugin",
+                -- "tarPlugin",
+                -- "tohtml",
+                -- "tutor",
+                -- "zipPlugin",
+            },
+        },
+    },
 })
