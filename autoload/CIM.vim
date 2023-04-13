@@ -31,6 +31,7 @@ function s:PluginList()
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
         \ 'fcitx'       : { 'link': 'lilydjwg/fcitx.vim',           },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
+        \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'ycm'         : { 'link': 'ycm-core/YouCompleteMe',  
