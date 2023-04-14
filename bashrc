@@ -35,7 +35,7 @@ function fold_pwd()
 [[ -f ~/.xmodmap-`uname -n` ]] && xmodmap ~/.xmodmap-`uname -n`
 
 # Enable \u and \h to show the user and host
-export PS1='\[\e[32m\]$(fold_pwd)\[\e[0m\]> '
+export PS1='\[\e[32m\]$(fold_pwd)\[\e[0m\] > '
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \

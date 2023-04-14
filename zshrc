@@ -12,14 +12,21 @@
 
 # Options
 setopt nobeep
-
+setopt extended_history         # Record timestamp of command
+setopt hist_ignore_dups         # Ignore duplicated commands history list
+setopt hist_ignore_space        # Ignore commands that start with space
+setopt hist_verify              # Show command with history expansion to user before running it
+setopt complete_in_word         # Allow completion from within a word/phrase
 # Aliases
 alias ls='ls --color=always'
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
+alias ......='../../../../..'
 
 # Autoload functions
-autoload -U compinit colors
-compinit	# Completion initalization 
-colors 		# Functions to easily use colors
+autoload -U compinit && compinit	# Completion initalization 
+autoload -U colors && colors 		# Functions to easily use colors
 
 # ls color
 eval `dircolors`
