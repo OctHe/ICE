@@ -3,7 +3,7 @@
 # Check the environment of ICE
 #
 
-ICE_SHELL=(bash zsh ipython ipython3)
+ICE_SHELL=(bash zsh fish ipython ipython3)
 ICE_PKT=(flatpak snap apt zypper pacman yay)
 
 # screen has some unknown issue for nvim highlight.
