@@ -29,7 +29,6 @@ function s:PluginList()
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
-        \ 'fcitx'       : { 'link': 'lilydjwg/fcitx.vim',           },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
