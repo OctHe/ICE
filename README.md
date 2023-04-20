@@ -186,7 +186,8 @@ It will provide detail manual and scripts to install all the other tools.
 
 ## Dotfile
 
-Configuration files of ice
+Configuration files that after installing ICE.
+Note that the follow tree is not the source code tree.
 
 	~
 	|-- .bashrc
