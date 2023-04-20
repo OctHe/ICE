@@ -9,6 +9,7 @@ So it would still use some GUI tools if terminal cannot correctly display some f
 The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
 It will provide detail manual and scripts to install all the other tools.
 
+
 ## Environment
 
 - Shell
@@ -110,7 +111,18 @@ It will provide detail manual and scripts to install all the other tools.
     - ag
     - ripgrep (rg)
 - Editor
-    - vim/neovim
+    - neovim
+        - Plugin manager
+        - UI
+        - Text
+        - Search
+        - Lint
+            - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+            - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+        - Completion
+        - Debug
+        - Version control system
+    - vim
         - Project CIM
     - emacs
     - micro
@@ -205,9 +217,12 @@ The following command should replace the default command (i.e., `plugins=(git)`)
 
 ## Editor
 
+ICE focuses on a terminal-based coding environment that uses vim/neovimm.
+It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
+
 ### Vim
 
-Vim and Neovim are based on Project CIM.
+The vim configuration implements common edit, language-specific features (provided by language servers), and debug modules.
 
 ### Micro
 
@@ -241,3 +256,4 @@ A general method in Linux is use xmodmap and the GUI helper xkeycaps.
 After change the keys in xkeycaps, write out the configuration file of xmodmap in the HOME diretory, and add the follows in the shell
 
     xmodmap ~/.xmodmap-`uname -n`
+
