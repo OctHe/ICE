@@ -10,10 +10,9 @@ if [[ ! -f /usr/share/bash-completion/bash_completion ]]; then
     echo "Please use packet manager to install it"
     echo "In OpenSUSE, run: "
     echo " sudo zypper install bash-completion"
-fi
-
-[[ -f /usr/share/bash-completion/bash_completion ]] && \
+else
     echo "bash-completion is installed"
+fi
 
 if [[ `uname -a` =~ "arch" ]]; then
     echo "Arch Linux"
