@@ -3,11 +3,13 @@
 *swp
 *swo
 
-# VIM netrw history file
+# Vim netrw history file
 .netrwhist
 
-# Plugin manager and installed plugins
-autoload/plug.vim
-plugged/
-lazy-lock.json
-.luarc.json
+# Vim Plugin manager and installed plugins
+vim/autoload/plug.vim
+vim/plugged/
+
+# nvim plugins
+nvim/lazy-lock.json
+nvim/.luarc.json
