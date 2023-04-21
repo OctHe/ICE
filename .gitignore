@@ -1,2 +1,15 @@
+# Backup files
 *~
-*.swp
+*swp
+*swo
+
+# Vim netrw history file
+.netrwhist
+
+# Vim Plugin manager and installed plugins
+vim/autoload/plug.vim
+vim/plugged/
+
+# nvim plugins
+nvim/lazy-lock.json
+nvim/.luarc.json

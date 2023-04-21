@@ -21,7 +21,7 @@ ICE_TOOL=(
     screen tmux
     top htop neofetch
     less watch
-    dict
+    dict cppman
 )
 ICE_NETWORK=(
     iw iwctl wpa_cli hostapd nmcli

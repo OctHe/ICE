@@ -74,3 +74,8 @@ The following commands require git-remote-add
     git pull <remote> <remotebranch:<localbranch>
                                         # Pull <remotebranch> from <remote> to <localbranch>
 
+## Git Prompt
+
+Git command for prompt in shell
+
+    git status -s | wc -l  # Get the number of modified file in git
