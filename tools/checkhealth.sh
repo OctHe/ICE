@@ -1,10 +1,13 @@
-#!/usr/bin/bash
+#!/bin/bash
 #
 # Check the environment of ICE
 #
 
 ICE_SHELL=(bash zsh fish ipython ipython3)
-ICE_PKT=(flatpak snap apt zypper pacman yay)
+ICE_PKT=(
+    flatpak snap apt zypper pacman yay
+    pip pip3
+)
 
 # screen has some unknown issue for nvim highlight.
 # Specifically, in OpenSUSE version of WSL, when open 
@@ -25,12 +28,13 @@ ICE_NETWORK=(
     ip tc
     xrdp 
     lynx nyxt vimb
-    )
+)
 ICE_EDITOR=(vim nvim emacs kate micro)
 ICE_FORMATTER=(
     astyle
 )
 ICE_COMPILER=(
+    ctags
     cmake make bear
     gcc g++ clang
     python python3
