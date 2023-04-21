@@ -6,12 +6,6 @@
 " 
 " =====================================================================
 
-" Vista: 
-if index(g:enable_text_plugins, 'vista') != -1
-    let g:vista_sidebar_width = 50
-
-endif
-
 " Nerdcomment: 
 if index(g:enable_text_plugins, 'nerdcomment') != -1
 endif

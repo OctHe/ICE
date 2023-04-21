@@ -36,7 +36,7 @@ let g:enable_ui_plugins = [
     \ ]
 
 let g:enable_lint_plugins = [
-    \ 'tagbar', 
+    \ 'vista', 
     \ 'ale', 
     \ ]
 
@@ -49,8 +49,6 @@ let g:enable_completion_plugins = [
 
 let g:enable_debug_plugins = [
     \ 'asyncrun',
-    \ 'genutils',
-    \ 'breakpts',
     \ 'mdview',
     \ 'vimtex',
     \ ]
