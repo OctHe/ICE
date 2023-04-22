@@ -18,6 +18,7 @@ ICE_TOOL=(
     vifm
     grep ack ag rg
     git
+    terminator
     screen tmux
     top htop neofetch
     less watch
