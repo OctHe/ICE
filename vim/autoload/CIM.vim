@@ -1,6 +1,6 @@
 " =====================================================================
 " 
-" Utilities of CIM
+" Utilities
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
@@ -24,7 +24,9 @@ function s:PluginList()
         \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
-        \ 'fzf'         : { 'link': 'junegunn/fzf',                 },
+        \ 'fzf'         : { 'link': 'junegunn/fzf',
+            \ 'plughook': { 'do': { -> fzf#install() }, },
+            \ },
         \ 'leaderf'     : { 'link': 'Yggdroot/LeaderF',  
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
@@ -39,8 +41,8 @@ function s:PluginList()
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
-        \ 'vimtex'      : { 'link' : 'lervag/vimtex',               },
-        \ 'mdview'      : {'link': 'iamcco/markdown-preview.nvim', 
+        \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
+        \ 'mdview'      : { 'link': 'iamcco/markdown-preview.nvim', 
             \ 'plughook': { 
                 \ 'do': { -> mkdp#util#install() }, 
                 \ 'for': ['markdown'] 
