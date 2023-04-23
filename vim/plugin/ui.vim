@@ -9,11 +9,6 @@
 " 
 " =====================================================================
 
-" Clear the default highlight of the Spell check
-highlight clear SpellBad
-" Set the highlight style as underline
-highlight SpellBad cterm=underline  
-
 " airline:
 if index(g:enable_ui_plugins, 'airline') != -1
     " Enhanced tabline

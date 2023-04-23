@@ -78,7 +78,7 @@ function! CIM#PluginInstall(plugins)
 
         " Specify a directory for plugins
         " - Avoid using standard Vim directory names like 'plugin'
-        call plug#begin('~/.vim/plugged')
+        call plug#begin('~/.local/share/vim/plugins')
 
         " Register vim-plug as a plugin to get the help doc.
         " Note that vim-plug (the plug.vim file) in this file is not working.
