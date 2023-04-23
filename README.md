@@ -1,10 +1,13 @@
 # Integrated Command-Line Environment (ICE)
 
-There are lots of useful integrated development environments (IDEs) that based on graphical user interfaces (GUI).
-They are awesome, but the command-line interface (CLI) also can meet the requirement in most time.
+The main advantage of command-line interface is the high efficiency compared to graphical user interface (GUI) since it only relies on keyboard as the input method.
+ICE wants to use keyboard as many as possible to obtain an efficient workflow like the command-line interface, but it built on desktop environment (like GNOME, KDE, or xfce etc.).
 
-The goal of ICE is to get as much work done in CLI as possible, not to replace GUI entirely.
-So it would still use some GUI tools if terminal cannot correctly display some formatted text (such as latex and markdown).
+    There are lots of useful integrated development environments (IDEs) that based on graphical user interfaces (GUI).
+    They are awesome, but the command-line interface (CLI) also can meet the requirement in most time.
+
+    The goal of ICE is to get as much work done in CLI as possible, not to replace GUI entirely.
+    So it would still use some GUI tools if terminal cannot correctly display some formatted text (such as latex and markdown).
 
 The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
 It will provide detail manual and scripts to install all the other tools.

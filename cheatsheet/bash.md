@@ -113,7 +113,7 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
     yes                 # Always yes
 
 
-## Bash script
+# Bash script
 
 ## Variables
 
@@ -178,7 +178,7 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
     -O file         # File belongs to user
     -G file         # File belongs to user group
 
-## NUMBERS
+## Numbers
 
     -lt         # Less than
     -le         # Less than or equal
@@ -187,7 +187,7 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
     -gt         # Greater than
     -ne         # Not equal
 
-# Input/Output redirector
+# Input/Output Redirector
 
     |           # Pipe
     < file      # Redirect input
