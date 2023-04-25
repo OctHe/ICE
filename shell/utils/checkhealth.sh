@@ -31,6 +31,7 @@ ICE_NETWORK=(
     lynx nyxt vimb
 )
 ICE_EDITOR=(vim nvim emacs kate micro)
+ICE_VIEWER=(evince zathura okular)
 ICE_FORMATTER=(
     astyle
 )
@@ -39,6 +40,7 @@ ICE_COMPILER=(
     cmake make bear
     gcc g++ clang
     python python3
+    xelatex xetex pdflatex pdftex bibtex latexmk
     ruby
     go
 )
@@ -66,6 +68,9 @@ ice_environment()
             ;;
         tool)
             prog_list=${ICE_TOOL[@]}
+            ;;
+        viewer)
+            prog_list=${ICE_VIEWER[@]}
             ;;
         editor)
             prog_list=${ICE_EDITOR[@]}
@@ -99,5 +104,5 @@ ice_environment()
   done
 }
 
-ice_environment shell package_manage tool network
+ice_environment shell package_manage tool network viewer
 ice_environment editor formatter compiler debugger server

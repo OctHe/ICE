@@ -8,8 +8,8 @@
 
 function s:PluginList()
 
-    " CIM give each plugin an alias
-    " link is the github link for each plugin
+    " Give each plugin an alias.
+    " link is the source of each plugin
     " plughook is the installation hook for vim-plugin
     " additional installation option can be added for different plugin
     " managers
@@ -65,7 +65,7 @@ function s:PluginList()
 
 endfunction
 
-function! CIM#PluginInstall(plugins)
+function! util#PluginInstall(plugins)
 
     let l:plugin_list = s:PluginList()
 

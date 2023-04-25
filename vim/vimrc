@@ -1,5 +1,5 @@
 " 
-" Vim run command file of CIM
+" Vim run command file of ICE
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " It includes options, commands, keymappings.
@@ -59,7 +59,7 @@ let g:enable_vcs_plugins = [
     \ 'gitgutter',
     \ ]
 
-call CIM#PluginInstall(
+call util#PluginInstall(
             \ g:enable_text_plugins + 
             \ g:enable_search_plugins + 
             \ g:enable_lint_plugins + 

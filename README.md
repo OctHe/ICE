@@ -186,6 +186,14 @@ It will provide detail manual and scripts to install all the other tools.
         - shellcheck
 - Version control
     - git
+- Text
+    - Engine
+        - latex
+        - texinfo
+    - format
+        - pdftex
+        - xetex
+        - bibtex
 
 ## Dotfile
 
@@ -350,9 +358,5 @@ Here is the list of the target projects:
     - *leetcode_unit*
 - VimScript/Lua
     - *CIM*
-- Latex
-    - *xelatex -> bibtex -> xelatex -> xelatex*
-    - *pdflatex -> bibtex -> pdflatex -> pdflatex*
-    - *xelatex*
 - Markdown
     - *MoreWireless*
