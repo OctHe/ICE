@@ -147,6 +147,12 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
     ${variable%%pattern}    # Remove Largest Suffix Pattern     
 
 
+    $0      # The program
+    $1      # The first parameter
+    $2      # The second parameter
+    $#      # The number of parameters
+    $@      # All parameters in a list
+
 # IF Condition
 
     test expression

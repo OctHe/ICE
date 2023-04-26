@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
     echo "~/.xmodmap-`uname -n` is not find"
