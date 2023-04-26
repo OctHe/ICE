@@ -78,4 +78,6 @@ The following commands require git-remote-add
 
 Git command for prompt in shell
 
-    git status -s | wc -l  # Get the number of modified file in git
+    git status --short | wc -l          # Get the number of modified file in git
+    git branch --show-current           # Show the name of current branch
+    git rev-list --count @{upstream}..HEAD  # Count commits that local branch have but upstream does not 
