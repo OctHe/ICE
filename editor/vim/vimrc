@@ -19,55 +19,29 @@ filetype indent on
 
 let g:plugin_manager = 'plug'
 
-let g:enable_text_plugins = [
+let g:enable_plugins = [
     \ 'surround',
     \ 'easymotion',
     \ 'commentary',
     \ 'nerdtree',
-    \ ]
-
-let g:enable_search_plugins = [
     \ 'fzf',
-    \ ]
-
-let g:enable_ui_plugins = [
     \ 'airline',
     \ 'rainbow',
-    \ ]
-
-let g:enable_lint_plugins = [
+    \ 'gruvbox',
     \ 'vista', 
     \ 'ale', 
-    \ ]
-
-let g:enable_completion_plugins = [
     \ 'autopair',
     \ 'ycm',
     \ 'vimsnippets',
     \ 'ultisnips',
-    \ ]
-
-let g:enable_debug_plugins = [
     \ 'asyncrun',
     \ 'mdview',
     \ 'vimtex',
-    \ ]
-
-
-let g:enable_vcs_plugins = [
     \ 'fugitive',
     \ 'gitgutter',
     \ ]
 
-call util#PluginInstall(
-            \ g:enable_text_plugins + 
-            \ g:enable_search_plugins + 
-            \ g:enable_lint_plugins + 
-            \ g:enable_completion_plugins +
-            \ g:enable_debug_plugins +
-            \ g:enable_vcs_plugins +
-            \ g:enable_ui_plugins 
-            \ )
+call util#PluginInstall( g:enable_plugins )
 
 " Options {{{1
 
@@ -115,15 +89,15 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-" CimHelp open the help file at the right side
-if !exists(":CimHelp")
-    command! -nargs=? -complete=help  CimHelp 
+" IceHelp open the help file at the right side
+if !exists(":IceHelp")
+    command! -nargs=? -complete=help  IceHelp 
         \ help <args> | if &filetype == 'help' | wincmd L 
         \ | vertical resize 90 | set number | endif
 
 endif
 
-augroup Cim
+augroup ICE
     au!
 
     " When editing a file, always jump to the last known cursor position.

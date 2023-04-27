@@ -9,7 +9,7 @@
 " =====================================================================
 
 " LeaderF: 
-if index(g:enable_search_plugins, 'leaderf') != -1
+if index(g:enable_plugins, 'leaderf') != -1
     let g:Lf_WindowPosition = 'popup'
 
     " Vista.vim:

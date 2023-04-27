@@ -8,7 +8,7 @@
 " =====================================================================
 
 " fugitive: provide common git options (diff, status, add, commit, etc)
-if index(g:enable_vcs_plugins, 'fugitive') != -1
+if index(g:enable_plugins, 'fugitive') != -1
 
     " g means git
     nnoremap <Leader>gdi :Git diff<CR><C-W>L
@@ -18,7 +18,7 @@ endif
 
 
 " gitgutter: shows diff sign on the left
-if index(g:enable_vcs_plugins, 'fugitive') != -1
+if index(g:enable_plugins, 'fugitive') != -1
 
     " g means git
     nnoremap <Leader>gd :GitGutterDiffOrig<CR>

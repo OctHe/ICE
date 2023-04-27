@@ -16,7 +16,7 @@
 " The backward search and forward search requires xdotool according to the
 " author
 "   sudo apt install xdotool 
-if index(g:enable_debug_plugins, 'vimtex') != -1
+if index(g:enable_plugins, 'vimtex') != -1
 
     " Plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
     " Note that most plugin managers will do this automatically.

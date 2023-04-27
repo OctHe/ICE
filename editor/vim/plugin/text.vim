@@ -7,11 +7,11 @@
 " =====================================================================
 
 " Nerdcomment: 
-if index(g:enable_text_plugins, 'nerdcomment') != -1
+if index(g:enable_plugins, 'nerdcomment') != -1
 endif
 
 " commentary:
-if index(g:enable_text_plugins, 'commentary') != -1
+if index(g:enable_plugins, 'commentary') != -1
   xmap <Leader>c  <Plug>Commentary
   nmap <Leader>c  <Plug>Commentary
   omap <Leader>c  <Plug>Commentary
@@ -20,7 +20,7 @@ if index(g:enable_text_plugins, 'commentary') != -1
 endif
 
 " NERDTree: 
-if index(g:enable_text_plugins, 'nerdtree') != -1
+if index(g:enable_plugins, 'nerdtree') != -1
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 

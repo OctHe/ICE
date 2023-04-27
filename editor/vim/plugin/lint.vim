@@ -9,7 +9,7 @@
 " =====================================================================
 
 " Vista: 
-if index(g:enable_lint_plugins, 'vista') != -1
+if index(g:enable_plugins, 'vista') != -1
     let g:vista_sidebar_width = 50
 
     " t means tag
@@ -18,7 +18,7 @@ if index(g:enable_lint_plugins, 'vista') != -1
 endif
 
 " Tagbar: 
-if index(g:enable_lint_plugins, 'tagbar') != -1
+if index(g:enable_plugins, 'tagbar') != -1
     " Automatic open Tagbar when open vim
     autocmd VimEnter *.{py,h,c} Tagbar
 
@@ -28,10 +28,10 @@ if index(g:enable_lint_plugins, 'tagbar') != -1
 endif
 
 " Ale:
-if index(g:enable_lint_plugins, 'ale') != -1
+if index(g:enable_plugins, 'ale') != -1
 
     " :ALEInfo can find the linters that are successfully enabled
-    let g:ale_linters = {
+    let g:aleers = {
     \   'python': ['pyflakes'],
     \}
 

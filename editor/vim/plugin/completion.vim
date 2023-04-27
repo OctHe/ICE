@@ -8,7 +8,7 @@
 " =====================================================================
 
 " Ycm: a powerful completion plugin based on LSP
-if index(g:enable_completion_plugins, 'ycm') != -1
+if index(g:enable_plugins, 'ycm') != -1
 
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_show_diagnostics_ui = 0
@@ -17,7 +17,7 @@ endif
 
 " Ultisnips: snippets engine that uses snippet database
 " vim-snippets: snippet database
-if index(g:enable_completion_plugins, 'ultisnips') != -1
+if index(g:enable_plugins, 'ultisnips') != -1
 
     " Trigger configuration. Change this to something other than <tab> if use one 
     " of the following:

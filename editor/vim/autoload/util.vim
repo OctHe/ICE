@@ -24,10 +24,12 @@ function s:PluginList()
         \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
-        \ 'fzf'         : { 'link': 'junegunn/fzf',
+        \ 'fzf'         : {
+            \ 'link': 'junegunn/fzf',
             \ 'plughook': { 'do': { -> fzf#install() }, },
             \ },
-        \ 'leaderf'     : { 'link': 'Yggdroot/LeaderF',  
+        \ 'leaderf'     : { 
+            \ 'link': 'Yggdroot/LeaderF',  
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
@@ -35,14 +37,16 @@ function s:PluginList()
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
-        \ 'ycm'         : { 'link': 'ycm-core/YouCompleteMe',  
+        \ 'ycm'         : { 
+            \ 'link': 'ycm-core/YouCompleteMe',  
             \ 'plughook': {'do': './install.py --clangd-completer'},
             \ },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'mdview'      : { 'link': 'iamcco/markdown-preview.nvim', 
+        \ 'mdview'      : { 
+            \ 'link': 'iamcco/markdown-preview.nvim', 
             \ 'plughook': { 
                 \ 'do': { -> mkdp#util#install() }, 
                 \ 'for': ['markdown'] 

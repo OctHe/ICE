@@ -9,7 +9,7 @@
 " =====================================================================
 
 " airline:
-if index(g:enable_ui_plugins, 'airline') != -1
+if index(g:enable_plugins, 'airline') != -1
     " Enhanced tabline
     let g:airline#extensions#tabline#enabled = 1
     " Show buffer number so I can quickly pick a buffer
@@ -17,12 +17,22 @@ if index(g:enable_ui_plugins, 'airline') != -1
 endif
 
 " airline:
-if index(g:enable_ui_plugins, 'rainbow') != -1
+if index(g:enable_plugins, 'rainbow') != -1
    " set to 0 if you want to enable it later via :RainbowToggle
    let g:rainbow_active = 1 
 endif
 
-" Builtin colorschemes: desert, peachpuff, quiet, slate
-" Colorschemes plugin: gruvbox
-colorscheme desert
+" gruvbox, and builtin colorschemes
+if index(g:enable_plugins, 'gruvbox') != -1
+    if has('gui_running')
+        set background=light
+    else
+        set background=dark
+    endif
+    colorscheme gruvbox
+else
+    " Builtin colorschemes: desert, peachpuff, quiet, slate
+    " Colorschemes plugin: gruvbox
+    colorscheme desert
+endif
 
