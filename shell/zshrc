@@ -36,8 +36,7 @@ eval `dircolors`
 
 # zsh completion (from manjaro zsh configuration)
 # Run 'run-help zshmodules' to get help for zstyle
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
-zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'   # Coomplete partial words
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'   # Coomplete partial words
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 
 # History file
