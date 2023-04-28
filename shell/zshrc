@@ -10,7 +10,8 @@
 #     ln -s /absolute/path/to/zshrc ~/.zshrc
 #
 
-# Options
+# Options. Get help by running
+#   run-help zshoptions
 setopt nobeep
 setopt extended_history         # Record timestamp of command
 setopt hist_ignore_dups         # Ignore duplicated commands history list
@@ -34,6 +35,7 @@ autoload -U colors && colors 		# Functions to easily use colors
 eval `dircolors`
 
 # zsh completion (from manjaro zsh configuration)
+# Run 'run-help zshmodules' to get help for zstyle
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' # Case insensitive tab completion
 zstyle ':completion:*' matcher-list 'r:|=*' 'l:|=* r:|=*'   # Coomplete partial words
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
