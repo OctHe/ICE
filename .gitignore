@@ -12,4 +12,6 @@ vim/plugged/
 
 # nvim plugins
 nvim/lazy-lock.json
-nvim/.luarc.json
+
+# Language server local file
+.luarc.json

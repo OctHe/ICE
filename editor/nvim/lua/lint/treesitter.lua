@@ -6,7 +6,9 @@ end
 
 treesitter.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "regex", "markdown"},
+  -- compilation of treesitter-bash requires g++. Install it via system-level package manager
+  -- For example: sudo zypper install gcc-g++
+  ensure_installed = { "c", "lua", "bash", "vim", "vimdoc", "query", "regex", "markdown"},
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
