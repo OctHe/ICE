@@ -14,7 +14,7 @@ ICE_PKT=(
 # nvim in screen, all the highlight cannot correctly
 # display.
 ICE_TOOL=(
-    find fd
+    find fdfind
     vifm
     grep ack ag rg
     git
