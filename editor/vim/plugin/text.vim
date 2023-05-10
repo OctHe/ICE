@@ -53,3 +53,10 @@ if index(g:enable_plugins, 'nerdtree') != -1
 
 endif
 
+" Easymotion:
+if index(g:enable_plugins, 'easymotion') != -1
+    map f <Plug>(easymotion-f)
+    map F <Plug>(easymotion-F)
+    map t <Plug>(easymotion-t)
+    map T <Plug>(easymotion-T)
+endif
