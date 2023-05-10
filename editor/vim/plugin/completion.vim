@@ -13,6 +13,9 @@ if index(g:enable_plugins, 'ycm') != -1
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_show_diagnostics_ui = 0
 
+    " Clear the YCM blacklist, so it works for all files
+    let g:ycm_filetype_blacklist = {}
+
 endif
 
 " Ultisnips: snippets engine that uses snippet database
