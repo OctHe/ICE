@@ -37,21 +37,9 @@ It will install all the other tools.
     - dict
     - man
     - info
-- Desktop
-    - GNOME
-        - GNOME session
-        - GNOME Shell
-        - gdm (GNOME Display Manager)
-    - KDE
-    - LXQT
-        - Openbox
-    - Xfce
-        - LightDM
-    - Tile window manager
-        - i3
-        - Termial multiplex
-            - screen
-            - tmux
+- Termial multiplex
+    - screen
+    - tmux
 - Network
     - netlink
         - iw
