@@ -16,7 +16,7 @@ if index(g:enable_plugins, 'airline') != -1
     let g:airline#extensions#tabline#buffer_nr_show = 1
 endif
 
-" airline:
+" rawnbow:
 if index(g:enable_plugins, 'rainbow') != -1
    " set to 0 if you want to enable it later via :RainbowToggle
    let g:rainbow_active = 1 

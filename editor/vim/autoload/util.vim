@@ -6,15 +6,14 @@
 " 
 " =====================================================================
 
-function s:PluginList()
+function! util#PluginInstall(plugins)
 
-    " Give each plugin an alias.
-    " link is the source of each plugin
-    " plughook is the installation hook for vim-plugin
-    " additional installation option can be added for different plugin
+    " l:plugin_list is a dict that contains essential keys for plugins {{{1
+    " link: The source of each plugin
+    " plughook: The installation hook for vim-plugin
+    " Additional installation option can be added for different plugin
     " managers
-    " {{{1
-    let l:plugin_installation = {
+    let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
@@ -43,7 +42,6 @@ function s:PluginList()
             \ },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
-        \ 'breakpts'    : { 'link': 'albfan/vim-breakpts',          },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
         \ 'mdview'      : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
@@ -60,19 +58,11 @@ function s:PluginList()
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
         \ 'vim-smoothie': { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
-        \ 'vimux'       : { 'link': 'preservim/vimux',              },
+        \ 'context'     : { 'link': 'wellle/context.vim',            },
         \ }
 
     " }}}1
     
-    return l:plugin_installation
-
-endfunction
-
-function! util#PluginInstall(plugins)
-
-    let l:plugin_list = s:PluginList()
-
     " vim-plug is the plugin manager {{{1
     if g:plugin_manager == 'plug'
 

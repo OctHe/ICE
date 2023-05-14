@@ -28,6 +28,7 @@ let g:enable_plugins = [
     \ 'airline',
     \ 'rainbow',
     \ 'gruvbox',
+    \ 'context',
     \ 'vista', 
     \ 'ale', 
     \ 'autopair',
