@@ -46,7 +46,4 @@ if index(g:enable_plugins, 'vimtex') != -1
     " following line. The default is usually fine and is the symbol "\".
     let maplocalleader = " "
 
-    " Automatically open quickfix when have errors
-    let g:vimtex_quickfix_mode = 1
-
 endif
