@@ -1,12 +1,7 @@
 # Integrated Command-Line Environment (ICE)
 
-ICE is the configuration of multiple tools with command-line.
+ICE, which is the short of integrated command-line environment, is the configuration of multiple tools with command-line.
 ICE wants to use keyboard as many as possible to obtain an efficient workflow.
-The main advantage of command-line interface is the high efficiency compared to graphical user interface (GUI) since it only relies on keyboard as the input method.
-We argue that the command-line interface (CLI) also can meet the requirement in most time.
-
-The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
-It will install all the other tools.
 
 ## Environment
 
