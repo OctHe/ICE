@@ -1,4 +1,4 @@
-## Editor
+# Editor
 
 ICE focuses on a terminal-based coding environment that uses vim/neovim.
 It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
@@ -89,14 +89,12 @@ It also contains other editors.
         - xetex
         - bibtex
 
-
-
-### Vim
+## Vim
 
 The vim configuration implements common edit, language-specific features (provided by language servers), and debug modules.
 
 
-#### Text
+### Text
 
 The following plugins are used to support the common edit
 - [NERDTree](https://github.com/preservim/nerdtree)
@@ -105,14 +103,18 @@ The following plugins are used to support the common edit
 - [vim-commentary](https://github.com/tpope/vim-commentary)
 - [vim-surround](https://github.com/tpope/vim-surround)
 
-#### UI
+### UI
 
 - [vim-airline](https://github.com/vim-airline/vim-airline)
 
-#### Lint and Completion
+### Lint and Completion
 
-    sudo apt install clangd
-    sudo pip3 install pyflacks
+YouCompleteMe, Markdown-preview, and UltiSnip require python3 support in vim.
+In addition, YouCompleteMe also relies on python3 packet.
+It can be installed by
+
+    sudo apt install python3-dev clangd make    # clangd is the backend of YcuCompleteMe
+    sudo pip3 install pyflacks                  # If pip3 is not installed, install it with sudo apt install python3-pip
 
 clangd requires [bear](https://github.com/rizsotto/Bear) to automatically generate `complie_commands.json` file for make-based projects.
 To install it
@@ -123,10 +125,10 @@ As the client, CIM uses [ALE](https://github.com/dense-analysis/ale) plugin inst
 
 - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
 
-#### Debug
+### Debug
 
 
-### Micro
+## Micro Editor
 
 Micro is a easily used terminal editor compared to Vim/Emacs.
 It provides intuitive key bindings as well as modern build-in features including command line, auto-pair and linter.
@@ -137,7 +139,7 @@ Install it in OpenSUSE
 
 The configuration files are in `~/.config/micro/*`
 
-#### Plugins
+### Plugins
 
 The linter requires out-of-box support for each language (see, `help linter` in the command line mode).
 
