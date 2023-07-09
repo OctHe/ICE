@@ -28,6 +28,8 @@ alias ....='../../..'
 alias .....='../../../..'
 alias ......='../../../../..'
 
+alias gs='git status'
+alias ga='git add'
 alias rgrep='grep --color=always --exclude-dir=.git -rn'
 
 # Autoload functions

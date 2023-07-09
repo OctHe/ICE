@@ -1,4 +1,4 @@
-## Shell
+# Shell
 
 In Ubuntu/Debian, the follow command can be used to install packages
 
@@ -6,44 +6,32 @@ In Ubuntu/Debian, the follow command can be used to install packages
 
 In OpenSUSE, it uses `zypper` as the manager, so 
 
-    sudo zypper install git
+    sudo zypper install zsh git
 
-In the above command, only git is installed.
+## Terminal emulator
 
-- Shell
-    - Bash
-        - Prompt
-            - Fold directory
-            - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
-        - Alias: ls, git
-        - Color
-        - History
-        - Keybinding: bulit-in `bind`
-        - Completion
-            - Bash-completion
-        - Help: Built-in `help`
-    - zsh
-        - Prompt
-            - common
-            - git
-                - (branch, branch tracking|local status)
-        - Alias: ls, git
-        - Color
-        - History
-        - Keybinding (bindkey)
-            - sudo, man, less
-        - Directory
-            - z
-            - wd
-        - Completion
-            - [gitignore](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/gitignore/gitignore.plugin.zsh)
-            - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-            - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
-        - Help: Built-in `run-help`
-    - Python
-        - ipython
+The terminal emulator provides color and font support for shell.
 
-### Bash and bash-it
+For example, the [agnoster theme](https://github.com/agnoster/agnoster-zsh-theme) of zsh requires the powerline font.
+To install it, run
+
+    sudo apt install fonts-powerline
+
+## bash
+
+- bash
+    - Prompt
+        - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
+    - Alias: ls, git
+    - History
+    - Keybinding: bulit-in `bind`
+    - Directory
+        - Fold directory
+    - Completion
+        - Bash-completion
+    - Help: Built-in `help`
+
+### bash-it
 
 Bash is the default shell for most Linux distribution.
 The first things for ICE is to config a graceful shell environment with bash-it.
@@ -52,15 +40,30 @@ The first things for ICE is to config a graceful shell environment with bash-it.
     cd .bash_it
     ~/.bash_it/install.sh       # Active bash-it
 
-### zsh and oh-my-zsh
+## zsh
+- zsh
+    - Prompt
+        - git: (branch, branch tracking|local status)
+    - Alias: ls, git
+    - History
+    - Keybinding: built-in `bindkey`
+    - Directory
+        - z
+        - wd
+        - Fold directory
+    - Completion
+        - [gitignore](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/gitignore/gitignore.plugin.zsh)
+        - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+        - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
+    - Help: Built-in `run-help`
+
+### oh-my-zsh
 
 ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh.
 ICE installs zsh and oh-my-zsh with the following
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     source ~/.zshrc     # Activate oh-my-zsh
-
-#### Plugin
 
 The useful plugins of oh-my-zsh include git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git), zsh-command-time.
 Some of them is pre-installed with oh-my-zsh, but the following plugins are required to install from github.
@@ -72,4 +75,8 @@ Some of them is pre-installed with oh-my-zsh, but the following plugins are requ
 The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
 
     plugins=(git sudo z wd colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-command-time)
+
+## python
+- Python
+    - ipython
 
