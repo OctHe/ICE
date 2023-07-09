@@ -1,0 +1,1 @@
+/home/hesy_deb/.ice/shell/bashrc

@@ -19,18 +19,17 @@ setopt hist_ignore_space        # Ignore commands that start with space
 setopt hist_verify              # Show command with history expansion to user before running it
 setopt complete_in_word         # Allow completion from within a word/phrase
 setopt prompt_subst             # Make PROMPT works right
-# Aliases
-alias l='ls --color=always -lh'
-alias ls='ls --color=always'
-alias ll='ls --color=always -alh'
+
+# Alias
+local ice=~/.ice
+source ${ice}/shell/Alias.sh
+
+# zsh-specific alias
 alias ...='../..'
 alias ....='../../..'
 alias .....='../../../..'
 alias ......='../../../../..'
 
-alias gs='git status'
-alias ga='git add'
-alias rgrep='grep --color=always --exclude-dir=.git -rn'
 
 # Autoload functions
 autoload -U compinit && compinit	# Completion initalization 
