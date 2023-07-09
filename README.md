@@ -1,7 +1,8 @@
 # Integrated Command-Line Environment (ICE)
 
+ICE is the configuration of multiple tools with command-line.
+ICE wants to use keyboard as many as possible to obtain an efficient workflow.
 The main advantage of command-line interface is the high efficiency compared to graphical user interface (GUI) since it only relies on keyboard as the input method.
-ICE wants to use keyboard as many as possible to obtain an efficient workflow like the command-line interface, but it built on desktop environment (like GNOME, KDE, or xfce etc.).
 We argue that the command-line interface (CLI) also can meet the requirement in most time.
 
 The prerequisites of ICE is bash and one of the system-level package managers (e.g., apt, zypper, etc.).
@@ -107,12 +108,12 @@ Note that the follow tree is not the source code tree.
 	~
 	|-- .bashrc
 	|-- .zshrc
+    |-- .cshrc
 	|-- .vim/
 	|-- .config/
 		|-- nvim/
 		|-- micro/
         |-- terminator/config
-    |-- .share/nvim/
 	|--.local/
 		|-- bin/
 			|-- micro
