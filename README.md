@@ -113,15 +113,9 @@ Note that the follow tree is not the source code tree.
 		|-- bin/
 			|-- micro
 
-## Swap keys in Linux
+## Swap keys
 
 Usually, someone wants to swap Caplock and left Ctrl since the latter is more useful.
-In Ubuntu, download tweak to swap them in GUI.
-
-    sudo apt install gnome-tweaks
-
-This method is only useful in gnome-based GUI.
-Windows has a similar tool that named as [PowerToys](https://github.com/microsoft/PowerToys).
 A shell method is use xmodmap and the GUI helper xkeycaps.
 After change the keys in xkeycaps, write out the configuration file of xmodmap in the HOME diretory, and add the follows in the shell
 
