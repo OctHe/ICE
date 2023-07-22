@@ -17,6 +17,7 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
+let g:plugin_dir = '~/.local/share/vim/plugins'
 let g:plugin_manager = 'plug'
 
 let g:enable_plugins = [

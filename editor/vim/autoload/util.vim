@@ -45,10 +45,7 @@ function! util#PluginInstall(plugins)
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
         \ 'mdview'      : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
-            \ 'plughook': { 
-                \ 'do': { -> mkdp#util#install() }, 
-                \ 'for': ['markdown'] 
-                \ }
+            \ 'plughook': {  'do': { -> mkdp#util#install() }, }
             \ },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
@@ -56,9 +53,9 @@ function! util#PluginInstall(plugins)
         \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
-        \ 'vim-smoothie': { 'link': 'psliwka/vim-smoothie',         },
+        \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
-        \ 'context'     : { 'link': 'wellle/context.vim',            },
+        \ 'context'     : { 'link': 'wellle/context.vim',           },
         \ }
 
     " }}}1
@@ -74,19 +71,23 @@ function! util#PluginInstall(plugins)
 
         " Specify a directory for plugins
         " - Avoid using standard Vim directory names like 'plugin'
-        call plug#begin('~/.local/share/vim/plugins')
+        call plug#begin(g:plugin_dir)
 
         " Register vim-plug as a plugin to get the help doc.
         " Note that vim-plug (the plug.vim file) in this file is not working.
         Plug 'junegunn/vim-plug'
 
-        " Install plugins
         for plugin in a:plugins
+            " Load plugins
             if exists('l:plugin_list.'..plugin..'.plughook')
+                let l:plugin_list[plugin].plughook['as'] = plugin
                 Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plughook
             else
-                Plug l:plugin_list[plugin].link
+                Plug l:plugin_list[plugin].link, {'as': plugin}
             endif
+
+            " Config loaded plugins
+            
         endfor
 
         " Initialize plugin system
