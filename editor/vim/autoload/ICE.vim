@@ -6,7 +6,7 @@
 " 
 " =====================================================================
 
-function! util#PluginInstall(plugins)
+function! ICE#PluginInstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
     " link: The source of each plugin
@@ -87,6 +87,7 @@ function! util#PluginInstall(plugins)
             endif
 
             " Config loaded plugins
+            call ICE#Config#{plugin}()
             
         endfor
 

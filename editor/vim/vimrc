@@ -17,7 +17,7 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
-let g:plugin_dir = '~/.local/share/vim/plugins'
+let g:plugin_dir = '~/.local/share/vim/plugins/'
 let g:plugin_manager = 'plug'
 
 let g:enable_plugins = [
@@ -43,7 +43,7 @@ let g:enable_plugins = [
     \ 'gitgutter',
     \ ]
 
-call util#PluginInstall( g:enable_plugins )
+call ICE#PluginInstall( g:enable_plugins )
 
 " Options {{{1
 
@@ -91,15 +91,15 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-" IceHelp open the help file at the right side
-if !exists(":IceHelp")
+" ICEHelp open the help file at the right side
+if !exists(":ICEHelp")
     command! -nargs=? -complete=help  IceHelp 
         \ help <args> | if &filetype == 'help' | wincmd L 
         \ | vertical resize 90 | set number | endif
 
 endif
 
-augroup ICE
+augroup ICE_Start
     au!
 
     " When editing a file, always jump to the last known cursor position.
@@ -135,4 +135,19 @@ nnoremap <Leader>m :verbose map
 
 " }}}1
 
+" UI {{{1
+" gruvbox, and builtin colorschemes
+    if index(g:enable_plugins, 'gruvbox') != -1
+        if has('gui_running')
+            set background=light
+        else
+            set background=dark
+        endif
+        colorscheme gruvbox
+    else
+        " Builtin colorschemes: desert, peachpuff, quiet, slate
+        " Colorschemes plugin: gruvbox
+        colorscheme desert
+    endif
+" }}}
 " vim: set sw=4 sts=4 et fdm=marker:
