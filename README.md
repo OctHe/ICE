@@ -123,19 +123,3 @@ After change the keys in xkeycaps, write out the configuration file of xmodmap i
 
 xmodmap would trigger the key swap when open a terminal.
 
-## Projects
-
-The target languages include C/C++, Python, Lua, vimscript/vim9script, bash/zsh, Latex, Markdown.
-
-Here is the list of the target projects:
-- C/C++
-    - *Linux kernel*
-    - *iw*
-    - *xv6*
-    - *GNURadio*
-- Python
-    - *leetcode_unit*
-- VimScript/Lua
-    - *CIM*
-- Markdown
-    - *MoreWireless*
