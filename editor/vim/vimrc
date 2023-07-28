@@ -135,6 +135,10 @@ nnoremap <Leader>m :verbose map
 
 " }}}1
 
+
+" Config load plugins
+call ICE#PluginConfig( g:enable_plugins )
+
 " UI {{{1
 " gruvbox, and builtin colorschemes
     if index(g:enable_plugins, 'gruvbox') != -1

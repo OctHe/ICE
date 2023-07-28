@@ -15,14 +15,11 @@ function! ICE#PluginInstall(plugins)
     " managers
     let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
-        \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
-        \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
-        \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
-        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
-        \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
-        \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
+        \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
+        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
+        \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'fzf'         : {
             \ 'link': 'junegunn/fzf',
             \ 'plughook': { 'do': { -> fzf#install() }, },
@@ -32,14 +29,17 @@ function! ICE#PluginInstall(plugins)
             \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
+        \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
+        \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
+        \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
-        \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
-        \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'ycm'         : { 
             \ 'link': 'ycm-core/YouCompleteMe',  
             \ 'plughook': {'do': './install.py --clangd-completer'},
             \ },
+        \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
+        \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
@@ -49,13 +49,13 @@ function! ICE#PluginInstall(plugins)
             \ },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
-        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
-        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
         \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
         \ 'context'     : { 'link': 'wellle/context.vim',           },
+        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
+        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
         \ }
 
     " }}}1
@@ -86,9 +86,6 @@ function! ICE#PluginInstall(plugins)
                 Plug l:plugin_list[plugin].link, {'as': plugin}
             endif
 
-            " Config loaded plugins
-            call ICE#Config#{plugin}()
-            
         endfor
 
         " Initialize plugin system
@@ -97,6 +94,18 @@ function! ICE#PluginInstall(plugins)
     endif
     " }}}1
     
+endfunction
+
+function! ICE#PluginConfig(plugins)
+
+        " Config loaded plugins
+        for plugin in a:plugins
+            if isdirectory(expand(g:plugin_dir..plugin))
+                call ICE#Config#{plugin}()
+            endif
+        endfor
+        call ICE#Config#nerdtree()
+
 endfunction
 
 " vim: set sw=4 sts=4 et fdm=marker:
