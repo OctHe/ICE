@@ -1,7 +1,11 @@
-# Integrated Command-Line Environment (ICE)
+# Graphicless
 
-ICE, which is the short of integrated command-line environment, is the configuration of multiple tools with command-line.
-ICE wants to use keyboard as many as possible to obtain an efficient workflow.
+Graphic user interface (GUI) is one of the most resource-intensive modules in a desktop operating system.
+However, in most of the time, a command line can support lots of work flows.
+Graphicless uses command-line tools as many as possible.
+For example, it chooses vim/neovim as the editor by default, and give configuration for multiple shells.
+It will support lots of other command-line tools in the future.
+Note that graphicless does not means we only uses command-line tool, since some efficient tools rely on GUI, including web browser and PDF viewer.
 
 ## Environment
 
@@ -97,7 +101,7 @@ ICE wants to use keyboard as many as possible to obtain an efficient workflow.
 
 ## Dotfile
 
-Configuration files that after installing ICE.
+Configuration files that after installing Graphicless.
 Note that the follow tree is not the source code tree.
 
 	~

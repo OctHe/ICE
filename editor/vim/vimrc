@@ -1,8 +1,8 @@
 " 
-" Vim run command file of ICE
+" Vim run command file
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
-" It includes options, commands, keymappings.
+" It includes options, commands, keymappings as well as plugins
 " 
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -43,7 +43,7 @@ let g:enable_plugins = [
     \ 'gitgutter',
     \ ]
 
-call ICE#PluginInstall( g:enable_plugins )
+call Graphicless#PluginInstall( g:enable_plugins )
 
 " Options {{{1
 
@@ -91,15 +91,15 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-" ICEHelp open the help file at the right side
-if !exists(":ICEHelp")
-    command! -nargs=? -complete=help  IceHelp 
+" GLHelp open the help file at the right side
+if !exists(":GLHelp")
+    command! -nargs=? -complete=help  GLHelp 
         \ help <args> | if &filetype == 'help' | wincmd L 
         \ | vertical resize 90 | set number | endif
 
 endif
 
-augroup ICE_Start
+augroup GLStart
     au!
 
     " When editing a file, always jump to the last known cursor position.
@@ -137,7 +137,7 @@ nnoremap <Leader>m :verbose map
 
 
 " Config load plugins
-call ICE#PluginConfig( g:enable_plugins )
+call Graphicless#PluginConfig( g:enable_plugins )
 
 " UI {{{1
 " gruvbox, and builtin colorschemes

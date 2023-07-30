@@ -6,7 +6,7 @@
 " 
 " =====================================================================
 
-function! ICE#PluginInstall(plugins)
+function! Graphicless#PluginInstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
     " link: The source of each plugin
@@ -96,15 +96,15 @@ function! ICE#PluginInstall(plugins)
     
 endfunction
 
-function! ICE#PluginConfig(plugins)
+function! Graphicless#PluginConfig(plugins)
 
         " Config loaded plugins
         for plugin in a:plugins
             if isdirectory(expand(g:plugin_dir..plugin))
-                call ICE#Config#{plugin}()
+                call Graphicless#Config#{plugin}()
             endif
         endfor
-        call ICE#Config#nerdtree()
+        call Graphicless#Config#nerdtree()
 
 endfunction
 

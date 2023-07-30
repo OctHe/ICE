@@ -3,15 +3,15 @@
 # Efficient programs for work flow
 #
 
-ICE_SHELL=(bash csh zsh fish ipython ipython3)
+GRAPHICLESS_SHELL=(bash csh zsh fish ipython ipython3)
 
-ICE_PKT=(
+GRAPHICLESS_PKT=(
     flatpak snap apt zypper pacman yay
     pip pip3
 )
 
 # screen and tmux need to set true color
-ICE_TOOL=(
+GRAPHICLESS_TOOL=(
     find fdfind
     vifm
     grep ack ag rg
@@ -23,22 +23,22 @@ ICE_TOOL=(
     dict cppman
 )
 
-ICE_NETWORK=(
+GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd nmcli
     ip tc
     xrdp 
     lynx nyxt vimb
 )
 
-ICE_EDITOR=(vim nvim emacs kate micro)
+GRAPHICLESS_EDITOR=(vim nvim emacs kate micro)
 
-ICE_VIEWER=(evince zathura okular)
+GRAPHICLESS_VIEWER=(evince zathura okular)
 
-ICE_FORMATTER=(
+GRAPHICLESS_FORMATTER=(
     astyle
 )
 
-ICE_COMPILER=(
+GRAPHICLESS_COMPILER=(
     ctags
     cmake make bear ccache
     gcc g++ clang
@@ -49,48 +49,48 @@ ICE_COMPILER=(
 )
 
 # ddd is the GUI of gdb
-ICE_DEBUGGER=(gdb ddd lldb)
-ICE_LS=(
+GRAPHICLESS_DEBUGGER=(gdb ddd lldb)
+GRAPHICLESS_LS=(
     clangd ccls
     shellcheck
     lua-language-server
 )
 
-ice_environment()
+graphicless_environment()
 {
   for arg in $@
   do
     echo ${arg}
     case ${arg} in
         shell)
-            prog_list=${ICE_SHELL[@]}
+            prog_list=${GRAPHICLESS_SHELL[@]}
             ;;
         package_manage)
-            prog_list=${ICE_PKT[@]}
+            prog_list=${GRAPHICLESS_PKT[@]}
             ;;
         network)
-            prog_list=${ICE_NETWORK[@]}
+            prog_list=${GRAPHICLESS_NETWORK[@]}
             ;;
         tool)
-            prog_list=${ICE_TOOL[@]}
+            prog_list=${GRAPHICLESS_TOOL[@]}
             ;;
         viewer)
-            prog_list=${ICE_VIEWER[@]}
+            prog_list=${GRAPHICLESS_VIEWER[@]}
             ;;
         editor)
-            prog_list=${ICE_EDITOR[@]}
+            prog_list=${GRAPHICLESS_EDITOR[@]}
             ;;
         server)
-            prog_list=${ICE_LS[@]}
+            prog_list=${GRAPHICLESS_LS[@]}
             ;;
         formatter)
-            prog_list=${ICE_FORMATTER[@]}
+            prog_list=${GRAPHICLESS_FORMATTER[@]}
             ;;
         compiler)
-            prog_list=${ICE_COMPILER[@]}
+            prog_list=${GRAPHICLESS_COMPILER[@]}
             ;;
         debugger)
-            prog_list=${ICE_DEBUGGER[@]}
+            prog_list=${GRAPHICLESS_DEBUGGER[@]}
             ;;
         *)
           ;;
@@ -132,7 +132,7 @@ bash_environment()
     fi
 }
 
-ice_environment shell package_manage tool network viewer
-ice_environment editor formatter compiler debugger server
+graphicless_environment shell package_manage tool network viewer
+graphicless_environment editor formatter compiler debugger server
 
 bash_environment

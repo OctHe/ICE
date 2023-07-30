@@ -34,7 +34,7 @@ To install it, run
 ### bash-it
 
 Bash is the default shell for most Linux distribution.
-The first things for ICE is to config a graceful shell environment with bash-it.
+The first things for Graphicless is to config a graceful shell environment with bash-it.
 
     git clone https://github.com/Bash-it/bash-it.git ~/.bash_it
     cd .bash_it
@@ -59,8 +59,8 @@ The first things for ICE is to config a graceful shell environment with bash-it.
 
 ### oh-my-zsh
 
-ICE default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh.
-ICE installs zsh and oh-my-zsh with the following
+Graphicless default uses the community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh.
+Graphicless installs zsh and oh-my-zsh with the following
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     source ~/.zshrc     # Activate oh-my-zsh

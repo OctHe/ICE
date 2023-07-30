@@ -11,15 +11,15 @@
 " Text: These plugins are related to the basic edit for text files {{{1
 
 " Surround
-function! ICE#Config#surround()
+function! Graphicless#Config#surround()
 endfunction
 
 " Auto-pair
-function! ICE#Config#autopair()
+function! Graphicless#Config#autopair()
 endfunction
 
 " Easymotion:
-function! ICE#Config#easymotion()
+function! Graphicless#Config#easymotion()
     map f <Plug>(easymotion-f)
     map F <Plug>(easymotion-F)
     map t <Plug>(easymotion-t)
@@ -27,14 +27,14 @@ function! ICE#Config#easymotion()
 endfunction
 
 " Nerdcomment: 
-function! ICE#Config#nerdcomment()
+function! Graphicless#Config#nerdcomment()
 endfunction
 
-function! ICE#Config#tcomment()
+function! Graphicless#Config#tcomment()
 endfunction
 
 " commentary:
-function! ICE#Config#commentary()
+function! Graphicless#Config#commentary()
     xmap <Leader>c  <Plug>Commentary
     nmap <Leader>c  <Plug>Commentary
     omap <Leader>c  <Plug>Commentary
@@ -47,11 +47,11 @@ endfunction
 " Search: Plugins to search in projects {{{1
 
 " fzf:
-function! ICE#Config#fzf()
+function! Graphicless#Config#fzf()
 endfunction
 
 " LeaderF: 
-function! ICE#Config#leaderf()
+function! Graphicless#Config#leaderf()
     let g:Lf_WindowPosition = 'popup'
 
     " Vista.vim:
@@ -63,7 +63,7 @@ function! ICE#Config#leaderf()
 
 endfunction
 
-function! ICE#Config#ctrlp()
+function! Graphicless#Config#ctrlp()
 endfunction
 
 " NERDTree: File explore (or call it file searcher) {{{2
@@ -84,7 +84,7 @@ function! s:PreventReplacingNERDTree()
 
 endfunction
 
-function! ICE#Config#nerdtree()
+function! Graphicless#Config#nerdtree()
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 
@@ -105,7 +105,7 @@ endfunction
 
 " Lint: Static analysis plugins {{{1
 " Vista: 
-function! ICE#Config#vista()
+function! Graphicless#Config#vista()
     let g:vista_sidebar_width = 50
 
     " t means tag
@@ -114,7 +114,7 @@ function! ICE#Config#vista()
 endfunction
 
 " Tagbar: 
-function! ICE#Config#tagbar()
+function! Graphicless#Config#tagbar()
     " Automatic open Tagbar when open vim
     autocmd VimEnter *.{py,h,c} Tagbar
 
@@ -124,7 +124,7 @@ function! ICE#Config#tagbar()
 endfunction
 
 " ALE:
-function! ICE#Config#ale()
+function! Graphicless#Config#ale()
 
     " :ALEInfo can find the linters that are successfully enabled
     let g:aleers = {
@@ -133,13 +133,13 @@ function! ICE#Config#ale()
 
 endfunction
 
-function! ICE#Config#neomake()
+function! Graphicless#Config#neomake()
 endfunction
 " }}}1
 
 " Completion: Completion and snippet plugins {{{1
 " YCM: a powerful completion plugin based on LSP
-function! ICE#Config#ycm()
+function! Graphicless#Config#ycm()
 
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_show_diagnostics_ui = 0
@@ -150,12 +150,12 @@ function! ICE#Config#ycm()
 endfunction
 
 " vim-snippets: It saves multiple snippets
-function! ICE#Config#vimsnippets()
+function! Graphicless#Config#vimsnippets()
 endfunction
 
 " Ultisnips: snippets engine that uses snippet database
 " vim-snippets: snippet database
-function! ICE#Config#ultisnips()
+function! Graphicless#Config#ultisnips()
 
     " Trigger configuration. Change this to something other than <tab> if use one 
     " of the following:
@@ -173,11 +173,11 @@ endfunction
 " Compiler: These plugins can easily compile, debug, compile, and run the code {{{1
 
 " genutils: It gives general functions that some plugins rely on
-function! ICE#Config#genutils()
+function! Graphicless#Config#genutils()
 endfunction
 
 " asyncrun
-function! ICE#Config#asyncrun()
+function! Graphicless#Config#asyncrun()
 endfunction
 
 " vimtex: latex plugin for vim. It relies on texlive
@@ -185,7 +185,7 @@ endfunction
 " The backward search and forward search requires xdotool according to the
 " author
 "   sudo apt install xdotool 
-function! ICE#Config#vimtex()
+function! Graphicless#Config#vimtex()
 
     " Plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
     " Note that most plugin managers will do this automatically.
@@ -217,13 +217,13 @@ function! ICE#Config#vimtex()
 
 endfunction
 
-function! ICE#Config#mdview()
+function! Graphicless#Config#mdview()
 endfunction
 " }}}1
 
 " VCS: Version control system {{{1
 " fugitive: provide common git options (diff, status, add, commit, etc)
-function! ICE#Config#fugitive()
+function! Graphicless#Config#fugitive()
 
     " g means git
     nnoremap <Leader>gdi :Git diff<CR><C-W>L
@@ -232,7 +232,7 @@ function! ICE#Config#fugitive()
 endfunction
 
 " gitgutter: shows diff sign on the left
-function! ICE#Config#gitgutter()
+function! Graphicless#Config#gitgutter()
 
     " g means git
     nnoremap <Leader>gd :GitGutterDiffOrig<CR>
@@ -242,7 +242,7 @@ endfunction
 
 " UI: Colorscheme, status line, and UI-related plugins {{{1
 " airline:
-function! ICE#Config#airline()
+function! Graphicless#Config#airline()
     " Enhanced tabline
     let g:airline#extensions#tabline#enabled = 1
     " Show buffer number so I can quickly pick a buffer
@@ -250,26 +250,26 @@ function! ICE#Config#airline()
 
 endfunction
 
-function! ICE#Config#lightline()
+function! Graphicless#Config#lightline()
 endfunction
 
 " rainbow: Rainbow brackets
-function! ICE#Config#rainbow()
+function! Graphicless#Config#rainbow()
    " Set to 0 if you want to enable it later via :RainbowToggle
    let g:rainbow_active = 1 
 
 endfunction
 
-function! ICE#Config#context()
+function! Graphicless#Config#context()
 endfunction
 
 
 " gruvbox: 
-function! ICE#Config#gruvbox()
+function! Graphicless#Config#gruvbox()
 endfunction
 
 " colortable:
-function! ICE#Config#colortable()
+function! Graphicless#Config#colortable()
 endfunction
 
 " }}}1

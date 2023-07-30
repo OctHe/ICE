@@ -1,5 +1,5 @@
-# bashrc for ICE
-# Copyright (c) Shiyue He
+# Bash configuration
+# Copyright (c) Shiyue He (hsy1995313@gmail.com)
 
 # Alias
 alias ls='ls --color=auto'

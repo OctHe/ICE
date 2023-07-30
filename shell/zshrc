@@ -1,6 +1,6 @@
-# Zsh configuration for ICE
+# Zsh configuration
 #
-# Copyright(C) Shiyue He
+# Copyright(C) Shiyue He (hsy1995313@gmail.com)
 #
 # If the OS distribution only has bash, install zsh with packet manager
 #
@@ -21,8 +21,8 @@ setopt complete_in_word         # Allow completion from within a word/phrase
 setopt prompt_subst             # Make PROMPT works right
 
 # Alias
-local ice=~/.ice
-source ${ice}/shell/Alias.sh
+local graphicless=~/.graphicless
+source ${graphicless}/shell/Alias.sh
 
 # zsh-specific alias
 alias ...='../..'

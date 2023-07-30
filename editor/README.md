@@ -1,6 +1,6 @@
 # Editor
 
-ICE focuses on a terminal-based coding environment that uses vim/neovim.
+Graphicless focuses on a terminal-based coding environment that uses vim/neovim.
 It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
 It also contains other editors.
 
