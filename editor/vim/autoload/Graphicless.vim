@@ -10,7 +10,7 @@ function! Graphicless#PluginInstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
     " link: The source of each plugin
-    " plughook: The installation hook for vim-plugin
+    " plug_hook: The installation hook for vim-plugin
     " Additional installation option can be added for different plugin
     " managers
     let l:plugin_list = {
@@ -22,11 +22,11 @@ function! Graphicless#PluginInstall(plugins)
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'fzf'         : {
             \ 'link': 'junegunn/fzf',
-            \ 'plughook': { 'do': { -> fzf#install() }, },
+            \ 'plug_hook': { 'do': { -> fzf#install() }, },
             \ },
         \ 'leaderf'     : { 
             \ 'link': 'Yggdroot/LeaderF',  
-            \ 'plughook': { 'do': ':LeaderfInstallCExtension' },
+            \ 'plug_hook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
@@ -36,16 +36,16 @@ function! Graphicless#PluginInstall(plugins)
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'ycm'         : { 
             \ 'link': 'ycm-core/YouCompleteMe',  
-            \ 'plughook': {'do': './install.py --clangd-completer'},
+            \ 'plug_hook': {'do': './install.py --clangd-completer'},
             \ },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'mdview'      : { 
+        \ 'mkdp'        : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
-            \ 'plughook': {  'do': { -> mkdp#util#install() }, }
+            \ 'plug_hook': {  'do': { -> mkdp#util#install() }, }
             \ },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
@@ -79,9 +79,14 @@ function! Graphicless#PluginInstall(plugins)
 
         for plugin in a:plugins
             " Load plugins
-            if exists('l:plugin_list.'..plugin..'.plughook')
-                let l:plugin_list[plugin].plughook['as'] = plugin
-                Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plughook
+            if exists('l:plugin_list.'..plugin..'.plug_hook')
+                " Markdown-preview has issue if the name of its directory is
+                " changed, so its directory is not renaed until I know how to
+                " fix the bug in the plugin, if possiable
+                if plugin != 'mkdp'
+                    let l:plugin_list[plugin].plug_hook['as'] = plugin
+                endif
+                Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plug_hook
             else
                 Plug l:plugin_list[plugin].link, {'as': plugin}
             endif

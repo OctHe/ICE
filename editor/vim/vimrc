@@ -37,19 +37,25 @@ let g:enable_plugins = [
     \ 'vimsnippets',
     \ 'ultisnips',
     \ 'asyncrun',
-    \ 'mdview',
+    \ 'mkdp',
     \ 'vimtex',
     \ 'fugitive',
     \ 'gitgutter',
     \ ]
 
-call Graphicless#PluginInstall( g:enable_plugins )
+if 1
+    call Graphicless#PluginInstall( g:enable_plugins )
+endif
 
 " Options {{{1
 
 " Search
 set hlsearch        " Highlight the search results
 set incsearch       " Show the pattern while typing
+
+" Modeline can be the last line of any file if use vim as the editor.
+" Please use `help modeline' or `help vim:` for detail.
+set modeline
 
 " UI
 set ruler		    " show the cursor position 
@@ -137,21 +143,23 @@ nnoremap <Leader>m :verbose map
 
 
 " Config load plugins
-call Graphicless#PluginConfig( g:enable_plugins )
+if 1
+    call Graphicless#PluginConfig( g:enable_plugins )
+endif
 
 " UI {{{1
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 " gruvbox, and builtin colorschemes
-    if index(g:enable_plugins, 'gruvbox') != -1
-        if has('gui_running')
-            set background=light
-        else
-            set background=dark
-        endif
-        colorscheme gruvbox
-    else
-        " Builtin colorschemes: desert, peachpuff, quiet, slate
-        " Colorschemes plugin: gruvbox
-        colorscheme desert
-    endif
+if isdirectory(expand(g:plugin_dir..'gruvbox'))
+    colorscheme gruvbox
+else
+    " Builtin colorschemes: desert, peachpuff, quiet, slate
+    " Colorschemes plugin: gruvbox
+    colorscheme desert
+endif
 " }}}
 " vim: set sw=4 sts=4 et fdm=marker:

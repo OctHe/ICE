@@ -1,10 +1,6 @@
 " =====================================================================
 " 
-" Not only linter
-" Configuration of static analysis plugins
-"
-" Author: Shiyue He (hsy1995313@gmail.com)
-" Copyright (C): 2023
+"  Configuration functions
 "
 " =====================================================================
 
@@ -217,7 +213,9 @@ function! Graphicless#Config#vimtex()
 
 endfunction
 
-function! Graphicless#Config#mdview()
+" Markdown-preview
+" If it does not work well, please use :messages in vim to see the output
+function! Graphicless#Config#mkdp()
 endfunction
 " }}}1
 
@@ -273,3 +271,4 @@ function! Graphicless#Config#colortable()
 endfunction
 
 " }}}1
+" vim: set sw=4 sts=4 et fdm=marker:

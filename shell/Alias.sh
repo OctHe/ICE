@@ -10,5 +10,7 @@ alias ll='ls --color=always -alh'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
+alias gc='git checkout'
+alias gcm='git checkout master'
 alias rgrep='grep --color=always --exclude-dir=.git -rn'
 
