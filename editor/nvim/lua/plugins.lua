@@ -185,7 +185,7 @@ require("lazy").setup({
         config = function() require 'lsp_signature'.setup() end,
     },
 
-    -- Debug
+    -- Runner: The plugin(s) can easily compile and run the source code
     {
          'michaelb/sniprun',
         build = "bash ./install.sh",

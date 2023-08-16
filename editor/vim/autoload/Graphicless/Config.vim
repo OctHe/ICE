@@ -62,7 +62,7 @@ endfunction
 function! Graphicless#Config#ctrlp()
 endfunction
 
-" NERDTree: File explore (or call it file searcher) {{{2
+" NERDTree: File explorer.  {{{2
 function! s:CloseNERDTree()
     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
         quit
@@ -166,7 +166,7 @@ endfunction
 
 " }}}1
 
-" Compiler: These plugins can easily compile, debug, compile, and run the code {{{1
+" Runner: These plugins can easily compile and run the code {{{1
 
 " genutils: It gives general functions that some plugins rely on
 function! Graphicless#Config#genutils()

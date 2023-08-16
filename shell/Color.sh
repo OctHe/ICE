@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 #
-#
 # Script about the terminal color in bash
 # `\e` means <escape>. `\033` and `\x1B` also work instead of `\e`.
 #
@@ -65,7 +64,7 @@ easy_color()
     LGREY='\e[97m'
 }
 
-color_check()
+display_256_color()
 {
     for bgcl in {40..47} {100..107} ; do
     	for fgcl in {30..37} {90..97} ; do
