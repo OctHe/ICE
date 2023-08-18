@@ -14,14 +14,6 @@ endfunction
 function! Graphicless#Config#autopair()
 endfunction
 
-" Easymotion:
-function! Graphicless#Config#easymotion()
-    map f <Plug>(easymotion-f)
-    map F <Plug>(easymotion-F)
-    map t <Plug>(easymotion-t)
-    map T <Plug>(easymotion-T)
-endfunction
-
 " Nerdcomment: 
 function! Graphicless#Config#nerdcomment()
 endfunction
@@ -60,6 +52,14 @@ function! Graphicless#Config#leaderf()
 endfunction
 
 function! Graphicless#Config#ctrlp()
+endfunction
+
+" Easymotion:
+function! Graphicless#Config#easymotion()
+    map f <Plug>(easymotion-f)
+    map F <Plug>(easymotion-F)
+    map t <Plug>(easymotion-t)
+    map T <Plug>(easymotion-T)
 endfunction
 
 " NERDTree: File explorer.  {{{2
@@ -220,7 +220,7 @@ endfunction
 " }}}1
 
 " VCS: Version control system {{{1
-" fugitive: provide common git options (diff, status, add, commit, etc)
+" fugitive: Provide common git options (diff, status, add, commit, etc)
 function! Graphicless#Config#fugitive()
 
     " g means git
@@ -229,12 +229,8 @@ function! Graphicless#Config#fugitive()
 
 endfunction
 
-" gitgutter: shows diff sign on the left
+" gitgutter: Show diff sign on the left
 function! Graphicless#Config#gitgutter()
-
-    " g means git
-    nnoremap <Leader>gd :GitGutterDiffOrig<CR>
-
 endfunction
 " }}}1
 
@@ -249,6 +245,10 @@ function! Graphicless#Config#airline()
 endfunction
 
 function! Graphicless#Config#lightline()
+endfunction
+
+function! Graphicless#Config#whichkey()
+    nnoremap <silent> <Leader>      :<c-u>WhichKey '<Leader>'<CR>
 endfunction
 
 " rainbow: Rainbow brackets

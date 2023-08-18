@@ -3,80 +3,116 @@
 Graphic user interface (GUI) is one of the most resource-intensive modules in a desktop operating system.
 However, in most of the time, a command line can support lots of work flows.
 Graphicless uses command-line tools as many as possible.
-For example, it chooses vim/neovim as the editor by default, and give configuration for multiple shells.
+For example, it chooses vim/neovim as the editor by default, and gives configurations for bash and zsh.
 It will support lots of other command-line tools in the future.
+
 Note that graphicless does not means we only uses command-line tool, since some efficient tools rely on GUI, including web browser and PDF viewer.
 
 ## Shell
 
-Graphicless shell provides prompt, alias, interactive history, completion, and customized functions for bash, zsh, and fish.
+Graphicless shells provide prompt, alias, interactive history, completion, and customized functions for bash and zsh.
 It also give advices about awesome plugins.
-
+Configuration of fish and other shells will be added in the future.
 
 ### Terminal emulator
-
-The terminal emulator provides color and font support for shell.
-
-For example, the [agnoster theme](https://github.com/agnoster/agnoster-zsh-theme) of zsh requires the powerline font.
-To install it, run
-
-    sudo apt install fonts-powerline
 
 An open-source terminal emulator is *terminator*
 
     sudo apt install terminator
 
+The terminal emulator provides color and font support for shell.
+For example, the [agnoster theme](https://github.com/agnoster/agnoster-zsh-theme) of zsh requires the powerline font.
+To install it, run
+
+    sudo apt install fonts-powerline
+
+And then set the fonts in the terminator.
+
 ### Bash
 
-- bash
-    - Prompt
-        - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
-    - Alias
-        - ls
-        - git
-    - History
-    - Keybinding: bulit-in `bind`
-    - Directory
-        - Fold directory
-    - Completion
-        - Bash-completion
-    - Help: Built-in `help`
+The configuration is in the `shell/bashrc`
+To install it in Debian, use
+
+    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
+    sudo apt install bash-completion
+    ln -s ~/.graphicless/shell/bashrc .bashrc
+    
+or use `cp` instead of `ln` as follows
+
+    cp ~/.graphicless/shell/bashrc .bashrc
+
+The supported (or will support) features include:
+- Prompt
+    - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
+- Alias
+    - ls
+    - git
+- History
+- Keybinding: bulit-in `bind`
+- Directory
+    - fold_pwd()
+- Completion
+    - Bash-completion
+- Help: Built-in `help`
 
 ### zsh
 
-In Ubuntu/Debian, the follow command can be used to install zsh and fish
+zsh is not the default shell in most Linux distribution.
+In Debian, the follow command can be used to install zsh
 
-    sudo apt install zsh fish
+    sudo apt install zsh
 
 In OpenSUSE, it uses `zypper` as the manager, so 
 
-    sudo zypper install zsh fish
+    sudo zypper install zsh
 
-- zsh
-    - Prompt
-        - git
-    - Alias
-        - ls
-        - git
-    - History
-    - Keybinding: built-in `bindkey`
-    - Directory
-        - z
-        - wd
-        - Fold directory
-    - Completion
-        - [gitignore](https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/gitignore/gitignore.plugin.zsh)
-        - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-        - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
-    - Help: Built-in `run-help`
+After installing zsh, to get the configuration of zsh, use
+
+    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
+    ln -s ~/.graphicless/shell/zshrc .zshrc
+    bash ~/.graphicless/shell/PluginInstall.sh    
+
+or use `cp` instead of `ln` as follows
+
+    cp ~/.graphicless/shell/zshrc .zshrc
+
+It wants to support the follow features, which are under-development.
+
+- Prompt
+    - git
+- Alias
+    - ls
+    - git
+- History
+- Keybinding: built-in `bindkey`
+- Directory
+    - z
+    - wd
+    - fold_pwd()
+- Completion
+    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
+- Help: Built-in `run-help`
 
 ## Editor
 
 Graphicless focuses on a terminal-based coding environment.
 It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
-It also contains other editors, such as emacs and micro editor.
+It also contains the configuration of other editors, such as emacs (in the feature) and micro editor.
 
-### NeoVim
+### Neovim
+
+In stall neovim by using the package manager, for example
+
+    sudo apt install neovim
+
+And then install the configuration
+
+    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
+    ln -s ~/.graphicless/editor/nvim .config/nvim
+
+It contains follow modules, in which contains multiple plugins with Neovim-specific lua plugins.
+Please see the configuration for detail.
 
 - Plugin manager
     - Lazy
@@ -91,6 +127,10 @@ It also contains other editors, such as emacs and micro editor.
 - Version control system
 
 ### Vim
+
+To install the configuration of vim is also requires a `git clone` command, and then give a symbolic link
+
+    ln -s ~/.graphicless/editor/vim .vim
 
 - Plugin manager
     - [vim-plug](https://github.com/junegunn/vim-plug)

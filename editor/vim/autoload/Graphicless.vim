@@ -1,6 +1,7 @@
 " =====================================================================
 " 
-" Utilities
+" Plugin management
+"
 " Author: Shiyue He (hsy1995313@gmail.com)
 " Copyright (C): 2023
 " 
@@ -16,7 +17,6 @@ function! Graphicless#PluginInstall(plugins)
     let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
-        \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
         \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
         \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
@@ -29,9 +29,11 @@ function! Graphicless#PluginInstall(plugins)
             \ 'plug_hook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
+        \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
+        \ 'ctags'       : { 'link': 'vim-scripts/ctags.vim'         },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'ycm'         : { 
@@ -51,6 +53,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
+        \ 'whichkey'    : { 'link': 'liuchengxu/vim-which-key',     },
         \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
         \ 'context'     : { 'link': 'wellle/context.vim',           },

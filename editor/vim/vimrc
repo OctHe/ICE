@@ -22,17 +22,14 @@ let g:plugin_manager = 'plug'
 
 let g:enable_plugins = [
     \ 'surround',
-    \ 'easymotion',
+    \ 'autopair',
     \ 'commentary',
     \ 'nerdtree',
     \ 'fzf',
-    \ 'airline',
-    \ 'rainbow',
-    \ 'gruvbox',
     \ 'context',
     \ 'vista', 
+    \ 'easymotion',
     \ 'ale', 
-    \ 'autopair',
     \ 'ycm',
     \ 'vimsnippets',
     \ 'ultisnips',
@@ -41,6 +38,10 @@ let g:enable_plugins = [
     \ 'vimtex',
     \ 'fugitive',
     \ 'gitgutter',
+    \ 'airline',
+    \ 'whichkey',
+    \ 'rainbow',
+    \ 'gruvbox',
     \ ]
 
 if 1
