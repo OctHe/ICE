@@ -17,7 +17,7 @@ function! Graphicless#PluginInstall(plugins)
     let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
-        \ 'nerdcomment' : { 'link': 'scrooloose/nerdcommenter',     },
+        \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',     },
         \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'fzf'         : {
@@ -45,6 +45,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
+        \ 'vimmkd'      : { 'link': 'preservim/vim-markdown',       },
         \ 'mkdp'        : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
             \ 'plug_hook': {  'do': { -> mkdp#util#install() }, }
@@ -53,6 +54,8 @@ function! Graphicless#PluginInstall(plugins)
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
+        \ 'indentline'  : { 'link': 'Yggdroot/indentLine',          },
+        \ 'indentguide' : { 'link': 'preservim/vim-indent-guides',  },
         \ 'whichkey'    : { 'link': 'liuchengxu/vim-which-key',     },
         \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },

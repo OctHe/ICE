@@ -34,16 +34,19 @@ let g:enable_plugins = [
     \ 'vimsnippets',
     \ 'ultisnips',
     \ 'asyncrun',
-    \ 'mkdp',
     \ 'vimtex',
+    \ 'vimmkd',
+    \ 'mkdp',
     \ 'fugitive',
     \ 'gitgutter',
     \ 'airline',
+    \ 'indentline',
     \ 'whichkey',
     \ 'rainbow',
     \ 'gruvbox',
     \ ]
 
+" 'if 1' will false when vim does not have 'eval' function
 if 1
     call Graphicless#PluginInstall( g:enable_plugins )
 endif
@@ -155,7 +158,7 @@ else
     set background=dark
 endif
 " gruvbox, and builtin colorschemes
-if isdirectory(expand(g:plugin_dir..'gruvbox'))
+if index(g:enable_plugins, 'gruvbox') != -1 && isdirectory(expand(g:plugin_dir..'gruvbox'))
     colorscheme gruvbox
 else
     " Builtin colorschemes: desert, peachpuff, quiet, slate
@@ -163,4 +166,5 @@ else
     colorscheme desert
 endif
 " }}}
+
 " vim: set sw=4 sts=4 et fdm=marker:

@@ -1,6 +1,6 @@
 " =====================================================================
 " 
-"  Configuration functions
+"  Configuration for all plugins
 "
 " =====================================================================
 
@@ -213,6 +213,10 @@ function! Graphicless#Config#vimtex()
 
 endfunction
 
+" Vim-markdown: It provides better markdown highlight
+function! Graphicless#Config#vimmkd()
+endfunction
+
 " Markdown-preview
 " If it does not work well, please use :messages in vim to see the output
 function! Graphicless#Config#mkdp()
@@ -234,7 +238,7 @@ function! Graphicless#Config#gitgutter()
 endfunction
 " }}}1
 
-" UI: Colorscheme, status line, and UI-related plugins {{{1
+" UI: Colorscheme, status line, indent, and UI-related plugins {{{1
 " airline:
 function! Graphicless#Config#airline()
     " Enhanced tabline
@@ -245,6 +249,12 @@ function! Graphicless#Config#airline()
 endfunction
 
 function! Graphicless#Config#lightline()
+endfunction
+
+function! Graphicless#Config#indentline()
+endfunction
+
+function! Graphicless#Config#indentguide()
 endfunction
 
 function! Graphicless#Config#whichkey()
@@ -271,4 +281,5 @@ function! Graphicless#Config#colortable()
 endfunction
 
 " }}}1
+
 " vim: set sw=4 sts=4 et fdm=marker:

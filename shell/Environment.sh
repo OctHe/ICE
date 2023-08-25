@@ -38,7 +38,9 @@ GRAPHICLESS_VIEWER=(
     vifm \\n
 )
 
-GRAPHICLESS_FORMATTER=(astyle \\n)
+# xmllint is in the libxml2-utils package, to install it in Debian
+#   sudo apt install libxml2-utils
+GRAPHICLESS_FORMATTER=(astyle xmllint\\n)
 
 # A simple discription about Tex
 #     Tex is a language, but is difficult to understand for human. LaTex is the macro language of Tex.
