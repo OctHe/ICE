@@ -38,13 +38,15 @@ And then set the fonts in the terminator.
 
 ### Bash
 
+Bash is the default shell for most Linux distribution.
+The first things for Graphicless is to config a graceful shell environment.
 The configuration is in the `shell/bashrc`
 To install it in Debian, use
 
     git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
     sudo apt install bash-completion
     ln -s ~/.Graphicless/shell/bashrc .bashrc
-    
+
 or use `cp` instead of `ln` as follows
 
     cp ~/.Graphicless/shell/bashrc .bashrc
@@ -56,12 +58,25 @@ The supported (or will support) features include:
     - ls
     - git
 - History
-- Keybinding: bulit-in `bind`
+    - *<ctrl-r>*: Interactive search history
+- Keybinding
+    - Built-in `bind`
 - Directory
     - fold_pwd()
 - Completion
     - Bash-completion
-- Help: Built-in `help`
+- Help
+    - Built-in `help`
+
+Except the above configuration, the follow projects also can give a powerful bash.
+
+- Bash-it
+
+    git clone https://github.com/Bash-it/bash-it.git ~/.bash_it
+    cd .bash_it
+    ~/.bash_it/install.sh       # Active bash-it
+
+- oh-my-bash
 
 ### zsh
 
@@ -84,7 +99,7 @@ or use `cp` instead of `ln` as follows
 
     cp ~/.Graphicless/shell/zshrc .zshrc
 
-It wants to support the follow features, which are under-development.
+It support (or will support) the follow features, which are under-development.
 
 - Prompt
     - git
@@ -92,7 +107,7 @@ It wants to support the follow features, which are under-development.
     - ls
     - git
 - History
-- Keybinding: built-in `bindkey`
+- Keybinding: Built-in `bindkey`
 - Directory
     - z
     - wd
@@ -101,6 +116,22 @@ It wants to support the follow features, which are under-development.
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
 - Help: Built-in `run-help`
+
+The community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh also provides powerful plugins and themes for zsh.
+
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    source ~/.zshrc     # Activate oh-my-zsh
+
+The useful plugins of oh-my-zsh include git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git), zsh-command-time.
+Some of them is pre-installed with oh-my-zsh, but the following plugins are required to install from github.
+
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/popstas/zsh-command-time ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/zsh-command-time
+
+The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
+
+    plugins=(git sudo z wd colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-command-time)
 
 ## Editor
 
