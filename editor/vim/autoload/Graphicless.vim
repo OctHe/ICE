@@ -36,6 +36,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'ctags'       : { 'link': 'vim-scripts/ctags.vim'         },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
+        \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },
         \ 'ycm'         : { 
             \ 'link': 'ycm-core/YouCompleteMe',  
             \ 'plug_hook': {'do': './install.py --clangd-completer'},

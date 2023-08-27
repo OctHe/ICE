@@ -1,12 +1,18 @@
 # Graphicless
 
-Graphic user interface (GUI) is one of the most resource-intensive modules in a desktop operating system.
-However, in most of the time, a command line can support lots of work flows.
-Graphicless uses command-line tools as many as possible.
-For example, it chooses vim/neovim as the editor by default, and gives configurations for bash and zsh.
-It will support lots of other command-line tools in the future.
+Graphicless is a collection of configuration files with multiple command-line tools.
+The idea of this project is from the fact that, in most of the time, a command line can meet the requirement of our workflow.
+Graphicless uses command-line tools as many as possible to avoid uses graphic user interface (GUI), which is one of the most resource-intensive modules in a desktop operating system.
+Note that Graphicless does not means it only uses command-line tool, since some efficient tools rely on GUI, including web browser and PDF viewer.
 
-Note that graphicless does not means we only uses command-line tool, since some efficient tools rely on GUI, including web browser and PDF viewer.
+Graphicless gives configurations for following applications:
+
+- Shell
+    - Bash
+    - zsh
+- Editor
+    - Vim
+    - Neovim
 
 ## Shell
 
@@ -16,7 +22,9 @@ Configuration of fish and other shells will be added in the future.
 
 ### Terminal emulator
 
-An open-source terminal emulator is *terminator*
+Therminal emulator is the prerequisite of shell.
+An open-source terminal emulator is *terminator*.
+Install it with
 
     sudo apt install terminator
 
@@ -33,13 +41,13 @@ And then set the fonts in the terminator.
 The configuration is in the `shell/bashrc`
 To install it in Debian, use
 
-    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
+    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
     sudo apt install bash-completion
-    ln -s ~/.graphicless/shell/bashrc .bashrc
+    ln -s ~/.Graphicless/shell/bashrc .bashrc
     
 or use `cp` instead of `ln` as follows
 
-    cp ~/.graphicless/shell/bashrc .bashrc
+    cp ~/.Graphicless/shell/bashrc .bashrc
 
 The supported (or will support) features include:
 - Prompt
@@ -68,13 +76,13 @@ In OpenSUSE, it uses `zypper` as the manager, so
 
 After installing zsh, to get the configuration of zsh, use
 
-    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
-    ln -s ~/.graphicless/shell/zshrc .zshrc
-    bash ~/.graphicless/shell/PluginInstall.sh    
+    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
+    ln -s ~/.Graphicless/shell/zshrc .zshrc
+    bash ~/.Graphicless/shell/PluginInstall.sh    
 
 or use `cp` instead of `ln` as follows
 
-    cp ~/.graphicless/shell/zshrc .zshrc
+    cp ~/.Graphicless/shell/zshrc .zshrc
 
 It wants to support the follow features, which are under-development.
 
@@ -108,8 +116,8 @@ In stall neovim by using the package manager, for example
 
 And then install the configuration
 
-    git clone https://github.com/OctHe/Graphicless ~/.graphicless 
-    ln -s ~/.graphicless/editor/nvim .config/nvim
+    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
+    ln -s ~/.Graphicless/editor/nvim .config/nvim
 
 It contains follow modules, in which contains multiple plugins with Neovim-specific lua plugins.
 Please see the configuration for detail.
@@ -130,7 +138,7 @@ Please see the configuration for detail.
 
 To install the configuration of vim is also requires a `git clone` command, and then give a symbolic link
 
-    ln -s ~/.graphicless/editor/vim .vim
+    ln -s ~/.Graphicless/editor/vim .vim
 
 - Plugin manager
     - [vim-plug](https://github.com/junegunn/vim-plug)

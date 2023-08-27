@@ -131,6 +131,9 @@ endfunction
 
 function! Graphicless#Config#neomake()
 endfunction
+
+function! Graphicless#Config#vimtable()
+endfunction
 " }}}1
 
 " Completion: Completion and snippet plugins {{{1
@@ -215,6 +218,11 @@ endfunction
 
 " Vim-markdown: It provides better markdown highlight
 function! Graphicless#Config#vimmkd()
+
+    let g:vim_markdown_folding_disabled = 1
+    let g:vim_markdown_conceal = 0
+    let g:vim_markdown_conceal_code_blocks = 0
+
 endfunction
 
 " Markdown-preview

@@ -30,6 +30,7 @@ let g:enable_plugins = [
     \ 'vista', 
     \ 'easymotion',
     \ 'ale', 
+    \ 'vimtable', 
     \ 'ycm',
     \ 'vimsnippets',
     \ 'ultisnips',
