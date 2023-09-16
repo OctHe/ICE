@@ -20,22 +20,6 @@ Graphicless shells provide prompt, alias, interactive history, completion, and c
 It also give advices about awesome plugins.
 Configuration of fish and other shells will be added in the future.
 
-### Terminal emulator
-
-Therminal emulator is the prerequisite of shell.
-An open-source terminal emulator is *terminator*.
-Install it with
-
-    sudo apt install terminator
-
-The terminal emulator provides color and font support for shell.
-For example, the [agnoster theme](https://github.com/agnoster/agnoster-zsh-theme) of zsh requires the powerline font.
-To install it, run
-
-    sudo apt install fonts-powerline
-
-And then set the fonts in the terminator.
-
 ### Bash
 
 Bash is the default shell for most Linux distribution.
@@ -67,6 +51,10 @@ The supported (or will support) features include:
     - Bash-completion
 - Help
     - Built-in `help`
+    - curl cheat.sh
+    - dict
+    - man
+    - info
 
 Except the above configuration, the follow projects also can give a powerful bash.
 
@@ -115,7 +103,12 @@ It support (or will support) the follow features, which are under-development.
 - Completion
     - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
     - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
-- Help: Built-in `run-help`
+- Help
+    - Built-in `run-help`
+    - curl cheat.sh
+    - dict
+    - man
+    - info
 
 The community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh also provides powerful plugins and themes for zsh.
 
@@ -261,10 +254,16 @@ These tools are backend for completion, compile, running, and debug.
         - gcc
         - clang
     - Python
-        - python2
-        - python3
+        - cpython
+        - pypy
+    - Tex
+        - texinfo
+        - pdftex
+        - xetex
+        - bibtex
 - Debugger
     - gdb
+    - ddd
     - lldb
 - Language server
     - C/C++
@@ -275,11 +274,6 @@ These tools are backend for completion, compile, running, and debug.
         - shellcheck
 - Version control
     - git
-- Runner
-    - texinfo
-    - pdftex
-    - xetex
-    - bibtex
 
 ## Configuration Directory
 

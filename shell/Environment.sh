@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Efficient programs for work flow
-#
+# Effective programs for graphicless. This is a bash script, 
+# it does not compatible with zsh or other shells
 
 GRAPHICLESS_SHELL=(bash csh zsh fish ipython ipython3 \\n)
 
@@ -28,14 +28,19 @@ GRAPHICLESS_NETWORK=(
     xrdp \\n
 )
 
-GRAPHICLESS_EDITOR=(vim nvim emacs kate micro \\n)
+GRAPHICLESS_EDITOR=(
+    vim nvim helix \\n
+    emacs \\n
+    kate gnome-text-editor \\n 
+    micro \\n
+)
 
 # Help manual, PDF viewver, file explorer, and web browser
 GRAPHICLESS_VIEWER=(
     man info dict cppman \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
-    vifm \\n
+    nnn ranger vifm \\n
 )
 
 # xmllint is in the libxml2-utils package, to install it in Debian
@@ -67,7 +72,8 @@ GRAPHICLESS_LS=(
     lua-language-server \\n
 )
 
-graphicless_environment()
+# Graphicless desktop environment
+gl_de()
 {
   for arg in $@
   do
@@ -121,7 +127,7 @@ graphicless_environment()
   done
 }
 
-bash_environment()
+gl_bash_env()
 {
     if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
         echo "~/.xmodmap-`uname -n` is not find"
@@ -144,7 +150,7 @@ bash_environment()
     fi
 }
 
-graphicless_environment shell package_manage tool network viewer
-graphicless_environment editor formatter compiler debugger server
+# gl_de shell package_manage tool network viewer
+# gl_de editor formatter compiler debugger server
 
-bash_environment
+# gl_bash_env
