@@ -1,300 +1,153 @@
 # Graphicless
 
-Graphicless is a collection of configuration files with multiple command-line tools.
-The idea of this project is from the fact that, in most of the time, a command line can meet the requirement of our workflow.
-Graphicless uses command-line tools as many as possible to avoid uses graphic user interface (GUI), which is one of the most resource-intensive modules in a desktop operating system.
-Note that Graphicless does not means it only uses command-line tool, since some efficient tools rely on GUI, including web browser and PDF viewer.
-
-Graphicless gives configurations for following applications:
-
-- Shell
-    - Bash
-    - zsh
-- Editor
-    - Vim
-    - Neovim
-
-## Shell
-
-Graphicless shells provide prompt, alias, interactive history, completion, and customized functions for bash and zsh.
-It also give advices about awesome plugins.
-Configuration of fish and other shells will be added in the future.
-
-### Bash
-
-Bash is the default shell for most Linux distribution.
-The first things for Graphicless is to config a graceful shell environment.
-The configuration is in the `shell/bashrc`
-To install it in Debian, use
+Graphicless contains a collection of configurations across a variety of Linux distributions and the programs on them.
+In addition, it is more like an "awesome" project that lists and compares all the awesome programs that I am interested in. 
 
-    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
-    sudo apt install bash-completion
-    ln -s ~/.Graphicless/shell/bashrc .bashrc
+## Linux Distribution
 
-or use `cp` instead of `ln` as follows
+A Linux distribtuion comprises multiple drivers to support different hardware architecutres and a collections of softwares in the user sapce.
+The follow tables summarize the main different between these awesome distributions and the programs.
 
-    cp ~/.Graphicless/shell/bashrc .bashrc
+|                 |    Arch   |      Debian      |  OpenSUSE |    Void   |
+|:---------------:|:---------:|:----------------:|:---------:|:---------:|
+| Default desktop |     -     |       GNOME      |    KDE    |    xfce   |
+|   Init system   |  systemd  |      systemd     |  systemd  |   runit   |
+| Package manager |   pacman  |        apt       |   zypper  |    xbps   |
+|    C library    |   glibc   |       glibc      |   glibc   |    musl   |
+|     Utility     | coreutils |     coreutils    | coreutils | coreutils |
+|    Installer    |    CLI    | Debian-Installer |    YaST   |    CLI    |
 
-The supported (or will support) features include:
-- Prompt
-    - [bash-git-prompt](https://github.com/magicmonty/bash-git-prompt)
-- Alias
-    - ls
-    - git
-- History
-    - *<ctrl-r>*: Interactive search history
-- Keybinding
-    - Built-in `bind`
-- Directory
-    - fold_pwd()
-- Completion
-    - Bash-completion
-- Help
-    - Built-in `help`
-    - curl cheat.sh
-    - dict
-    - man
-    - info
+|                 |  Alpine |   NixOS   |   Solus   |      Deepin      |
+|:---------------:|:-------:|:---------:|:---------:|:----------------:|
+| Default desktop |    -    |   GNOME   |   Budgie  |        DDE       |
+|   Init system   |  OpenRC |  systemd  |  systemd  |      systemd     |
+| Package manager |   apk   |    Nix    |   eopkg   |         -        |
+|    C library    |   musl  |   glibc   |  GNU libc |       glibc      |
+|     Utility     | Busybox | coreutils | coreutils |     coreutils    |
+|    Installer    |   CLI   | Calamares |    CLI    | deepin-installer |
 
-Except the above configuration, the follow projects also can give a powerful bash.
+## Desktop Environment
 
-- Bash-it
+Linux desktop subsystem is one of the most complicated subsystem.
+OpenDE collects awesome open-source desktop environments.
 
-    git clone https://github.com/Bash-it/bash-it.git ~/.bash_it
-    cd .bash_it
-    ~/.bash_it/install.sh       # Active bash-it
+Linux desktop usually has two types of interfaces.
+One of them is virtual console and the other is GUI.
+Virtual console is the default interface from Linux kernel and does not support Unicode.
+For example, in Debian/Ubuntu, type `<ctrl>+<alt>+F{1-6}` can change between virtual console and GUI.
+Specifically, `<ctrl>+<alt>+F2` can change to the GUI, and `<ctrl>+<alt>+F{3,4,5,6}` are different virtual consoles.
+By default, the startup program, i.e., systemd, will initialize the GUI desktop.
+It also can be opened manually. 
+For example, `sudo startx` is the command to start an x11 service.
 
-- oh-my-bash
+x11 and Wayland are two communication protocol that relates a display server and the client.
+Most of the graphic desktop and libraries are based on them.
 
-### zsh
+|                  |         KDE        |       GNOME       |         xfce        |     LXQT     |         DDE         |
+|:----------------:|:------------------:|:-----------------:|:-------------------:|:------------:|:-------------------:|
+|      Toolkit     |         QT         |        GTK        |         GTK         |      QT      |          QT         |
+|  Display manager |        SDDM        |        gdm        |       LightDM       |     SDDM     |       LightDM       |
+|  Session manager |      ksmserver     |   gnome-session   |    xfce4-session    | lxqt-session |     dde-session     |
+|  Windows manager |        KWin        |    gnome-shell    |        xfwm4        |    Openbox   |     deepin-kwin     |
+|  Desktop manager |          -         |         -         |      xfdesktop      |       -      |          -          |
+|   File manager   |       Dolphin      |    gnome-files    |        Thunar       |  PcManFm-qt  |   dde-file-manager  |
+|     Launcher     |       Kickoff      |         -         |      xfce-panel     |  lxqt-runner |     dde-launcher    |
+|      Editor      |        Kate        | gnome-text-editor |       Mousepad      |       -      |    deepin-editor    |
+|     Terminal     |       Konsole      |   gnome-terminal  |    xfce4-terminal   |   QTerminal  |   deepin-terminal   |
+|      Network     | Network Management |     nm-applet     |          -          |       -      |          -          |
+|     Capturer     |      Spectacle     |  GNOME Screenshot | xfce4-screenshooter |  Screengrab  |  deepin-screenshot  |
+|  Document viewer |       Okular       |       Evince      |          -          |       -      |    deepin-reader    |
+|   Image viewer   |      Gwenview      |       Loupe       |      Ristretto      |  Lximage-qt  | deepin-image-viewer |
+|   Input method   |          -         |         -         |          -          |       -      |      deepin-im      |
+| Advanced setting |          -         |    gnome-tweaks   |          -          |       -      |     deepin-tweak    |
+|    Development   |      KDevelop      |   GNOME Builder   |          -          |       -      |      Deepin-IDE     |
 
-zsh is not the default shell in most Linux distribution.
-In Debian, the follow command can be used to install zsh
 
-    sudo apt install zsh
+## Viewer
 
-In OpenSUSE, it uses `zypper` as the manager, so 
+- Okular
+- Evince
+- Zathura
 
-    sudo zypper install zsh
+## Cross-Platform Package Manager
 
-After installing zsh, to get the configuration of zsh, use
-
-    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
-    ln -s ~/.Graphicless/shell/zshrc .zshrc
-    bash ~/.Graphicless/shell/PluginInstall.sh    
-
-or use `cp` instead of `ln` as follows
-
-    cp ~/.Graphicless/shell/zshrc .zshrc
-
-It support (or will support) the follow features, which are under-development.
-
-- Prompt
-    - git
-- Alias
-    - ls
-    - git
-- History
-- Keybinding: Built-in `bindkey`
-- Directory
-    - z
-    - wd
-    - fold_pwd()
-- Completion
-    - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-    - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
-- Help
-    - Built-in `run-help`
-    - curl cheat.sh
-    - dict
-    - man
-    - info
-
-The community-driven [oh-my-zsh](https://ohmyz.sh/) framework for zsh also provides powerful plugins and themes for zsh.
-
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    source ~/.zshrc     # Activate oh-my-zsh
-
-The useful plugins of oh-my-zsh include git, sudo, z, wd, [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git), zsh-command-time.
-Some of them is pre-installed with oh-my-zsh, but the following plugins are required to install from github.
-
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/popstas/zsh-command-time ${ZSH_CUSTOM:~/.oh-my-zsh/custom}/plugins/zsh-command-time
-
-The following command should replace the default command (i.e., `plugins=(git)`) in *.zshrc* file:
+- Flatpak
+- AppImage
 
-    plugins=(git sudo z wd colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-command-time)
-
-## Editor
+## Init System
 
-Graphicless focuses on a terminal-based coding environment.
-It is benefited by the powerful plugin ecosystem of vim and integrates open-source language servers, compilers, debuggers and other useful tools.
-It also contains the configuration of other editors, such as emacs (in the feature) and micro editor.
+- OpenRC
 
-### Neovim
-
-In stall neovim by using the package manager, for example
+## Advanced Setting
 
-    sudo apt install neovim
+### gnome-tweaks
 
-And then install the configuration
+gnome-tweaks gives advanced settings for gnome.
+It support swap of Caplock and Ctrl.
+Download it in Debian with
 
-    git clone https://github.com/OctHe/Graphicless ~/.Graphicless 
-    ln -s ~/.Graphicless/editor/nvim .config/nvim
+    sudo apt install gnome-tweaks
 
-It contains follow modules, in which contains multiple plugins with Neovim-specific lua plugins.
-Please see the configuration for detail.
+This swap is only useful in gnome-based GUI.
+Windows has a similar tool that named as [PowerToys](https://github.com/microsoft/PowerToys).
 
-- Plugin manager
-    - Lazy
-- UI
-- Text
-- Search
-- Lint
-    - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-    - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- Completion
-- Runner
-- Version control system
-
-### Vim
-
-To install the configuration of vim is also requires a `git clone` command, and then give a symbolic link
-
-    ln -s ~/.Graphicless/editor/vim .vim
-
-- Plugin manager
-    - [vim-plug](https://github.com/junegunn/vim-plug)
-    - dein
-- UI
-    - Built-in `:colorscheme desert`
-    - [vim-airline](https://github.com/vim-airline/vim-airline)
-- Text
-    - [vim-commentary](https://github.com/tpope/vim-commentary)
-    - [vim-surround](https://github.com/tpope/vim-surround)
-    - [tagbar](https://github.com/preservim/tagbar)
-- Search
-    - [NERDTree](https://github.com/preservim/nerdtree)
-    - [fzf](https://github.com/junegunn/fzf)
-- Lint: Require linters or LSPs
-    - [tagbar](https://github.com/preservim/tagbar)
-    - [neomake](https://github.com/neomake/neomake)
-    - [ALE](https://github.com/dense-analysis/ale)
-    - Format: Require `astyle` or LSPs
-        - Built-in `gg=G` and `gq`
-        - [vim-autoformat](https://github.com/vim-autoformat/vim-autoformat)
-- Completion
-    - [auto-pairs](https://github.com/LunarWatcher/auto-pairs)
-    - YouCompleteMe
-    - [UltiSnip](https://github.com/SirVer/ultisnips): Snip engine
-    - [vim-snippet](https://github.com/honza/vim-snippets): Database
-- Runner
-    - Built-in `:make`
-    - [vimspector](https://github.com/puremourning/vimspector)
-    - [markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim)
-- VCS
-
-YouCompleteMe, and UltiSnip require python3 support in vim.
-In addition, YouCompleteMe also relies on python3 packet.
-It can be installed by
-
-    sudo apt install python3-dev clangd make    # clangd is the backend of YcuCompleteMe
-    sudo pip3 install pyflacks                  # If pip3 is not installed, install it with sudo apt install python3-pip
-
-clangd requires [bear](https://github.com/rizsotto/Bear) to automatically generate `complie_commands.json` file for make-based projects.
-To install it
-
-    sudo apt install bear
-
-### Emacs
-
-Emacs default uses GUI.
-To open it in shell, use
-    emacs -nw
-
-### Micro Editor
-
-Micro is a easily used terminal editor with intuitive key bindings as well as modern build-in features, including command line, auto-pair and linter.
-
-Install it in Debian (Test on Debian 12)
-
-    sudo apt install micro
-
-Install it in OpenSUSE
-
-	cd ~/bin
-	curl https://getmic.ro | bash
-
-The configuration files are in `~/.config/micro/*`
-
-The recommended plugins are follows
-- linter (default installation)
-- filemanager
-- wc
-- quickfix
-
-The linter requires out-of-box support for each language (see, `help linter` in the command line mode).
-Enter the command line mode by typing <C-e>, run
-
-	plugin install filemanager wc quickfix
-
-### External Tools
-
-These tools are backend for completion, compile, running, and debug.
-
-- Linter
-    - Python
-        - pyflacks
-- Compiler/Interpreter
-    - make
-        - bear
-    - cmake
-    - c/c++
-        - gcc
-        - clang
-    - Python
-        - cpython
-        - pypy
-    - Tex
-        - texinfo
-        - pdftex
-        - xetex
-        - bibtex
-- Debugger
-    - gdb
-    - ddd
-    - lldb
-- Language server
-    - C/C++
-        - clangd
-        - ccls
-    - Python
-    - Bash
-        - shellcheck
-- Version control
-    - git
-
-## Configuration Directory
-
-	~
-	|-- .bashrc
-	|-- .zshrc
-    |-- .cshrc
-	|-- .vim/
-	|-- .config/
-		|-- nvim/
-		|-- micro/
-        |-- terminator/config
-    |-- .local/share/vim/plugins/
-
-## Swap keys
-
-Usually, if you wants to swap Caplock and left Ctrl since the latter is more useful, some desktop provides an GUI tool such as gnome-tweak in GNOME or the setting in KDE that support this function.
-For the desktops that do not have an GUI tool, a shell method is to use xmodmap and the GUI helper xkeycaps.
-After change the keys in xkeycaps, write out the configuration file of xmodmap in the HOME diretory, and add the follows in the shell
-
-    xmodmap ~/.xmodmap-`uname -n`
-
-xmodmap will trigger the key swap when open a terminal.
+## Window Managers
 
+|          | Openbox |  i3 |  xmonad |   sway  | tmux | GNU Screen |
+|---------:|:-------:|:---:|:-------:|:-------:|:----:|:----------:|
+| Protocol |   x11   | x11 | Wayland | Wayland |   -  |      -     |
+
+### Openbox
+
+Install Openbox with apt
+
+    sudo apt install openbox
+
+By default, openbox has a refresh issue in Ubuntu.
+The applications will not automatic refresh after opening them.
+To fix this, change the configuration file
+
+    sudo vim /usr/lib/x86_64-linux-gnu/openbox-autostart
+
+Uncommand the line `test -z $BG || $BG -solid "#303030"`
+
+## File Manager
+
+- $n^3$
+- ranger
+
+## Terminal emulator
+
+- terminator
+
+### Terminator
+
+Therminal emulator is the prerequisite of shell.
+An open-source terminal emulator is *terminator*.
+Install it with
+
+    sudo apt install terminator
+
+The terminal emulator provides color and font support for shell.
+For example, the [agnoster theme](https://github.com/agnoster/agnoster-zsh-theme) of zsh requires the powerline font.
+To install it, run
+
+    sudo apt install fonts-powerline
+
+And then set the fonts in the terminator.
+
+## Web Browser
+
+- chromium
+- Firefox
+- lynx
+
+## Process
+
+- top
+- htop
+
+## Utility
+
+- Busybox
+- GNU coreutils
