@@ -22,7 +22,7 @@ setopt prompt_subst             # Make PROMPT works right
 
 # Alias
 local graphicless=~/.graphicless
-source ${graphicless}/shell/Alias.sh
+source ${graphicless}/Shell/Alias.sh
 
 # zsh-specific alias
 alias ...='../..'
@@ -49,17 +49,17 @@ HISTSIZE=20000
 SAVEHIST=20000
 
 # Plugins
-local zsh_plugins=~/.zsh/plugins
+local zsh_plugin=~/.zsh/plugin
 
-[[ -e ${zsh_plugins}/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-	source ${zsh_plugins}/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -e ${zsh_plugin}/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
+	source ${zsh_plugin}/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-[[ -e ${zsh_plugins}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-	source ${zsh_plugins}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -e ${zsh_plugin}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
+	source ${zsh_plugin}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # agnoster requires powerline-fonts: sudo apt install fonts-powerline
-if [[ -e ${zsh_plugins}/agnoster-zsh-theme/agnoster.zsh-theme ]]; then 
-	source ${zsh_plugins}/agnoster-zsh-theme/agnoster.zsh-theme
+if [[ -e ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme ]]; then 
+	source ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme
     
     # Remove segment 2. Default segments are :
     #     1	prompt_status

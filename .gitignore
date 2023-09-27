@@ -4,10 +4,10 @@
 *swo
 
 # Plugin manager: vim-plug
-editor/vim/autoload/plug.vim
+Editor/vim/autoload/plug.vim
 
 # nvim plugins
-editor/nvim/lazy-lock.json
+Editor/nvim/lazy-lock.json
 
 # Language server local file
 .luarc.json
