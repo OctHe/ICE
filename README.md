@@ -8,14 +8,14 @@ In addition, it is more like an "awesome" project that lists and compares all th
 A Linux distribtuion comprises multiple drivers to support different hardware architecutres and a collections of softwares in the user sapce.
 The follow tables summarize the main different between these awesome distributions and the programs.
 
-|                 |    Arch   |      Debian      |  OpenSUSE |    Void   |
-|:---------------:|:---------:|:----------------:|:---------:|:---------:|
-| Default desktop |     -     |       GNOME      |    KDE    |    xfce   |
-|   Init system   |  systemd  |      systemd     |  systemd  |   runit   |
-| Package manager |   pacman  |        apt       |   zypper  |    xbps   |
-|    C library    |   glibc   |       glibc      |   glibc   |    musl   |
-|     Utility     | coreutils |     coreutils    | coreutils | coreutils |
-|    Installer    |    CLI    | Debian-Installer |    YaST   |    CLI    |
+|                 |    Arch   |   Fedora  |  OpenSUSE |    Void   |      Debian      |
+|:---------------:|:---------:|:---------:|:---------:|:---------:|:----------------:|
+| Default desktop |     -     |   GNOME   |    KDE    |    xfce   |       GNOME      |
+|   Init system   |  systemd  |  systemd  |  systemd  |   runit   |      systemd     |
+| Package manager |   pacman  |    dnf    |   zypper  |    xbps   |        apt       |
+|    C library    |   glibc   |   glibc   |   glibc   |    musl   |       glibc      |
+|     Utility     | coreutils | coreutils | coreutils | coreutils |     coreutils    |
+|    Installer    |    CLI    |  Anaconda |    YaST   |    CLI    | Debian-Installer |
 
 |                 |  Alpine |   NixOS   |   Solus   |      Deepin      |
 |:---------------:|:-------:|:---------:|:---------:|:----------------:|
@@ -50,7 +50,7 @@ Most of the graphic desktop and libraries are based on them.
 |  Session manager |      ksmserver     |   gnome-session   |    xfce4-session    | lxqt-session |     dde-session     |
 |  Windows manager |        KWin        |    gnome-shell    |        xfwm4        |    Openbox   |     deepin-kwin     |
 |  Desktop manager |          -         |         -         |      xfdesktop      |       -      |          -          |
-|   File manager   |       Dolphin      |    gnome-files    |        Thunar       |  PcManFm-qt  |   dde-file-manager  |
+|   File manager   |       Dolphin      |     Nautilus      |        Thunar       |  PcManFm-qt  |   dde-file-manager  |
 |     Launcher     |       Kickoff      |         -         |      xfce-panel     |  lxqt-runner |     dde-launcher    |
 |      Editor      |        Kate        | gnome-text-editor |       Mousepad      |       -      |    deepin-editor    |
 |     Terminal     |       Konsole      |   gnome-terminal  |    xfce4-terminal   |   QTerminal  |   deepin-terminal   |
@@ -73,10 +73,6 @@ Most of the graphic desktop and libraries are based on them.
 
 - Flatpak
 - AppImage
-
-## Init System
-
-- OpenRC
 
 ## Advanced Setting
 
