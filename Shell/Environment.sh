@@ -3,7 +3,10 @@
 # Effective programs for graphicless. This is a bash script, 
 # it does not compatible with zsh or other shells
 
-GRAPHICLESS_SHELL=(bash csh zsh fish ipython ipython3 \\n)
+GRAPHICLESS_SHELL=(
+    bash csh ash zsh fish \n
+    ipython ipython3 \\n
+)
 
 GRAPHICLESS_PKT=(
     flatpak snap apt zypper pacman yay \\n
@@ -12,20 +15,18 @@ GRAPHICLESS_PKT=(
 
 # screen and tmux need to set true color
 GRAPHICLESS_TOOL=(
-    find fd fzf \\n
-    grep ack ag rg \\n
+    fd fzf \\n
+    ack ag rg \\n
     git \\n
     terminator \\n
     screen tmux \\n
-    top htop \\n
+    htop \\n
     neofetch \\n
-    less watch \\n
 )
 
 GRAPHICLESS_NETWORK=(
-    iw iwctl wpa_cli hostapd nmcli \\n
-    ip tc \\n
-    xrdp \\n
+    iw iwctl wpa_cli hostapd_cli nmcli \\n
+    ip \\n
 )
 
 GRAPHICLESS_EDITOR=(
@@ -45,7 +46,7 @@ GRAPHICLESS_VIEWER=(
 
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
-GRAPHICLESS_FORMATTER=(astyle xmllint\\n)
+GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 
 # A simple discription about Tex
 #     Tex is a language, but is difficult to understand for human. LaTex is the macro language of Tex.
@@ -150,7 +151,7 @@ gl_bash_env()
     fi
 }
 
-# gl_de shell package_manage tool network viewer
-# gl_de editor formatter compiler debugger server
+gl_de shell package_manage tool network viewer
+gl_de editor formatter compiler debugger server
 
-# gl_bash_env
+gl_bash_env
