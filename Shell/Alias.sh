@@ -7,7 +7,6 @@
 alias l='ls --color=always -lh'
 alias ls='ls --color=always'
 alias ll='ls --color=always -alh'
-alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
 alias gc='git checkout'
