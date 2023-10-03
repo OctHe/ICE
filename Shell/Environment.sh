@@ -3,6 +3,9 @@
 # Effective programs for graphicless. This is a bash script, 
 # it does not compatible with zsh or other shells
 
+# bash is the default shell for most Linux distributions
+# ash is the shell from busybox
+# zsh is the default shell for part of the Linux distributions and macOS
 GRAPHICLESS_SHELL=(
     bash csh ash zsh fish \n
     ipython ipython3 \\n
