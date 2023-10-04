@@ -18,8 +18,8 @@ GRAPHICLESS_PKT=(
 
 # screen and tmux need to set true color
 GRAPHICLESS_TOOL=(
-    fd fzf \\n
-    ack ag rg \\n
+    find fd fzf \\n
+    grep ack ag rg \\n
     git \\n
     terminator \\n
     screen tmux \\n
@@ -30,18 +30,23 @@ GRAPHICLESS_TOOL=(
 GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip \\n
+    curl \\n
 )
 
 GRAPHICLESS_EDITOR=(
-    vim nvim helix \\n
+    vim nvim helix micro \\n
     emacs \\n
     kate gnome-text-editor \\n 
-    micro \\n
+)
+
+GRAPHICLESS_MAIL=(
+    thunderbird kmail evolution \\n
+    mutt \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
 GRAPHICLESS_VIEWER=(
-    man info dict cppman \\n
+    man info dict cppman tldr \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
     nnn ranger vifm \\n
@@ -51,7 +56,7 @@ GRAPHICLESS_VIEWER=(
 #   sudo apt install libxml2-utils
 GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 
-# A simple discription about Tex
+# A simple discription about Tex:
 #     Tex is a language, but is difficult to understand for human. LaTex is the macro language of Tex.
 #     It also can be called a 'format' of Tex. LaTex is easier to use in practice.
 #     pdftex and xetex are two compilers that can compile Tex to readable document, such as pdf.
@@ -63,13 +68,14 @@ GRAPHICLESS_COMPILER=(
     cmake make bear ccache \\n
     gcc g++ clang \\n
     python python3 \\n
-    texi2any pandoc pdflatex xelatex bibtex latexmk \\n
+    doxygen texi2any pandoc pdflatex xelatex bibtex latexmk \\n
     rust \\n
     go \\n
 )
 
 # ddd is the GUI of gdb
 GRAPHICLESS_DEBUGGER=(gdb ddd lldb \\n)
+
 GRAPHICLESS_LS=(
     clangd ccls \\n
     shellcheck \\n
@@ -86,7 +92,7 @@ gl_de()
         shell)
             prog_list=${GRAPHICLESS_SHELL[@]}
             ;;
-        package_manage)
+        package_management)
             prog_list=${GRAPHICLESS_PKT[@]}
             ;;
         network)
@@ -94,6 +100,9 @@ gl_de()
             ;;
         tool)
             prog_list=${GRAPHICLESS_TOOL[@]}
+            ;;
+        mail)
+            prog_list=${GRAPHICLESS_MAIL[@]}
             ;;
         viewer)
             prog_list=${GRAPHICLESS_VIEWER[@]}
@@ -154,7 +163,7 @@ gl_bash_env()
     fi
 }
 
-gl_de shell package_manage tool network viewer
+gl_de shell package_management tool network viewer mail
 gl_de editor formatter compiler debugger server
 
 gl_bash_env
