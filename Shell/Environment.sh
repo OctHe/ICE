@@ -7,7 +7,7 @@
 # ash is the shell from busybox
 # zsh is the default shell for part of the Linux distributions and macOS
 GRAPHICLESS_SHELL=(
-    bash csh ash zsh fish \n
+    bash csh ash zsh fish \\n
     ipython ipython3 \\n
 )
 
@@ -20,7 +20,7 @@ GRAPHICLESS_PKT=(
 GRAPHICLESS_TOOL=(
     find fd fzf \\n
     grep ack ag rg \\n
-    git \\n
+    svn git \\n
     terminator \\n
     screen tmux \\n
     htop \\n
@@ -30,6 +30,7 @@ GRAPHICLESS_TOOL=(
 GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip \\n
+    ssh scp sftp rsync \\n
     curl \\n
 )
 
