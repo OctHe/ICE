@@ -1,38 +1,11 @@
 " =====================================================================
 " 
-"  Configuration for all plugins
+"  Configuration for plugins
 "
 " =====================================================================
 
-" Text: These plugins are related to the basic edit for text files {{{1
-
-" Surround
-function! Graphicless#Config#surround()
-endfunction
-
-" Auto-pair
-function! Graphicless#Config#autopair()
-endfunction
-
-" Nerdcomment: 
-function! Graphicless#Config#nerdcomment()
-endfunction
-
-function! Graphicless#Config#tcomment()
-endfunction
-
-" commentary:
-function! Graphicless#Config#commentary()
-    xmap <Leader>c  <Plug>Commentary
-    nmap <Leader>c  <Plug>Commentary
-    omap <Leader>c  <Plug>Commentary
-    nmap <Leader>cc <Plug>CommentaryLine
-    nmap <Leader>cu <Plug>Commentary<Plug>Commentary
-endfunction
-
-" }}}1
-
-" Search: Plugins to search in projects {{{1
+" Search: Plugins to search in projects 
+" {{{1
 
 " fzf:
 function! Graphicless#Config#fzf()
@@ -99,7 +72,8 @@ endfunction
 
 " }}}1
 
-" Lint: Static analysis plugins {{{1
+" Lint: Static analysis plugins 
+" {{{1
 " Vista: 
 function! Graphicless#Config#vista()
     let g:vista_sidebar_width = 50
@@ -136,7 +110,34 @@ function! Graphicless#Config#vimtable()
 endfunction
 " }}}1
 
-" Completion: Completion and snippet plugins {{{1
+" Completion: These plugins are related to the basic completion and
+" language-specific completion plugins 
+" {{{1
+
+" Surround
+function! Graphicless#Config#surround()
+endfunction
+
+" Auto-pair
+function! Graphicless#Config#autopair()
+endfunction
+
+" Nerdcomment: 
+function! Graphicless#Config#nerdcomment()
+endfunction
+
+function! Graphicless#Config#tcomment()
+endfunction
+
+" commentary:
+function! Graphicless#Config#commentary()
+    xmap <Leader>c  <Plug>Commentary
+    nmap <Leader>c  <Plug>Commentary
+    omap <Leader>c  <Plug>Commentary
+    nmap <Leader>cc <Plug>CommentaryLine
+    nmap <Leader>cu <Plug>Commentary<Plug>Commentary
+endfunction
+
 " YCM: a powerful completion plugin based on LSP
 function! Graphicless#Config#ycm()
 
@@ -169,7 +170,8 @@ endfunction
 
 " }}}1
 
-" Runner: These plugins can easily compile and run the code {{{1
+" Runner: These plugins can easily compile and run the code 
+" {{{1
 
 " genutils: It gives general functions that some plugins rely on
 function! Graphicless#Config#genutils()
@@ -231,7 +233,8 @@ function! Graphicless#Config#mkdp()
 endfunction
 " }}}1
 
-" VCS: Version control system {{{1
+" VCS: Version control system 
+" {{{1
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 function! Graphicless#Config#fugitive()
 
@@ -246,7 +249,8 @@ function! Graphicless#Config#gitgutter()
 endfunction
 " }}}1
 
-" UI: Colorscheme, status line, indent, and UI-related plugins {{{1
+" View: Colorscheme, status line, indent, and UI-related plugins 
+" {{{1
 " airline:
 function! Graphicless#Config#airline()
     " Enhanced tabline

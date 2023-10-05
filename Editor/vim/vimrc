@@ -62,9 +62,9 @@ set incsearch       " Show the pattern while typing
 " Please use `help modeline' or `help vim:` for detail.
 set modeline
 
-" UI
-set ruler		    " show the cursor position 
-set wildmenu		" display completion matches in a status line
+" View
+set ruler           " show the cursor position 
+set wildmenu        " display completion matches in a status line
 set number          " Show line number
 set splitbelow      " New buffer splits below by default
 set splitright      " New buffer splits right by default
@@ -76,16 +76,13 @@ if has('gui_running')
     set guioptions=aegrLt
 endif
 
-" Text
+" Completion
 set expandtab       " Expand tag to space
 set tabstop=4       " One tab includes four spaces
 set shiftwidth=4    " The width of '<' and '>'
 set backspace=indent,eol,start
                     " Allow backspacing over everything in insert mode.
-let mapleader = ' '
-                    " Use <Space> as the <Leader>
-                    " This command must be before all keymappings
-
+		    
 " Lint 
 set smartindent     " Do smart autoindenting
 
@@ -132,6 +129,10 @@ augroup END
 
 " Keymappings {{{1
 
+" Use <Space> as the <Leader>
+" This command must be before all keymappings and plugin configs
+let mapleader = ' '
+
 " Remap window keymappings
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
@@ -152,12 +153,13 @@ if 1
     call Graphicless#PluginConfig( g:enable_plugins )
 endif
 
-" UI {{{1
+" View {{{1
 if has('gui_running')
     set background=light
 else
     set background=dark
 endif
+
 " gruvbox, and builtin colorschemes
 if index(g:enable_plugins, 'gruvbox') != -1 && isdirectory(expand(g:plugin_dir..'gruvbox'))
     colorscheme gruvbox
@@ -166,6 +168,6 @@ else
     " Colorschemes plugin: gruvbox
     colorscheme desert
 endif
-" }}}
+" }}}1
 
 " vim: set sw=4 sts=4 et fdm=marker:
