@@ -72,8 +72,8 @@ set tabstop=4       " One tab includes four spaces
 set shiftwidth=4    " The width of '<' and '>'
 set backspace=indent,eol,start
                     " Allow backspacing over everything in insert mode.
-		    
-" Lint 
+
+" Lint
 set smartindent     " Do smart autoindenting
 
 syntax enable       " This enables Vim's syntax-related features. 
@@ -137,11 +137,6 @@ nnoremap <Leader>m :verbose map
 
 " }}}1
 
-" Config load plugins
-if 1
-    call Graphicless#PluginConfig( g:enable_plugins )
-endif
-
 " View {{{1
 set ruler           " show the cursor position 
 set wildmenu        " display completion matches in a status line
@@ -159,6 +154,13 @@ else
     set background=dark
 endif
 
+" Config load plugins
+if 1
+    call Graphicless#PluginConfig( g:enable_plugins )
+endif
+
+
+" Colorscheme may use plugin
 " gruvbox, and builtin colorschemes
 if index(g:enable_plugins, 'gruvbox') != -1 && isdirectory(expand(g:plugin_dir..'gruvbox'))
     colorscheme gruvbox

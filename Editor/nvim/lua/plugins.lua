@@ -1,5 +1,13 @@
--- Bootstrap lazy.nvim
+-- ---------------------------------------------------------------------
+--
+-- Neovim plugin manager
+-- Author: Shiyue He (hsy1995313@gmail.com)
+-- Copyright (C): 2023
+-- GL uses Lazy.nvim as the plugin manager
+--
+-- ---------------------------------------------------------------------
 
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -16,7 +24,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Install plugins
 require("lazy").setup({
 
-    -- UI
+    -- View {{{1
 
     -- tokyonight contains multiple themes
     -- colorscheme tokyonight
@@ -43,7 +51,7 @@ require("lazy").setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require "lualine".setup({}) end,
+        config = function() require 'lualine'.setup({}) end,
     },
 
     {
@@ -56,7 +64,7 @@ require("lazy").setup({
             --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
         },
-        config = function() require"ui.noice" end,
+        config = function() require 'View.noice' end,
     },
 
     {
@@ -67,7 +75,14 @@ require("lazy").setup({
         end
     },
 
-    -- Search
+    {
+        'akinsho/toggleterm.nvim',
+        config = true,
+    },
+
+    -- }}}1
+
+    -- Search {{{1
     {
         "nvim-tree/nvim-tree.lua",
         config = function() require "nvim-tree".setup() end,
@@ -102,7 +117,7 @@ require("lazy").setup({
 
     {
         "phaazon/hop.nvim",
-        config = function() require("text.hop") end
+        config = function() require "Search.hop" end
     },
 
     {
@@ -113,38 +128,28 @@ require("lazy").setup({
             vim.keymap.set('n', '<Leader>b', '<CMD>BufferLinePick<CR>')
         end,
     },
+    -- }}}1
 
-
-    -- Text
+    -- Lint {{{1
     {
-        'numToStr/Comment.nvim',
-        config = function() require('text.comment') end,
+        'neovim/nvim-lspconfig',
+        config = function() require 'Lint.lspconfig' end,
     },
 
+    -- List and goto symbol
     {
       'stevearc/aerial.nvim',
       config = function() require('aerial').setup() end,
     },
 
-    {
-        'akinsho/toggleterm.nvim',
-        config = true,
-    },
-
-    -- Lint
-    {
-        'neovim/nvim-lspconfig',
-        config = function() require 'lint.lspconfig' end,
-    },
 
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function() require 'lint.treesitter' end,
+        config = function() require 'Lint.treesitter' end,
     },
 
     -- List to show the trouble in code.
-    -- It relies on LSP
     {
       "folke/trouble.nvim",
       dependencies = "nvim-tree/nvim-web-devicons",
@@ -152,11 +157,17 @@ require("lazy").setup({
         require("trouble").setup {} end
     },
 
-    -- Highlight other uses of word.
-    -- It relies on treesitter and LSP
+    -- Highlight other uses of word
     { "RRethy/vim-illuminate" },
 
-    -- Completion
+    -- }}}1
+
+    -- Completion {{{1
+    {
+        'numToStr/Comment.nvim',
+        config = function() require('Completion.comment') end,
+    },
+
     {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup() end
@@ -177,7 +188,7 @@ require("lazy").setup({
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
         },
-        config = function() require 'completion.cmp' end,
+        config = function() require 'Completion.cmp' end,
     },
 
     {
@@ -185,13 +196,16 @@ require("lazy").setup({
         config = function() require 'lsp_signature'.setup() end,
     },
 
-    -- Runner: The plugin(s) can easily compile and run the source code
+    -- }}}1
+
+    -- Runner: The plugin(s) can easily interprete, compile and run the code {{{1
     {
          'michaelb/sniprun',
         build = "bash ./install.sh",
     },
+    -- }}}1
 
-    -- VCS
+    -- VCS {{{1
     {
         'TimUntersberger/neogit',
         dependencies = { 'nvim-lua/plenary.nvim' },
@@ -208,6 +222,7 @@ require("lazy").setup({
         'sindrets/diffview.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+    -- }}}1
 
 }, {
     checker = {
