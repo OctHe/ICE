@@ -70,10 +70,21 @@ function! Graphicless#PluginInstall(plugins)
     " vim-plug is the plugin manager {{{1
     if g:plugin_manager == 'plug'
 
-        " Install vim-plug if not found
+        " Try to install vim-plug if not found
         if empty(glob('~/.vim/autoload/plug.vim'))
           silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+          if empty(glob('~/.vim/autoload/plug.vim'))
+            echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
+
+            silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
+            silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
+            silent !rm -rf /tmp/vim-plug
+          endif
+
+          echo "Download plug.vim. Please restart vim to enable plugins"
+          return
         endif
 
         " Specify a directory for plugins

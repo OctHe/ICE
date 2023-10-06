@@ -17,6 +17,7 @@ filetype plugin on
 " Enable automatic indentation as you type.
 filetype indent on
 
+" Global variables {{{1
 let g:plugin_dir = '~/.local/share/vim/plugins/'
 let g:plugin_manager = 'plug'
 
@@ -47,6 +48,8 @@ let g:enable_plugins = [
     \ 'gruvbox',
     \ ]
 
+"}}}1
+
 " 'if 1' will false when vim does not have 'eval' function
 if 1
     call Graphicless#PluginInstall( g:enable_plugins )
@@ -62,19 +65,6 @@ set incsearch       " Show the pattern while typing
 " Please use `help modeline' or `help vim:` for detail.
 set modeline
 
-" View
-set ruler           " show the cursor position 
-set wildmenu        " display completion matches in a status line
-set number          " Show line number
-set splitbelow      " New buffer splits below by default
-set splitright      " New buffer splits right by default
-set mouse=a         " Enable mouse in all mode
-set scrolloff=5     " Show a few lines around the cursor
-
-" GUI options
-if has('gui_running')
-    set guioptions=aegrLt
-endif
 
 " Completion
 set expandtab       " Expand tag to space
@@ -147,14 +137,23 @@ nnoremap <Leader>m :verbose map
 
 " }}}1
 
-
 " Config load plugins
 if 1
     call Graphicless#PluginConfig( g:enable_plugins )
 endif
 
 " View {{{1
+set ruler           " show the cursor position 
+set wildmenu        " display completion matches in a status line
+set number          " Show line number
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set mouse=a         " Enable mouse in all mode
+set scrolloff=5     " Show a few lines around the cursor
+
 if has('gui_running')
+    " GUI options
+    set guioptions=aegrLt
     set background=light
 else
     set background=dark
