@@ -1,10 +1,4 @@
-local ok, hop = pcall(require, "hop")
-if not ok then
-  vim.notify "Could not load hop.nvim"
-  return
-end
-
-hop.setup({})
+require'hop'.setup({})
 
 local directions = require('hop.hint').HintDirection
 vim.keymap.set('', 'f', function()

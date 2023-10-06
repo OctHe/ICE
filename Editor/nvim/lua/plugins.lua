@@ -143,11 +143,19 @@ require("lazy").setup({
     },
 
 
+    -- Treesitter and its plugins {{{2
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function() require 'Lint.treesitter' end,
+        config = function() require 'Lint.TreeSitter.treesitter' end,
     },
+
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        -- config = function() require 'Lint.treesitter' end,
+    },
+    -- }}}2
 
     -- List to show the trouble in code.
     {

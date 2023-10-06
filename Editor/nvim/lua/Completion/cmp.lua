@@ -1,6 +1,6 @@
 local ok, cmp = pcall(require, "cmp")
 if not ok then
-  vim.notify "Could not load neo-cmp"
+  vim.notify "Cannot load neo-cmp"
   return
 end
 

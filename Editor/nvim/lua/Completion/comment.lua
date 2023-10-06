@@ -1,10 +1,4 @@
-local ok, comment = pcall(require, "Comment")
-if not ok then
-  vim.notify "Could not load Comment.nvim"
-  return
-end
-
-comment.setup {
+require'Comment'.setup {
     ---Add a space b/w comment and the line
     padding = true,
     ---Whether the cursor should stay at its position

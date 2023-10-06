@@ -1,18 +1,11 @@
-local ok, lspconfig = pcall(require, "lspconfig")
-if not ok then
-  vim.notify "Could not load lspconfig"
-  return
-end
-
-local cmp_nvim_lsp
 local capabilities = {}
-ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if ok then
     -- Set up lspconfig for nvim-cmp
     capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
-lspconfig.lua_ls.setup {
+require'lspconfig'.lua_ls.setup {
     settings = {
         Lua = {
           runtime = {
