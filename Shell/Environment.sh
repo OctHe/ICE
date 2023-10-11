@@ -47,7 +47,7 @@ GRAPHICLESS_MAIL=(
 
 # Help manual, PDF viewver, file explorer, and web browser
 GRAPHICLESS_VIEWER=(
-    man info dict cppman \\n
+    man info cheat dict cppman \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
     nnn ranger vifm \\n

@@ -26,7 +26,7 @@ Graphicless compares the follow open-source desktop environments.
 |     Launcher     |       Kickoff      |         -         |      xfce-panel     |  lxqt-runner |     dde-launcher    |
 |      Editor      |        Kate        | gnome-text-editor |       Mousepad      |       -      |    deepin-editor    |
 |     Terminal     |       Konsole      |   gnome-terminal  |    xfce4-terminal   |   QTerminal  |   deepin-terminal   |
-|      Network     | Network Management |     nm-applet     |          -          |       -      |          -          |
+|      Network     |   Network Manager  |  Network Manager  |          -          |       -      |          -          |
 |     Capturer     |      Spectacle     |  GNOME Screenshot | xfce4-screenshooter |  Screengrab  |  deepin-screenshot  |
 |  Document viewer |       Okular       |       Evince      |          -          |       -      |    deepin-reader    |
 |   Image viewer   |      Gwenview      |       Loupe       |      Ristretto      |  Lximage-qt  | deepin-image-viewer |
@@ -39,11 +39,11 @@ Graphicless compares the follow open-source desktop environments.
 Graphicless tests xfce4 in Debian 12.
 It uses xfce4-terminal and firefox as the default applications for terminal and web browser, respectively.
 
-## Window Managers
+## Window Manager
 
-|          | Openbox |  i3 |  xmonad |   sway  | tmux | GNU Screen |
-|---------:|:-------:|:---:|:-------:|:-------:|:----:|:----------:|
-| Protocol |   x11   | x11 | Wayland | Wayland |   -  |      -     |
+|          | Openbox |  i3 |  xmonad |   sway  |
+|---------:|:-------:|:---:|:-------:|:-------:|
+| Protocol |   x11   | x11 | Wayland | Wayland |
 
 ### Openbox
 
@@ -59,4 +59,8 @@ To fix this, change the configuration file
 
 Uncommand the line `test -z $BG || $BG -solid "#303030"`
 
+## Terminal Multiplexer
 
+| tmux | GNU Screen |
+|:----:|:----------:|
+|   -  |      -     |
