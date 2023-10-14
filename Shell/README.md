@@ -36,7 +36,6 @@ The supported (or will support) features include:
 - Help
     - Built-in `help`
     - curl cheat.sh
-    - dict
     - man
     - info
 

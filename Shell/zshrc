@@ -70,3 +70,31 @@ if [[ -e ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme ]]; then
     #     6	prompt_end
     AGNOSTER_PROMPT_SEGMENTS[2]=
 fi
+
+# Colored man when the PAGER=less
+# Redefine the man command so the follow environment variables changes only for man page
+function man() {
+
+    # mb: start blinking
+    # md: Start bold mode
+    # me: End mb, md
+    # so: Start standout mode
+    # se: End so
+    # us: Start underlining
+    # ue: End us
+    local environment=(
+        LESS_TERMCAP_mb=${fg_bold[red]} \
+        LESS_TERMCAP_md=${fg_bold[red]} \
+        LESS_TERMCAP_me=${reset_color} \
+        LESS_TERMCAP_so=${fg_bold[yellow]}${bg[blue]}   \
+        LESS_TERMCAP_se=${reset_color} \
+        LESS_TERMCAP_us=${fg_bold[green]} \
+        LESS_TERMCAP_ue=${reset_color}
+    )
+
+    # Set groffy's legacy output format
+    # Use `man groffy` to see detail
+    environment+=( GROFF_NO_SGR=1 )
+
+    env $environment $0 $@
+}
