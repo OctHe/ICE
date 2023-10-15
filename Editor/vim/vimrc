@@ -42,6 +42,7 @@ let g:enable_plugins = [
     \ 'fugitive',
     \ 'gitgutter',
     \ 'airline',
+    \ 'navigator',
     \ 'indentline',
     \ 'whichkey',
     \ 'rainbow',
@@ -124,10 +125,10 @@ augroup END
 let mapleader = ' '
 
 " Remap window keymappings
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
+" nnoremap <C-H> <C-W>h
+" nnoremap <C-J> <C-W>j
+" nnoremap <C-K> <C-W>k
+" nnoremap <C-L> <C-W>l
 
 " Easy-nohlsearch
 nnoremap <Esc> :nohlsearch<CR>
