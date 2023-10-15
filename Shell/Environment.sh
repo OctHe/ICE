@@ -57,6 +57,11 @@ GRAPHICLESS_VIEWER=(
 #   sudo apt install libxml2-utils
 GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 
+# rpmbuild is the buildtool in OpenSUSE.
+# As an example, download and build the source code with
+#     sudo zypper source-install hostapd
+#     cd /usr/src/packages
+#     sudo rpmbuild -ba SPECS/hostapd.spec
 # A simple discription about Tex:
 #     Tex is a language, but is difficult to understand for human. LaTex is the macro language of Tex.
 #     It also can be called a 'format' of Tex. LaTex is easier to use in practice.
@@ -66,7 +71,7 @@ GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 #     pdftex and xetex are the same as pdflatex and xelatex.
 GRAPHICLESS_COMPILER=(
     ctags cscope \\n
-    cmake make bear ccache \\n
+    cmake make rpmbuild bear ccache \\n
     gcc g++ clang \\n
     python python3 \\n
     doxygen texi2any pandoc pdflatex xelatex bibtex latexmk \\n
