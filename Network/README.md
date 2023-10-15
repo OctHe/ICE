@@ -1,4 +1,4 @@
-# Clash
+## Clash
 
 clash is a tunnel in Go.
 Download it in OpenSUSE with
@@ -24,3 +24,10 @@ Then, enable and start clash service
 
 
 The final process is to config the system-level network setting or program-level network setting to use the clash service.
+
+## snapdrop.net
+
+[snapdrop](https://snapdrop.net) is an easily-used point-to-point file transfer in the web browser.
+Open the link of snapdrop in the same network.
+The website can identify all devices in the same network. 
+Just drop the file to the target.
