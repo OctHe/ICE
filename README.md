@@ -5,7 +5,7 @@ In addition, it is more like an "awesome" project that lists and compares all th
 
 ## Linux Distribution
 
-A Linux distribtuion comprises multiple drivers to support different hardware architecutres and a collections of softwares in the user sapce.
+A Linux distribtuion comprises multiple drivers to support different hardware architectures and a collections of softwares in the user sapce.
 The follow tables summarize the main different between these awesome distributions and the programs.
 
 |                 |    Arch   |   Fedora  |  OpenSUSE |    Void   |      Debian      |
@@ -32,10 +32,31 @@ The follow tables summarize the main different between these awesome distributio
 - Evince
 - Zathura
 
-## Cross-Platform Package Manager
+## Package Manager
 
+- apt
+- zypper
+- pacman
 - Flatpak
 - AppImage
+
+### OpenSUSE
+
+OpenSUSE uses `zypper` as the default package manager.
+It is based on RPM, which is similar to Fedora.
+Besides installation of the built programs, zypper also provides an option for the source code.
+As an example, the download and build process for the `hostapd` is
+
+    sudo zypper source-install hostapd
+    # or
+    #   sudo zypper si hostapd
+    cd /usr/src/packages/       # cd to the default directory for source code
+    ls SOURCES
+    ls SPECS
+    sudo zypper in rpmbuild     # The build tool of the download source code
+    sudo rpmbuild -ba SPECS/hostapd.spec
+                                # -ba means to perform a full build. 
+    ls RPMS/x86_64              # The built program in the x86 architecture
 
 ## Advanced Setting
 
