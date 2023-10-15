@@ -55,6 +55,9 @@ function! Graphicless#PluginInstall(plugins)
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
+        \ 'navigator'   : { 
+            \ 'link': 'christoomey/vim-tmux-navigator', 
+            \ },
         \ 'indentline'  : { 'link': 'Yggdroot/indentLine',          },
         \ 'indentguide' : { 'link': 'preservim/vim-indent-guides',  },
         \ 'whichkey'    : { 'link': 'liuchengxu/vim-which-key',     },

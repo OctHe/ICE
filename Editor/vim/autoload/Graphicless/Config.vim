@@ -263,6 +263,9 @@ endfunction
 function! Graphicless#Config#lightline()
 endfunction
 
+function! Graphicless#Config#navigator()
+endfunction
+
 function! Graphicless#Config#indentline()
 endfunction
 
