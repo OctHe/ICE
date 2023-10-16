@@ -8,7 +8,7 @@ In addition, it is more like an "awesome" project that lists and compares all th
 A Linux distribtuion comprises multiple drivers to support different hardware architectures and a collections of softwares in the user sapce.
 The follow tables summarize the main different between these awesome distributions and the programs.
 
-|                 |    Arch   |   Fedora  |  OpenSUSE |    Void   |      Debian      |
+|                 |    Arch   |   Fedora  |  openSUSE |    Void   |      Debian      |
 |:---------------:|:---------:|:---------:|:---------:|:---------:|:----------------:|
 | Default desktop |     -     |   GNOME   |    KDE    |    xfce   |       GNOME      |
 |   Init system   |  systemd  |  systemd  |  systemd  |   runit   |      systemd     |
@@ -35,9 +35,9 @@ The follow tables summarize the main different between these awesome distributio
 - Flatpak
 - AppImage
 
-### OpenSUSE
+### openSUSE
 
-OpenSUSE uses `zypper` as the default package manager.
+openSUSE uses `zypper` as the default package manager.
 It is based on RPM, which is similar to Fedora.
 Besides installation of the built programs, zypper also provides an option for the source code.
 As an example, the download and build process for the `hostapd` is

@@ -56,7 +56,7 @@ In Debian, the follow command can be used to install zsh
 
     sudo apt install zsh
 
-In OpenSUSE, it uses `zypper` as the manager, so 
+In openSUSE, it uses `zypper` as the manager, so 
 
     sudo zypper install zsh
 

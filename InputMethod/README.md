@@ -1,10 +1,7 @@
-# Input Method
+## Input Method
 
 This README is related to the chinese input method.
-
-## OpenSUSE
-
-In OpenSUSE, the fcitx5 framework can be installed from the repository with command zypper
+In openSUSE, the fcitx5 framework can be installed from the repository with command `zypper`
 
     sudo zypper in fcitx5
 

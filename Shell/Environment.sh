@@ -57,7 +57,7 @@ GRAPHICLESS_VIEWER=(
 #   sudo apt install libxml2-utils
 GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 
-# rpmbuild is the buildtool in OpenSUSE.
+# rpmbuild is the buildtool in for rpm.
 # As an example, download and build the source code with
 #     sudo zypper source-install hostapd
 #     cd /usr/src/packages
@@ -156,7 +156,7 @@ gl_bash_env()
     if [[ ! -f /usr/share/bash-completion/bash_completion ]]; then
         echo "  bash-completion is not installed"
         echo "  Please use packet manager to install it"
-        echo "  In OpenSUSE, run: "
+        echo "  In openSUSE, run: "
         echo "      sudo zypper install bash-completion"
     else
         echo "bash-completion is installed"

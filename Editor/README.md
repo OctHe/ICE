@@ -93,8 +93,9 @@ Install it in Debian (Test on Debian 12)
 
     sudo apt install micro
 
-Install it in OpenSUSE
+A universal installation method for most Linux distributions
 
+    mkdir ~/bin
 	cd ~/bin
 	curl https://getmic.ro | bash
 

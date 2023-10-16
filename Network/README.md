@@ -1,7 +1,7 @@
 ## Clash
 
 clash is a tunnel in Go.
-Download it in OpenSUSE with
+Download it in openSUSE with
 
     sudo zypper in clash
 
@@ -10,7 +10,7 @@ Just download the `Country.mmdb` file and your own `config.yaml` file and copy t
 
 If you want to set up auto-start when open the system.
 The download version of clash has a systemd service with `/lib/system/system/clash.service` to support the auto-start process.
-This service is based on systemd, so it works for OpenSUSE and other distributions that uses systemd as the init process.
+This service is based on systemd, so it works for openSUSE and other distributions that uses systemd as the init process.
 Different from manually run clash, the systemd will load the configuration in the directory `/etc/clash/` by default.
 So move the configuration file and mmdb file in the above directory by
 
