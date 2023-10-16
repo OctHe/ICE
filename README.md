@@ -26,16 +26,11 @@ The follow tables summarize the main different between these awesome distributio
 |     Utility     | Busybox | coreutils | coreutils |     coreutils    |
 |    Installer    |   CLI   | Calamares |    CLI    | deepin-installer |
 
-## Viewer
-
-- Okular
-- Evince
-- Zathura
-
 ## Package Manager
 
 - apt
 - zypper
+- dnf
 - pacman
 - Flatpak
 - AppImage
@@ -58,6 +53,21 @@ As an example, the download and build process for the `hostapd` is
                                 # -ba means to perform a full build. 
     ls RPMS/x86_64              # The built program in the x86 architecture
 
+    sudo rpmbuild -ba --noclean SPECS/hostapd.spec
+                                # It does not remove the extracted source code
+    ls BUILD                    # The extracted source code
+
+### Flatpak
+
+Flatpak is a cross-platform package manager that run applications in a sandbox.
+It can download apps from FlatHub, which is the official repository of Flatpak.
+
+    flatpak install <package name/ID>
+
+Different from apt/zypper/dnf/pacman, you cannot run the applications from flatpak directly.
+
+    flatpak run <package name/ID>
+
 ## Advanced Setting
 
 ### gnome-tweaks
@@ -75,6 +85,12 @@ Windows has a similar tool that named as [PowerToys](https://github.com/microsof
 
 - $n^3$
 - ranger
+
+## Viewer
+
+- Okular
+- Evince
+- Zathura
 
 ## Terminal emulator
 
