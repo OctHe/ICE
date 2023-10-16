@@ -46,3 +46,26 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
+
+# Colored man when the PAGER=less
+# Redefine the man command so the follow environment variables changes only for man page
+#   mb: start blinking
+#   md: Start bold mode
+#   me: End mb, md
+#   so: Start standout mode
+#   se: End so
+#   us: Start underlining
+#   ue: End us
+#   GROFF_NO_SCR: Set groffy's legacy output format. Use `man groffy` to see detail
+function man() {
+        LESS_TERMCAP_mb=$'\e[01;31m' \
+        LESS_TERMCAP_md=$'\e[01;31m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[45;93m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[4;93m' \
+        GROFF_NO_SGR=1 \
+        command man "$@"
+
+}
