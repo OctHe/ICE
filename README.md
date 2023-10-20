@@ -1,7 +1,13 @@
 # Graphicless
 
-Graphicless is a `dotfile` project that contains a collection of personal-use configurations across a variety of Linux distributions and programs on them.
+Graphicless (GL) is a `dotfile` project that contains a collection of personal-use configurations across a variety of Linux distributions and programs on them.
 In addition, it is also an "awesome" project that lists and compares awesome projects that I am interested in. 
+
+Install GL is easy
+
+    git clone --bare https://github.com/OctHe/Graphicless .graphicless
+    alias gl='/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME'
+    gl checkout
 
 ## Linux Distribution
 
