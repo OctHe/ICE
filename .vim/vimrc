@@ -1,0 +1,173 @@
+" 
+" Vim run command file
+" Author: Shiyue He (hsy1995313@gmail.com)
+" Copyright (C): 2023
+" It includes options, commands, keymappings as well as plugins
+" 
+" =====================================================================
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+" Avoid side effects when it was already reset.
+if &compatible
+  set nocompatible
+endif
+
+" Enable file type detection.
+filetype plugin on
+" Enable automatic indentation as you type.
+filetype indent on
+
+" Global variables {{{1
+let g:plugin_dir = '~/.local/share/vim/plugins/'
+let g:plugin_manager = 'plug'
+
+let g:enable_plugins = [
+    \ 'surround',
+    \ 'autopair',
+    \ 'commentary',
+    \ 'nerdtree',
+    \ 'fzf',
+    \ 'context',
+    \ 'vista', 
+    \ 'easymotion',
+    \ 'ale', 
+    \ 'vimtable', 
+    \ 'ycm',
+    \ 'vimsnippets',
+    \ 'ultisnips',
+    \ 'asyncrun',
+    \ 'vimtex',
+    \ 'vimmkd',
+    \ 'mkdp',
+    \ 'fugitive',
+    \ 'gitgutter',
+    \ 'airline',
+    \ 'navigator',
+    \ 'indentline',
+    \ 'whichkey',
+    \ 'rainbow',
+    \ 'gruvbox',
+    \ ]
+
+"}}}1
+
+" 'if 1' will false when vim does not have 'eval' function
+if 1
+    call Graphicless#PluginInstall( g:enable_plugins )
+endif
+
+" Options {{{1
+
+" Search
+set hlsearch        " Highlight the search results
+set incsearch       " Show the pattern while typing
+
+" Modeline can be the last line of any file if use vim as the editor.
+" Please use `help modeline' or `help vim:` for detail.
+set modeline
+
+
+" Completion
+set expandtab       " Expand tag to space
+set tabstop=4       " One tab includes four spaces
+set shiftwidth=4    " The width of '<' and '>'
+set backspace=indent,eol,start
+                    " Allow backspacing over everything in insert mode.
+
+" Lint
+set smartindent     " Do smart autoindenting
+
+syntax enable       " This enables Vim's syntax-related features. 
+                    " Without this, some VimTeX features will not work 
+
+" }}}1
+
+" Commends {{{1
+
+" Command to see the difference between the current buffer and the file loaded from.
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+        \ | wincmd p | diffthis
+endif
+
+" GLHelp open the help file at the right side
+if !exists(":GLHelp")
+    command! -nargs=? -complete=help  GLHelp 
+        \ help <args> | if &filetype == 'help' | wincmd L 
+        \ | vertical resize 90 | set number | endif
+
+endif
+
+augroup GLStart
+    au!
+
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid, when inside an event handler
+    " (happens when dropping a file on gvim) and for a commit message (it's
+    " likely a different one than last time).
+    autocmd BufReadPost *
+        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+        \ |   exe "normal! g`\""
+        \ | endif
+
+    autocmd CmdwinEnter *
+        \ echohl Todo | 
+        \ echo 'You discovered the command-line window! You can close it with ":q".' |
+        \ echohl None
+augroup END
+
+" }}}1
+
+" Keymappings {{{1
+
+" Use <Space> as the <Leader>
+" This command must be before all keymappings and plugin configs
+let mapleader = ' '
+
+" Remap window keymappings
+" nnoremap <C-H> <C-W>h
+" nnoremap <C-J> <C-W>j
+" nnoremap <C-K> <C-W>k
+" nnoremap <C-L> <C-W>l
+
+" Easy-nohlsearch
+nnoremap <Esc> :nohlsearch<CR>
+
+" Show mappings
+nnoremap <Leader>m :verbose map 
+
+" }}}1
+
+" View {{{1
+set ruler           " show the cursor position 
+set wildmenu        " display completion matches in a status line
+set number          " Show line number
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set mouse=a         " Enable mouse in all mode
+set scrolloff=5     " Show a few lines around the cursor
+
+if has('gui_running')
+    " GUI options
+    set guioptions=aegrLt
+    set background=light
+else
+    set background=dark
+endif
+
+" Config load plugins
+if 1
+    call Graphicless#PluginConfig( g:enable_plugins )
+endif
+
+try
+    " Colorscheme may use plugin
+    colorscheme gruvbox
+catch
+    " Builtin colorschemes: desert, peachpuff, quiet, slate
+    " Colorschemes plugin: gruvbox
+    colorscheme desert
+endtry
+" }}}1
+
+" vim: set sw=4 sts=4 et fdm=marker:
