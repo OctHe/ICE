@@ -8,8 +8,9 @@
 !.bashrc
 !.zshrc
 !.alias
-!/bin/
-!/bin/**
+!/.local/
+!/.local/bin/
+!/.local/bin/**
 
 # Tmux
 !.tmux.conf
