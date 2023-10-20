@@ -2,7 +2,7 @@
 # Copyright (c) Shiyue He (hsy1995313@gmail.com)
 
 # Alias
-alias ls='ls --color=auto'
+test -s .alias && . .alias
 
 # Enable a fold work directory in PS1
 function fold_pwd() 

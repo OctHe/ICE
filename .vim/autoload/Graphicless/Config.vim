@@ -138,10 +138,13 @@ function! Graphicless#Config#commentary()
     nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 endfunction
 
-" YCM: a powerful completion plugin based on LSP
-" It relies on cmake, make, g++.
-" Install it in Debian with
-"   sudo apt install cmake make g++
+" YCM: a powerful completion plugin based on LSP It relies on cmake, 
+" make, g++, python3-dev and LSP. YCM does not use LSP from the system. 
+" It downloads them by itself.
+" Install the prerequisites in Debian with
+"   sudo apt install cmake make g++ python3-dev
+" In openSUSE with
+"   sudo zypper install cmake make g++ python3-deval
 function! Graphicless#Config#ycm()
 
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'

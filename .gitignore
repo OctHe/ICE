@@ -1,13 +1,39 @@
-# Backup files
-*~
-*swp
-*swo
+# All files except...
+/**
 
+# README
+!README.md
+
+# Shell
+!.bashrc
+!.zshrc
+!.alias
+!/bin/
+!/bin/**
+
+# Tmux
+!.tmux.conf
+
+# Vim configuration
+!/.vim/
+!/.vim/**
+/.vim/.netrwhist
 # Plugin manager: vim-plug
-Editor/vim/autoload/plug.vim
+/.vim/autoload/plug.vim
 
-# nvim plugins
-Editor/nvim/lazy-lock.json
+# Neovim configuration
+!/.config/
+!/.config/nvim/
+!/.config/nvim/**
+/.config/nvim/lazy-lock.json
 
-# Language server local file
-.luarc.json
+# Source code
+!/src/
+!/src/**
+
+# Help pages
+!/.local/Graphicless/
+# Backupfiles
+/**/*~
+/**/*swp
+/**/*swo

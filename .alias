@@ -1,12 +1,17 @@
-# Common aliases for all shells
+# Graphicless aliases for bash and zsh
 #
 # Copyright(C) Shiyue He
 #
 
-# Alias
+# This project
+alias gl='/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME'
+
+# ls
 alias l='ls --color=always -lh'
 alias ls='ls --color=always'
 alias ll='ls --color=always -alh'
+
+# Git
 alias ga='git add'
 alias gd='git diff'
 alias gc='git checkout'
