@@ -5,7 +5,9 @@
 
 # bash is the default shell for most Linux distributions
 # ash is the shell from busybox
+# csh is the default shell for FreeBSD
 # zsh is the default shell for part of the Linux distributions and macOS
+# fish is a ready-out-of-box shell
 GRAPHICLESS_SHELL=(
     bash csh ash zsh fish \\n
     ipython ipython3 \\n
@@ -27,11 +29,13 @@ GRAPHICLESS_TOOL=(
     neofetch \\n
 )
 
+# trans is a network tools that uses translate.google.com.
+# It requires http_proxy and https_proxy
 GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip \\n
     ssh scp sftp rsync \\n
-    curl \\n
+    curl trans   \\n
 )
 
 GRAPHICLESS_EDITOR=(
@@ -47,7 +51,7 @@ GRAPHICLESS_MAIL=(
 
 # Help manual, PDF viewver, file explorer, and web browser
 GRAPHICLESS_VIEWER=(
-    man info cheat dict cppman \\n
+    man info cheat cppman \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
     nnn ranger vifm \\n
@@ -89,7 +93,7 @@ GRAPHICLESS_LS=(
 )
 
 # Graphicless desktop environment
-gl_de()
+function gl_de()
 {
   for arg in $@
   do
@@ -146,7 +150,7 @@ gl_de()
   done
 }
 
-gl_bash_env()
+function gl_bash_env()
 {
     if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
         echo "~/.xmodmap-`uname -n` is not find"
