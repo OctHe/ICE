@@ -71,18 +71,6 @@ if [[ -e ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme ]]; then
     AGNOSTER_PROMPT_SEGMENTS[2]=
 fi
 
-# Detect the default local proxy server and port
-# Change the the address and server 
-local ldebsrv_ip=127.0.0.1
-local proxy_port=7890
-
-if [[ ! `nc -z ${ldebsrv_ip} ${proxy_port}` ]]; then
-    export http_proxy="http://${ldebsrv_ip}:${proxy_port}"
-    export https_proxy="https:/${ldebsrv_ip}:${proxy_port}"
-else
-    echo "Proxy is not set"
-fi
-
 # Colored man when the PAGER=less
 # Redefine the man command so the follow environment variables changes only for man page
 function man() {

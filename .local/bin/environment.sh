@@ -33,7 +33,7 @@ GRAPHICLESS_TOOL=(
 # It requires http_proxy and https_proxy
 GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
-    ip \\n
+    ip iptables \\n
     ssh scp sftp rsync \\n
     curl trans   \\n
 )
