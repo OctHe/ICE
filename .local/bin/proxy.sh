@@ -6,12 +6,18 @@
 function gl_proxy() {
 
     local local_ip=127.0.0.1
+    local srv_ip=192.168.31.2
     local proxy_port=7890
 
-    if nc -z ${local_ip} ${proxy_port}; then
-
+    if nc -z ${srv_ip} ${proxy_port}; then
         git config --global http.proxy "http://${local_ip}:${proxy_port}"
         git config --global https.proxy "https://${local_ip}:${proxy_port}"
+        echo "Enable server proxy for git"
+
+    elif nc -z ${local_ip} ${proxy_port}; then
+        git config --global http.proxy "http://${local_ip}:${proxy_port}"
+        git config --global https.proxy "https://${local_ip}:${proxy_port}"
+        echo "Enable local proxy for git"
 
     else
         git config --global --unset http.proxy 
