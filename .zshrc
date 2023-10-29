@@ -46,34 +46,6 @@ HISTFILE=~/.zhistory
 HISTSIZE=20000
 SAVEHIST=20000
 
-# Plugins
-local zsh_plugin=~/.zsh/plugin
-
-# zinit: A fast zsh plugin manager
-ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Autocompletion for zinit
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-
-# agnoster requires powerline-fonts: sudo apt install fonts-powerline
-zinit light agnoster/agnoster-zsh-theme
-
-# Remove segment 2. Default segments are :
-#     1	prompt_status
-#     2	prompt_context
-#     3	prompt_virtualenv
-#     4	prompt_dir
-#     5	prompt_git
-#     6	prompt_end
-AGNOSTER_PROMPT_SEGMENTS[2]=
-
 # Colored man when the PAGER=less
 # Redefine the man command so the follow environment variables changes only for man page
 function man() {
@@ -101,3 +73,43 @@ function man() {
 
     env $environment $0 $@
 }
+
+# zinit: A fast zsh plugin manager
+ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Autocompletion for zinit
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Plugins that are managed by zinit
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
+
+# Remind the alias after using a command
+zinit light MichaelAquilina/zsh-you-should-use
+
+# New cd command for zsh
+# z plugin has a man page (i.e., z.1) in the plugin directory, but zinit cannot manage it
+# The follow command manual use man page for z command
+#   zinit cd rupa/z; man ./z.1
+zinit light rupa/z
+
+# List directory with git features
+zinit light supercrabtree/k
+
+# agnoster prompt requires powerline-fonts
+#   sudo apt install fonts-powerline
+zinit light agnoster/agnoster-zsh-theme
+
+# Remove segment 2 of agnoster prompt. Default segments are :
+#     1	prompt_status
+#     2	prompt_context
+#     3	prompt_virtualenv
+#     4	prompt_dir
+#     5	prompt_git
+#     6	prompt_end
+AGNOSTER_PROMPT_SEGMENTS[2]=
+
