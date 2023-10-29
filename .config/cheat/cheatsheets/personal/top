@@ -1,0 +1,23 @@
+## CPU
+
+Percentage of time spend for processes
+
+    us      uniced user process
+    sy      system process
+    ni      niced user process
+    id      kernel idle handler
+    wa      waiting for I/O completion
+    hi      hardware interrupt
+    si      software interrupt
+    st      stolen by hypervisor
+
+## Process
+
+    PID     process ID
+    USER    user name
+    PR      priority
+    NI      nice value
+    VIRT    virtual memory size (KiB)
+    RES     resident memory size (KiB)
+    SHR     shared memory size (KiB)
+

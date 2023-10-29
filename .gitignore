@@ -28,6 +28,12 @@
 !/.config/nvim/**
 /.config/nvim/lazy-lock.json
 
+# Cheatsheet
+!/.config/cheat/
+!/.config/cheat/cheatsheets/
+!/.config/cheat/cheatsheets/personal
+!/.config/cheat/cheatsheets/personal/*
+
 # Source code
 !/src/
 !/src/**
