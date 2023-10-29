@@ -6,8 +6,6 @@
 #
 # Change the default user with
 #     chsh -s /bin/zsh <USER_NAME>
-# Install zshrc file
-#     ln -s /absolute/path/to/zshrc ~/.zshrc
 #
 
 # Options. Get help by running
@@ -51,25 +49,30 @@ SAVEHIST=20000
 # Plugins
 local zsh_plugin=~/.zsh/plugin
 
-[[ -e ${zsh_plugin}/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && \
-	source ${zsh_plugin}/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zinit: A fast zsh plugin manager
+ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-[[ -e ${zsh_plugin}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && \
-	source ${zsh_plugin}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Autocompletion for zinit
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 
 # agnoster requires powerline-fonts: sudo apt install fonts-powerline
-if [[ -e ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme ]]; then 
-	source ${zsh_plugin}/agnoster-zsh-theme/agnoster.zsh-theme
-    
-    # Remove segment 2. Default segments are :
-    #     1	prompt_status
-    #     2	prompt_context
-    #     3	prompt_virtualenv
-    #     4	prompt_dir
-    #     5	prompt_git
-    #     6	prompt_end
-    AGNOSTER_PROMPT_SEGMENTS[2]=
-fi
+zinit light agnoster/agnoster-zsh-theme
+
+# Remove segment 2. Default segments are :
+#     1	prompt_status
+#     2	prompt_context
+#     3	prompt_virtualenv
+#     4	prompt_dir
+#     5	prompt_git
+#     6	prompt_end
+AGNOSTER_PROMPT_SEGMENTS[2]=
 
 # Colored man when the PAGER=less
 # Redefine the man command so the follow environment variables changes only for man page
