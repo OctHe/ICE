@@ -46,8 +46,8 @@ git branch <branch>                 # Create branch
 git branch -d <branch>              # Delete <branch>
 git branch -m <new-name>            # Rename the branch
 
-git checkout <branch>               # Checkout to <branch>
-git checkout <branch> -- <file>     # Checkout (copy) the file in <branch> to this branch
+git checkout <branch>               # Checkout <branch>
+git checkout <branch> <file>     # Checkout (copy) the file in <branch> to this branch
 git merge <branch>                  # Merge <branch> to the current branch
 
 git diff                            # Differences (unstaged files) between now and HEAD
