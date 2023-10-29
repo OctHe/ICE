@@ -22,15 +22,17 @@ GRAPHICLESS_PKT=(
 GRAPHICLESS_TOOL=(
     find fd fzf \\n
     grep ack ag rg \\n
-    svn git \\n
     terminator \\n
     screen tmux \\n
     htop \\n
     neofetch \\n
 )
 
-# trans is a network tools that uses translate.google.com.
-# It requires http_proxy and https_proxy
+# osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
+GRAPHICLESS_VCS=( svn git osc \\n )
+
+# trans is a network tools that uses translate.google.com (and other online translators).
+# It may require http_proxy and https_proxy
 GRAPHICLESS_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip iptables \\n
@@ -81,6 +83,7 @@ GRAPHICLESS_COMPILER=(
     doxygen texi2any pandoc pdflatex xelatex bibtex latexmk \\n
     rust \\n
     go \\n
+    groff \\n
 )
 
 # ddd is the GUI of gdb
