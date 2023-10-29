@@ -5,8 +5,10 @@
 # If the OS distribution only has bash, install zsh with packet manager
 #
 # Change the default user with
-#     chsh -s /bin/zsh <USER_NAME>
+#   chsh -s /bin/zsh <USER_NAME>
 #
+# Test of the startup time. The time can be 0.01s with no plugins
+#   time zsh -i -c exit
 
 # Options. Get help by running
 #   run-help zshoptions
