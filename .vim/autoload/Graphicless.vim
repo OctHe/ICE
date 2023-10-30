@@ -10,15 +10,13 @@
 function! Graphicless#PluginInstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
-    " link: The source of each plugin
-    " plug_hook: The installation hook for vim-plugin
-    " Additional installation option can be added for different plugin
-    " managers
+    "   link: The source of each plugin
+    "   plug_hook: The installation hook for vim-plugin
+    " Additional installation option can be added for different plugin managers
     let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
-        \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',     },
-        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
+        \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',      },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'fzf'         : {
             \ 'link': 'junegunn/fzf',
@@ -29,7 +27,7 @@ function! Graphicless#PluginInstall(plugins)
             \ 'plug_hook': { 'do': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
-        \ 'easymotion'  : { 'link': 'easymotion/vim-easymotion',    },
+        \ 'easymotion'  : { 'link': 'timsu92/vim-easymotion',       },
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },

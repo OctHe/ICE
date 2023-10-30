@@ -27,12 +27,21 @@ endfunction
 function! Graphicless#Config#ctrlp()
 endfunction
 
-" Easymotion:
+" Easymotion: The official repo is in easymotion/vim-easymotion.
+" timsu92 version fix a bug about easymotion-w/W in fold codes.
 function! Graphicless#Config#easymotion()
-    map f <Plug>(easymotion-f)
-    map F <Plug>(easymotion-F)
-    map t <Plug>(easymotion-t)
-    map T <Plug>(easymotion-T)
+    noremap f <Plug>(easymotion-f)
+    noremap F <Plug>(easymotion-F)
+    noremap t <Plug>(easymotion-t)
+    noremap T <Plug>(easymotion-T)
+    noremap w <Plug>(easymotion-w)
+    noremap W <Plug>(easymotion-W)
+    noremap e <Plug>(easymotion-e)
+    noremap E <Plug>(easymotion-E)
+    noremap b <Plug>(easymotion-b)
+    noremap B <Plug>(easymotion-B)
+    noremap ge <Plug>(easymotion-ge)
+    noremap gE <Plug>(easymotion-gE)
 endfunction
 
 " NERDTree: File explorer.  {{{2
@@ -124,9 +133,6 @@ endfunction
 
 " Nerdcomment: 
 function! Graphicless#Config#nerdcomment()
-endfunction
-
-function! Graphicless#Config#tcomment()
 endfunction
 
 " commentary:
