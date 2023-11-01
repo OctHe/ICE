@@ -1,7 +1,7 @@
 -- ---------------------------------------------------------------------
 --
 -- Neovim plugin manager
--- Author: Shiyue He (hsy1995313@gmail.com)
+-- Author: OctHe
 -- Copyright (C): 2023
 -- GL uses Lazy.nvim as the plugin manager
 --

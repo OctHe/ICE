@@ -1,9 +1,8 @@
 -- ---------------------------------------------------------------------
 --
 -- Neovim run command file
--- Author: Shiyue He (hsy1995313@gmail.com)
+-- Author: OctHe
 -- Copyright (C): 2023
--- It includes options, commands, keymappings as well as plugins
 --
 -- ---------------------------------------------------------------------
 
@@ -27,12 +26,9 @@ vim.o.expandtab = true
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.undofile = true
--- }}}1
 
--- Completion {{{1
 vim.o.smartindent = true
 -- }}}1
-
 
 -- Keymapping {{{1
 vim.g.mapleader = " "

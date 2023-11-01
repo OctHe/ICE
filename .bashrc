@@ -1,5 +1,5 @@
 # Bash configuration
-# Copyright (c) Shiyue He (hsy1995313@gmail.com)
+# Copyright (c) OctHe
 
 # Alias
 test -s .alias && . .alias

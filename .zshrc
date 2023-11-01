@@ -1,6 +1,6 @@
 # Zsh configuration
 #
-# Copyright(C) Shiyue He (hsy1995313@gmail.com)
+# Copyright(C) OctHe
 #
 # If the OS distribution only has bash, install zsh with packet manager
 #

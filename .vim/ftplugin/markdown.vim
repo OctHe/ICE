@@ -1,7 +1,7 @@
 " =====================================================================
 " 
 " Filetype configuration for markdown
-" Author: Shiyue He (hsy1995313@gmail.com)
+" Author: OctHe
 " Copyright (C): 2023
 " 
 " =====================================================================

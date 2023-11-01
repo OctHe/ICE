@@ -1,6 +1,6 @@
 " 
 " Vim run command file
-" Author: Shiyue He (hsy1995313@gmail.com)
+" Author: OctHe
 " Copyright (C): 2023
 " It includes options, commands, keymappings as well as plugins
 " 
@@ -42,7 +42,7 @@ let g:enable_plugins = [
     \ 'fugitive',
     \ 'gitgutter',
     \ 'airline',
-    \ 'navigator',
+    \ 'tmux_navi',
     \ 'indentline',
     \ 'whichkey',
     \ 'rainbow',
