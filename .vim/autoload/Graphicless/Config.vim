@@ -4,7 +4,7 @@
 "
 " =====================================================================
 
-" Search: Plugins to search in projects 
+" Navigation 
 " {{{1
 
 " fzf:
@@ -44,6 +44,10 @@ function! Graphicless#Config#easymotion()
     noremap gE <Plug>(easymotion-gE)
 endfunction
 
+" Vim-tmux-navigator: It requires configuration in tmux
+function! Graphicless#Config#tmux_navi()
+endfunction
+
 " NERDTree: File explorer.  {{{2
 function! s:CloseNERDTree()
     if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
@@ -81,7 +85,7 @@ endfunction
 
 " }}}1
 
-" Lint: Static analysis plugins 
+" Lint
 " {{{1
 " Vista: 
 function! Graphicless#Config#vista()
@@ -119,8 +123,7 @@ function! Graphicless#Config#vimtable()
 endfunction
 " }}}1
 
-" Completion: These plugins are related to the basic completion and
-" language-specific completion plugins 
+" Completion
 " {{{1
 
 " Surround
@@ -182,7 +185,7 @@ endfunction
 
 " }}}1
 
-" Runner: These plugins can easily compile and run the code 
+" Runner
 " {{{1
 
 " genutils: It gives general functions that some plugins rely on
@@ -245,7 +248,7 @@ function! Graphicless#Config#mkdp()
 endfunction
 " }}}1
 
-" VCS: Version control system 
+" VCS
 " {{{1
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 function! Graphicless#Config#fugitive()
@@ -273,9 +276,6 @@ function! Graphicless#Config#airline()
 endfunction
 
 function! Graphicless#Config#lightline()
-endfunction
-
-function! Graphicless#Config#navigator()
 endfunction
 
 function! Graphicless#Config#indentline()

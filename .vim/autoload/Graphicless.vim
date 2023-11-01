@@ -2,7 +2,7 @@
 " 
 " Plugin management
 "
-" Author: Shiyue He (hsy1995313@gmail.com)
+" Author: OctHe
 " Copyright (C): 2023
 " 
 " =====================================================================
@@ -53,7 +53,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
         \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
-        \ 'navigator'   : { 
+        \ 'tmux_navi'   : { 
             \ 'link': 'christoomey/vim-tmux-navigator', 
             \ },
         \ 'indentline'  : { 'link': 'Yggdroot/indentLine',          },

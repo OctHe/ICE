@@ -82,7 +82,7 @@ require("lazy").setup({
 
     -- }}}1
 
-    -- Search {{{1
+    -- Navigation {{{1
     {
         "nvim-tree/nvim-tree.lua",
         config = function() require "nvim-tree".setup() end,
@@ -117,7 +117,7 @@ require("lazy").setup({
 
     {
         "phaazon/hop.nvim",
-        config = function() require "Search.hop" end
+        config = function() require "Navigation.hop" end
     },
 
     {

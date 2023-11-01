@@ -129,16 +129,16 @@ Vi style can type <Esc> to exit insert mode and use vim keybindings.
     declare <var>       # Declare variable and its attribute
 
 
-| | Parameter Set and Not Null | Parameter Set but Null | Parameter Not Set |
-|:----:|:----:|:----:|:----:|
-|${parameter:-word}|substitute parameter|substitute word|substitute word|
-|${parameter:=word}|substitute parameter|assign word|assign word|
-|${parameter:?word}|substitute parameter|error, exit|error, exit|
-|${parameter:+word}|substitute parameter|substitute null|substitute null|
-|${parameter-word}|substitute parameter|substitute null|substitute word|
-|${parameter=word}|substitute parameter|substitute null|assign word|
-|${parameter?word}|substitute word|substitute null|error, exit|
-|${parameter+word}|substitute word|substitute word|substitute null|
+|                     | Parameter Set and Not Null   | Parameter Set but Null | Parameter Not Set |
+| :-----------------: | :--------------------------: | :--------------------: | :---------------: |
+| ${parameter:-word}  | substitute parameter         | substitute word        | substitute word   |
+| ${parameter:=word}  | substitute parameter         | assign word            | assign word       |
+| ${parameter:?word}  | substitute parameter         | error, exit            | error, exit       |
+| ${parameter:+word}  | substitute parameter         | substitute null        | substitute null   |
+| ${parameter-word}   | substitute parameter         | substitute null        | substitute word   |
+| ${parameter=word}   | substitute parameter         | substitute null        | assign word       |
+| ${parameter?word}   | substitute word              | substitute null        | error, exit       |
+| ${parameter+word}   | substitute word              | substitute word        | substitute null   |
 
     ${variable#pattern}     # Remove Smallest Prefix Pattern
     ${variable##pattern}    # Remove Largest Prefix Pattern
@@ -226,13 +226,9 @@ Set options in script
 
 # Snippets
 
-The following snippets is interesting, but they may be useless.
-
-```bash
-    # With eval, bash can print the value of a variable as well as its name
-    # In this case, the value of BLACK is a string to control the string's color
-    # The value of COLOR is the string "BLACK"
-    BLACK='\e[30m'
-    COLOR=BLACK
-    eval echo -e '$'{${COLOR}}${COLOR}
-```
+# With eval, bash can print the value of a variable as well as its name
+# In this case, the value of BLACK is a string to control the string's color
+# The value of COLOR is the string "BLACK"
+BLACK='\e[30m'
+COLOR=BLACK
+eval echo -e '$'{${COLOR}}${COLOR}

@@ -44,3 +44,6 @@
 /**/*~
 /**/*swp
 /**/*swo
+
+# lua-language-server file
+/**/.luarc.json
