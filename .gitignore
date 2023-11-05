@@ -12,9 +12,6 @@
 !/.local/bin/
 !/.local/bin/**
 
-# Tmux
-!.tmux.conf
-
 # Vim configuration
 !/.vim/
 !/.vim/**
@@ -27,6 +24,10 @@
 !/.config/nvim/
 !/.config/nvim/**
 /.config/nvim/lazy-lock.json
+
+# Tmux
+!.config/tmux/
+!.config/tmux/tmux.conf
 
 # Cheatsheet
 !/.config/cheat/

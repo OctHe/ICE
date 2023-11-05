@@ -87,7 +87,10 @@ endfunction
 
 " Lint
 " {{{1
-" Vista: 
+" Vista: Vista relies on universal-ctags. Please careful to install the
+" correct version. 
+" In openSUSE:
+"   sudo zypper install universal-ctags 
 function! Graphicless#Config#vista()
     let g:vista_sidebar_width = 50
 

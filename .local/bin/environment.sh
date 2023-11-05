@@ -16,6 +16,7 @@ GRAPHICLESS_SHELL=(
 GRAPHICLESS_PKT=(
     flatpak snap apt zypper pacman yay \\n
     pip pip3 \\n
+    cargo \\n
 )
 
 # screen and tmux need to set true color
@@ -24,7 +25,7 @@ GRAPHICLESS_TOOL=(
     grep ack ag rg \\n
     terminator \\n
     screen tmux \\n
-    htop \\n
+    top htop \\n
     neofetch \\n
 )
 
