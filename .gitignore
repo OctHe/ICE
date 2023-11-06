@@ -29,6 +29,10 @@
 !.config/tmux/
 !.config/tmux/tmux.conf
 
+# Tmux
+!.config/fish/
+!.config/fish/config.fish
+
 # Cheatsheet
 !/.config/cheat/
 !/.config/cheat/cheatsheets/
