@@ -69,3 +69,8 @@ function man() {
         command man "$@"
 
 }
+
+# TODO: rupa/z
+# The completion works well in bash
+# It has a man page (i.e., z.1) in the plugin directory.
+

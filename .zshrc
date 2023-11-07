@@ -94,10 +94,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light MichaelAquilina/zsh-you-should-use
 
 # New cd command for zsh
-# z plugin has a man page (i.e., z.1) in the plugin directory, but zinit cannot manage it
-# The follow command manual use man page for z command
-#   zinit cd rupa/z; man ./z.1
-zinit light rupa/z
+zinit light agkozak/zsh-z
 
 # List directory with git features
 zinit light supercrabtree/k

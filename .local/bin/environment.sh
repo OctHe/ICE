@@ -23,6 +23,7 @@ GRAPHICLESS_PKT=(
 GRAPHICLESS_TOOL=(
     find fd fzf \\n
     grep ack ag rg \\n
+    cd z zoxide \\n
     terminator \\n
     screen tmux \\n
     top htop \\n
