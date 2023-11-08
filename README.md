@@ -1,7 +1,6 @@
 # Graphicless
 
 Graphicless (GL) is a `dotfile` project that contains a collection of personal-use configurations across a variety of Linux distributions and programs on them.
-It is also an "awesome" project that lists and compares awesome projects that I am interested in. 
 
 Install GL is easy
 

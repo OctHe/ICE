@@ -102,9 +102,6 @@ zinit light agkozak/zsh-z
 # List directory with git features
 zinit light supercrabtree/k
 
-# Drop-down autocompletion
-zinit light marlonrichert/zsh-autocomplete
-
 # agnoster prompt requires powerline-fonts
 #   sudo apt install fonts-powerline
 zinit light agnoster/agnoster-zsh-theme
