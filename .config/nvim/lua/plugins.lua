@@ -85,7 +85,7 @@ require("lazy").setup({
     -- Navigation {{{1
     {
         "nvim-tree/nvim-tree.lua",
-        config = function() require "nvim-tree".setup() end,
+        config = function() require "Navigation.tree" end,
         -- nvim-web-devicons requires Hack Nerd font
         -- You should install it manual
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -153,7 +153,6 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter-context",
         dependencies = "nvim-treesitter/nvim-treesitter",
-        -- config = function() require 'Lint.treesitter' end,
     },
     -- }}}2
 
