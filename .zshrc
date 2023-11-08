@@ -87,7 +87,10 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Plugins that are managed by zinit
+# Highlight commands
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+# Autosuggestion for commands
 zinit light zsh-users/zsh-autosuggestions
 
 # Remind the alias after using a command
@@ -98,6 +101,9 @@ zinit light agkozak/zsh-z
 
 # List directory with git features
 zinit light supercrabtree/k
+
+# Drop-down autocompletion
+zinit light marlonrichert/zsh-autocomplete
 
 # agnoster prompt requires powerline-fonts
 #   sudo apt install fonts-powerline

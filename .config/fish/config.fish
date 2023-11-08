@@ -1,5 +1,12 @@
+# Fish configuration
+#
+# Copyright(C) OctHe
+#
+# Plugin manager is fisher.
+# Install fisher:
+#   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
 if status is-interactive
-    # Don't auto-download fisher due to the network issue
     if test -e $__fish_config_dir/functions/fisher.fish
         if not test -e $__fish_config_dir/conf.d/done.fish
             fisher install franciscolourenco/done
