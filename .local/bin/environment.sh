@@ -20,8 +20,10 @@ GRAPHICLESS_PKT=(
 )
 
 # screen and tmux need to set true color
+# bc: A command-line calculator
 GRAPHICLESS_TOOL=(
     find fd fzf \\n
+    bc \\n
     grep ack ag rg \\n
     cd z zoxide \\n
     terminator \\n
