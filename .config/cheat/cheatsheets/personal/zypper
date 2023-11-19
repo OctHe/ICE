@@ -1,0 +1,5 @@
+# List repos
+zypper repos
+
+# Search all installed packages in the repo
+zypper search -i -r <repo>
