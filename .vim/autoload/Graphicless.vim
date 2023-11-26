@@ -18,6 +18,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
         \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',      },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
+        \ 'starsearch'  : { 'link': 'vim-scripts/star-search',      },
         \ 'fzf'         : {
             \ 'link': 'junegunn/fzf',
             \ 'plug_hook': { 'do': { -> fzf#install() }, },

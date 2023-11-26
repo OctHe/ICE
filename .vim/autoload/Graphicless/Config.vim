@@ -7,6 +7,10 @@
 " Navigation 
 " {{{1
 
+" starsearch: Enhanced star keymapping. Avoid jumping to next
+function! Graphicless#Config#starsearch()
+endfunction
+
 " fzf:
 function! Graphicless#Config#fzf()
 endfunction

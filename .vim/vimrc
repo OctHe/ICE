@@ -130,6 +130,11 @@ let mapleader = ' '
 " nnoremap <C-K> <C-W>k
 " nnoremap <C-L> <C-W>l
 
+" It changes the behavior of star to not jump to next word
+" Yank the word into the register s, and then assign it in to the yank
+" register (The register / is not writeable directly)
+nmap <silent> * "syiw:let @/ = @s<CR>
+
 " Easy-nohlsearch
 nnoremap <Esc> :nohlsearch<CR>
 
