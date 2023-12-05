@@ -82,7 +82,7 @@ function! Graphicless#Config#nerdtree()
     autocmd BufEnter * :call s:PreventReplacingNERDTree()
 
     " e means explore 
-    nnoremap <Leader>e :NERDTreeToggle<CR>  
+    nnoremap <silent> <Leader>e :NERDTreeToggle<CR>  
 
 endfunction
 " }}}2
@@ -99,7 +99,7 @@ function! Graphicless#Config#vista()
     let g:vista_sidebar_width = 50
 
     " t means tag
-    nnoremap <Leader>t :Vista!!<CR>  
+    nnoremap <silent> <Leader>t :Vista!!<CR>  
 
 endfunction
 
@@ -109,7 +109,7 @@ function! Graphicless#Config#tagbar()
     autocmd VimEnter *.{py,h,c} Tagbar
 
     " t means tag
-    nnoremap <Leader>t :Tagbar<CR>  
+    nnoremap <silent> <Leader>t :Tagbar<CR>  
 
 endfunction
 
@@ -261,8 +261,8 @@ endfunction
 function! Graphicless#Config#fugitive()
 
     " g means git
-    nnoremap <Leader>gdi :Git diff<CR><C-W>L
-    nnoremap <Leader>gs :Git status<CR>
+    nnoremap <silent> <Leader>gdi :Git diff<CR><C-W>L
+    nnoremap <silent> <Leader>gs :Git status<CR>
 
 endfunction
 

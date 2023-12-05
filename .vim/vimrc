@@ -90,14 +90,6 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
-" GLHelp open the help file at the right side
-if !exists(":GLHelp")
-    command! -nargs=? -complete=help  GLHelp 
-        \ help <args> | if &filetype == 'help' | wincmd L 
-        \ | vertical resize 90 | set number | endif
-
-endif
-
 augroup GLStart
     au!
 
@@ -136,10 +128,10 @@ let mapleader = ' '
 nmap <silent> * "syiw:let @/ = @s<CR>
 
 " Easy-nohlsearch
-nnoremap <Esc> :nohlsearch<CR>
+nnoremap <silent> <Esc> :nohlsearch<CR>
 
 " Show mappings
-nnoremap <Leader>m :verbose map 
+nnoremap <silent> <Leader>m :verbose map 
 
 " }}}1
 
