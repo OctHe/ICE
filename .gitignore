@@ -39,10 +39,6 @@
 !/.config/cheat/cheatsheets/personal
 !/.config/cheat/cheatsheets/personal/*
 
-# Source code
-!/src/
-!/src/**
-
 # Help pages
 !/.local/Graphicless/
 # Backupfiles
