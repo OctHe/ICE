@@ -232,3 +232,8 @@ Set options in script
 BLACK='\e[30m'
 COLOR=BLACK
 eval echo -e '$'{${COLOR}}${COLOR}
+
+# Proxy
+
+    export http_proxy="http://<ip>:<port>"
+    export https_proxy="https://<ip>:<port>"
