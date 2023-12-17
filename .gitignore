@@ -4,6 +4,9 @@
 # README
 !README.md
 
+# User config directory
+!/.config/
+
 # Shell
 !.bashrc
 !.zshrc
@@ -11,16 +14,18 @@
 !/.local/
 !/.local/bin/
 !/.local/bin/**
+# fish
+!.config/fish/
+!.config/fish/config.fish
 
-# Vim configuration
+# Vim
 !/.vim/
 !/.vim/**
 /.vim/.netrwhist
 # Plugin manager: vim-plug
 /.vim/autoload/plug.vim
 
-# Neovim configuration
-!/.config/
+# Neovim
 !/.config/nvim/
 !/.config/nvim/**
 /.config/nvim/lazy-lock.json
@@ -29,18 +34,15 @@
 !.config/tmux/
 !.config/tmux/tmux.conf
 
-# Tmux
-!.config/fish/
-!.config/fish/config.fish
-
 # Cheatsheet
 !/.config/cheat/
 !/.config/cheat/cheatsheets/
 !/.config/cheat/cheatsheets/personal
 !/.config/cheat/cheatsheets/personal/*
 
-# Help pages
-!/.local/Graphicless/
+# Info 
+!/.infokey
+
 # Backupfiles
 /**/*~
 /**/*swp
