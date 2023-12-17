@@ -25,7 +25,8 @@ GRAPHICLESS_TOOL=(
     find fd fzf \\n
     bc \\n
     grep ack ag rg \\n
-    cd z zoxide \\n
+    cd zoxide \\n
+    ls eza \\n
     terminator \\n
     screen tmux \\n
     top htop \\n
@@ -84,7 +85,7 @@ GRAPHICLESS_COMPILER=(
     cmake make rpmbuild bear ccache \\n
     gcc g++ clang \\n
     python python3 \\n
-    doxygen texi2any pandoc pdflatex xelatex bibtex latexmk \\n
+    doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk \\n
     rust \\n
     go \\n
     groff \\n
