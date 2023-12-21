@@ -66,6 +66,8 @@ set incsearch       " Show the pattern while typing
 " Please use `help modeline' or `help vim:` for detail.
 set modeline
 
+" Hide unsaved buffer
+set hidden
 
 " Completion
 set expandtab       " Expand tag to space

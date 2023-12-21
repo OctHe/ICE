@@ -34,6 +34,9 @@
 !.config/tmux/
 !.config/tmux/tmux.conf
 
+# Git
+!.gitignore
+
 # Cheatsheet
 !/.config/cheat/
 !/.config/cheat/cheatsheets/
