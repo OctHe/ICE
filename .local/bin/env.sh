@@ -8,12 +8,12 @@
 # csh is the default shell for FreeBSD
 # zsh is the default shell for part of the Linux distributions and macOS
 # fish is a ready-out-of-box shell
-GRAPHICLESS_SHELL=(
+GL_SHELL=(
     bash csh ash zsh fish \\n
     ipython ipython3 \\n
 )
 
-GRAPHICLESS_PKT=(
+GL_PKT=(
     flatpak snap apt zypper pacman yay \\n
     pip pip3 \\n
     cargo \\n
@@ -21,7 +21,7 @@ GRAPHICLESS_PKT=(
 
 # screen and tmux need to set true color
 # bc: A command-line calculator
-GRAPHICLESS_TOOL=(
+GL_TOOL=(
     find fd fzf \\n
     bc \\n
     grep ack ag rg \\n
@@ -34,30 +34,30 @@ GRAPHICLESS_TOOL=(
 )
 
 # osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
-GRAPHICLESS_VCS=( svn git osc \\n )
+GL_VCS=( svn git osc \\n )
 
 # trans is a network tools that uses translate.google.com (and other online translators).
 # It may require http_proxy and https_proxy
-GRAPHICLESS_NETWORK=(
+GL_NETWORK=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip iptables \\n
     ssh scp sftp rsync \\n
     curl trans   \\n
 )
 
-GRAPHICLESS_EDITOR=(
+GL_EDITOR=(
     vim nvim helix micro \\n
     emacs \\n
     kate gnome-text-editor \\n 
 )
 
-GRAPHICLESS_MAIL=(
+GL_MAIL=(
     thunderbird kmail evolution \\n
     mutt \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
-GRAPHICLESS_VIEWER=(
+GL_VIEWER=(
     man info cheat cppman \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
@@ -66,7 +66,7 @@ GRAPHICLESS_VIEWER=(
 
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
-GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
+GL_FORMATTER=(astyle xmllint \\n)
 
 # rpmbuild is the buildtool in for rpm.
 # As an example, download and build the source code with
@@ -80,7 +80,7 @@ GRAPHICLESS_FORMATTER=(astyle xmllint \\n)
 #     xetex includes Unicode but pdftex does not.
 #     pdflatex and xelatex are two compiles for latex. Since latex is more useful, in most of time, 
 #     pdftex and xetex are the same as pdflatex and xelatex.
-GRAPHICLESS_COMPILER=(
+GL_COMPILER=(
     ctags cscope \\n
     cmake make rpmbuild bear ccache \\n
     gcc g++ clang \\n
@@ -92,56 +92,32 @@ GRAPHICLESS_COMPILER=(
 )
 
 # ddd is the GUI of gdb
-GRAPHICLESS_DEBUGGER=(gdb ddd lldb \\n)
+GL_DEBUGGER=(gdb ddd lldb \\n)
 
-GRAPHICLESS_LS=(
+GL_LS=(
     clangd ccls \\n
     shellcheck \\n
     lua-language-server \\n
 )
 
 # Graphicless desktop environment
-function gl_de()
-{
+function gl_desktop_env() {
   for arg in $@
   do
     echo ${arg}
     case ${arg} in
-        shell)
-            prog_list=${GRAPHICLESS_SHELL[@]}
-            ;;
-        package_management)
-            prog_list=${GRAPHICLESS_PKT[@]}
-            ;;
-        network)
-            prog_list=${GRAPHICLESS_NETWORK[@]}
-            ;;
-        tool)
-            prog_list=${GRAPHICLESS_TOOL[@]}
-            ;;
-        mail)
-            prog_list=${GRAPHICLESS_MAIL[@]}
-            ;;
-        viewer)
-            prog_list=${GRAPHICLESS_VIEWER[@]}
-            ;;
-        editor)
-            prog_list=${GRAPHICLESS_EDITOR[@]}
-            ;;
-        server)
-            prog_list=${GRAPHICLESS_LS[@]}
-            ;;
-        formatter)
-            prog_list=${GRAPHICLESS_FORMATTER[@]}
-            ;;
-        compiler)
-            prog_list=${GRAPHICLESS_COMPILER[@]}
-            ;;
-        debugger)
-            prog_list=${GRAPHICLESS_DEBUGGER[@]}
-            ;;
-        *)
-          ;;
+        shell) prog_list=${GL_SHELL[@]} ;;
+        package_management) prog_list=${GL_PKT[@]} ;;
+        network) prog_list=${GL_NETWORK[@]} ;;
+        tool) prog_list=${GL_TOOL[@]} ;;
+        mail) prog_list=${GL_MAIL[@]} ;;
+        viewer) prog_list=${GL_VIEWER[@]} ;;
+        editor) prog_list=${GL_EDITOR[@]} ;;
+        server) prog_list=${GL_LS[@]} ;;
+        formatter) prog_list=${GL_FORMATTER[@]} ;;
+        compiler) prog_list=${GL_COMPILER[@]} ;;
+        debugger) prog_list=${GL_DEBUGGER[@]} ;;
+        *) ;;
     esac
 
     for prog in ${prog_list[@]}; do
@@ -158,8 +134,7 @@ function gl_de()
   done
 }
 
-function gl_bash_env()
-{
+function gl_bash_env() {
     if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
         echo "~/.xmodmap-`uname -n` is not find"
     fi
@@ -181,7 +156,7 @@ function gl_bash_env()
     fi
 }
 
-gl_de shell package_management tool network viewer mail
-gl_de editor formatter compiler debugger server
+gl_desktop_env shell package_management tool network viewer mail
+gl_desktop_env editor formatter compiler debugger server
 
 gl_bash_env

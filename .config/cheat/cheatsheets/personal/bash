@@ -237,3 +237,23 @@ eval echo -e '$'{${COLOR}}${COLOR}
 
     export http_proxy="http://<ip>:<port>"
     export https_proxy="https://<ip>:<port>"
+
+# Variables for Colors
+    BLACK='\e[30m'
+    RED='\e[31m'
+    GREEN='\e[32m' 
+    YELLOW='\e[33m'
+    BLUE='\e[34m'
+    PURPLE='\e[35m'
+    CYAN='\e[36m'
+    WHITE='\e[37m'
+    LBLACK='\e[90m'
+    LRED='\e[91m'
+    LGREEN='\e[92m'
+    LYELLOW='\e[93m'
+    LBLUE='\e[94m'
+    LPURPLE='\e[95m'
+    LCYAN='\e[96m'
+    LGREY='\e[97m'
+
+    echo -en "${RED}RED"

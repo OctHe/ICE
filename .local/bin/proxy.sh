@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Manual detect and set proxy
+# Detect and set proxy
 
 # Detect the default local proxy server and port
 function gl_proxy() {
@@ -10,8 +10,8 @@ function gl_proxy() {
     local proxy_port=7890
 
     if nc -z ${srv_ip} ${proxy_port}; then
-        git config --global http.proxy "http://${local_ip}:${proxy_port}"
-        git config --global https.proxy "https://${local_ip}:${proxy_port}"
+        git config --global http.proxy "http://${srv_ip}:${proxy_port}"
+        git config --global https.proxy "https://${srv_ip}:${proxy_port}"
         echo "Enable server proxy for git"
 
     elif nc -z ${local_ip} ${proxy_port}; then
