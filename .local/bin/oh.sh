@@ -13,14 +13,9 @@ function gl_oh()
         fi
 
         case $1 in
-            bash)
-                url=https://www.gnu.org/software/bash/manual/bash.html
-                ;;
-            texinfo)
-                url=https://www.gnu.org/software/texinfo/manual/texinfo/texinfo.html
-                ;;
-            *)
-              ;;
+            bash) url=https://www.gnu.org/software/bash/manual/bash.html ;;
+            texinfo) url=https://www.gnu.org/software/texinfo/manual/texinfo/texinfo.html ;;
+            *) ;;
         esac
 
         lynx ${url}

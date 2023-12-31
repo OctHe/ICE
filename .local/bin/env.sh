@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Effective programs for graphicless. This is a bash script, 
+# Effective applications for graphicless. This is a bash script, 
 # it does not compatible with zsh or other shells
 
 # bash is the default shell for most Linux distributions
@@ -8,65 +8,64 @@
 # csh is the default shell for FreeBSD
 # zsh is the default shell for part of the Linux distributions and macOS
 # fish is a ready-out-of-box shell
-GL_SHELL=(
+gl_shell=(
     bash csh ash zsh fish \\n
     ipython ipython3 \\n
 )
 
-GL_PKT=(
+gl_pkg=(
     flatpak snap apt zypper pacman yay \\n
     pip pip3 \\n
     cargo \\n
 )
 
-# screen and tmux need to set true color
 # bc: A command-line calculator
-GL_TOOL=(
-    find fd fzf \\n
+gl_tool=(
     bc \\n
-    grep ack ag rg \\n
-    cd zoxide \\n
-    ls eza \\n
-    terminator \\n
-    screen tmux \\n
-    top htop \\n
+    zoxide eza htop \\n
     neofetch \\n
 )
 
-# osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
-GL_VCS=( svn git osc \\n )
+# screen and tmux need to set true color
+gl_win=(
+    terminator konsole \\n
+    screen tmux \\n
+)
+
+gl_mail=(thunderbird kmail evolution mutt \\n)
 
 # trans is a network tools that uses translate.google.com (and other online translators).
 # It may require http_proxy and https_proxy
-GL_NETWORK=(
+gl_net=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip iptables \\n
     ssh scp sftp rsync \\n
     curl trans   \\n
 )
 
-GL_EDITOR=(
-    vim nvim helix micro \\n
-    emacs \\n
+gl_editor=(
+    vim nvim emacs kakoune helix micro \\n
     kate gnome-text-editor \\n 
 )
 
-GL_MAIL=(
-    thunderbird kmail evolution \\n
-    mutt \\n
+gl_searcher=(
+    fd fzf \\n
+    ack ag rg \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
-GL_VIEWER=(
+gl_viewer=(
     man info cheat cppman \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt vimb \\n
     nnn ranger vifm \\n
 )
 
+gl_analyzer=(ctags cscope cppcheck \\n)
+
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
-GL_FORMATTER=(astyle xmllint \\n)
+gl_formatter=(astyle xmllint \\n)
 
 # rpmbuild is the buildtool in for rpm.
 # As an example, download and build the source code with
@@ -80,55 +79,41 @@ GL_FORMATTER=(astyle xmllint \\n)
 #     xetex includes Unicode but pdftex does not.
 #     pdflatex and xelatex are two compiles for latex. Since latex is more useful, in most of time, 
 #     pdftex and xetex are the same as pdflatex and xelatex.
-GL_COMPILER=(
-    ctags cscope \\n
-    cmake make rpmbuild bear ccache \\n
-    gcc g++ clang \\n
-    python python3 \\n
-    doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk \\n
-    rust \\n
-    go \\n
-    groff \\n
+gl_build=(
+    cmake xmake make rpmbuild bear ccache \\n
+    gcc g++ clang python3 rust go octave\\n
+    doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk groff \\n
 )
 
 # ddd is the GUI of gdb
-GL_DEBUGGER=(gdb ddd lldb \\n)
+gl_debugger=(gdb ddd lldb \\n)
 
-GL_LS=(
+gl_langsrv=(
     clangd ccls \\n
     shellcheck \\n
     lua-language-server \\n
 )
+
+# osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
+gl_vcs=(svn git osc \\n)
 
 # Graphicless desktop environment
 function gl_desktop_env() {
   for arg in $@
   do
     echo ${arg}
-    case ${arg} in
-        shell) prog_list=${GL_SHELL[@]} ;;
-        package_management) prog_list=${GL_PKT[@]} ;;
-        network) prog_list=${GL_NETWORK[@]} ;;
-        tool) prog_list=${GL_TOOL[@]} ;;
-        mail) prog_list=${GL_MAIL[@]} ;;
-        viewer) prog_list=${GL_VIEWER[@]} ;;
-        editor) prog_list=${GL_EDITOR[@]} ;;
-        server) prog_list=${GL_LS[@]} ;;
-        formatter) prog_list=${GL_FORMATTER[@]} ;;
-        compiler) prog_list=${GL_COMPILER[@]} ;;
-        debugger) prog_list=${GL_DEBUGGER[@]} ;;
-        *) ;;
-    esac
+    app_name=gl_${arg}[@]
+    apps=${!app_name}
 
-    for prog in ${prog_list[@]}; do
-        if [ ${prog} = "\n" ]; then
+    for app in ${apps[@]}; do
+        if [ ${app} = "\n" ]; then
             echo
             continue
         fi
-        if which ${prog} > /dev/null 2>&1; then
-            echo -en "  [y] ${prog}\t"
+        if which ${app} > /dev/null 2>&1; then
+            echo -en "  [y] ${app}\t"
         else
-            echo -en "  [ ] ${prog}\t"
+            echo -en "  [ ] ${app}\t"
         fi
     done
   done
@@ -156,7 +141,7 @@ function gl_bash_env() {
     fi
 }
 
-gl_desktop_env shell package_management tool network viewer mail
-gl_desktop_env editor formatter compiler debugger server
+gl_desktop_env shell pkg tool win mail net viewer
+gl_desktop_env editor searcher formatter analyzer build debugger langsrv vcs
 
 gl_bash_env
