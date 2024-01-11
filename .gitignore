@@ -18,6 +18,11 @@
 !.config/fish/
 !.config/fish/config.fish
 
+# Git
+!.gitignore
+!.gitconfig
+
+
 # Vim
 !/.vim/
 !/.vim/**
