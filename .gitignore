@@ -8,13 +8,15 @@
 !/.config/
 
 # Shell
-!.bashrc
-!.zshrc
-!.alias
 !/.local/
 !/.local/bin/
 !/.local/bin/**
-# fish
+# zsh
+!.zshrc
+# Bash
+!.config/bash/
+!.config/bash/**
+# Fish
 !.config/fish/
 !.config/fish/config.fish
 

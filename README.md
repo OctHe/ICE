@@ -8,5 +8,12 @@ Install GL is easy
     alias gl='/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME'
     gl checkout
 
-Be careful! `gl checkout` overwritten the origin files, such as `.bashrc` or `.zshrc`.
+Since lots of Linux uses bash as its default shell.
+GL does not directly change `.bashrc` file.
+To enable GL's bash config, use
+    
+    source ~/.config/bash/bashrc
+
+Be careful! `gl checkout` overwritten other personal configuration files.
+Please backup it manual.
 

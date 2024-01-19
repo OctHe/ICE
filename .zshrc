@@ -21,8 +21,8 @@ setopt complete_in_word         # Allow completion from within a word/phrase
 setopt prompt_subst             # Make PROMPT works right
 
 # Alias
-local graphicless=~
-test -s .alias && source .alias 
+common_alias=~/.config/bash/aliases.sh
+test -s ${common_alias} && . ${common_alias} 
 
 # zsh-specific alias
 alias ...='../..'

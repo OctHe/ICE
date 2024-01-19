@@ -22,7 +22,7 @@ gl_pkg=(
 # bc: A command-line calculator
 gl_tool=(
     bc \\n
-    zoxide eza htop \\n
+    bat zoxide eza htop \\n
     neofetch \\n
 )
 
@@ -95,7 +95,7 @@ gl_langsrv=(
 )
 
 # osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
-gl_vcs=(svn git osc \\n)
+gl_vcs=(svn git hg osc \\n)
 
 # Graphicless desktop environment
 function gl_desktop_env() {

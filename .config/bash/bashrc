@@ -2,7 +2,8 @@
 # Copyright(c) OctHe
 
 # Alias
-test -s .alias && . .alias
+common_alias=~/.config/bash/aliases.sh
+test -s ${common_alias} && . ${common_alias}
 
 # Enable a fold work directory in PS1
 function fold_pwd() {
