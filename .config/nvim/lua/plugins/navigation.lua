@@ -13,6 +13,7 @@ return {
         -- nvim-web-devicons requires Hack Nerd font. Install it manual
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
+            require'nvim-tree'.setup()
             -- Autoclose if tree window is the last window from the plugin's wiki
             -- It also works for floating window
             vim.api.nvim_create_autocmd("QuitPre", {
@@ -60,7 +61,7 @@ return {
         config = function()
           vim.o.timeout = true
           vim.o.timeoutlen = 300
-          require("which-key").setup({})
+          require("which-key").setup{}
         end,
     },
 
@@ -71,6 +72,8 @@ return {
             local hint = require'hop.hint'
             local directions = hint.HintDirection
             local positions = hint.HintPosition
+
+            hop.setup{}
 
             vim.keymap.set('', 'f', function()
               hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
