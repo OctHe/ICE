@@ -1,8 +1,8 @@
 -- ---------------------------------------------------------------------
 --
--- Neovim run command file
+-- GL neovim run command file. It uses Lazy.nvim as the plugin manager.
 -- Author: OctHe
--- Copyright (C): 2023
+-- Copyright (C): 2024
 --
 -- ---------------------------------------------------------------------
 
@@ -32,10 +32,42 @@ vim.o.smartindent = true
 
 -- Keymapping {{{1
 vim.g.mapleader = " "
-vim.g.maplocalleader = "  "
+vim.g.maplocalleader = " "
 -- }}}1
 
-require "plugins"
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Change colorscheme after loading plugins
-vim.cmd [[colorscheme catppuccin]]
+require("lazy").setup({
+    spec = {
+        { import = "plugins" },
+    },
+    install = { colorscheme = { "tokyonight", "habamax" } },
+    checker = { enabled = true }, -- automatically check for plugin updates
+    performance = {
+    rtp = {
+        -- disable some rtp plugins
+        disabled_plugins = {
+            -- "gzip",
+            -- "matchit",
+            -- "matchparen",
+            "netrwPlugin",
+            -- "tarPlugin",
+            -- "tohtml",
+            -- "tutor",
+            -- "zipPlugin",
+            },
+        },
+    },
+})
