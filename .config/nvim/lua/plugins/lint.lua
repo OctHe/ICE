@@ -33,17 +33,8 @@ return {
                     },
                 },
 
-                capabilities = function()
-
-                    -- Coordination with cmp.nvim
-                    local ok = pcall(require, 'cmp_nvim_lsp')
-                    if ok then
-                        return require'cmp_nvim_lsp'.default_capabilities()
-                    else
-                        return {}
-                    end
-
-                end
+                -- Coorperation with cmp.nvim
+                capabilities = require'cmp_nvim_lsp'.default_capabilities()
             }
         end,
     },
@@ -59,12 +50,12 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function() 
+        config = function()
             require'nvim-treesitter.configs'.setup {
-              -- A list of parser names, or "all" (the five listed parsers should always be installed)
+              -- A list of parser names, or "all" (the five {c, lua, vim, vimdoc, query} parsers should always be installed)
               -- compilation of treesitter-bash requires g++. Install it via system-level package manager
               -- For example: sudo zypper install gcc-g++
-              ensure_installed = { "c", "lua", "bash", "vim", "vimdoc", "query", "regex", "markdown"},
+              ensure_installed = { "c", "python", "lua", "bash", "vim", "vimdoc", "query", "regex", "markdown"},
 
               -- Install parsers synchronously (only applied to `ensure_installed`)
               sync_install = false,
@@ -109,12 +100,9 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            -- Upwards go to context
-            vim.keymap.set("n", "<Leader>g", function()
-              context.go_to_context()
-            end, { silent = true })
-        end
+        keys = {
+          { "<Leader>sc", function() require'treesitter-context'.go_to_context() end, {silent = true, desc = "Go to context (upwards)"} },
+        },
     },
     -- }}}1
 
@@ -123,7 +111,7 @@ return {
       "folke/trouble.nvim",
       dependencies = "nvim-tree/nvim-web-devicons",
       config = function()
-        require("trouble").setup {} end
+        require("trouble").setup() end
     },
 
     -- Highlight other uses of word

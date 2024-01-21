@@ -6,6 +6,7 @@
 --
 -- ---------------------------------------------------------------------
 
+-- Options
 local opt = vim.opt
 
 opt.list = true   -- Shoptw tabs as ">", trailing spaces as "-", and noptn-breakable space characters as "+". 
@@ -34,12 +35,30 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Keymapping
+local keymap = vim.keymap
+keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+-- Indent with visual mode
+keymap.set("v", "<", "<gv")
+keymap.set("v", ">", ">gv")
+-- Window-level motion with <ctrl> hjkl in normal and terminal mode
+keymap.set({"n", "t"}, "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+keymap.set({"n", "t"}, "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+keymap.set({"n", "t"}, "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+keymap.set({"n", "t"}, "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+
+-- Terminal
+keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 opt.rtp:prepend(lazypath)
+
+-- Toggle Lazy.nvim
+keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 require("lazy").setup({
     spec = {

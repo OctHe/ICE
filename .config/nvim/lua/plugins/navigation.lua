@@ -49,10 +49,10 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Grep text"})
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find buffers"})
+            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Find help"})
         end,
     },
 
@@ -61,19 +61,19 @@ return {
         config = function()
           vim.o.timeout = true
           vim.o.timeoutlen = 300
-          require("which-key").setup{}
+          require("which-key").setup()
         end,
     },
 
     {
         "phaazon/hop.nvim",
-        config = function() 
+        config = function()
             local hop = require'hop'
             local hint = require'hop.hint'
             local directions = hint.HintDirection
             local positions = hint.HintPosition
 
-            hop.setup{}
+            hop.setup()
 
             vim.keymap.set('', 'f', function()
               hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
@@ -107,8 +107,10 @@ return {
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
             require('bufferline').setup()
-            vim.keymap.set('n', '<Leader>b', '<CMD>BufferLinePick<CR>')
         end,
+        keys = {
+          { "<leader>b", "<cmd>BufferLinePick<CR>"},
+        },
     },
 
 }

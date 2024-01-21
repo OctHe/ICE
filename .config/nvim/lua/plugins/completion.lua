@@ -47,7 +47,7 @@ return {
                     ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
                     basic = true,
                     ---Extra mapping
-                    extra = false,
+                    extra = true,
                 },
                 ---Function to call before (un)comment
                 pre_hook = nil,
@@ -59,12 +59,12 @@ return {
 
     {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup{} end
+        config = function() require("nvim-autopairs").setup() end
     },
 
     {
         "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup{} end
+        config = function() require("nvim-surround").setup() end
     },
 
 
@@ -105,7 +105,6 @@ return {
                       behavior = cmp.ConfirmBehavior.Insert,
                       select = true,
                     },
-
                     ['<Tab>'] = function(fallback)
                       if not cmp.select_next_item() then
                         if vim.bo.buftype ~= 'prompt' and has_words_before() then
@@ -136,7 +135,6 @@ return {
                 }, {
                   { name = 'buffer' },
                 }),
-                
             })
 
             -- Set configuration for specific filetype.
