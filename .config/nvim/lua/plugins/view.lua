@@ -8,36 +8,33 @@
 
 return {
 
-    -- tokyonight contains multiple themes
-    -- colorscheme tokyonight
-    -- colorscheme tokyonight-night
-    -- colorscheme tokyonight-storm
-    -- colorscheme tokyonight-day
-    -- colorscheme tokyonight-moon
+    -- colorscheme tokyonight, tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
     {
         'folke/tokyonight.nvim',
         -- Change colorscheme after loading plugins
         config = function() vim.cmd [[colorscheme tokyonight]] end,
     },
 
-    -- colorscheme nightfox
-    -- colorscheme dayfox
-    -- colorscheme dawnfox
-    -- colorscheme duskfox
-    -- colorscheme nordfox
-    -- colorscheme terafox
-    -- colorscheme carbonfox
+    -- colorscheme nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
     { "EdenEast/nightfox.nvim" },
+
     { "catppuccin/nvim", name = "catppuccin" },
+
     { "ellisonleao/gruvbox.nvim" },
+
     { 'navarasu/onedark.nvim' },
 
-    { "lukas-reineke/indent-blankline.nvim" },
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require'ibl'.setup()
+        end,
+    },
 
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require 'lualine'.setup({}) end,
+        config = function() require'lualine'.setup() end,
     },
 
     {

@@ -27,7 +27,7 @@ opt.smartindent = true
 opt.autowrite = true
 opt.clipboard = "unnamedplus" -- Sync with system-level clipboard
 
-if vim.fn.has("nvim-0.10") then
+if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
 end
 
