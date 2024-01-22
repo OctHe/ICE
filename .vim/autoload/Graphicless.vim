@@ -17,6 +17,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
         \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',      },
+        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
         \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
         \ 'starsearch'  : { 'link': 'vim-scripts/star-search',      },
         \ 'fzf'         : {
