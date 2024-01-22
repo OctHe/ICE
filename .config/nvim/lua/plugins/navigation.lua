@@ -40,7 +40,7 @@ return {
             })
         end,
         keys = {
-          { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "File Explorer" },
+          { "<leader>e", "<cmd>NvimTreeToggle<CR>", mode = {"n", "v"}, desc = "File Explorer" },
         },
     },
 
@@ -49,19 +49,33 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         config = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {desc = "Find files"})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {desc = "Grep text"})
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {desc = "Find buffers"})
-            vim.keymap.set('n', '<leader>fh', builtin.help_tags, {desc = "Find help"})
+            local keymap = vim.keymap
+            keymap.set({'n', 'v'}, '<leader>fb', builtin.buffers, {desc = "Buffers"})
+            keymap.set({'n', 'v'}, '<leader>fc', builtin.command_history, {desc = "Command history"})
+            keymap.set({'n', 'v'}, '<leader>fs', function() builtin.colorscheme({enable_preview = true}) end, {desc = "Colorscheme"})
+            keymap.set({'n', 'v'}, '<leader>ff', builtin.find_files, {desc = "Files"})
+            keymap.set({'n', 'v'}, '<leader>fgc', builtin.git_commits, {desc = "Git commits"})
+            keymap.set({'n', 'v'}, '<leader>fgs', builtin.git_status, {desc = "Git statuss"})
+            keymap.set({'n', 'v'}, '<leader>fh', builtin.help_tags, {desc = "Help"})
+            keymap.set({'n', 'v'}, '<leader>fk', builtin.keymaps, {desc = "Keymaps"})
+            keymap.set({'n', 'v'}, '<leader>fmk', builtin.marks, {desc = "Marks"})
+            keymap.set({'n', 'v'}, '<leader>fmp', builtin.man_pages, {desc = "Man pages"})
+            keymap.set({'n', 'v'}, '<leader>fo', builtin.vim_options, {desc = "Options"})
+            keymap.set({'n', 'v'}, '<leader>fO', builtin.oldfiles, {desc = "Old files"})
+            keymap.set({'n', 'v'}, '<leader>fr', builtin.registers, {desc = "Registers"})
+            keymap.set({'n', 'v'}, '<leader>fT', builtin.current_buffer_fuzzy_find, {desc = "Text in current buffer"})
+            keymap.set({'n', 'v'}, '<leader>ft', builtin.live_grep, {desc = "Text"})
+            keymap.set({'n', 'v'}, '<leader>f:', builtin.commands, {desc = "Commands"})
         end,
     },
 
     {
         "folke/which-key.nvim",
         config = function()
-          vim.o.timeout = true
-          vim.o.timeoutlen = 300
-          require("which-key").setup()
+            local opt = vim.opt
+            opt.timeout = true
+            opt.timeoutlen = 300
+            require("which-key").setup()
         end,
     },
 

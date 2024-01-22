@@ -24,11 +24,12 @@ gl_tool=(
     bc \\n
     bat zoxide eza htop \\n
     neofetch \\n
+    flameshot \\n
+    terminator konsole \\n
 )
 
 # screen and tmux need to set true color
 gl_win=(
-    terminator konsole \\n
     screen tmux \\n
 )
 
@@ -81,7 +82,7 @@ gl_formatter=(astyle xmllint \\n)
 #     pdftex and xetex are the same as pdflatex and xelatex.
 gl_build=(
     cmake xmake make rpmbuild bear ccache \\n
-    gcc g++ clang python3 rust go octave\\n
+    gcc g++ clang python3 rust go octave \\n
     doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk groff \\n
 )
 
