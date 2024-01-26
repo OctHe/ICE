@@ -10,13 +10,12 @@
 # fish is a ready-out-of-box shell
 gl_shell=(
     bash csh ash zsh fish \\n
-    ipython ipython3 \\n
+    ipython3 \\n
 )
 
 gl_pkg=(
-    flatpak snap apt zypper pacman yay \\n
-    pip pip3 \\n
-    cargo \\n
+    flatpak appimage snap apt zypper pacman yay \\n
+    pip3 cargo \\n
 )
 
 # bc: A command-line calculator
@@ -49,9 +48,9 @@ gl_editor=(
     kate gnome-text-editor \\n 
 )
 
-gl_searcher=(
+gl_finder=(
     fd fzf \\n
-    ack ag rg \\n
+    ugrep ack ag rg \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
@@ -99,7 +98,7 @@ gl_langsrv=(
 gl_vcs=(svn git hg osc \\n)
 
 # Graphicless desktop environment
-function gl_desktop_env() {
+function gl_status() {
   for arg in $@
   do
     echo ${arg}
@@ -120,7 +119,7 @@ function gl_desktop_env() {
   done
 }
 
-function gl_bash_env() {
+function gl_status_command() {
     if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
         echo "~/.xmodmap-`uname -n` is not find"
     fi
@@ -142,7 +141,7 @@ function gl_bash_env() {
     fi
 }
 
-gl_desktop_env shell pkg tool win mail net viewer
-gl_desktop_env editor searcher formatter analyzer build debugger langsrv vcs
+gl_status shell pkg tool win mail net viewer
+gl_status editor finder formatter analyzer build debugger langsrv vcs
 
-gl_bash_env
+gl_status_command
