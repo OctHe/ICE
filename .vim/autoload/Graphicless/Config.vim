@@ -199,6 +199,10 @@ endfunction
 function! Graphicless#Config#genutils()
 endfunction
 
+" floaterm:
+function! Graphicless#Config#floaterm()
+endfunction
+
 " asyncrun
 function! Graphicless#Config#asyncrun()
 endfunction
@@ -261,7 +265,7 @@ endfunction
 function! Graphicless#Config#fugitive()
 
     " g means git
-    nnoremap <silent> <Leader>gdi :Git diff<CR><C-W>L
+    nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
     nnoremap <silent> <Leader>gs :Git status<CR>
 
 endfunction
@@ -292,7 +296,20 @@ function! Graphicless#Config#indentguide()
 endfunction
 
 function! Graphicless#Config#whichkey()
-    nnoremap <silent> <Leader>      :<c-u>WhichKey '<Leader>'<CR>
+    let g:which_key_map = {}
+    let g:which_key_map.g = {
+                            \ 'name': '+git',
+                            \ 'd': '+diff',
+                            \ }
+    let g:which_key_map.h = {
+                            \ 'name': '+GitGutter',
+                            \ }
+
+    call which_key#register('<Space>', "g:which_key_map")
+
+    nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
+    vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<leader>'<CR>
+
 endfunction
 
 " rainbow: Rainbow brackets

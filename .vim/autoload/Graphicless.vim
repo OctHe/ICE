@@ -44,6 +44,7 @@ function! Graphicless#PluginInstall(plugins)
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
+        \ 'floaterm'    : { 'link': 'voldikss/vim-floaterm',        },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
         \ 'vimmkd'      : { 'link': 'preservim/vim-markdown',       },
