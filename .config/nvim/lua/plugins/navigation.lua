@@ -40,7 +40,7 @@ return {
             })
         end,
         keys = {
-          { "<leader>e", "<cmd>NvimTreeToggle<CR>", mode = {"n", "v"}, desc = "File Explorer" },
+            { "<Leader>e", "<CMD>NvimTreeToggle<CR>", mode = {"n", "v"}, desc = "File Explorer" },
         },
     },
 
@@ -58,24 +58,14 @@ return {
             keymap.set({'n', 'v'}, '<leader>fgs', builtin.git_status, {desc = "Git statuss"})
             keymap.set({'n', 'v'}, '<leader>fh', builtin.help_tags, {desc = "Help"})
             keymap.set({'n', 'v'}, '<leader>fk', builtin.keymaps, {desc = "Keymaps"})
-            keymap.set({'n', 'v'}, '<leader>fmk', builtin.marks, {desc = "Marks"})
-            keymap.set({'n', 'v'}, '<leader>fmp', builtin.man_pages, {desc = "Man pages"})
+            keymap.set({'n', 'v'}, '<leader>fm', builtin.marks, {desc = "Marks"})
+            keymap.set({'n', 'v'}, '<leader>fM', builtin.man_pages, {desc = "Man pages"})
             keymap.set({'n', 'v'}, '<leader>fo', builtin.vim_options, {desc = "Options"})
             keymap.set({'n', 'v'}, '<leader>fO', builtin.oldfiles, {desc = "Old files"})
             keymap.set({'n', 'v'}, '<leader>fr', builtin.registers, {desc = "Registers"})
             keymap.set({'n', 'v'}, '<leader>fT', builtin.current_buffer_fuzzy_find, {desc = "Text in current buffer"})
             keymap.set({'n', 'v'}, '<leader>ft', builtin.live_grep, {desc = "Text"})
             keymap.set({'n', 'v'}, '<leader>f:', builtin.commands, {desc = "Commands"})
-        end,
-    },
-
-    {
-        "folke/which-key.nvim",
-        config = function()
-            local opt = vim.opt
-            opt.timeout = true
-            opt.timeoutlen = 300
-            require("which-key").setup()
         end,
     },
 
@@ -123,7 +113,7 @@ return {
             require('bufferline').setup()
         end,
         keys = {
-          { "<leader>b", "<cmd>BufferLinePick<CR>"},
+          { "<Leader>b", "<CMD>BufferLinePick<CR>", mode = {"n", "v"}, desc = "Buffer switch"},
         },
     },
 

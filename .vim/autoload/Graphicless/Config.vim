@@ -99,7 +99,7 @@ function! Graphicless#Config#vista()
     let g:vista_sidebar_width = 50
 
     " t means tag
-    nnoremap <silent> <Leader>t :Vista!!<CR>  
+    nnoremap <silent> <Leader>s :Vista!!<CR>  
 
 endfunction
 
@@ -109,7 +109,7 @@ function! Graphicless#Config#tagbar()
     autocmd VimEnter *.{py,h,c} Tagbar
 
     " t means tag
-    nnoremap <silent> <Leader>t :Tagbar<CR>  
+    nnoremap <silent> <Leader>s :Tagbar<CR>  
 
 endfunction
 
@@ -148,7 +148,7 @@ endfunction
 " commentary:
 function! Graphicless#Config#commentary()
     xmap <Leader>c  <Plug>Commentary
-    nmap <Leader>c  <Plug>Commentary
+    vmap <Leader>c  <Plug>Commentary
     omap <Leader>c  <Plug>Commentary
     nmap <Leader>cc <Plug>CommentaryLine
     nmap <Leader>cu <Plug>Commentary<Plug>Commentary
@@ -201,6 +201,8 @@ endfunction
 
 " floaterm:
 function! Graphicless#Config#floaterm()
+    map <Leader>t :FloattermToggle<CR>
+    tmap <Leader>t <C-\><C-n>:FloattermToggle<CR>
 endfunction
 
 " asyncrun
@@ -305,6 +307,9 @@ function! Graphicless#Config#whichkey()
                             \ 'name': '+GitGutter',
                             \ }
 
+    let g:which_key_map.s = {
+                            \ 'name': '+symbol',
+                            \ }
     call which_key#register('<Space>', "g:which_key_map")
 
     nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>

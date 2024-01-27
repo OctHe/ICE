@@ -32,6 +32,24 @@ return {
     },
 
     {
+        "folke/which-key.nvim",
+        config = function()
+            local opt = vim.opt
+            local wk = require('which-key')
+            opt.timeout = true
+            opt.timeoutlen = 300
+
+            wk.register({
+              ["<leader>c"] = { name = "+Comment" },
+              ["<leader>f"] = { name = "+Find" },
+              ["<leader>fg"] = { name = "+git" },
+              ["<leader>s"] = { name = "+Treesitter" },
+            })
+            wk.setup()
+        end,
+    },
+
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function() require'lualine'.setup() end,

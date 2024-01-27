@@ -41,8 +41,11 @@ return {
 
     -- List and goto symbol
     {
-      'stevearc/aerial.nvim',
-      config = function() require('aerial').setup() end,
+        'stevearc/aerial.nvim',
+        config = function() require('aerial').setup() end,
+        keys = {
+            { "<Leader>s", "<CMD>AerialToggle<CR>", mode = {"n", "v"}, desc = "Toggle symbol window" },
+        },
     },
 
 
@@ -101,7 +104,7 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         dependencies = "nvim-treesitter/nvim-treesitter",
         keys = {
-          { "<Leader>sc", function() require'treesitter-context'.go_to_context() end, {silent = true, desc = "Go to context (upwards)"} },
+            { "<Leader>gc", function() require'treesitter-context'.go_to_context() end, mode = {"n", "v"}, desc = "Go to context (upwards)" },
         },
     },
     -- }}}1
