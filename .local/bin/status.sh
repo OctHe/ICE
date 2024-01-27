@@ -20,7 +20,6 @@ gl_pkg=(
 
 # bc: A command-line calculator
 gl_tool=(
-    bc \\n
     bat zoxide eza htop \\n
     neofetch \\n
     flameshot \\n
@@ -48,24 +47,28 @@ gl_editor=(
     kate gnome-text-editor \\n 
 )
 
+# fzf is an interactive filter. It can be integrated with other search tools (such as find and fd)
 gl_finder=(
-    fd fzf \\n
+    fd \\n
+    fzf \\n
     ugrep ack ag rg \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
 gl_viewer=(
-    man info cheat cppman \\n
+    man info cheat \\n
     evince zathura okular \\n
-    chromium firefox lynx nyxt vimb \\n
+    chromium firefox lynx nyxt qutebrowser vimb \\n
     nnn ranger vifm \\n
 )
 
-gl_analyzer=(ctags cscope cppcheck \\n)
+gl_code=(
+    ctags cscope cppcheck \\n
+    astyle xmllint \\n
+)
 
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
-gl_formatter=(astyle xmllint \\n)
 
 # rpmbuild is the buildtool in for rpm.
 # As an example, download and build the source code with
@@ -82,7 +85,8 @@ gl_formatter=(astyle xmllint \\n)
 gl_build=(
     cmake xmake make rpmbuild bear ccache \\n
     gcc g++ clang python3 rust go octave \\n
-    doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk groff \\n
+    graphviz \\n
+    doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk \\n
 )
 
 # ddd is the GUI of gdb
@@ -142,6 +146,6 @@ function gl_status_command() {
 }
 
 gl_status shell pkg tool win mail net viewer
-gl_status editor finder formatter analyzer build debugger langsrv vcs
+gl_status editor finder code build debugger langsrv vcs
 
 gl_status_command
