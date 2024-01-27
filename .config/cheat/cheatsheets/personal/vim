@@ -93,7 +93,14 @@ Register-related Command-line mode command
 :reg            Show the registers
 :messages       Show messages and errors
 ```
+### Text Object
 
+```
+[a/i][w/W]          # a/inner word/WORD. Select a word/WORD with/without the space behind
+[a/i][s/p/t]        # a/inner setence/paragraph/tag block
+a[/{/(/</"/'/`      # a [\{\( block with [\{\(
+i[/{/(/</"/'/`      # inner [\{\( block without [\{\(
+```
 
 ### Commands start with 'Z' and 'z'
 
