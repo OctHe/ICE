@@ -16,13 +16,22 @@ return {
     },
 
     -- colorscheme nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
-    { "EdenEast/nightfox.nvim" },
+    {
+        "EdenEast/nightfox.nvim",
+    },
 
-    { "catppuccin/nvim", name = "catppuccin" },
+    {
+        "catppuccin/nvim", 
+        name = "catppuccin",
+    },
 
-    { "ellisonleao/gruvbox.nvim" },
+    {
+        "ellisonleao/gruvbox.nvim",
+    },
 
-    { 'navarasu/onedark.nvim' },
+    {
+        'navarasu/onedark.nvim',
+    },
 
     {
         'lukas-reineke/indent-blankline.nvim',

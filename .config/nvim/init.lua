@@ -57,29 +57,31 @@ if not vim.loop.fs_stat(lazypath) then
 end
 opt.rtp:prepend(lazypath)
 
--- Toggle Lazy.nvim
-keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+if vim.loop.fs_stat(lazypath) then
+    -- Toggle Lazy.nvim
+    keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
-require("lazy").setup({
-    spec = {
-        { import = "plugins" },
-    },
-    -- try to load one of these colorschemes when starting an installation during startup
-    install = { colorscheme = { "tokyonight" } },
-    checker = { enabled = true }, -- automatically check for plugin updates
-    performance = {
-    rtp = {
-        -- disable some rtp plugins
-        disabled_plugins = {
-            -- "gzip",
-            -- "matchit",
-            -- "matchparen",
-            "netrwPlugin",
-            -- "tarPlugin",
-            -- "tohtml",
-            -- "tutor",
-            -- "zipPlugin",
+    require("lazy").setup({
+        spec = {
+            { import = "plugins" },
+        },
+        -- try to load one of these colorschemes when starting an installation during startup
+        install = { colorscheme = { "tokyonight", "desert"} },
+        checker = { enabled = true }, -- automatically check for plugin updates
+        performance = {
+        rtp = {
+            -- disable some rtp plugins
+            disabled_plugins = {
+                -- "gzip",
+                -- "matchit",
+                -- "matchparen",
+                "netrwPlugin",
+                -- "tarPlugin",
+                -- "tohtml",
+                -- "tutor",
+                -- "zipPlugin",
+                },
             },
         },
-    },
-})
+    })
+end
