@@ -7,7 +7,7 @@
 " 
 " =====================================================================
 
-function! Graphicless#PluginInstall(plugins)
+function! graphicless#plugininstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
     "   link: The source of each plugin
@@ -47,11 +47,12 @@ function! Graphicless#PluginInstall(plugins)
         \ 'floaterm'    : { 'link': 'voldikss/vim-floaterm',        },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'vimmkd'      : { 'link': 'preservim/vim-markdown',       },
-        \ 'mkdp'        : { 
+        \ 'mdhl'        : { 'link': 'preservim/vim-markdown',       },
+        \ 'mdp'         : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
             \ 'plug_hook': {  'do': { -> mkdp#util#install() }, }
             \ },
+        \ 'csv'         : { 'link': 'chrisbra/csv.vim',             },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
         \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
@@ -123,15 +124,15 @@ function! Graphicless#PluginInstall(plugins)
     
 endfunction
 
-function! Graphicless#PluginConfig(plugins)
+function! graphicless#pluginconfig(plugins)
 
         " Config loaded plugins
         for plugin in a:plugins
             if isdirectory(expand(g:plugin_dir..plugin))
-                call Graphicless#Config#{plugin}()
+                call graphicless#config#{plugin}()
             endif
         endfor
-        call Graphicless#Config#nerdtree()
+        call graphicless#config#nerdtree()
 
 endfunction
 

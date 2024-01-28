@@ -7,14 +7,13 @@
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-" Avoid side effects when it was already reset.
 if &compatible
   set nocompatible
 endif
 
 " Enable file type detection.
 filetype plugin on
-" Enable automatic indentation as you type.
+" Enable automatic indentation.
 filetype indent on
 
 " Global variables {{{1
@@ -37,8 +36,8 @@ let g:enable_plugins = [
     \ 'floaterm',
     \ 'asyncrun',
     \ 'vimtex',
-    \ 'vimmkd',
-    \ 'mkdp',
+    \ 'mdhl',
+    \ 'mdp',
     \ 'fugitive',
     \ 'gitgutter',
     \ 'airline',
@@ -51,39 +50,46 @@ let g:enable_plugins = [
 
 "}}}1
 
-" 'if 1' will false when vim does not have 'eval' function
+" 'if 1' will be false when vim does not have '+eval' function
 if 1
-    call Graphicless#PluginInstall( g:enable_plugins )
+    call graphicless#plugininstall( g:enable_plugins )
 endif
 
 " Options {{{1
+set hlsearch    " Highlight the search results
+set incsearch   " Show the pattern while typing
 
-" Search
-set hlsearch        " Highlight the search results
-set incsearch       " Show the pattern while typing
+set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
 
-" Modeline can be the last line of any file if use vim as the editor.
-" Please use `help modeline' or `help vim:` for detail.
-set modeline
+set hidden  " Hide unsaved buffer
 
-" Hide unsaved buffer
-set hidden
-
-" Completion
-set expandtab       " Expand tag to space
-set tabstop=4       " One tab includes four spaces
+set expandtab   " Expand tag to space
+set tabstop=4   " One tab includes four spaces
 set shiftwidth=4    " The width of '<' and '>'
-set backspace=indent,eol,start
-                    " Allow backspacing over everything in insert mode.
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
 
-" Lint
 set smartindent     " Do smart autoindenting
+
+set ruler           " show the cursor position 
+set wildmenu        " display completion matches in a status line
+set number          " Show line number
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set mouse=a         " Enable mouse in all mode
+set scrolloff=5     " Show a few lines around the cursor
+
+if has('gui_running')
+    " GUI options
+    set guioptions=aegrLt
+    set background=light
+else
+    set background=dark
+endif
 
 syntax enable       " This enables Vim's syntax-related features. 
                     " Without this, some VimTeX features will not work 
-
 " }}}1
-
+"
 " Commends {{{1
 
 " Command to see the difference between the current buffer and the file loaded from.
@@ -118,12 +124,6 @@ augroup END
 " This command must be before all keymappings and plugin configs
 let mapleader = ' '
 
-" Remap window keymappings
-" nnoremap <C-H> <C-W>h
-" nnoremap <C-J> <C-W>j
-" nnoremap <C-K> <C-W>k
-" nnoremap <C-L> <C-W>l
-
 " It changes the behavior of star to not jump to next word
 " Yank the word into the register s, and then assign it in to the yank
 " register (The register / is not writeable directly)
@@ -138,25 +138,10 @@ nnoremap <silent> <Leader>m :verbose map
 " }}}1
 
 " View {{{1
-set ruler           " show the cursor position 
-set wildmenu        " display completion matches in a status line
-set number          " Show line number
-set splitbelow      " New buffer splits below by default
-set splitright      " New buffer splits right by default
-set mouse=a         " Enable mouse in all mode
-set scrolloff=5     " Show a few lines around the cursor
-
-if has('gui_running')
-    " GUI options
-    set guioptions=aegrLt
-    set background=light
-else
-    set background=dark
-endif
 
 " Config load plugins
 if 1
-    call Graphicless#PluginConfig( g:enable_plugins )
+    call graphicless#pluginconfig( g:enable_plugins )
 endif
 
 try
