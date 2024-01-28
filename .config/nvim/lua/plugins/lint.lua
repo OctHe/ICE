@@ -39,6 +39,31 @@ return {
         end,
     },
 
+    {
+        "mfussenegger/nvim-lint",
+        config = function()
+
+          local lint = require("lint")
+          lint.linters_by_ft = {
+            vim = { "vint" },
+            sh = { "shellcheck" },
+            gitcommit = { "gitlint" },
+            -- Disable lints if LSP is available
+            -- python = { "flake8" },
+            -- cpp = { "cppcheck", "cpplint", "cspell" },
+            -- ['*'] = { 'global linter' },
+            -- ['_'] = { 'fallback linter' },
+          }
+
+          vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+              group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+              callback = function()
+                  lint.try_lint()
+              end,
+          })
+        end,
+    },
+
     -- List and goto symbol
     {
         'stevearc/aerial.nvim',
