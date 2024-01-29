@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Detect and set proxy
+# Scripts to config network
 
 # Detect the default local proxy server and port
 function gl_proxy() {
@@ -24,6 +24,17 @@ function gl_proxy() {
         git config --global --unset https.proxy
         echo "Does not detect proxy. Stop config for git"
     fi
+}
+
+# SSH over http for github
+function gl_ssh_over_http() {
+    cat << EOF >>  ~/.ssh/config
+Host github.com
+    Hostname ssh.github.com
+    Port 443
+    User git
+EOF
+
 }
 
 gl_proxy

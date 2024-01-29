@@ -24,10 +24,6 @@
 !.gitignore
 !.gitconfig
 
-# ssh
-!.ssh/
-!.ssh/config
-
 # Vim
 !/.vim/
 !/.vim/**
