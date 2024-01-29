@@ -7,7 +7,6 @@
 -- ---------------------------------------------------------------------
 
 return {
-
     -- colorscheme tokyonight, tokyonight-night, tokyonight-storm, tokyonight-day, tokyonight-moon
     {
         'folke/tokyonight.nvim',
@@ -21,7 +20,7 @@ return {
     },
 
     {
-        "catppuccin/nvim", 
+        "catppuccin/nvim",
         name = "catppuccin",
     },
 
@@ -51,8 +50,10 @@ return {
             wk.register({
               ["<leader>c"] = { name = "+Comment" },
               ["<leader>f"] = { name = "+Find" },
-              ["<leader>fg"] = { name = "+git" },
+              ["<leader>fg"] = { name = "+Git" },
+              ["<leader>g"] = { name = "+Goto" },
               ["<leader>s"] = { name = "+Treesitter" },
+              ["<leader>t"] = { name = "+Toggle" },
             })
             wk.setup()
         end,

@@ -58,6 +58,7 @@ return {
           vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
               group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
               callback = function()
+                  -- Ignore errors when linter is not installed
                   lint.try_lint(nil, {ignore_errors = true})
               end,
           })
@@ -66,10 +67,35 @@ return {
 
     -- Dim inactive code with treesitter
     {
-      "folke/twilight.nvim",
+        "folke/twilight.nvim",
+        keys = {
+            { "<Leader>d", "<CMD>Twilight<CR>", mode = {"n", "v"}, desc = "Toggle to dim other code" },
+        },
+    },
+
+    -- Highlight and search TODO comments
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local todo = require'todo-comments'.setup()
+            local keymap = vim.keymap
+            local words = {"TODO", "BUG", "HACK", "FIXME"}
+
+            keymap.set({"n", "v"}, "<Leader>gn", function()
+                todo.jump_next({keywords = words})
+            end, { desc = "Goto next TODO" })
+
+            keymap.set({"n", "v"}, "<Leader>gp", function()
+                todo.jump_prev({keywords = words})
+            end, { desc = "Goto previous TODO" })
+
+        end,
     },
 
     -- List and goto symbol
+    -- FIXME: Keymapping does not show in which-key
+    -- TODO: Move all keymapping for Toggling to <Leader>t (terminal, aerial, dim)
     {
         'stevearc/aerial.nvim',
         config = function() require('aerial').setup() end,
@@ -130,24 +156,36 @@ return {
         end,
     },
 
+    -- FIXME: It shows error when the first time use the keymap
     {
         "nvim-treesitter/nvim-treesitter-context",
         dependencies = "nvim-treesitter/nvim-treesitter",
         keys = {
-            { "<Leader>gc", function() require'treesitter-context'.go_to_context() end, mode = {"n", "v"}, desc = "Go to context (upwards)" },
+            { "<Leader>gc", function() require'treesitter-context'.go_to_context(vim.v.count1) end, mode = {"n", "v"}, desc = "Go to context (upwards)" },
         },
     },
     -- }}}1
 
     -- List to show the trouble in code.
     {
-      "folke/trouble.nvim",
-      dependencies = "nvim-tree/nvim-web-devicons",
-      config = function()
-        require("trouble").setup() end
+        "folke/trouble.nvim",
+        dependencies = "nvim-tree/nvim-web-devicons",
+        config = function()
+            local keymap = vim.keymap
+            local trouble = require'trouble'
+
+            trouble.setup()
+
+            keymap.set({"n", "v"}, "<leader>tb", function() trouble.toggle() end, {desc = "Trouble"})
+            keymap.set({"n", "v"}, "<leader>tw", function() trouble.toggle("workspace_diagnostics") end, {desc = "Workspace trouble"})
+            keymap.set({"n", "v"}, "<leader>td", function() trouble.toggle("document_diagnostics") end, {desc = "Document trouble"})
+            keymap.set({"n", "v"}, "<leader>tq", function() trouble.toggle("quickfix") end, {desc = "Quickfix list"})
+            keymap.set({"n", "v"}, "<leader>tl", function() trouble.toggle("loclist") end, {desc = "Location list"})
+            keymap.set({"n", "v"}, "<leader>tr", function() trouble.toggle("lsp_references") end, {desc = "LSP reference"})
+        end
     },
 
-    -- Highlight other uses of word
+    -- Highlight other uses of the word under the cursor
     { "RRethy/vim-illuminate" },
 
 }
