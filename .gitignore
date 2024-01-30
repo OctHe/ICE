@@ -22,7 +22,6 @@
 
 # Git
 !.gitignore
-!.gitconfig
 
 # Vim
 !/.vim/
