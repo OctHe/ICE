@@ -18,3 +18,6 @@ alias gc='git checkout'
 alias gcm='git checkout master'
 alias rgrep='grep --color=always --exclude-dir=.git -rn'
 
+if which nvim > /dev/null 2>&1; then
+    alias nvimini='NVIM_APPNAME=nvimini nvim'
+fi
