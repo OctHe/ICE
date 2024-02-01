@@ -1,6 +1,6 @@
 -- ---------------------------------------------------------------------
 --
--- GL neovim run command file. It uses Lazy.nvim.
+-- GL Neovim run command file. It uses Lazy.nvim.
 -- Author: OctHe
 -- Copyright (C): 2023-2024
 --
@@ -26,6 +26,7 @@ opt.shiftwidth = 4
 opt.undofile = true
 opt.smartindent = true
 opt.autowrite = true
+opt.hidden = true -- Hide unwriten buffer
 opt.clipboard = "unnamedplus" -- Sync with system-level clipboard
 
 if vim.fn.has("nvim-0.10") == 1 then
@@ -78,7 +79,7 @@ if vim.loop.fs_stat(lazypath) then
                 "netrwPlugin",
                 -- "tarPlugin",
                 -- "tohtml",
-                -- "tutor",
+                "tutor",
                 -- "zipPlugin",
                 },
             },
