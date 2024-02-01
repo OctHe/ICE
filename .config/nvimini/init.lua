@@ -46,14 +46,14 @@ if vim.loop.fs_stat(lazypath) then
             'echasnovski/mini.nvim', version = '*',
             config = function()
                 -- require('mini.animate').setup()
-                require'mini.basics'.setup(
+                require'mini.basics'.setup({
                     mappings = {
                       basic = true,
                       option_toggle_prefix = [[\]],
                       windows = true,
                       move_with_alt = true,
                     }
-                )
+                })
                 require'mini.bufremove'.setup()
                 require'mini.clue'.setup()
                 require'mini.colors'.setup()
