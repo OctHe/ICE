@@ -47,9 +47,20 @@ keymap.set({"n", "t"}, "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window
 keymap.set({"n", "t"}, "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 keymap.set({"n", "t"}, "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 keymap.set({"n", "t"}, "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-
 -- Terminal
 keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
+
+-- Command
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    group = vim.api.nvim_create_augroup("gl-help", { clear = true }),
+    callback = function()
+        if vim.bo.filetype == 'help' then
+            opt.number = true
+            vim.cmd[[ wincmd L ]]
+            vim.cmd[[ vertical resize 90 ]]
+        end
+    end,
+})
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

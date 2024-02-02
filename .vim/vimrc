@@ -8,7 +8,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 " Enable file type detection.
@@ -28,7 +28,7 @@ let g:enable_plugins = [
     \ 'fzf',
     \ 'context',
     \ 'vista', 
-    \ 'easymotion',
+    \ 'sneak',
     \ 'ale', 
     \ 'ycm',
     \ 'vimsnippets',
@@ -93,13 +93,20 @@ syntax enable       " This enables Vim's syntax-related features.
 " Commends {{{1
 
 " Command to see the difference between the current buffer and the file loaded from.
-if !exists(":DiffOrig")
+if !exists(':DiffOrig')
     command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif
 
 augroup GLStart
     au!
+
+    autocmd BufWinEnter * 
+        \ if &filetype == 'help'
+        \ |   set number 
+        \ |   wincmd L 
+        \ |   vertical resize 90
+        \ | endif
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid, when inside an event handler
