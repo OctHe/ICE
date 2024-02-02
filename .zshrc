@@ -22,7 +22,7 @@ setopt prompt_subst             # Make PROMPT works right
 
 # Alias
 common_alias=~/.config/bash/aliases.sh
-test -s ${common_alias} && . ${common_alias} 
+test -s ${common_alias} && source ${common_alias} 
 
 # zsh-specific alias
 alias ...='../..'
