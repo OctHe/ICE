@@ -23,7 +23,7 @@ return {
                     ---Line-comment toggle keymap
                     line = '<Leader>cc',
                     ---Block-comment toggle keymap
-                    -- block = '<Leader>cbc',
+                    block = '<Leader>cB',
                 },
                 ---LHS of operator-pending mappings in NORMAL and VISUAL mode
                 opleader = {
@@ -82,67 +82,67 @@ return {
             local cmp = require'cmp'
 
             local has_words_before = function()
-              local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-              return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+                local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+                return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
             end
 
             cmp.setup({
                 snippet = {
-                  -- REQUIRED - you must specify a snippet engine
-                  expand = function(args)
-                    -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-                    -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                    -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-                    -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-                  end,
+                    -- REQUIRED - you must specify a snippet engine
+                    expand = function(args)
+                        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+                        -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+                    end,
                 },
                 window = {
-                  -- completion = cmp.config.window.bordered(),
-                  -- documentation = cmp.config.window.bordered(),
+                    -- completion = cmp.config.window.bordered(),
+                    -- documentation = cmp.config.window.bordered(),
                 },
                 mapping = {
                     ['<C-Space>'] = cmp.mapping.confirm {
-                      behavior = cmp.ConfirmBehavior.Insert,
-                      select = true,
+                        behavior = cmp.ConfirmBehavior.Insert,
+                        select = true,
                     },
                     ['<Tab>'] = function(fallback)
-                      if not cmp.select_next_item() then
-                        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-                          cmp.complete()
-                        else
-                          fallback()
+                        if not cmp.select_next_item() then
+                            if vim.bo.buftype ~= 'prompt' and has_words_before() then
+                                cmp.complete()
+                            else
+                                fallback()
+                            end
                         end
-                      end
                     end,
 
                     ['<S-Tab>'] = function(fallback)
-                      if not cmp.select_prev_item() then
-                        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-                          cmp.complete()
-                        else
-                          fallback()
+                        if not cmp.select_prev_item() then
+                            if vim.bo.buftype ~= 'prompt' and has_words_before() then
+                                cmp.complete()
+                            else
+                                fallback()
+                            end
                         end
-                      end
                     end,
                 },
 
                 sources = cmp.config.sources({
-                  { name = 'nvim_lsp' },
-                  -- { name = 'vsnip' }, -- For vsnip users.
-                  -- { name = 'luasnip' }, -- For luasnip users.
-                  -- { name = 'ultisnips' }, -- For ultisnips users.
-                  -- { name = 'snippy' }, -- For snippy users.
+                    { name = 'nvim_lsp' },
+                    -- { name = 'vsnip' }, -- For vsnip users.
+                    -- { name = 'luasnip' }, -- For luasnip users.
+                    -- { name = 'ultisnips' }, -- For ultisnips users.
+                    -- { name = 'snippy' }, -- For snippy users.
                 }, {
-                  { name = 'buffer' },
+                    { name = 'buffer' },
                 }),
             })
 
             -- Set configuration for specific filetype.
             cmp.setup.filetype('gitcommit', {
                 sources = cmp.config.sources({
-                  -- { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+                    -- { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
                 }, {
-                  { name = 'buffer' },
+                    { name = 'buffer' },
                 })
             })
 
@@ -150,7 +150,7 @@ return {
             cmp.setup.cmdline({ '/', '?' }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
-                  { name = 'buffer' }
+                    { name = 'buffer' }
                 }
             })
 
@@ -158,9 +158,9 @@ return {
             cmp.setup.cmdline(':', {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                  { name = 'path' }
+                    { name = 'path' }
                 }, {
-                  { name = 'cmdline' }
+                    { name = 'cmdline' }
                 })
             })
 
