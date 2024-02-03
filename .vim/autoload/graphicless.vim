@@ -15,6 +15,7 @@ function! graphicless#plugininstall(plugins)
     " Additional installation option can be added for different plugin managers
     let l:plugin_list = {
         \ 'surround'    : { 'link': 'tpope/vim-surround',           },
+        \ 'repeat'      : { 'link': 'tpope/vim-repeat',             },
         \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
         \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',      },
         \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
@@ -30,6 +31,7 @@ function! graphicless#plugininstall(plugins)
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
         \ 'easymotion'  : { 'link': 'timsu92/vim-easymotion',       },
+        \ 'sneak'       : { 'link': 'justinmk/vim-sneak',           },
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
@@ -37,6 +39,7 @@ function! graphicless#plugininstall(plugins)
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },
+        \ 'splitjoin'   : { 'link': 'AndrewRadev/splitjoin.vim',    },
         \ 'ycm'         : { 
             \ 'link': 'ycm-core/YouCompleteMe',  
             \ 'plug_hook': {'do': './install.py --clangd-completer'},
@@ -45,6 +48,7 @@ function! graphicless#plugininstall(plugins)
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'floaterm'    : { 'link': 'voldikss/vim-floaterm',        },
+        \ 'dispatch'    : { 'link': 'tpope/vim-dispatch'            },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
         \ 'mdhl'        : { 'link': 'preservim/vim-markdown',       },

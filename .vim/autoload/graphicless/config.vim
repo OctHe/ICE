@@ -11,8 +11,8 @@
 function! graphicless#config#starsearch()
 endfunction
 
-" TODO: use system-wide fzf
 " fzf:
+" TODO: use system-wide fzf
 function! graphicless#config#fzf()
 endfunction
 
@@ -32,8 +32,13 @@ endfunction
 function! graphicless#config#ctrlp()
 endfunction
 
+" Sneak: Jump with 2 chars.
+function! graphicless#config#sneak()
+endfunction
+
+" It seams easymotion has not been meantained.
 " Easymotion: The official repo is in easymotion/vim-easymotion.
-" timsu92 version fix a bug about easymotion-w/W in fold codes.
+" timsu92's version fix a bug about easymotion-w/W in fold codes.
 function! graphicless#config#easymotion()
     noremap f <Plug>(easymotion-f)
     noremap F <Plug>(easymotion-F)
@@ -50,6 +55,7 @@ function! graphicless#config#easymotion()
 endfunction
 
 " Vim-tmux-navigator: It requires configuration in tmux
+" TODO: Use the same file for both vim and tmux
 function! graphicless#config#tmux_navi()
 endfunction
 
@@ -129,6 +135,9 @@ endfunction
 
 function! graphicless#config#vimtable()
 endfunction
+
+function! graphicless#config#splitjoin()
+endfunction
 " }}}1
 
 " Completion
@@ -140,6 +149,10 @@ endfunction
 
 " Auto-pair
 function! graphicless#config#autopair()
+endfunction
+
+" vim-repeat: Plugin repeat support
+function! graphicless#config#repeat()
 endfunction
 
 " Nerdcomment: 
@@ -208,6 +221,9 @@ endfunction
 
 " asyncrun
 function! graphicless#config#asyncrun()
+endfunction
+
+function! graphicless#config#dispatch()
 endfunction
 
 " vimtex: latex plugin for vim. It relies on texlive
@@ -282,7 +298,7 @@ function! graphicless#config#gitgutter()
 endfunction
 " }}}1
 
-" View: Colorscheme, status line, indent, and UI-related plugins 
+" UI: Colorscheme, status line, indent. Let Vim looks better
 " {{{1
 " airline:
 function! graphicless#config#airline()
@@ -324,7 +340,7 @@ endfunction
 
 " rainbow: Rainbow brackets
 function! graphicless#config#rainbow()
-   " Set to 0 if you want to enable it later via :RainbowToggle
+   " Set to 0 to enable it later via :RainbowToggle
    let g:rainbow_active = 1 
 
 endfunction
