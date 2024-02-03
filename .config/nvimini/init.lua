@@ -17,6 +17,7 @@ opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.autowrite = true
 opt.clipboard = "unnamedplus" -- Sync with system-level clipboard
+opt.fileencodings = "utf-8,gb18030,latin1"
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
