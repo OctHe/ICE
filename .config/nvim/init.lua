@@ -30,7 +30,7 @@ opt.hidden = true -- Hide unwriten buffer
 opt.clipboard = "unnamedplus" -- Sync with system-level clipboard
 
 if vim.fn.has("nvim-0.10") == 1 then
-  opt.smoothscroll = true
+    opt.smoothscroll = true
 end
 
 vim.g.mapleader = " "
@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
         if vim.bo.filetype == 'help' then
             opt.number = true
             vim.cmd[[ wincmd L ]]
-            vim.cmd[[ vertical resize 90 ]]
+            vim.cmd[[ vertical resize 120 ]]
         end
     end,
 })
@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
 opt.rtp:prepend(lazypath)
 
@@ -77,21 +77,23 @@ if vim.loop.fs_stat(lazypath) then
         spec = {
             { import = "plugins" },
         },
+        -- Change the directory of the lazy-lock.json
+        lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
         -- try to load one of these colorschemes when starting an installation during startup
         install = { colorscheme = { "tokyonight", "desert"} },
         checker = { enabled = true }, -- automatically check for plugin updates
         performance = {
-        rtp = {
-            -- disable some rtp plugins
-            disabled_plugins = {
-                -- "gzip",
-                -- "matchit",
-                -- "matchparen",
-                "netrwPlugin",
-                -- "tarPlugin",
-                -- "tohtml",
-                "tutor",
-                -- "zipPlugin",
+            rtp = {
+                -- disable some rtp plugins
+                disabled_plugins = {
+                    -- "gzip",
+                    -- "matchit",
+                    -- "matchparen",
+                    "netrwPlugin",
+                    -- "tarPlugin",
+                    -- "tohtml",
+                    "tutor",
+                    -- "zipPlugin",
                 },
             },
         },

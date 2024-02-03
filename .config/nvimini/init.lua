@@ -82,6 +82,8 @@ if vim.loop.fs_stat(lazypath) then
         }
     },
     {
+        -- Change the directory of the lazy-lock.json
+        lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json",
         -- try to load one of these colorschemes when starting an installation during startup
         install = { colorscheme = {"minicyan", "peachpuff"} },
         checker = { enabled = true }, -- automatically check for plugin updates
