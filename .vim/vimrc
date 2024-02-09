@@ -21,32 +21,33 @@ let g:plugin_dir = '~/.local/share/vim/plugins/'
 let g:plugin_manager = 'plug'
 
 let g:enable_plugins = [
-    \ 'surround',
-    \ 'autopair',
-    \ 'commentary',
-    \ 'nerdtree',
-    \ 'fzf',
-    \ 'context',
-    \ 'vista', 
-    \ 'sneak',
-    \ 'ale', 
-    \ 'ycm',
-    \ 'vimsnippets',
-    \ 'ultisnips',
-    \ 'floaterm',
-    \ 'asyncrun',
-    \ 'vimtex',
-    \ 'mdhl',
-    \ 'mdp',
-    \ 'fugitive',
-    \ 'gitgutter',
-    \ 'airline',
-    \ 'tmux_navi',
-    \ 'indentline',
-    \ 'whichkey',
-    \ 'rainbow',
-    \ 'gruvbox',
-    \ ]
+            \ 'surround',
+            \ 'autopair',
+            \ 'commentary',
+            \ 'nerdtree',
+            \ 'leaderf',
+            \ 'context',
+            \ 'vista', 
+            \ 'gutentags',
+            \ 'sneak',
+            \ 'ale', 
+            \ 'ycm',
+            \ 'vimsnippets',
+            \ 'ultisnips',
+            \ 'floaterm',
+            \ 'asyncrun',
+            \ 'vimtex',
+            \ 'mdhl',
+            \ 'mdp',
+            \ 'fugitive',
+            \ 'gitgutter',
+            \ 'airline',
+            \ 'tmux_navi',
+            \ 'indentline',
+            \ 'whichkey',
+            \ 'rainbow',
+            \ 'gruvbox',
+            \ ]
 
 "}}}1
 
@@ -88,40 +89,40 @@ else
 endif
 
 syntax enable       " This enables Vim's syntax-related features. 
-                    " Without this, some VimTeX features will not work 
+" Without this, some VimTeX features will not work 
 " }}}1
-"
+
 " Commends {{{1
 
 " Command to see the difference between the current buffer and the file loaded from.
 if !exists(':DiffOrig')
     command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
+                \ | wincmd p | diffthis
 endif
 
 augroup GLStart
     au!
 
     autocmd BufWinEnter * 
-        \ if &filetype == 'help'
-        \ |   set number 
-        \ |   wincmd L 
-        \ |   vertical resize 90
-        \ | endif
+                \ if &filetype == 'help'
+                \ |   set number 
+                \ |   wincmd L 
+                \ |   vertical resize 90
+                \ | endif
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid, when inside an event handler
     " (happens when dropping a file on gvim) and for a commit message (it's
     " likely a different one than last time).
     autocmd BufReadPost *
-        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-        \ |   exe "normal! g`\""
-        \ | endif
+                \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+                \ |   exe "normal! g`\""
+                \ | endif
 
     autocmd CmdwinEnter *
-        \ echohl Todo | 
-        \ echo 'You discovered the command-line window! You can close it with ":q".' |
-        \ echohl None
+                \ echohl Todo
+                \ | echo 'You discovered the command-line window! You can close it with ":q".'
+                \ | echohl None
 augroup END
 
 " }}}1

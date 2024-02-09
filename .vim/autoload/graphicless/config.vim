@@ -27,6 +27,8 @@ function! graphicless#config#leaderf()
 
     set statusline+=%{NearestMethodOrFunction()}
 
+    let g:Lf_ShortcutF = '<leader>ff'
+    let g:Lf_ShortcutB = '<leader>fb'
 endfunction
 
 function! graphicless#config#ctrlp()
@@ -34,6 +36,11 @@ endfunction
 
 " Sneak: Jump with 2 chars.
 function! graphicless#config#sneak()
+    " Improved f/F/t/T
+    map f <Plug>Sneak_f
+    map F <Plug>Sneak_F
+    map t <Plug>Sneak_t
+    map T <Plug>Sneak_T
 endfunction
 
 " It seams easymotion has not been meantained.
@@ -60,20 +67,7 @@ function! graphicless#config#tmux_navi()
 endfunction
 
 " NERDTree: File explorer.  {{{2
-function! s:CloseNERDTree()
-    if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-        quit
-    endif
-
-endfunction
-
 function! s:PreventReplacingNERDTree()
-    if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
-        let buf=bufnr('%') 
-        buffer# 
-        execute "normal! \<C-W>w"
-        execute 'buffer'.buf
-    endif
 
 endfunction
 
@@ -81,12 +75,24 @@ function! graphicless#config#nerdtree()
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 
-    " Automatic open NERDTree when open vim and go to the previous window
-    autocmd VimEnter *.{py,h,c} NERDTree | wincmd p
-    " Close vim if the only window left open is a NERDTree
-    autocmd BufEnter * :call s:CloseNERDTree()
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-    autocmd BufEnter * :call s:PreventReplacingNERDTree()
+    augroup NERDTree
+        au!
+
+        " Close vim if the only window left open is a NERDTree
+        autocmd BufEnter * 
+                    \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+                    \ |   quit
+                    \ | endif
+
+        " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+        autocmd BufEnter *
+                    \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+                    \ |   let buf=bufnr('%') 
+                    \ |   buffer# 
+                    \ |   execute "normal! \<C-W>w"
+                    \ |   execute 'buffer'.buf
+                    \ | endif
+    augroup END
 
     " e means explore 
     nnoremap <silent> <Leader>e :NERDTreeToggle<CR>  
@@ -120,14 +126,13 @@ function! graphicless#config#tagbar()
 
 endfunction
 
+function! graphicless#config#gutentags()
+endfunction
+
+function! graphicless#config#neomake()
+endfunction
 " ALE:
 function! graphicless#config#ale()
-
-    " :ALEInfo can find the linters that are successfully enabled
-    let g:aleers = {
-    \   'python': ['pyflakes'],
-    \}
-
 endfunction
 
 function! graphicless#config#neomake()
@@ -215,8 +220,13 @@ endfunction
 
 " floaterm:
 function! graphicless#config#floaterm()
-    map <Leader>t :FloattermToggle<CR>
-    tmap <Leader>t <C-\><C-n>:FloattermToggle<CR>
+    nmap <Leader>tb :FloatermPrev<CR>
+    nmap <Leader>tn :FloatermNext<CR>
+    nmap <Leader>tN :FloatermNew<CR>
+    nmap <Leader>tk :FloatermKill<CR>
+    nmap <Leader>tt :FloatermToggle<CR>
+    tmap <Leader>tt <C-\><C-n>:FloatermToggle<CR>
+    tmap <Leader>tk <C-\><C-n>:FloatermKill<CR>
 endfunction
 
 " asyncrun
@@ -287,13 +297,12 @@ endfunction
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 function! graphicless#config#fugitive()
 
-    " g means git
     nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
     nnoremap <silent> <Leader>gs :Git status<CR>
 
 endfunction
 
-" gitgutter: Show diff sign on the left
+" gitgutter: Show diff in the column sign (See :help signcolumn)
 function! graphicless#config#gitgutter()
 endfunction
 " }}}1
@@ -324,10 +333,12 @@ function! graphicless#config#whichkey()
                             \ 'name': '+git',
                             \ 'd': '+diff',
                             \ }
-    let g:which_key_map.h = {
-                            \ 'name': '+GitGutter',
+    let g:which_key_map.c = {
+                            \ 'name': '+comment',
                             \ }
-
+    let g:which_key_map.f = {
+                            \ 'name': '+find',
+                            \ }
     let g:which_key_map.s = {
                             \ 'name': '+symbol',
                             \ }

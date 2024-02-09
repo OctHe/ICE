@@ -35,7 +35,7 @@ function! graphicless#plugininstall(plugins)
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
-        \ 'ctags'       : { 'link': 'vim-scripts/ctags.vim'         },
+        \ 'gutentags'   : { 'link': 'ludovicchabant/vim-gutentags'  },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },
