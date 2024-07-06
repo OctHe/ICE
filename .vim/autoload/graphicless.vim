@@ -70,6 +70,7 @@ function! graphicless#plugininstall(plugins)
         \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
         \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
         \ 'context'     : { 'link': 'wellle/context.vim',           },
+        \ 'startify'    : { 'link': 'mhinz/vim-startify',           },
         \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
         \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
         \ }

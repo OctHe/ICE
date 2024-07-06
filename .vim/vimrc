@@ -103,11 +103,14 @@ endif
 augroup GLStart
     au!
 
+    " A more suitable help file
     autocmd BufWinEnter * 
                 \ if &filetype == 'help'
                 \ |   set number 
-                \ |   wincmd L 
-                \ |   vertical resize 90
+                \ |   if winwidth('%') > 180
+                \ |       wincmd L 
+                \ |       vertical resize 90
+                \ |   endif
                 \ | endif
 
     " When editing a file, always jump to the last known cursor position.
@@ -140,6 +143,7 @@ nmap <silent> * "syiw:let @/ = @s<CR>
 
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
+tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 
 " Show mappings
 nnoremap <silent> <Leader>m :verbose map 

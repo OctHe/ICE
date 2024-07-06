@@ -225,8 +225,6 @@ function! graphicless#config#floaterm()
     nmap <Leader>tN :FloatermNew<CR>
     nmap <Leader>tk :FloatermKill<CR>
     nmap <Leader>tt :FloatermToggle<CR>
-    tmap <Leader>tt <C-\><C-n>:FloatermToggle<CR>
-    tmap <Leader>tk <C-\><C-n>:FloatermKill<CR>
 endfunction
 
 " asyncrun
@@ -359,6 +357,8 @@ endfunction
 function! graphicless#config#context()
 endfunction
 
+function! graphicless#config#startify()
+endfunction
 
 " gruvbox: 
 function! graphicless#config#gruvbox()

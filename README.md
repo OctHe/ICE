@@ -1,6 +1,6 @@
 # Graphicless
 
-Graphicless (GL) is a `dotfile` project that contains a collection of personal-use configurations across a variety of Linux distributions and programs on them.
+Graphicless (GL) is a dotfile and script project across a variety of Linux distributions.
 
 Install GL is easy:
 
