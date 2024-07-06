@@ -7,10 +7,6 @@
 # User config directory
 !/.config/
 
-# Shell
-!/.local/
-!/.local/bin/
-!/.local/bin/**
 # zsh
 !.zshrc
 # Bash

@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Collection of awesome open source projects
+# Collection of awesome open source projects from github
 
 gl_shell=(
     Bash-it/bash-it \\n
@@ -9,7 +9,7 @@ gl_shell=(
 )
 
 gl_pkg=(
-    flatpak/flatpak
+    flatpak/flatpak \\n
     Jguer/yay \\n
     pypa/pip \\n
     rust-lang/cargo \\n
@@ -30,10 +30,9 @@ gl_net=(
     soimort/translate-shell \\n
 )
 
-# TODO: Plugins for vim and neovim
 gl_editor=(
-    vim/vim
-    neovim/neovim \\n
+    vim/vim \\n
+    neovim/neovim ggandor/leap.nvim folke/zen-mode.nvim folke/neodev.nvim \\n
     mawww/kakoune \\n
     helix-editor/helix \\n
     zyedidia/micro \\n
@@ -54,9 +53,9 @@ gl_viewer=(
 gl_code=(universal-ctags/ctags danmar/cppcheck llvm/llvm-project \\n)
 
 gl_build=(
-    xmake-io/xmake rizsotto/Bear ccache/ccache \\n
+    xmake-io/xmake bazelbuild/bazel rizsotto/Bear ccache/ccache \\n
     python/cpython rust-lang/rust golang/go \\n
-    jgm/doxygen/doxygen pandoc \\n
+    doxygen/doxygen jgm/pandoc \\n
 )
 
 gl_langsrv=(

@@ -106,6 +106,10 @@ zinit light supercrabtree/k
 #   sudo apt install fonts-powerline
 zinit light agnoster/agnoster-zsh-theme
 
+## Virtual environment
+PYTHON_VENV=~/.local/share/python/venv/gl
+[ -d ${PYTHON_VENV} ] && source ${PYTHON_VENV}/bin/activate
+
 # Remove segment 2 of agnoster prompt. Default segments are :
 #     1	prompt_status
 #     2	prompt_context

@@ -21,14 +21,14 @@ gl_pkg=(
 # bc: A command-line calculator
 gl_tool=(
     bat zoxide eza htop \\n
-    neofetch \\n
+    fastfetch screenfetch neofetch \\n
     flameshot \\n
     terminator konsole \\n
 )
 
 # screen and tmux need to set true color
 gl_win=(
-    screen tmux \\n
+    screen tmux zellij \\n
 )
 
 gl_mail=(thunderbird kmail evolution mutt \\n)
@@ -62,13 +62,24 @@ gl_viewer=(
     nnn ranger vifm \\n
 )
 
-gl_code=(
-    ctags cscope cppcheck \\n
-    astyle xmllint \\n
-)
-
+# Command-line tools for tag and lint
+# Some lints are python moduels. As an example, install them user-wide with:
+#   python3 -m venv /path/to/venv
+#   pip3 install pyflakes vim-vint
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
+gl_linter=(
+    ctags cscope cppcheck cpplint \\n
+    pyflakes flake8 \\n
+    vint \\n
+    gitlint \\n
+    xmllint \\n
+)
+
+gl_formatter=(
+    astyle \\n
+    black yapf autopep8 \\n
+)
 
 # rpmbuild is the buildtool in for rpm.
 # As an example, download and build the source code with
@@ -82,8 +93,8 @@ gl_code=(
 #     xetex includes Unicode but pdftex does not.
 #     pdflatex and xelatex are two compiles for latex. Since latex is more useful, in most of time, 
 #     pdftex and xetex are the same as pdflatex and xelatex.
-gl_build=(
-    cmake xmake make rpmbuild bear ccache \\n
+gl_builder=(
+    cmake xmake make bazel rpmbuild bear ccache \\n
     gcc g++ clang python3 rust go octave \\n
     graphviz \\n
     doxygen makeinfo pandoc pdflatex xelatex bibtex latexmk \\n
@@ -99,7 +110,12 @@ gl_langsrv=(
 )
 
 # osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
-gl_vcs=(svn git hg osc \\n)
+gl_vcs=(
+    svn  \\n
+    git lazygit onefetch \\n
+    hg \\n
+    osc \\n
+)
 
 # Graphicless desktop environment
 function gl_status() {
@@ -146,6 +162,6 @@ function gl_status_command() {
 }
 
 gl_status shell pkg tool win mail net viewer
-gl_status editor finder code build debugger langsrv vcs
+gl_status editor finder linter formatter builder debugger langsrv vcs
 
 gl_status_command

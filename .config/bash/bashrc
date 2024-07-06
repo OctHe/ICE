@@ -47,6 +47,15 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
     source $HOME/.bash-git-prompt/gitprompt.sh
 fi
 
+# hello system
+if which fastfetch > /dev/null 2>&1; then
+    fastfetch
+elif which screenfetch > /dev/null 2>&1; then
+    screenfetch
+elif which neofetch > /dev/null 2>&1; then
+    neofetch
+fi
+
 # Colored man when the PAGER=less
 # Redefine the man command so the follow environment variables changes only for man page
 #   mb: start blinking
