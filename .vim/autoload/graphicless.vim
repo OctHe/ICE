@@ -36,6 +36,12 @@ function! graphicless#plugininstall(plugins)
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
         \ 'gutentags'   : { 'link': 'ludovicchabant/vim-gutentags'  },
+        \ 'cctree'      : { 
+            \ 'link': 'vim-scripts/CCTree',
+            \ 'plug_hook': {  
+                \ 'for': ['c', 'cpp', 'cc'],
+            \ }
+        \ },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },
@@ -51,11 +57,14 @@ function! graphicless#plugininstall(plugins)
         \ 'dispatch'    : { 'link': 'tpope/vim-dispatch'            },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'mdhl'        : { 'link': 'preservim/vim-markdown',       },
-        \ 'mdp'         : { 
+        \ 'mkdhl'       : { 'link': 'preservim/vim-markdown',       },
+        \ 'mkdp'        : { 
             \ 'link': 'iamcco/markdown-preview.nvim', 
-            \ 'plug_hook': {  'do': { -> mkdp#util#install() }, }
-            \ },
+            \ 'plug_hook': {  
+                \ 'do': { -> mkdp#util#install() }, 
+                \ 'for': ['markdown'],
+            \ }
+        \ },
         \ 'csv'         : { 'link': 'chrisbra/csv.vim',             },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
@@ -109,8 +118,7 @@ function! graphicless#plugininstall(plugins)
             " Load plugins
             if exists('l:plugin_list.'..plugin..'.plug_hook')
                 " Markdown-preview has issue if the name of its directory is
-                " changed, so its directory is not renaed until I know how to
-                " fix the bug in the plugin, if possiable
+                " changed, so its directory is not renamed
                 if plugin != 'mkdp'
                     let l:plugin_list[plugin].plug_hook['as'] = plugin
                 endif
@@ -137,7 +145,6 @@ function! graphicless#pluginconfig(plugins)
                 call graphicless#config#{plugin}()
             endif
         endfor
-        call graphicless#config#nerdtree()
 
 endfunction
 

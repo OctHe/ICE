@@ -129,6 +129,10 @@ endfunction
 function! graphicless#config#gutentags()
 endfunction
 
+" CCTree geenrates a call tree based on cscope
+function! graphicless#config#cctree()
+endfunction
+
 function! graphicless#config#neomake()
 endfunction
 " ALE:
@@ -272,7 +276,7 @@ function! graphicless#config#vimtex()
 endfunction
 
 " Vim-markdown: It provides better markdown highlight
-function! graphicless#config#mdhl()
+function! graphicless#config#mkdhl()
 
     let g:vim_markdown_folding_disabled = 1
     let g:vim_markdown_conceal = 0
@@ -280,9 +284,9 @@ function! graphicless#config#mdhl()
 
 endfunction
 
-" Markdown-preview:
-" If it does not work well, Use :messages in vim to see the output
-function! graphicless#config#mdp()
+" Markdown-preview has issue if the name of its directory is changed.
+" If this plugin does not work well, Use :messages in vim to see the output
+function! graphicless#config#mkdp()
 endfunction
 
 " csv.vim:
@@ -354,6 +358,8 @@ function! graphicless#config#rainbow()
 
 endfunction
 
+" Show the function, for-loop and condition.
+" It will stuck vim, so don't enable it automatically
 function! graphicless#config#context()
 endfunction
 
