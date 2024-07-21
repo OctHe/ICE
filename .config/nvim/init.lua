@@ -57,8 +57,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     callback = function()
         if vim.bo.filetype == 'help' then
             opt.number = true
-            vim.cmd[[ wincmd L ]]
-            vim.cmd[[ vertical resize 120 ]]
+            if vim.fn.winwidth('%') > 180 then
+                vim.cmd[[ wincmd L ]]
+                vim.cmd[[ vertical resize 120 ]]
+            end
         end
     end,
 })

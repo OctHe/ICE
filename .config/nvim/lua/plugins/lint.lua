@@ -106,13 +106,11 @@ return {
     },
 
     -- List and goto symbol
-    -- FIXME: Keymapping does not show in which-key
-    -- TODO: Move all keymapping for Toggling to <Leader>t (terminal, aerial, dim)
     {
         'stevearc/aerial.nvim',
         config = function() require('aerial').setup() end,
         keys = {
-            { "<Leader>s", "<CMD>AerialToggle<CR>", mode = {"n", "v"}, desc = "Toggle symbol window" },
+            { "<Leader>ts", "<CMD>AerialToggle<CR>", mode = {"n", "v"}, desc = "Toggle symbol window" },
         },
     },
 
@@ -126,7 +124,7 @@ return {
                 -- A list of parser names, or "all" (the five {c, lua, vim, vimdoc, query} parsers should always be installed)
                 -- compilation of treesitter-bash requires g++. Install it via system-level package manager
                 -- For example: sudo zypper install gcc-g++
-                ensure_installed = { "c", "python", "lua", "bash", "vim", "vimdoc", "query", "regex", "markdown"},
+                ensure_installed = { "cpp", "python", "lua", "bash", "vim", "vimdoc", "query", "regex", "markdown"},
 
                 -- Install parsers synchronously (only applied to `ensure_installed`)
                 sync_install = false,
@@ -166,15 +164,6 @@ return {
                     },
                 }
             end,
-        },
-
-        -- FIXME: It shows error when the first time use the keymap
-        {
-            "nvim-treesitter/nvim-treesitter-context",
-            dependencies = "nvim-treesitter/nvim-treesitter",
-            keys = {
-                { "<Leader>gc", function() require'treesitter-context'.go_to_context(vim.v.count1) end, mode = {"n", "v"}, desc = "Go to context (upwards)" },
-            },
         },
         -- }}}1
 
