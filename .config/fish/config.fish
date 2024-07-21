@@ -28,3 +28,5 @@ if status is-interactive
         end
     end
 end
+
+alias gl "/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME"
