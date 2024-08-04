@@ -347,7 +347,9 @@ function! graphicless#config#whichkey()
     call which_key#register('<Space>', "g:which_key_map")
 
     nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
-    vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<leader>'<CR>
+    vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<Leader>'<CR>
+    nnoremap <silent> <LocalLeader> :<c-u>WhichKey '<LocalLeader>'<CR>
+    vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
 
 endfunction
 

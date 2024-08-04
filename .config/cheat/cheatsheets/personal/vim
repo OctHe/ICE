@@ -6,7 +6,9 @@ This cheatsheet summarizes all single-character and part of the related commands
 
 The full list can be obtained by using `:help index`.
 
-## Normal Mode
+## Normal/Visual Mode
+
+Most keymappings both can work in normal and visual mode with slightly difference.
 
 ### Movement
 
@@ -60,15 +62,16 @@ Y           Line-level edit: Yank the line
 J           Line-level edit: Join the forward line to the current one
 P/p         Document-level edit: Put (Paste) the text before/after the cursor
 u/U         Document-level edit: Undo the last change / Undo all changes in the line
-q{reg}      Recording: Record operations into {reg} until `q` is typed in normal mode
-@{reg}      Recording: Run the operations in {reg}
 .           Repeat: The last edit command
 "{reg}      Use {reg} for d/y/p
+<C-a/x>     Character-level edit: The first number after the cursor plus/minus 1
 ```
 
 Recording-related command
 
 ```
+q{reg}      Recording: Record operations into {reg} until `q` is typed in normal mode
+@{reg}      Recording: Run the operations in {reg}
 @@          Repeat: The last @{reg}
 ```
 
@@ -77,8 +80,8 @@ If an operator is typed, it will wait for a motion, like `h/j/k/l/w/W/e/E/b/B`.
 Type an operator twice indicates line-level edit.
 
 ```
-d/y         Delete (Cut) / Yank
-c           Delete (Cut/Change) and enter the insert mode
+d/y         Delete (Cut) / Yank (Copy)
+C           Delete (Cut/Change) to the end of the line and enter the insert mode
 <           Shift left
 >           Shift right
 dd/yy       Line-level edit: Delete (Cut) / Yank
@@ -102,28 +105,53 @@ a[/{/(/</"/'/`      # a [\{\( block with [\{\(
 i[/{/(/</"/'/`      # inner [\{\( block without [\{\(
 ```
 
-### Commands start with 'Z' and 'z'
+### Keymapings start with 'Z' and 'z'
 
+This is not full list. Use `help z` in vim to find all the keymappings.
+
+Quit vim
 ```
-ZZ          Save and close the current window
 ZQ          Close and quit vim without saving
-zc          Close a fold
+ZZ          Save and close the current window
 ```
 
+Fold
+
 ```
-zb          Put the line to the bottom of the window
-zt          Put the line to the top of the window
-zz          Put the line to the middle of the window
+za/A                Toggle a fold/folds recursively
+zc/C                Close a fold/folds recursively
+zd/D                Delete a fold/ folds recursively
+zf{motion}/F        Create folds
+zj                  Move to the start of the next fold
+zo/O                Open a fold/folds recursively
 ```
 
-### Commands start with 'g'
+Redraw the window
+
+```
+zb/t/z      Redraw the cursor to the bottom/top/middle of the window
+```
+
+
+```
+z.          Give spell suggestion 
+```
+
+Unused keys or useless keys
+```
+BEG HIJKLMN PRST UVWXY
+eg hiklmn pqrs uvwxy
+```
+
+### Keymappings start with 'g'
 
 Part of the commands have been listed.
 
 ```
+gd/gD       Document-level movement: Go to local/global decleration
 ge/gE       Word-level movement: Backward to the end of the word/WORD
+gg/G        Document-level movement: The first/last line
 {count}g_   Line-level movement: Downward {count}-1 lines, on the last non-blank character
-gg          Document-level movement: The first character
 ```
 
 ### Window 
@@ -136,33 +164,21 @@ gg          Document-level movement: The first character
 
 ```
 
+### Filter
+
+Filter can lint to other formatters.
+
+```
+!/=             Filter text through an external program 
+```
+
+
 ### Customization
 
 ```
 \               It is the default value of <Leader>
-<Alt>           It can be used for customization
 <Tab>           It can be used for autocompletion
-<Space>         It works like `l` with slightly difference
-```
-
-## Visual Mode
-
-Most commands in normal mode are the same as in the visual mode, but part of the edit commands have slightly difference.
-
-```
-v               Enter visual mode from normal mode.
-d/y             Character-level edit: Delete (Cut) / Yank
-c               Character-level edit: Delete (Cut/Change) and enter insert mode
-<               Line-level edit: Shift left
->               Line-level edit: Shift right
-```
-
-```
-V               Enter linesise-visual mode from normal mode.
-d/y             Line-level edit: Delete (Cut) / Yank
-c               Line-level edit: Delete (Cut/Change) and enter insert mode
-<               Line-level edit: Shift left
->               Line-level edit: Shift right
+<Space>         It works like `l`, so it can be used as <Leader>
 ```
 
 ## Insert Mode
@@ -207,7 +223,8 @@ It has one repeat single-character command in normal mode.
 
 ### vimgrep
 
-vimgrep is the built-in search command in vim
+vimgrep is the built-in search command in vim.
+The results can be listed in quickfix window.
 
 ```
 :vimgrep /<PATTERN>/<FLAGS> <FILES>
@@ -216,11 +233,5 @@ vimgrep is the built-in search command in vim
 :cprevious                      Search the previous position
 :clist                          List all matched patterns
 :cwindow                        Open the quickfix window
-```
-
-### Filter
-
-```
-!/=             Filter text through an external program 
 ```
 
