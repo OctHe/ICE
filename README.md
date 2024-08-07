@@ -12,13 +12,13 @@ Be careful! `pl checkout` overwritten other personal configuration files.
 Please backup them manual.
 
 Since lots of Linux use bash as their default shell.
-GL does not directly change the `.bashrc` file.
-To enable GL's bash config, use
+PL does not directly change the `.bashrc` file.
+To enable PL's bash config, use
     
     echo 'source ~/.config/bash/bashrc' >> .bashrc
     source ~/.bashrc
 
-The python packages of GL uses virtual environment:
+The python packages of PL uses virtual environment:
 
     python3 -m venv .local/share/python/venv/pl
 
