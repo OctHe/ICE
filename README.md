@@ -1,14 +1,14 @@
-# Graphicless
+# Packless
 
-Graphicless (GL) is a dotfile and script project across a variety of Linux distributions.
+Packless (PL) is a dotfile and script project across a variety of Linux distributions.
 
-Install GL is easy:
+Install PL is easy:
 
-    git clone --bare https://github.com/OctHe/Graphicless .graphicless
-    alias gl='/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME'
-    gl checkout
+    git clone --bare https://github.com/OctHe/Packless .packless
+    alias pl='/usr/bin/git --git-dir=$HOME/.packless/ --work-tree=$HOME'
+    pl checkout
 
-Be careful! `gl checkout` overwritten other personal configuration files.
+Be careful! `pl checkout` overwritten other personal configuration files.
 Please backup them manual.
 
 Since lots of Linux use bash as their default shell.
@@ -20,7 +20,7 @@ To enable GL's bash config, use
 
 The python packages of GL uses virtual environment:
 
-    python3 -m venv .local/share/python/venv/gl/
+    python3 -m venv .local/share/python/venv/pl
 
 The packages is installed by
 

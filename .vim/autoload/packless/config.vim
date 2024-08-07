@@ -8,16 +8,16 @@
 " {{{1
 
 " starsearch: Enhanced star keymapping. Avoid jumping to next
-function! graphicless#config#starsearch()
+function! packless#config#starsearch()
 endfunction
 
 " fzf:
 " TODO: use system-wide fzf
-function! graphicless#config#fzf()
+function! packless#config#fzf()
 endfunction
 
 " LeaderF: 
-function! graphicless#config#leaderf()
+function! packless#config#leaderf()
     let g:Lf_WindowPosition = 'popup'
 
     " Vista.vim:
@@ -31,11 +31,11 @@ function! graphicless#config#leaderf()
     let g:Lf_ShortcutB = '<leader>fb'
 endfunction
 
-function! graphicless#config#ctrlp()
+function! packless#config#ctrlp()
 endfunction
 
 " Sneak: Jump with 2 chars.
-function! graphicless#config#sneak()
+function! packless#config#sneak()
     " Improved f/F/t/T
     map f <Plug>Sneak_f
     map F <Plug>Sneak_F
@@ -46,7 +46,7 @@ endfunction
 " It seams easymotion has not been meantained.
 " Easymotion: The official repo is in easymotion/vim-easymotion.
 " timsu92's version fix a bug about easymotion-w/W in fold codes.
-function! graphicless#config#easymotion()
+function! packless#config#easymotion()
     noremap f <Plug>(easymotion-f)
     noremap F <Plug>(easymotion-F)
     noremap t <Plug>(easymotion-t)
@@ -63,7 +63,7 @@ endfunction
 
 " Vim-tmux-navigator: It requires configuration in tmux
 " TODO: Use the same file for both vim and tmux
-function! graphicless#config#tmux_navi()
+function! packless#config#tmux_navi()
 endfunction
 
 " NERDTree: File explorer.  {{{2
@@ -71,7 +71,7 @@ function! s:PreventReplacingNERDTree()
 
 endfunction
 
-function! graphicless#config#nerdtree()
+function! packless#config#nerdtree()
     let NERTTreeCaseSensitiveSort = 1
     let NERDTreeWinSize = 35
 
@@ -108,7 +108,7 @@ endfunction
 " correct version. 
 " In openSUSE:
 "   sudo zypper install universal-ctags 
-function! graphicless#config#vista()
+function! packless#config#vista()
     let g:vista_sidebar_width = 50
 
     " t means tag
@@ -117,7 +117,7 @@ function! graphicless#config#vista()
 endfunction
 
 " Tagbar: 
-function! graphicless#config#tagbar()
+function! packless#config#tagbar()
     " Automatic open Tagbar when open vim
     autocmd VimEnter *.{py,h,c} Tagbar
 
@@ -126,26 +126,26 @@ function! graphicless#config#tagbar()
 
 endfunction
 
-function! graphicless#config#gutentags()
+function! packless#config#gutentags()
 endfunction
 
 " CCTree geenrates a call tree based on cscope
-function! graphicless#config#cctree()
+function! packless#config#cctree()
 endfunction
 
-function! graphicless#config#neomake()
+function! packless#config#neomake()
 endfunction
 " ALE:
-function! graphicless#config#ale()
+function! packless#config#ale()
 endfunction
 
-function! graphicless#config#neomake()
+function! packless#config#neomake()
 endfunction
 
-function! graphicless#config#vimtable()
+function! packless#config#vimtable()
 endfunction
 
-function! graphicless#config#splitjoin()
+function! packless#config#splitjoin()
 endfunction
 " }}}1
 
@@ -153,23 +153,23 @@ endfunction
 " {{{1
 
 " Surround
-function! graphicless#config#surround()
+function! packless#config#surround()
 endfunction
 
 " Auto-pair
-function! graphicless#config#autopair()
+function! packless#config#autopair()
 endfunction
 
 " vim-repeat: Plugin repeat support
-function! graphicless#config#repeat()
+function! packless#config#repeat()
 endfunction
 
 " Nerdcomment: 
-function! graphicless#config#nerdcomment()
+function! packless#config#nerdcomment()
 endfunction
 
 " commentary:
-function! graphicless#config#commentary()
+function! packless#config#commentary()
     xmap <Leader>c  <Plug>Commentary
     vmap <Leader>c  <Plug>Commentary
     omap <Leader>c  <Plug>Commentary
@@ -184,7 +184,7 @@ endfunction
 "   sudo apt install cmake make g++ python3-dev
 " In openSUSE with
 "   sudo zypper install cmake make g++ python3-deval
-function! graphicless#config#ycm()
+function! packless#config#ycm()
 
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
     let g:ycm_show_diagnostics_ui = 0
@@ -195,12 +195,12 @@ function! graphicless#config#ycm()
 endfunction
 
 " vim-snippets: It saves multiple snippets
-function! graphicless#config#vimsnippets()
+function! packless#config#vimsnippets()
 endfunction
 
 " Ultisnips: snippets engine that uses snippet database
 " vim-snippets: snippet database
-function! graphicless#config#ultisnips()
+function! packless#config#ultisnips()
 
     " Trigger configuration. Change this to something other than <tab> if use one 
     " of the following:
@@ -219,11 +219,11 @@ endfunction
 " {{{1
 
 " genutils: It gives general functions that some plugins rely on
-function! graphicless#config#genutils()
+function! packless#config#genutils()
 endfunction
 
 " floaterm:
-function! graphicless#config#floaterm()
+function! packless#config#floaterm()
     nmap <Leader>tb :FloatermPrev<CR>
     nmap <Leader>tn :FloatermNext<CR>
     nmap <Leader>tN :FloatermNew<CR>
@@ -232,10 +232,10 @@ function! graphicless#config#floaterm()
 endfunction
 
 " asyncrun
-function! graphicless#config#asyncrun()
+function! packless#config#asyncrun()
 endfunction
 
-function! graphicless#config#dispatch()
+function! packless#config#dispatch()
 endfunction
 
 " vimtex: latex plugin for vim. It relies on texlive
@@ -243,7 +243,7 @@ endfunction
 " The backward search and forward search requires xdotool according to the
 " author
 "   sudo apt install xdotool 
-function! graphicless#config#vimtex()
+function! packless#config#vimtex()
 
     " Plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
     " Note that most plugin managers will do this automatically.
@@ -276,7 +276,7 @@ function! graphicless#config#vimtex()
 endfunction
 
 " Vim-markdown: It provides better markdown highlight
-function! graphicless#config#mkdhl()
+function! packless#config#mkdhl()
 
     let g:vim_markdown_folding_disabled = 1
     let g:vim_markdown_conceal = 0
@@ -286,18 +286,18 @@ endfunction
 
 " Markdown-preview has issue if the name of its directory is changed.
 " If this plugin does not work well, Use :messages in vim to see the output
-function! graphicless#config#mkdp()
+function! packless#config#mkdp()
 endfunction
 
 " csv.vim:
-function! graphicless#config#csv()
+function! packless#config#csv()
 endfunction
 " }}}1
 
 " VCS
 " {{{1
 " fugitive: Provide common git options (diff, status, add, commit, etc)
-function! graphicless#config#fugitive()
+function! packless#config#fugitive()
 
     nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
     nnoremap <silent> <Leader>gs :Git status<CR>
@@ -305,14 +305,14 @@ function! graphicless#config#fugitive()
 endfunction
 
 " gitgutter: Show diff in the column sign (See :help signcolumn)
-function! graphicless#config#gitgutter()
+function! packless#config#gitgutter()
 endfunction
 " }}}1
 
 " UI: Colorscheme, status line, indent. Let Vim looks better
 " {{{1
 " airline:
-function! graphicless#config#airline()
+function! packless#config#airline()
     " Enhanced tabline
     let g:airline#extensions#tabline#enabled = 1
     " Show buffer number so I can quickly pick a buffer
@@ -320,16 +320,16 @@ function! graphicless#config#airline()
 
 endfunction
 
-function! graphicless#config#lightline()
+function! packless#config#lightline()
 endfunction
 
-function! graphicless#config#indentline()
+function! packless#config#indentline()
 endfunction
 
-function! graphicless#config#indentguide()
+function! packless#config#indentguide()
 endfunction
 
-function! graphicless#config#whichkey()
+function! packless#config#whichkey()
     let g:which_key_map = {}
     let g:which_key_map.g = {
                             \ 'name': '+git',
@@ -354,7 +354,7 @@ function! graphicless#config#whichkey()
 endfunction
 
 " rainbow: Rainbow brackets
-function! graphicless#config#rainbow()
+function! packless#config#rainbow()
    " Set to 0 to enable it later via :RainbowToggle
    let g:rainbow_active = 1 
 
@@ -362,18 +362,18 @@ endfunction
 
 " Show the function, for-loop and condition.
 " It will stuck vim, so don't enable it automatically
-function! graphicless#config#context()
+function! packless#config#context()
 endfunction
 
-function! graphicless#config#startify()
+function! packless#config#startify()
 endfunction
 
 " gruvbox: 
-function! graphicless#config#gruvbox()
+function! packless#config#gruvbox()
 endfunction
 
 " colortable:
-function! graphicless#config#colortable()
+function! packless#config#colortable()
 endfunction
 
 " }}}1

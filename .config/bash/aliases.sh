@@ -1,10 +1,10 @@
-# Graphicless aliases for bash and zsh
+# Aliases for bash and zsh
 #
 # Copyright(C) OctHe
 #
 
 # This project
-alias gl='/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME'
+alias pl='/usr/bin/git --git-dir=$HOME/.packless/ --work-tree=$HOME'
 
 # ls
 alias l='ls --color=always -lh'

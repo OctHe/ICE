@@ -29,4 +29,4 @@ if status is-interactive
     end
 end
 
-alias gl "/usr/bin/git --git-dir=$HOME/.graphicless/ --work-tree=$HOME"
+alias pl "/usr/bin/git --git-dir=$HOME/.packless/ --work-tree=$HOME"

@@ -7,7 +7,7 @@
 " 
 " =====================================================================
 
-function! graphicless#plugininstall(plugins)
+function! packless#plugininstall(plugins)
 
     " l:plugin_list is a dict that contains essential keys for plugins {{{1
     "   link: The source of each plugin
@@ -137,12 +137,12 @@ function! graphicless#plugininstall(plugins)
     
 endfunction
 
-function! graphicless#pluginconfig(plugins)
+function! packless#pluginconfig(plugins)
 
         " Config loaded plugins
         for plugin in a:plugins
             if isdirectory(expand(g:plugin_dir..plugin))
-                call graphicless#config#{plugin}()
+                call packless#config#{plugin}()
             endif
         endfor
 

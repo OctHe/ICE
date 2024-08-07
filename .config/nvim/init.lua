@@ -1,6 +1,6 @@
 -- ---------------------------------------------------------------------
 --
--- GL Neovim run command file. It uses Lazy.nvim.
+-- Neovim run command file. It uses Lazy.nvim.
 -- Author: OctHe
 -- Copyright (C): 2023-2024
 --
@@ -53,7 +53,7 @@ keymap.set("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
 
 -- Command
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    group = vim.api.nvim_create_augroup("gl-help", { clear = true }),
+    group = vim.api.nvim_create_augroup("pl-help", { clear = true }),
     callback = function()
         if vim.bo.filetype == 'help' then
             opt.number = true

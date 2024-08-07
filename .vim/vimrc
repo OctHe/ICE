@@ -53,7 +53,7 @@ let g:enable_plugins = [
 
 " 'if 1' will be false when vim does not have '+eval' function
 if 1
-    call graphicless#plugininstall( g:enable_plugins )
+    call packless#plugininstall( g:enable_plugins )
 endif
 
 " Options {{{1
@@ -154,7 +154,7 @@ nnoremap <silent> <Leader>m :verbose map
 
 " Config load plugins
 if 1
-    call graphicless#pluginconfig( g:enable_plugins )
+    call packless#pluginconfig( g:enable_plugins )
 endif
 
 try

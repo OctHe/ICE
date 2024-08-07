@@ -1,13 +1,12 @@
 " 
-" Graphicless option file
+" Options for non-plugin configurations
 " Author: OctHe
 " Copyright (C): 2023
-" It includes options, commands, keymappings as well as plugins
 " 
 " =====================================================================
 
 " Filetype options for text, such as markdown and latex
-function! graphicless#options#text()
+function! packless#options#text()
 
     set spell   " Set spell check
     set spelllang+=cjk  " Spell check for chinese
