@@ -35,6 +35,7 @@ let g:enable_plugins = [
             \ 'vimsnippets',
             \ 'ultisnips',
             \ 'floaterm',
+            \ 'vimspector',
             \ 'asyncrun',
             \ 'vimtex',
             \ 'mkdhl',

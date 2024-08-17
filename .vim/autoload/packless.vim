@@ -54,6 +54,7 @@ function! packless#plugininstall(plugins)
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
         \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
         \ 'floaterm'    : { 'link': 'voldikss/vim-floaterm',        },
+        \ 'vimspector'  : { 'link': 'puremourning/vimspector'       },
         \ 'dispatch'    : { 'link': 'tpope/vim-dispatch'            },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },

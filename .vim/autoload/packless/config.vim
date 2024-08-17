@@ -135,8 +135,22 @@ endfunction
 
 function! packless#config#neomake()
 endfunction
+
 " ALE:
 function! packless#config#ale()
+
+    " Most Linux distributions use gcc by default, so use gcc at first
+    if !empty('gcc')
+        let g:ale_c_cc_executable = 'gcc'
+        let g:ale_cpp_cc_executable = 'gcc'
+    endif
+
+    " Clang requires extra cofiguration, so disable it
+    let g:ale_linters = {
+                \ 'c': ['gcc'],
+                \ 'cpp': ['gcc'],
+                \ }
+
 endfunction
 
 function! packless#config#neomake()
@@ -186,7 +200,9 @@ endfunction
 "   sudo zypper install cmake make g++ python3-deval
 function! packless#config#ycm()
 
+    let g:ycm_confirm_extra_conf = 0
     let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+
     let g:ycm_show_diagnostics_ui = 0
 
     " Clear the YCM blacklist, so it works for all files
@@ -229,6 +245,13 @@ function! packless#config#floaterm()
     nmap <Leader>tN :FloatermNew<CR>
     nmap <Leader>tk :FloatermKill<CR>
     nmap <Leader>tt :FloatermToggle<CR>
+endfunction
+
+" Debugger with DAP
+function! packless#config#vimspector()
+
+    let g:vimspector_enable_mappings='HUMAN'
+
 endfunction
 
 " asyncrun

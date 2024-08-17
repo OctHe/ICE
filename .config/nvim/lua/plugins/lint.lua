@@ -11,7 +11,9 @@ return {
     {
         'neovim/nvim-lspconfig',
         config = function()
-            require'lspconfig'.lua_ls.setup {
+            local lspconfig = require'lspconfig'
+
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         runtime = {
@@ -36,6 +38,8 @@ return {
                 -- Coorperation with cmp.nvim
                 capabilities = require'cmp_nvim_lsp'.default_capabilities()
             }
+
+            lspconfig.clangd.setup{}
         end,
     },
 
