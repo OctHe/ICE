@@ -24,13 +24,6 @@ setopt prompt_subst             # Make PROMPT works right
 common_alias=~/.config/bash/aliases.sh
 test -s ${common_alias} && source ${common_alias} 
 
-# zsh-specific alias
-alias ...='../..'
-alias ....='../../..'
-alias .....='../../../..'
-alias ......='../../../../..'
-
-
 # Autoload functions
 autoload -U compinit && compinit	# Completion initalization 
 autoload -U colors && colors 		# Functions to easily use colors
@@ -75,6 +68,19 @@ function man() {
 
     env $environment $0 $@
 }
+
+# Expand multiple dots for cd
+function expand-dots() {
+    # LBUFFER is the part before the cursor
+    # Update LBUFFER with modifier 
+    if [[ $LBUFFER =~ '(^| )\.\.\.+' ]]; then
+        LBUFFER=${LBUFFER:fs/\.\.\./..\/../}
+    fi
+    zle accept-line
+}
+zle -N expand-dots
+bindkey '^M' expand-dots
+
 
 # zinit: A fast zsh plugin manager
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
