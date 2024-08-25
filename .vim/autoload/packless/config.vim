@@ -126,7 +126,11 @@ function! packless#config#tagbar()
 
 endfunction
 
+" Auto generate tags
 function! packless#config#gutentags()
+    " Use existing tag file if it exists
+    let g:gutentags_ctags_auto_set_tags = 0
+
 endfunction
 
 " CCTree geenrates a call tree based on cscope

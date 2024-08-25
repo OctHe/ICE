@@ -35,13 +35,18 @@ function! packless#plugininstall(plugins)
         \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
         \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
-        \ 'gutentags'   : { 'link': 'ludovicchabant/vim-gutentags'  },
+        \ 'gutentags'   : { 
+            \ 'link': 'ludovicchabant/vim-gutentags',
+            \ 'plug_hook': {  
+                \ 'for': ['c', 'cpp'],
+                \ }
+            \ },
         \ 'cctree'      : { 
             \ 'link': 'vim-scripts/CCTree',
             \ 'plug_hook': {  
-                \ 'for': ['c', 'cpp', 'cc'],
-            \ }
-        \ },
+                \ 'for': ['c', 'cpp'],
+                \ }
+            \ },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
         \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },

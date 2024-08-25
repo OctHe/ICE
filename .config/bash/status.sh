@@ -8,18 +8,18 @@
 # csh is the default shell for FreeBSD
 # zsh is the default shell for part of the Linux distributions and macOS
 # fish is a ready-out-of-box shell
-gl_shell=(
+pl_shell=(
     bash csh ash zsh fish \\n
     ipython3 \\n
 )
 
-gl_pkg=(
+pl_pkg=(
     flatpak appimage snap apt zypper pacman yay \\n
-    pip3 cargo \\n
+    pip3 cargo cpanm \\n
 )
 
 # bc: A command-line calculator
-gl_tool=(
+pl_tool=(
     bat zoxide eza htop \\n
     fastfetch screenfetch neofetch \\n
     flameshot \\n
@@ -27,35 +27,35 @@ gl_tool=(
 )
 
 # screen and tmux need to set true color
-gl_win=(
+pl_win=(
     screen tmux zellij \\n
 )
 
-gl_mail=(thunderbird kmail evolution mutt \\n)
+pl_mail=(thunderbird kmail evolution mutt \\n)
 
 # trans is a network tools that uses translate.google.com (and other online translators).
 # It may require http_proxy and https_proxy
-gl_net=(
+pl_net=(
     iw iwctl wpa_cli hostapd_cli nmcli \\n
     ip iptables \\n
     ssh scp sftp rsync \\n
     curl trans   \\n
 )
 
-gl_editor=(
+pl_editor=(
     vim nvim emacs kakoune helix micro \\n
     kate gnome-text-editor \\n 
 )
 
 # fzf is an interactive filter. It can be integrated with other search tools (such as find and fd)
-gl_finder=(
+pl_finder=(
     fd \\n
     fzf \\n
     ugrep ack ag rg \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
-gl_viewer=(
+pl_viewer=(
     man info cheat \\n
     evince zathura okular \\n
     chromium firefox lynx nyxt qutebrowser vimb \\n
@@ -68,7 +68,7 @@ gl_viewer=(
 #   pip3 install pyflakes vim-vint
 # xmllint is in the libxml2-utils package, to install it in Debian
 #   sudo apt install libxml2-utils
-gl_linter=(
+pl_linter=(
     ctags cscope cppcheck cpplint \\n
     pyflakes flake8 \\n
     vint \\n
@@ -76,9 +76,10 @@ gl_linter=(
     xmllint \\n
 )
 
-gl_formatter=(
-    astyle \\n
+pl_formatter=(
+    uncrustify astyle \\n
     black yapf autopep8 \\n
+    stylua \\n
 )
 
 # rpmbuild is the buildtool in for rpm.
@@ -93,7 +94,7 @@ gl_formatter=(
 #     xetex includes Unicode but pdftex does not.
 #     pdflatex and xelatex are two compiles for latex. Since latex is more useful, in most of time, 
 #     pdftex and xetex are the same as pdflatex and xelatex.
-gl_builder=(
+pl_builder=(
     cmake xmake make bazel rpmbuild bear ccache \\n
     gcc g++ clang python3 rust go octave \\n
     graphviz \\n
@@ -101,16 +102,16 @@ gl_builder=(
 )
 
 # ddd is the GUI of gdb
-gl_debugger=(gdb ddd lldb \\n)
+pl_debugger=(gdb ddd lldb \\n)
 
-gl_langsrv=(
+pl_langsrv=(
     clangd ccls \\n
     shellcheck \\n
     lua-language-server \\n
 )
 
 # osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
-gl_vcs=(
+pl_vcs=(
     svn  \\n
     git lazygit onefetch \\n
     hg \\n
@@ -118,11 +119,11 @@ gl_vcs=(
 )
 
 # Graphicless desktop environment
-function gl_status() {
+function pl_status() {
   for arg in $@
   do
     echo ${arg}
-    app_name=gl_${arg}[@]
+    app_name=pl_${arg}[@]
     apps=${!app_name}
 
     for app in ${apps[@]}; do
@@ -139,7 +140,7 @@ function gl_status() {
   done
 }
 
-function gl_status_command() {
+function pl_status_command() {
     if [[ ! -f ~/.xmodmap-`uname -n` ]]; then
         echo "~/.xmodmap-`uname -n` is not find"
     fi
@@ -161,7 +162,7 @@ function gl_status_command() {
     fi
 }
 
-gl_status shell pkg tool win mail net viewer
-gl_status editor finder linter formatter builder debugger langsrv vcs
+pl_status shell pkg tool win mail net viewer
+pl_status editor finder linter formatter builder debugger langsrv vcs
 
-gl_status_command
+pl_status_command
