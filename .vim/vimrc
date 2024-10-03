@@ -25,21 +25,15 @@ let g:enable_plugins = [
             \ 'autopair',
             \ 'commentary',
             \ 'nerdtree',
-            \ 'leaderf',
             \ 'vista', 
             \ 'cctree',
             \ 'gutentags',
             \ 'sneak',
             \ 'ale', 
-            \ 'ycm',
-            \ 'vimsnippets',
-            \ 'ultisnips',
             \ 'floaterm',
-            \ 'vimspector',
             \ 'asyncrun',
             \ 'vimtex',
             \ 'mkdhl',
-            \ 'mkdp',
             \ 'fugitive',
             \ 'gitgutter',
             \ 'airline',
@@ -49,6 +43,20 @@ let g:enable_plugins = [
             \ 'rainbow',
             \ 'gruvbox',
             \ ]
+if has('python3')
+    let g:enable_plugins += [
+                \ 'leaderf',
+                \ 'ycm',
+                \ 'vimsnippets',
+                \ 'ultisnips',
+                \ 'vimspector',
+                \ 'mkdp',
+                \ ]
+else
+    let g:enable_plugins += [
+                \ 'ctrlp',
+                \ ]
+endif
 
 "}}}1
 

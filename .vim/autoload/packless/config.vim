@@ -149,12 +149,6 @@ function! packless#config#ale()
         let g:ale_cpp_cc_executable = 'gcc'
     endif
 
-    " Clang requires extra cofiguration, so disable it
-    let g:ale_linters = {
-                \ 'c': ['gcc'],
-                \ 'cpp': ['gcc'],
-                \ }
-
 endfunction
 
 function! packless#config#neomake()
