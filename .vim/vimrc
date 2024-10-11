@@ -19,6 +19,7 @@ filetype indent on
 " Global variables {{{1
 let g:plugin_dir = '~/.local/share/vim/plugins/'
 let g:plugin_manager = 'plug'
+let g:plugin_manager = 'dein'
 
 let g:enable_plugins = [
             \ 'surround',
@@ -33,7 +34,6 @@ let g:enable_plugins = [
             \ 'floaterm',
             \ 'asyncrun',
             \ 'vimtex',
-            \ 'mkdhl',
             \ 'fugitive',
             \ 'gitgutter',
             \ 'airline',
@@ -50,7 +50,6 @@ if has('python3')
                 \ 'vimsnippets',
                 \ 'ultisnips',
                 \ 'vimspector',
-                \ 'mkdp',
                 \ ]
 else
     let g:enable_plugins += [

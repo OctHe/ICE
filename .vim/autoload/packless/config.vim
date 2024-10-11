@@ -296,20 +296,6 @@ function! packless#config#vimtex()
 
 endfunction
 
-" Vim-markdown: It provides better markdown highlight
-function! packless#config#mkdhl()
-
-    let g:vim_markdown_folding_disabled = 1
-    let g:vim_markdown_conceal = 0
-    let g:vim_markdown_conceal_code_blocks = 0
-
-endfunction
-
-" Markdown-preview has issue if the name of its directory is changed.
-" If this plugin does not work well, Use :messages in vim to see the output
-function! packless#config#mkdp()
-endfunction
-
 " csv.vim:
 function! packless#config#csv()
 endfunction

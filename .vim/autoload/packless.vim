@@ -63,14 +63,6 @@ function! packless#plugininstall(plugins)
         \ 'dispatch'    : { 'link': 'tpope/vim-dispatch'            },
         \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
         \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'mkdhl'       : { 'link': 'preservim/vim-markdown',       },
-        \ 'mkdp'        : { 
-            \ 'link': 'iamcco/markdown-preview.nvim', 
-            \ 'plug_hook': {  
-                \ 'do': { -> mkdp#util#install() }, 
-                \ 'for': ['markdown'],
-            \ }
-        \ },
         \ 'csv'         : { 'link': 'chrisbra/csv.vim',             },
         \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
         \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
@@ -123,11 +115,7 @@ function! packless#plugininstall(plugins)
         for plugin in a:plugins
             " Load plugins
             if exists('l:plugin_list.'..plugin..'.plug_hook')
-                " Markdown-preview has issue if the name of its directory is
-                " changed, so its directory is not renamed
-                if plugin != 'mkdp'
-                    let l:plugin_list[plugin].plug_hook['as'] = plugin
-                endif
+                let l:plugin_list[plugin].plug_hook['as'] = plugin
                 Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plug_hook
             else
                 Plug l:plugin_list[plugin].link, {'as': plugin}
@@ -138,6 +126,33 @@ function! packless#plugininstall(plugins)
         " Initialize plugin system
         call plug#end()
 
+    elseif g:plugin_manager == 'dein'
+
+        let $CACHE = expand('~/.cache')
+        if !($CACHE->isdirectory())
+            call mkdir($CACHE, 'p')
+        endif
+        if &runtimepath !~# '/dein.vim'
+            let l:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+            if !(l:dein_src->isdirectory())
+                execute '!git clone https://github.com/Shougo/dein.vim' l:dein_src
+            endif
+            execute 'set runtimepath+=' .. l:dein_src
+        endif
+
+        " Call dein initialization (required)
+        call dein#begin($CACHE .. 'dein')
+
+        call dein#add(l:dein_src)
+
+        for plugin in a:plugins
+            " Load plugins
+            call dein#add(l:plugin_list[plugin].link)
+
+        endfor
+
+        " Finish dein initialization (required)
+        call dein#end()
     endif
     " }}}1
     
@@ -147,7 +162,7 @@ function! packless#pluginconfig(plugins)
 
         " Config loaded plugins
         for plugin in a:plugins
-            if isdirectory(expand(g:plugin_dir..plugin))
+            if g:plugin_manager == 'plug' && isdirectory(expand(g:plugin_dir..plugin))
                 call packless#config#{plugin}()
             endif
         endfor
