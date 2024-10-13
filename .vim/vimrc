@@ -18,7 +18,6 @@ filetype indent on
 
 " Global variables {{{1
 let g:plugin_dir = '~/.local/share/vim/plugins/'
-let g:plugin_manager = 'plug'
 let g:plugin_manager = 'dein'
 
 let g:enable_plugins = [
@@ -108,7 +107,7 @@ if !exists(':DiffOrig')
                 \ | wincmd p | diffthis
 endif
 
-augroup GLStart
+augroup PLStart
     au!
 
     " A more suitable help file

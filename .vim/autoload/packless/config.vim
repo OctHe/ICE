@@ -137,9 +137,6 @@ endfunction
 function! packless#config#cctree()
 endfunction
 
-function! packless#config#neomake()
-endfunction
-
 " ALE:
 function! packless#config#ale()
 
@@ -152,9 +149,6 @@ function! packless#config#ale()
 endfunction
 
 function! packless#config#neomake()
-endfunction
-
-function! packless#config#vimtable()
 endfunction
 
 function! packless#config#splitjoin()
@@ -377,10 +371,6 @@ endfunction
 
 " gruvbox: 
 function! packless#config#gruvbox()
-endfunction
-
-" colortable:
-function! packless#config#colortable()
 endfunction
 
 " }}}1

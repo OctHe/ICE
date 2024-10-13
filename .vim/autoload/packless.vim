@@ -24,10 +24,12 @@ function! packless#plugininstall(plugins)
         \ 'fzf'         : {
             \ 'link': 'junegunn/fzf',
             \ 'plug_hook': { 'do': { -> fzf#install() }, },
+            \ 'dein_opt' : { 'build': { -> fzf#install() }, },
             \ },
         \ 'leaderf'     : { 
             \ 'link': 'Yggdroot/LeaderF',  
             \ 'plug_hook': { 'do': ':LeaderfInstallCExtension' },
+            \ 'dein_opt' : { 'build': ':LeaderfInstallCExtension' },
             \ },
         \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
         \ 'easymotion'  : { 'link': 'timsu92/vim-easymotion',       },
@@ -37,23 +39,21 @@ function! packless#plugininstall(plugins)
         \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
         \ 'gutentags'   : { 
             \ 'link': 'ludovicchabant/vim-gutentags',
-            \ 'plug_hook': {  
-                \ 'for': ['c', 'cpp'],
-                \ }
+            \ 'plug_hook': { 'for': ['c', 'cpp'], }
             \ },
         \ 'cctree'      : { 
             \ 'link': 'vim-scripts/CCTree',
-            \ 'plug_hook': {  
-                \ 'for': ['c', 'cpp'],
-                \ }
+            \ 'plug_hook': { 'for': ['c', 'cpp'], }
             \ },
         \ 'ale'         : { 'link': 'dense-analysis/ale',           },
         \ 'neomake'     : { 'link': 'neomake/neomake',              },
-        \ 'vimtable'    : { 'link': 'dhruvasagar/vim-table-mode',   },
         \ 'splitjoin'   : { 'link': 'AndrewRadev/splitjoin.vim',    },
         \ 'ycm'         : { 
             \ 'link': 'ycm-core/YouCompleteMe',  
             \ 'plug_hook': {'do': './install.py --clangd-completer'},
+            \ 'dein_opt' : {
+                \ 'build': './install.py --clangd-completer'
+                \ },
             \ },
         \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
         \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
@@ -79,7 +79,6 @@ function! packless#plugininstall(plugins)
         \ 'context'     : { 'link': 'wellle/context.vim',           },
         \ 'startify'    : { 'link': 'mhinz/vim-startify',           },
         \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
-        \ 'colortable'  : { 'link': 'guns/xterm-color-table.vim',   },
         \ }
 
     " }}}1
@@ -147,7 +146,11 @@ function! packless#plugininstall(plugins)
 
         for plugin in a:plugins
             " Load plugins
-            call dein#add(l:plugin_list[plugin].link)
+            if exists('l:plugin_list.'..plugin..'.dein_opt')
+                call dein#add(l:plugin_list[plugin].link, l:plugin_list[plugin].dein_opt)
+            else
+                call dein#add(l:plugin_list[plugin].link)
+            endif
 
         endfor
 
@@ -162,7 +165,7 @@ function! packless#pluginconfig(plugins)
 
         " Config loaded plugins
         for plugin in a:plugins
-            if g:plugin_manager == 'plug' && isdirectory(expand(g:plugin_dir..plugin))
+            if isdirectory(expand(g:plugin_dir..plugin))
                 call packless#config#{plugin}()
             endif
         endfor
