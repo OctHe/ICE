@@ -24,4 +24,4 @@ The python packages of PL uses virtual environment:
 
 The packages is installed by
 
-    pip3 install flake8 gitlint vim-vint
+    pip3 install flake8 gitlint vim-vint debugpy
