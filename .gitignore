@@ -29,18 +29,14 @@
 # Neovim
 !/.config/nvim/
 !/.config/nvim/**
+/.config/nvim/.luarc.json
 !/.config/nvimini/
 !/.config/nvimini/**
+/.config/nvimini/.luarc.json
 
 # Tmux
 !.config/tmux/
 !.config/tmux/tmux.conf
-
-# Cheatsheet
-!/.config/cheat/
-!/.config/cheat/cheatsheets/
-!/.config/cheat/cheatsheets/personal
-!/.config/cheat/cheatsheets/personal/*
 
 # Info 
 !/.infokey
@@ -50,5 +46,3 @@
 /**/*swp
 /**/*swo
 
-# lua-language-server file
-/**/.luarc.json
