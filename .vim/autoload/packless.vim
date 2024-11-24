@@ -83,7 +83,7 @@ function! packless#plugininstall(plugins)
 
     " }}}1
     
-    " vim-plug is the plugin manager {{{1
+    " vim-plug is the plugin manager
     if g:plugin_manager == 'plug'
 
         " Try to install vim-plug if not found
@@ -105,7 +105,7 @@ function! packless#plugininstall(plugins)
 
         " Specify a directory for plugins
         " - Avoid using standard Vim directory names like 'plugin'
-        call plug#begin(g:plugin_dir)
+        call plug#begin(expand(g:plugin_dir))
 
         " Register vim-plug as a plugin to get the help doc.
         " Note that vim-plug (the plug.vim file) in this file is not working.
@@ -151,25 +151,12 @@ function! packless#plugininstall(plugins)
             else
                 call dein#add(l:plugin_list[plugin].link)
             endif
-
         endfor
 
         " Finish dein initialization (required)
         call dein#end()
     endif
-    " }}}1
     
-endfunction
-
-function! packless#pluginconfig(plugins)
-
-        " Config loaded plugins
-        for plugin in a:plugins
-            if isdirectory(expand(g:plugin_dir..plugin))
-                call packless#config#{plugin}()
-            endif
-        endfor
-
 endfunction
 
 " vim: set sw=4 sts=4 et fdm=marker:

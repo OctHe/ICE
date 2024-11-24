@@ -42,14 +42,22 @@ let g:enable_plugins = [
             \ 'rainbow',
             \ 'gruvbox',
             \ ]
-if has('python3')
+if has('python3') && has('python3_compiled')
     let g:enable_plugins += [
-                \ 'leaderf',
-                \ 'ycm',
                 \ 'vimsnippets',
                 \ 'ultisnips',
                 \ 'vimspector',
                 \ ]
+    if has('gcc')
+        let g:enable_plugins += [
+                    \ 'leaderf',
+                    \ 'ycm',
+                    \ ]
+    else
+        let g:enable_plugins += [
+                    \ 'ctrlp',
+                    \ ]
+    endif
 else
     let g:enable_plugins += [
                 \ 'ctrlp',
@@ -155,23 +163,6 @@ tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 " Show mappings
 nnoremap <silent> <Leader>m :verbose map 
 
-" }}}1
-
-" View {{{1
-
-" Config load plugins
-if 1
-    call packless#pluginconfig( g:enable_plugins )
-endif
-
-try
-    " Colorscheme may use plugin
-    colorscheme gruvbox
-catch
-    " Builtin colorschemes: desert, peachpuff, quiet, slate
-    " Colorschemes plugin: gruvbox
-    colorscheme desert
-endtry
 " }}}1
 
 " vim: set sw=4 sts=4 et fdm=marker:
