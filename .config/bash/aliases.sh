@@ -22,6 +22,10 @@ alias gpl='git pull'
 # Grep
 alias rgrep='grep --color=always --exclude-dir=.git -arn'
 
+if which vim > /dev/null 2>&1; then
+    alias darkvim='vim -u ~/.vim/darkvimrc'
+fi
+
 if which nvim > /dev/null 2>&1; then
     alias nvimini='NVIM_APPNAME=nvimini nvim'
 fi

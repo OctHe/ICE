@@ -1,7 +1,7 @@
 " 
-" Default vim run command file
+" Vim run command based on dein.vim
 " Author: OctHe
-" Copyright (C): 2023-2024
+" Copyright (C): 2024
 " 
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -36,85 +36,79 @@ nnoremap <silent> <Leader>m :verbose map
 
 " }}}1
 
-    
-" Try to install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
-
-    silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-    silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
-    silent !rm -rf /tmp/vim-plug
-  endif
-
+let $CACHE = expand('~/.cache')
+if !($CACHE->isdirectory())
+    call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+    let s:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !(s:dein_src->isdirectory())
+        execute '!git clone https://github.com/Shougo/dein.vim' l:dein_src
+    endif
+    execute 'set runtimepath+=' .. s:dein_src
 endif
 
-" Specify a directory for plugins
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin(expand('~/.local/share/vim/plugins/'))
+" Call dein initialization (required)
+call dein#begin($CACHE .. 'dein')
 
-" Register vim-plug as a plugin to get the help doc.
-" Note that vim-plug (the plug.vim file) in this file is not working.
-Plug 'junegunn/vim-plug'
+call dein#add(s:dein_src)
 
-Plug 'LunarWatcher/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
+call dein#add('LunarWatcher/auto-pairs')
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-repeat')
 
-Plug 'tomtom/tcomment_vim'
-" Plug 'tpope/vim-commentary'
+call dein#add('preservim/nerdcommenter')
 
-Plug 'Yggdroot/indentLine'
-Plug 'preservim/vim-indent-guides'
+call dein#add('Yggdroot/indentLine')
+call dein#add('preservim/vim-indent-guides')
 
-Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
-Plug 'AndrewRadev/splitjoin.vim'
+call dein#add('justinmk/vim-sneak')
+call dein#add('AndrewRadev/splitjoin.vim')
 
-Plug 'preservim/nerdtree'
+call dein#add('preservim/nerdtree')
 
-Plug 'preservim/tagbar'
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
-Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
-Plug 'neomake/neomake'
+call dein#add('liuchengxu/vista.vim')
+call dein#add('dense-analysis/ale')
 
-if exists('python3_compiled') && exists('python3') && exists('gcc')
-    Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+call dein#add('vim-scripts/star-search')
+if exists('python3') && exists('python3_compiled') && exists('gcc')
+    call dein#add('Yggdroot/LeaderF', { 'build': ':LeaderfInstallCExtension' })
 else
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    call dein#add('ctrlpvim/ctrlp.vim')
 endif
 
-if exists('python3_compiled') && exists('python3')
-    Plug 'honza/vim-snippets'
-    Plug 'SirVer/ultisnips'
+if exists('python3') && exists('python3_compiled') && exists('gcc')
+    call dein#add('ycm-core/YouCompleteMe', { 'build': './install.py --clangd-completer' })
+    
+    " Snippets are separated from the engine
+    call dein#add('honza/vim-snippets')
+    " Track the engine   
+    call dein#add('SirVer/ultisnips')
 endif
-if v:version >= 900
-    Plug 'girishji/vimcomplete'
+
+if exists('python3') && exists('python3_compiled')
+    call dein#add('puremourning/vimspector')
 endif
+call dein#add('skywind3000/asyncrun.vim')
+call dein#add('lervag/vimtex')
+call dein#add('chrisbra/csv.vim')
 
-Plug 'sbdchd/neoformat'
+call dein#add('tpope/vim-fugitive')
+call dein#add('airblade/vim-gitgutter')
 
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+call dein#add('voldikss/vim-floaterm')
+call dein#add('christoomey/vim-tmux-navigator')
 
-Plug 'tpope/vim-dispatch'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'lervag/vimtex'
+call dein#add('mhinz/vim-startify')
+call dein#add('wellle/context.vim')
+call dein#add('luochen1990/rainbow')
+call dein#add('psliwka/vim-smoothie')
+call dein#add('itchyny/lightline.vim')
+call dein#add('liuchengxu/vim-which-key')
+call dein#add('morhetz/gruvbox')
 
-Plug 'voldikss/vim-floaterm'
-Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'luochen1990/rainbow'
-Plug 'wellle/context.vim'
-Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline'
-Plug 'liuchengxu/vim-which-key'
-Plug 'morhetz/gruvbox'
-
-" Initialize plugin system
-call plug#end()
+" Finish dein initialization (required)
+call dein#end()
 
 call packless#PluginConfig()
 
@@ -167,12 +161,6 @@ syntax enable       " This enables Vim's syntax-related features.
 
 " Commends {{{1
 
-" Command to see the difference between the current buffer and the file loaded from.
-if !exists(':DiffOrig')
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
-
 augroup PLStart
     au!
 
@@ -203,4 +191,4 @@ augroup END
 
 " }}}1
 
-" vim: set sw=4 sts=4 et fdm=marker:
+" vim: set sw=4 sts=4 et:

@@ -1,12 +1,12 @@
 " 
 " Options for non-plugin configurations
 " Author: OctHe
-" Copyright (C): 2023
+" Copyright (C): 2023-2024
 " 
 " =====================================================================
 
 " Filetype options for text, such as markdown and latex
-function! packless#options#text()
+function! options#text()
 
     set spell   " Set spell check
     set spelllang+=cjk  " Spell check for chinese

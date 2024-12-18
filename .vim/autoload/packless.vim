@@ -3,160 +3,327 @@
 " Plugin management
 "
 " Author: OctHe
-" Copyright (C): 2023
+" Copyright (C): 2023-2024
 " 
 " =====================================================================
 
-function! packless#plugininstall(plugins)
+function! packless#PluginConfig()
+    " Load plugins' config
+    " Navigation 
+    " {{{1
 
-    " l:plugin_list is a dict that contains essential keys for plugins {{{1
-    "   link: The source of each plugin
-    "   plug_hook: The installation hook for vim-plugin
-    " Additional installation option can be added for different plugin managers
-    let l:plugin_list = {
-        \ 'surround'    : { 'link': 'tpope/vim-surround',           },
-        \ 'repeat'      : { 'link': 'tpope/vim-repeat',             },
-        \ 'autopair'    : { 'link': 'LunarWatcher/auto-pairs',      },
-        \ 'nerdcomment' : { 'link': 'preservim/nerdcommenter',      },
-        \ 'tcomment'    : { 'link': 'tomtom/tcomment_vim',          },
-        \ 'commentary'  : { 'link': 'tpope/vim-commentary',         },
-        \ 'starsearch'  : { 'link': 'vim-scripts/star-search',      },
-        \ 'fzf'         : {
-            \ 'link': 'junegunn/fzf',
-            \ 'plug_hook': { 'do': { -> fzf#install() }, },
-            \ 'dein_opt' : { 'build': { -> fzf#install() }, },
-            \ },
-        \ 'leaderf'     : { 
-            \ 'link': 'Yggdroot/LeaderF',  
-            \ 'plug_hook': { 'do': ':LeaderfInstallCExtension' },
-            \ 'dein_opt' : { 'build': ':LeaderfInstallCExtension' },
-            \ },
-        \ 'ctrlp'       : { 'link': 'ctrlpvim/ctrlp.vim',           },
-        \ 'easymotion'  : { 'link': 'timsu92/vim-easymotion',       },
-        \ 'sneak'       : { 'link': 'justinmk/vim-sneak',           },
-        \ 'nerdtree'    : { 'link': 'preservim/nerdtree',           },
-        \ 'vista'       : { 'link': 'liuchengxu/vista.vim',         },
-        \ 'tagbar'      : { 'link': 'preservim/tagbar',             },
-        \ 'gutentags'   : { 
-            \ 'link': 'ludovicchabant/vim-gutentags',
-            \ 'plug_hook': { 'for': ['c', 'cpp'], }
-            \ },
-        \ 'cctree'      : { 
-            \ 'link': 'vim-scripts/CCTree',
-            \ 'plug_hook': { 'for': ['c', 'cpp'], }
-            \ },
-        \ 'ale'         : { 'link': 'dense-analysis/ale',           },
-        \ 'neomake'     : { 'link': 'neomake/neomake',              },
-        \ 'splitjoin'   : { 'link': 'AndrewRadev/splitjoin.vim',    },
-        \ 'ycm'         : { 
-            \ 'link': 'ycm-core/YouCompleteMe',  
-            \ 'plug_hook': {'do': './install.py --clangd-completer'},
-            \ 'dein_opt' : {
-                \ 'build': './install.py --clangd-completer'
-                \ },
-            \ },
-        \ 'vimsnippets' : { 'link': 'honza/vim-snippets',           },
-        \ 'ultisnips'   : { 'link': 'SirVer/ultisnips',             },
-        \ 'genutils'    : { 'link': 'vim-scripts/genutils',         },
-        \ 'floaterm'    : { 'link': 'voldikss/vim-floaterm',        },
-        \ 'vimspector'  : { 'link': 'puremourning/vimspector'       },
-        \ 'dispatch'    : { 'link': 'tpope/vim-dispatch'            },
-        \ 'asyncrun'    : { 'link': 'skywind3000/asyncrun.vim'      },
-        \ 'vimtex'      : { 'link': 'lervag/vimtex',                },
-        \ 'csv'         : { 'link': 'chrisbra/csv.vim',             },
-        \ 'fugitive'    : { 'link': 'tpope/vim-fugitive',           },
-        \ 'gitgutter'   : { 'link': 'airblade/vim-gitgutter',       },
-        \ 'airline'     : { 'link': 'vim-airline/vim-airline',      },
-        \ 'lightline'   : { 'link': 'itchyny/lightline.vim',        },
-        \ 'tmux_navi'   : { 
-            \ 'link': 'christoomey/vim-tmux-navigator', 
-            \ },
-        \ 'indentline'  : { 'link': 'Yggdroot/indentLine',          },
-        \ 'indentguide' : { 'link': 'preservim/vim-indent-guides',  },
-        \ 'whichkey'    : { 'link': 'liuchengxu/vim-which-key',     },
-        \ 'smoothie'    : { 'link': 'psliwka/vim-smoothie',         },
-        \ 'rainbow'     : { 'link': 'luochen1990/rainbow',          },
-        \ 'context'     : { 'link': 'wellle/context.vim',           },
-        \ 'startify'    : { 'link': 'mhinz/vim-startify',           },
-        \ 'gruvbox'     : { 'link': 'morhetz/gruvbox',              },
-        \ }
+    " starsearch: Enhanced star keymapping. Avoid jumping to next
+
+    " fzf:
+    " TODO: use system-wide fzf
+
+    " LeaderF: Asynchronous fuzzy finder with popup window
+    if !empty(globpath(&rtp, '/plugin/leaderf.vim'))
+        let g:Lf_WindowPosition = 'popup'
+
+        " Vista.vim:
+        function! NearestMethodOrFunction() abort
+          return get(b:, 'vista_nearest_method_or_function', '')
+        endfunction
+
+        set statusline+=%{NearestMethodOrFunction()}
+
+        let g:Lf_ShortcutF = '<leader>ff'
+        let g:Lf_ShortcutB = '<leader>fb'
+    endif
+
+    " CtrlP:
+
+    " Sneak: Jump with 2 chars.
+    if !empty(globpath(&rtp, '/plugin/sneak.vim'))
+        " Improved f/F/t/T
+        map f <Plug>Sneak_f
+        map F <Plug>Sneak_F
+        map t <Plug>Sneak_t
+        map T <Plug>Sneak_T
+    endif
+
+    " easymotion:
+
+    " Vim-tmux-navigator: It requires configuration in tmux
+    " TODO: Use the same file for both vim and tmux
+
+    " NERDTree: File explorer. 
+    if !empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
+        let NERTTreeCaseSensitiveSort = 1
+        let NERDTreeWinSize = 35
+
+        augroup NERDTree
+            au!
+
+            " Close vim if the only window left open is a NERDTree
+            autocmd BufEnter * 
+                \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+                \ |   quit
+                \ | endif
+
+            " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+            autocmd BufEnter *
+                \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+                \ |   let buf=bufnr('%') 
+                \ |   buffer# 
+                \ |   execute "normal! \<C-W>w"
+                \ |   execute 'buffer'.buf
+                \ | endif
+        augroup END
+
+        " e means explore 
+        nnoremap <silent> <Leader>e :NERDTreeToggle<CR>  
+    endif
 
     " }}}1
-    
-    " vim-plug is the plugin manager
-    if g:plugin_manager == 'plug'
 
-        " Try to install vim-plug if not found
-        if empty(glob('~/.vim/autoload/plug.vim'))
-          silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    " Lint
+    " {{{1
+    " Vista: Vista relies on universal-ctags. Please careful to install the
+    " correct version. 
+    " In openSUSE:
+    "   sudo zypper install universal-ctags 
+    if !empty(globpath(&rtp, '/plugin/vista.vim'))
+        let g:vista_sidebar_width = 50
 
-          if empty(glob('~/.vim/autoload/plug.vim'))
-            echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
+        " t means tag
+        nnoremap <silent> <Leader>s :Vista!!<CR>  
 
-            silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-            silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
-            silent !rm -rf /tmp/vim-plug
-          endif
-
-          echo "Download plug.vim. Please restart vim to enable plugins"
-          return
-        endif
-
-        " Specify a directory for plugins
-        " - Avoid using standard Vim directory names like 'plugin'
-        call plug#begin(expand(g:plugin_dir))
-
-        " Register vim-plug as a plugin to get the help doc.
-        " Note that vim-plug (the plug.vim file) in this file is not working.
-        Plug 'junegunn/vim-plug'
-
-        for plugin in a:plugins
-            " Load plugins
-            if exists('l:plugin_list.'..plugin..'.plug_hook')
-                let l:plugin_list[plugin].plug_hook['as'] = plugin
-                Plug l:plugin_list[plugin].link, l:plugin_list[plugin].plug_hook
-            else
-                Plug l:plugin_list[plugin].link, {'as': plugin}
-            endif
-
-        endfor
-
-        " Initialize plugin system
-        call plug#end()
-
-    elseif g:plugin_manager == 'dein'
-
-        let $CACHE = expand('~/.cache')
-        if !($CACHE->isdirectory())
-            call mkdir($CACHE, 'p')
-        endif
-        if &runtimepath !~# '/dein.vim'
-            let l:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
-            if !(l:dein_src->isdirectory())
-                execute '!git clone https://github.com/Shougo/dein.vim' l:dein_src
-            endif
-            execute 'set runtimepath+=' .. l:dein_src
-        endif
-
-        " Call dein initialization (required)
-        call dein#begin($CACHE .. 'dein')
-
-        call dein#add(l:dein_src)
-
-        for plugin in a:plugins
-            " Load plugins
-            if exists('l:plugin_list.'..plugin..'.dein_opt')
-                call dein#add(l:plugin_list[plugin].link, l:plugin_list[plugin].dein_opt)
-            else
-                call dein#add(l:plugin_list[plugin].link)
-            endif
-        endfor
-
-        " Finish dein initialization (required)
-        call dein#end()
     endif
-    
+
+    " Tagbar: 
+    if 0
+        " Automatic open Tagbar when open vim
+        autocmd VimEnter *.{py,h,c} Tagbar
+
+        " t means tag
+        nnoremap <silent> <Leader>s :Tagbar<CR>  
+    endif
+
+    " Auto generate tags
+    if !empty(globpath(&rtp, '/plugin/gutentags.vim'))
+        " Use existing tag file if it exists
+        let g:gutentags_ctags_auto_set_tags = 0
+
+    endif
+
+    " CCTree geenrates a call tree based on cscope
+
+    " ALE:
+    if !empty(globpath(&rtp, '/plugin/ale.vim'))
+
+        " Most Linux distributions use gcc by default, so use gcc at first
+        if !empty('gcc')
+            let g:ale_c_cc_executable = 'gcc'
+            let g:ale_cpp_cc_executable = 'gcc'
+        endif
+
+    endif
+
+    " neomake
+
+    " splitjoin
+
+    " }}}1
+
+    " Completion
+    " {{{1
+
+    " Surround
+
+    " Auto-pair
+
+    " vim-repeat: Plugin repeat support
+
+    " Nerdcomment: 
+
+    " commentary:
+    if !empty(globpath(&rtp, '/plugin/commentary.vim'))
+        xmap <Leader>c  <Plug>Commentary
+        vmap <Leader>c  <Plug>Commentary
+        omap <Leader>c  <Plug>Commentary
+        nmap <Leader>cc <Plug>CommentaryLine
+        nmap <Leader>cu <Plug>Commentary<Plug>Commentary
+    endif
+
+    " YCM: a powerful completion plugin based on LSP It relies on cmake, 
+    " make, g++, python3-dev and LSP. YCM does not use LSP from the system. 
+    " It downloads them by itself.
+    " Install the prerequisites in Debian with
+    "   sudo apt install cmake make g++ python3-dev
+    " In openSUSE with
+    "   sudo zypper install cmake make g++ python3-deval
+    if 0
+
+        let g:ycm_confirm_extra_conf = 0
+        let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+
+        let g:ycm_show_diagnostics_ui = 0
+
+        " Clear the YCM blacklist, so it works for all files
+        let g:ycm_filetype_blacklist = {}
+
+    endif
+
+    " vim-snippets: It saves multiple snippets
+
+    " Ultisnips: snippets engine that uses snippet database
+    " vim-snippets: snippet database
+    if !empty(globpath(&rtp, '/plugin/UltiSnips.vim'))
+
+        " Trigger configuration. Change this to something other than <tab> if use one 
+        " of the following:
+        " - https://github.com/Valloric/YouCompleteMe
+        " - https://github.com/nvim-lua/completion-nvim
+        let g:UltiSnipsExpandTrigger="<CR>"
+
+        " If you want :UltiSnipsEdit to split your window.
+        let g:UltiSnipsEditSplit="vertical"
+
+    endif
+
+    " }}}1
+
+    " Runner
+    " {{{1
+
+    " genutils: It gives general functions that some plugins rely on
+
+    " floaterm:
+    if !empty(globpath(&rtp, '/plugin/floaterm.vim'))
+        nmap <Leader>tb :FloatermPrev<CR>
+        nmap <Leader>tn :FloatermNext<CR>
+        nmap <Leader>tN :FloatermNew<CR>
+        nmap <Leader>tk :FloatermKill<CR>
+        nmap <Leader>tt :FloatermToggle<CR>
+    endif
+
+    " Debugger with DAP
+    if !empty(globpath(&rtp, '/plugin/vimspector.vim'))
+
+        let g:vimspector_enable_mappings='HUMAN'
+
+    endif
+
+    " asyncrun
+
+    " dispatch
+
+    " vimtex: latex plugin for vim. It relies on texlive
+    "   sudo apt install texlive-full
+    " The backward search and forward search requires xdotool according to the
+    " author
+    "   sudo apt install xdotool 
+    if !empty(globpath(&rtp, '/plugin/vimtex.vim'))
+
+        " Plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
+        " Note that most plugin managers will do this automatically.
+
+        " Viewer is required  i.e., evince in Ubuntu, okular, or zathura
+        " vimtex internally supports forward and backward search
+        " Forward search works when type <LocalLeader>lv
+        " Backward/Inverse search only works for gvim since it relies on the
+        " clientserver feature.
+        "   For example, if the viewer is zathura, just open the latex file with
+        "   gvim, and compile it with <LocalLeader>ll.
+        "   Then, type <CTRL>+<LeftMouse> to use backward search.
+        let g:vimtex_view_method = 'zathura'
+
+        " VimTeX uses latexmk as the default compiler backend. 
+        " If you use it, you probably don't need to configure anything.
+        " If you want another compiler backend, you can change it as follows. 
+        " The list of supported backends and further explanation is provided in the documentation, see ':help vimtex-compiler'.
+        let g:vimtex_compiler_method = 'latexmk'
+
+        " Project with multiple files.
+        "   To support multiple files (with '\input') in a project, user must open the 
+        "   main file (e.g., main.tex) at first. For more details, please see the help
+        "   document with ':h vimtex-multi-file'
+
+        " Most VimTeX mappings rely on localleader and this can be changed with the
+        " following line. The default is usually fine and is the symbol "\".
+        let maplocalleader = " "
+
+    endif
+
+    " csv.vim:
+
+    " }}}1
+
+    " VCS
+    " {{{1
+    " fugitive: Provide common git options (diff, status, add, commit, etc)
+    if !empty(globpath(&rtp, '/plugin/fugitive.vim'))
+
+        nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
+        nnoremap <silent> <Leader>gs :Git status<CR>
+
+    endif
+
+    " gitgutter: Show diff in the column sign (See :help signcolumn)
+
+    " }}}1
+
+    " UI: Colorscheme, status line, indent. Let Vim looks better
+    " {{{1
+    " airline:
+    if !empty(globpath(&rtp, '/plugin/airline.vim'))
+        " Enhanced tabline
+        let g:airline#extensions#tabline#enabled = 1
+        " Show buffer number so I can quickly pick a buffer
+        let g:airline#extensions#tabline#buffer_nr_show = 1
+
+    endif
+
+    " Lightline
+
+    " indentline
+
+    " indentguide
+
+    " Whichkey: 
+    if !empty(globpath(&rtp, '/plugin/which_key.vim'))
+        let g:which_key_map = {}
+        let g:which_key_map.g = {
+                                \ 'name': '+git',
+                                \ 'd': '+diff',
+                                \ }
+        let g:which_key_map.c = {
+                                \ 'name': '+comment',
+                                \ }
+        let g:which_key_map.f = {
+                                \ 'name': '+find',
+                                \ }
+        let g:which_key_map.s = {
+                                \ 'name': '+symbol',
+                                \ }
+        call which_key#register('<Space>', "g:which_key_map")
+
+        nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
+        vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<Leader>'<CR>
+        nnoremap <silent> <LocalLeader> :<c-u>WhichKey '<LocalLeader>'<CR>
+        vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
+
+    endif
+
+    " rainbow: Rainbow brackets
+    if !empty(globpath(&rtp, '/plugin/rainbow_main.vim'))
+        " This variable must be defined to use rainbow. 
+        " Set to 0 to enable it later via :RainbowToggle
+        let g:rainbow_active = 1 
+    endif
+
+
+    " Context: Show the function, for-loop and condition.
+    " It will stuck vim, so don't enable it automatically
+
+    " Startify
+
+    " gruvbox: 
+
+    " }}}1
+
 endfunction
 
 " vim: set sw=4 sts=4 et fdm=marker:
