@@ -63,6 +63,7 @@ Plug 'junegunn/vim-plug'
 Plug 'LunarWatcher/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
 
 Plug 'tomtom/tcomment_vim'
 " Plug 'tpope/vim-commentary'
@@ -76,25 +77,29 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'preservim/nerdtree'
 
 Plug 'preservim/tagbar'
+" Plug 'vim-scripts/taglist.vim'
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
 Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
 Plug 'neomake/neomake'
 
-if exists('python3_compiled') && exists('python3') && exists('gcc')
+if  has('python3') && executable('/bin/gcc')
     Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 else
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    if executable('/bin/fzf')
+        Plug 'junegunn/fzf'
+    else
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    endif
 endif
 
-if exists('python3_compiled') && exists('python3')
+Plug 'ervandew/supertab'
+if has('python3')
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
 endif
 if v:version >= 900
     Plug 'girishji/vimcomplete'
 endif
-
-Plug 'sbdchd/neoformat'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -107,6 +112,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'luochen1990/rainbow'
+Plug 'junegunn/vim-easy-align'
 Plug 'wellle/context.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'

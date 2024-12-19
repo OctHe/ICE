@@ -54,10 +54,15 @@ call dein#begin($CACHE .. 'dein')
 call dein#add(s:dein_src)
 
 call dein#add('LunarWatcher/auto-pairs')
-call dein#add('tpope/vim-surround')
+call dein#add('machakann/vim-sandwich')
 call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-endwise')
 
-call dein#add('preservim/nerdcommenter')
+if has('python3')
+    call dein#add('Shougo/defx.nvim')
+else
+    call dein#add('preservim/nerdcommenter')
+endif
 
 call dein#add('Yggdroot/indentLine')
 call dein#add('preservim/vim-indent-guides')
@@ -71,13 +76,13 @@ call dein#add('liuchengxu/vista.vim')
 call dein#add('dense-analysis/ale')
 
 call dein#add('vim-scripts/star-search')
-if exists('python3') && exists('python3_compiled') && exists('gcc')
+if  has('python3') && executable('/bin/gcc')
     call dein#add('Yggdroot/LeaderF', { 'build': ':LeaderfInstallCExtension' })
 else
     call dein#add('ctrlpvim/ctrlp.vim')
 endif
 
-if exists('python3') && exists('python3_compiled') && exists('gcc')
+if  has('python3') && executable('/bin/gcc')
     call dein#add('ycm-core/YouCompleteMe', { 'build': './install.py --clangd-completer' })
     
     " Snippets are separated from the engine
@@ -93,12 +98,15 @@ call dein#add('skywind3000/asyncrun.vim')
 call dein#add('lervag/vimtex')
 call dein#add('chrisbra/csv.vim')
 
+call dein#add('sbdchd/neoformat')
+
 call dein#add('tpope/vim-fugitive')
 call dein#add('airblade/vim-gitgutter')
 
 call dein#add('voldikss/vim-floaterm')
 call dein#add('christoomey/vim-tmux-navigator')
 
+call dein#add('junegunn/vim-easy-align')
 call dein#add('mhinz/vim-startify')
 call dein#add('wellle/context.vim')
 call dein#add('luochen1990/rainbow')
