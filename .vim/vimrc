@@ -69,7 +69,6 @@ Plug 'tomtom/tcomment_vim'
 " Plug 'tpope/vim-commentary'
 
 Plug 'Yggdroot/indentLine'
-Plug 'preservim/vim-indent-guides'
 
 Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
 Plug 'AndrewRadev/splitjoin.vim'
@@ -89,17 +88,21 @@ else
         Plug 'junegunn/fzf'
     else
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        " Plug 'ctrlpvim/ctrlp.vim'
     endif
 endif
 
-Plug 'ervandew/supertab'
 if has('python3')
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
 endif
 if v:version >= 900
     Plug 'girishji/vimcomplete'
+else 
+    Plug 'ervandew/supertab'
 endif
+
+Plug 'sbdchd/neoformat'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
