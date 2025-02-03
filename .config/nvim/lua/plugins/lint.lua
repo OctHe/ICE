@@ -13,33 +13,39 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
 
-            lspconfig.lua_ls.setup({
-                settings = {
-                    Lua = {
-                        runtime = {
-                            -- Tell the language server which version of Lua (LuaJIT in the case of Neovim)
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = vim.api.nvim_get_runtime_file("", true),
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false,
+            if vim.fn.executable("lua-language-server") == 1 then
+                lspconfig.lua_ls.setup({
+                    settings = {
+                        Lua = {
+                            runtime = {
+                                -- Tell the language server which version of Lua (LuaJIT in the case of Neovim)
+                                version = "LuaJIT",
+                            },
+                            diagnostics = {
+                                -- Get the language server to recognize the `vim` global
+                                globals = { "vim" },
+                            },
+                            workspace = {
+                                -- Make the server aware of Neovim runtime files
+                                library = vim.api.nvim_get_runtime_file("", true),
+                            },
+                            -- Do not send telemetry data containing a randomized but unique identifier
+                            telemetry = {
+                                enable = false,
+                            },
                         },
                     },
-                },
 
-                -- Coorperation with cmp.nvim
-                capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            })
+                    -- Coorperation with cmp.nvim
+                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                })
+            else
+            end
 
-            lspconfig.clangd.setup({})
+            if vim.fn.executable("lua-language-server") == 1 then
+                lspconfig.clangd.setup({})
+            else
+            end
         end,
     },
 
@@ -182,10 +188,6 @@ return {
 
                 trouble.setup()
 
-                keymap.set({ "n", "v" }, "<leader>tb",
-                    function() trouble.toggle() end,
-                    { desc = "Trouble" }
-                )
                 keymap.set({ "n", "v" }, "<leader>tbw",
                     function() trouble.toggle("workspace_diagnostics") end,
                     { desc = "Workspace trouble" }

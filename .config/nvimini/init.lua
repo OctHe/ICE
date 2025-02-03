@@ -80,6 +80,10 @@ if vim.loop.fs_stat(lazypath) then
 
                 vim.cmd [[ colorscheme minicyan ]]
             end
+        },
+        {
+            'stevearc/conform.nvim',
+            opts = {},
         }
     },
     {
