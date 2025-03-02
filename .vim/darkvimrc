@@ -61,16 +61,15 @@ call dein#add('tpope/vim-endwise')
 if has('python3')
     call dein#add('Shougo/defx.nvim')
 else
-    call dein#add('preservim/nerdcommenter')
+    call dein#add('preservim/nerdtree')
 endif
 
-call dein#add('Yggdroot/indentLine')
 call dein#add('preservim/vim-indent-guides')
 
 call dein#add('justinmk/vim-sneak')
 call dein#add('AndrewRadev/splitjoin.vim')
 
-call dein#add('preservim/nerdtree')
+call dein#add('preservim/nerdcommenter')
 
 call dein#add('liuchengxu/vista.vim')
 call dein#add('dense-analysis/ale')
@@ -79,7 +78,7 @@ call dein#add('vim-scripts/star-search')
 if  has('python3') && executable('/bin/gcc')
     call dein#add('Yggdroot/LeaderF', { 'build': ':LeaderfInstallCExtension' })
 else
-    call dein#add('ctrlpvim/ctrlp.vim')
+    call dein#add('Shougo/unite.vim')
 endif
 
 if  has('python3') && executable('/bin/gcc')
@@ -89,6 +88,9 @@ if  has('python3') && executable('/bin/gcc')
     call dein#add('honza/vim-snippets')
     " Track the engine   
     call dein#add('SirVer/ultisnips')
+else 
+    call dein#add('skywind3000/vim-auto-popmenu')
+    call dein#add('skywind3000/vim-dict')
 endif
 
 if exists('python3') && exists('python3_compiled')

@@ -65,8 +65,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 
-Plug 'tomtom/tcomment_vim'
-" Plug 'tpope/vim-commentary'
+" Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-commentary'
 
 Plug 'Yggdroot/indentLine'
 
@@ -76,7 +76,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'preservim/nerdtree'
 
 Plug 'preservim/tagbar'
-" Plug 'vim-scripts/taglist.vim'
+
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
 Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
 Plug 'neomake/neomake'
