@@ -81,8 +81,12 @@ Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], }
 Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
 Plug 'neomake/neomake'
 
-if  has('python3') && executable('/bin/gcc')
-    Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+if  has('python3')
+    if  executable('pip3') && executable('/bin/gcc')
+        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+    else
+        Plug 'Yggdroot/LeaderF'
+    endif
 else
     if executable('/bin/fzf')
         Plug 'junegunn/fzf'
@@ -96,7 +100,7 @@ if has('python3')
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
 endif
-if v:version >= 900
+if v:versionlong >= 9010646
     Plug 'girishji/vimcomplete'
 else 
     Plug 'ervandew/supertab'
