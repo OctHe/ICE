@@ -23,7 +23,7 @@ alias gpl='git pull'
 alias rgrep='grep --color=always --exclude-dir=.git -arn'
 
 if which vim > /dev/null 2>&1; then
-    alias darkvim='vim -u ~/.vim/darkvimrc'
+    alias cleanvim='vim -u ~/.vim/cleanvimrc'
 fi
 
 if which nvim > /dev/null 2>&1; then

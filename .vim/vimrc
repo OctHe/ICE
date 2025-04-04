@@ -36,19 +36,19 @@ nnoremap <silent> <Leader>m :verbose map
 
 " }}}1
 
-    
+
 " Try to install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
 
-    silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-    silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
-    silent !rm -rf /tmp/vim-plug
-  endif
+        silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
+        silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
+        silent !rm -rf /tmp/vim-plug
+    endif
 
 endif
 
@@ -67,152 +67,283 @@ Plug 'tpope/vim-endwise'
 
 " Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-commentary'
+if !empty(globpath(&rtp, '/plugin/commentary.vim'))
+    xmap <Leader>c  <Plug>Commentary
+    vmap <Leader>c  <Plug>Commentary
+    omap <Leader>c  <Plug>Commentary
+    nmap <Leader>cc <Plug>CommentaryLine
+    nmap <Leader>cu <Plug>Commentary<Plug>Commentary
+endif
 
 Plug 'Yggdroot/indentLine'
 
 Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
 Plug 'AndrewRadev/splitjoin.vim'
 
+" NERDTree: File explorer. 
 Plug 'preservim/nerdtree'
+if !empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
+    let NERTTreeCaseSensitiveSort = 1
+    let NERDTreeWinSize = 35
 
-Plug 'preservim/tagbar'
+    augroup NERDTree
+        au!
 
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
-Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
-Plug 'neomake/neomake'
+        " Close vim if the only window left open is a NERDTree
+        autocmd BufEnter * 
+                    \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+                    \ |   quit
+                    \ | endif
 
-if  has('python3')
-    if  executable('pip3') && executable('/bin/gcc')
-        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-    else
-        Plug 'Yggdroot/LeaderF'
+        " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+        autocmd BufEnter *
+                    \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+                    \ |   let buf=bufnr('%') 
+                    \ |   buffer# 
+                    \ |   execute "normal! \<C-W>w"
+                    \ |   execute 'buffer'.buf
+                    \ | endif
+    augroup END
+
+    " e means explore 
+    nnoremap <silent> <Leader>e :NERDTreeToggle<CR>  
     endif
-else
-    if executable('/bin/fzf')
-        Plug 'junegunn/fzf'
-    else
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        " Plug 'ctrlpvim/ctrlp.vim'
+
+    Plug 'preservim/tagbar'
+    if !empty(globpath(&rtp, '/plugin/tagbar.vim'))
+        " Automatic open Tagbar when open vim
+        autocmd VimEnter *.{py,h,c} Tagbar
+
+        " t means tag
+        nnoremap <silent> <Leader>s :Tagbar<CR>  
     endif
-endif
 
-if has('python3')
-    Plug 'honza/vim-snippets'
-    Plug 'SirVer/ultisnips'
-endif
-if v:versionlong >= 9010646
-    Plug 'girishji/vimcomplete'
-else 
-    Plug 'ervandew/supertab'
-endif
+    Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
+    if !empty(globpath(&rtp, '/plugin/gutentags.vim'))
+        " Use existing tag file if it exists
+        let g:gutentags_ctags_auto_set_tags = 0
 
-Plug 'sbdchd/neoformat'
+    endif
+    Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
+    Plug 'neomake/neomake'
 
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+    if  has('python3')
+        if  executable('pip3') && executable('/bin/gcc')
+            Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+        else
+            Plug 'Yggdroot/LeaderF'
+        endif
+    else
+        if executable('/bin/fzf')
+            Plug 'junegunn/fzf'
+        else
+            Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+            " Plug 'ctrlpvim/ctrlp.vim'
+        endif
+    endif
 
-Plug 'tpope/vim-dispatch'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'lervag/vimtex'
+    if has('python3')
+        Plug 'honza/vim-snippets'
+        Plug 'SirVer/ultisnips'
+        if !empty(globpath(&rtp, '/plugin/UltiSnips.vim'))
 
-Plug 'voldikss/vim-floaterm'
-Plug 'christoomey/vim-tmux-navigator'
+            " Trigger configuration. Change this to something other than <tab> if use one 
+            " of the following:
+            " - https://github.com/Valloric/YouCompleteMe
+            " - https://github.com/nvim-lua/completion-nvim
+            let g:UltiSnipsExpandTrigger="<CR>"
 
-Plug 'luochen1990/rainbow'
-Plug 'junegunn/vim-easy-align'
-Plug 'wellle/context.vim'
-Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline'
-Plug 'liuchengxu/vim-which-key'
-Plug 'morhetz/gruvbox'
+            " If you want :UltiSnipsEdit to split your window.
+            let g:UltiSnipsEditSplit="vertical"
 
-" Initialize plugin system
-call plug#end()
+        endif
+    endif
+    if v:versionlong >= 9010646
+        Plug 'girishji/vimcomplete'
+    else 
+        Plug 'ervandew/supertab'
+    endif
 
-call packless#PluginConfig()
+    Plug 'sbdchd/neoformat'
 
-" View {{{1
-try
-    " Colorscheme may use plugin
-    colorscheme gruvbox
-catch
-    " Builtin colorschemes: desert, peachpuff, quiet, slate
-    " Colorschemes plugin: gruvbox
-    colorscheme desert
-endtry
-" }}}1
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 
-" Options {{{1
-set hlsearch    " Highlight the search results
-set incsearch   " Show the pattern while typing
+    Plug 'tpope/vim-dispatch'
+    Plug 'skywind3000/asyncrun.vim'
+    Plug 'lervag/vimtex'
+    if !empty(globpath(&rtp, '/plugin/vimtex.vim'))
 
-set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+        " Plugin indent on follows is necessary for VimTeX to load properly. The "indent" is optional.
+        " Note that most plugin managers will do this automatically.
 
-set hidden  " Hide unsaved buffer
+        " Viewer is required  i.e., evince in Ubuntu, okular, or zathura
+        " vimtex internally supports forward and backward search
+        " Forward search works when type <LocalLeader>lv
+        " Backward/Inverse search only works for gvim since it relies on the
+        " clientserver feature.
+        "   For example, if the viewer is zathura, just open the latex file with
+        "   gvim, and compile it with <LocalLeader>ll.
+        "   Then, type <CTRL>+<LeftMouse> to use backward search.
+        let g:vimtex_view_method = 'zathura'
 
-set expandtab   " Expand tag to space
-set tabstop=4   " One tab includes four spaces
-set shiftwidth=4    " The width of '<' and '>'
-set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+        " VimTeX uses latexmk as the default compiler backend. 
+        " If you use it, you probably don't need to configure anything.
+        " If you want another compiler backend, you can change it as follows. 
+        " The list of supported backends and further explanation is provided in the documentation, see ':help vimtex-compiler'.
+        let g:vimtex_compiler_method = 'latexmk'
 
-set smartindent     " Do smart autoindenting
+        " Project with multiple files.
+        "   To support multiple files (with '\input') in a project, user must open the 
+        "   main file (e.g., main.tex) at first. For more details, please see the help
+        "   document with ':h vimtex-multi-file'
 
-set ruler           " show the cursor position 
-set wildmenu        " display completion matches in a status line
-set number          " Show line number
-set splitbelow      " New buffer splits below by default
-set splitright      " New buffer splits right by default
-set mouse=a         " Enable mouse in all mode
-set scrolloff=5     " Show a few lines around the cursor
-set fileencodings=utf-8,gb18030,latin1
+        " Most VimTeX mappings rely on localleader and this can be changed with the
+        " following line. The default is usually fine and is the symbol "\".
+        let maplocalleader = " "
 
-if has('gui_running')
-    " GUI options
-    set guioptions=aegrLt
-    set background=light
-else
-    set background=dark
-endif
+    endif
 
-syntax enable       " This enables Vim's syntax-related features. 
-" Without this, some VimTeX features will not work 
-" }}}1
+    Plug 'voldikss/vim-floaterm'
+    if !empty(globpath(&rtp, '/plugin/floaterm.vim'))
+        nmap <Leader>tb :FloatermPrev<CR>
+        nmap <Leader>tn :FloatermNext<CR>
+        nmap <Leader>tN :FloatermNew<CR>
+        nmap <Leader>tk :FloatermKill<CR>
+        nmap <Leader>tt :FloatermToggle<CR>
+    endif
 
-" Commends {{{1
+    " TODO: Use the same file for both vim and tmux
+    Plug 'christoomey/vim-tmux-navigator'
 
-" Command to see the difference between the current buffer and the file loaded from.
-if !exists(':DiffOrig')
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
+    Plug 'luochen1990/rainbow'
+    if !empty(globpath(&rtp, '/plugin/rainbow_main.vim'))
+        " This variable must be defined to use rainbow. 
+        " Set to 0 to enable it later via :RainbowToggle
+        let g:rainbow_active = 1 
+    endif
+    Plug 'junegunn/vim-easy-align'
+    Plug 'wellle/context.vim'
+    Plug 'mhinz/vim-startify'
+    Plug 'vim-airline/vim-airline'
+    if !empty(globpath(&rtp, '/plugin/airline.vim'))
+        " Enhanced tabline
+        let g:airline#extensions#tabline#enabled = 1
+        " Show buffer number so I can quickly pick a buffer
+        let g:airline#extensions#tabline#buffer_nr_show = 1
 
-augroup PLStart
-    au!
+    endif
+    Plug 'liuchengxu/vim-which-key'
+    if !empty(globpath(&rtp, '/plugin/which_key.vim'))
+        let g:which_key_map = {}
+        let g:which_key_map.g = {
+                    \ 'name': '+git',
+                    \ 'd': '+diff',
+                    \ }
+        let g:which_key_map.c = {
+                    \ 'name': '+comment',
+                    \ }
+        let g:which_key_map.f = {
+                    \ 'name': '+find',
+                    \ }
+        let g:which_key_map.s = {
+                    \ 'name': '+symbol',
+                    \ }
+        call which_key#register('<Space>', "g:which_key_map")
 
-    " A more suitable help file
-    autocmd BufWinEnter * 
-                \ if &filetype == 'help'
-                \ |   set number 
-                \ |   if winwidth('%') > 180
-                \ |       wincmd L 
-                \ |       vertical resize 90
-                \ |   endif
-                \ | endif
+        nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
+        vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<Leader>'<CR>
+        nnoremap <silent> <LocalLeader> :<c-u>WhichKey '<LocalLeader>'<CR>
+        vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
 
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid, when inside an event handler
-    " (happens when dropping a file on gvim) and for a commit message (it's
-    " likely a different one than last time).
-    autocmd BufReadPost *
-                \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-                \ |   exe "normal! g`\""
-                \ | endif
+    endif
+    Plug 'morhetz/gruvbox'
 
-    autocmd CmdwinEnter *
-                \ echohl Todo
-                \ | echo 'You discovered the command-line window! You can close it with ":q".'
-                \ | echohl None
-augroup END
+    " Initialize plugin system
+    call plug#end()
+
+    " View {{{1
+    try
+        " Colorscheme may use plugin
+        colorscheme gruvbox
+    catch
+        " Builtin colorschemes: desert, peachpuff, quiet, slate
+        " Colorschemes plugin: gruvbox
+        colorscheme desert
+    endtry
+    " }}}1
+
+    " Options {{{1
+    set hlsearch    " Highlight the search results
+    set incsearch   " Show the pattern while typing
+
+    set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+
+    set hidden  " Hide unsaved buffer
+
+    set expandtab   " Expand tag to space
+    set tabstop=4   " One tab includes four spaces
+    set shiftwidth=4    " The width of '<' and '>'
+    set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+
+    set smartindent     " Do smart autoindenting
+
+    set ruler           " show the cursor position 
+    set wildmenu        " display completion matches in a status line
+    set number          " Show line number
+    set splitbelow      " New buffer splits below by default
+    set splitright      " New buffer splits right by default
+    set mouse=a         " Enable mouse in all mode
+    set scrolloff=5     " Show a few lines around the cursor
+    set fileencodings=utf-8,gb18030,latin1
+
+    if has('gui_running')
+        " GUI options
+        set guioptions=aegrLt
+        set background=light
+    else
+        set background=dark
+    endif
+
+    syntax enable       " This enables Vim's syntax-related features. 
+    " Without this, some VimTeX features will not work 
+    " }}}1
+
+    " Commends {{{1
+
+    " Command to see the difference between the current buffer and the file loaded from.
+    if !exists(':DiffOrig')
+        command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+                    \ | wincmd p | diffthis
+    endif
+
+    augroup PLStart
+        au!
+
+        " A more suitable help file
+        autocmd BufWinEnter * 
+                    \ if &filetype == 'help'
+                    \ |   set number 
+                    \ |   if winwidth('%') > 180
+                    \ |       wincmd L 
+                    \ |       vertical resize 90
+                    \ |   endif
+                    \ | endif
+
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid, when inside an event handler
+        " (happens when dropping a file on gvim) and for a commit message (it's
+        " likely a different one than last time).
+        autocmd BufReadPost *
+                    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+                    \ |   exe "normal! g`\""
+                    \ | endif
+
+        autocmd CmdwinEnter *
+                    \ echohl Todo
+                    \ | echo 'You discovered the command-line window! You can close it with ":q".'
+                    \ | echohl None
+    augroup END
 
 " }}}1
 

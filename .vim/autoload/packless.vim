@@ -15,7 +15,6 @@ function! packless#PluginConfig()
     " starsearch: Enhanced star keymapping. Avoid jumping to next
 
     " fzf:
-    " TODO: use system-wide fzf
 
     " LeaderF: Asynchronous fuzzy finder with popup window
     if !empty(globpath(&rtp, '/plugin/leaderf.vim'))
@@ -93,7 +92,7 @@ function! packless#PluginConfig()
     endif
 
     " Tagbar: 
-    if 0
+    if !empty(globpath(&rtp, '/plugin/tagbar.vim'))
         " Automatic open Tagbar when open vim
         autocmd VimEnter *.{py,h,c} Tagbar
 
@@ -147,9 +146,8 @@ function! packless#PluginConfig()
         nmap <Leader>cu <Plug>Commentary<Plug>Commentary
     endif
 
-    " YCM: a powerful completion plugin based on LSP It relies on cmake, 
-    " make, g++, python3-dev and LSP. YCM does not use LSP from the system. 
-    " It downloads them by itself.
+    " YCM: a powerful completion plugin based on LSP. It relies on cmake, 
+    " make, g++, python3-dev and LSP. YCM does not use system-wide LSP.
     " Install the prerequisites in Debian with
     "   sudo apt install cmake make g++ python3-dev
     " In openSUSE with
@@ -183,6 +181,7 @@ function! packless#PluginConfig()
 
     endif
 
+    " vim-auto-popemenu
     if !empty(globpath(&rtp, '/plugin/apc.vim'))
         " enable this plugin for filetypes, '*' for all files.
         let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}

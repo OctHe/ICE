@@ -43,7 +43,7 @@ endif
 if &runtimepath !~# '/dein.vim'
     let s:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
     if !(s:dein_src->isdirectory())
-        execute '!git clone https://github.com/Shougo/dein.vim' l:dein_src
+        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_src
     endif
     execute 'set runtimepath+=' .. s:dein_src
 endif
@@ -61,7 +61,7 @@ call dein#add('tpope/vim-endwise')
 if has('python3')
     call dein#add('Shougo/defx.nvim')
 else
-    call dein#add('preservim/nerdtree')
+    call dein#add('tpope/vim-vinegar')
 endif
 
 call dein#add('preservim/vim-indent-guides')
