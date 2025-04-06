@@ -1,6 +1,6 @@
 # onePoint
 
-OnePoint is a dotfile and script project across a variety of Linux distributions.
+OnePoint is a collection of dotfiles and scripts.
 
 Installation is easy:
 
@@ -12,13 +12,13 @@ Be careful! `onepoint checkout` overwritten other personal configuration files.
 Please backup them manual.
 
 Since lots of Linux use bash as their default shell.
-PL does not directly change the `.bashrc` file.
-To enable PL's bash config, use
+The project does not directly change the `.bashrc` file.
+To enable Bash's config, use
     
     echo 'source ~/.config/bash/bashrc' >> .bashrc
     source ~/.bashrc
 
-The python packages of PL uses virtual environment:
+To use the python virtual environment:
 
     python3 -m venv .local/share/python/venv/onepoint
 
