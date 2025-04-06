@@ -23,7 +23,7 @@ alias gpl='git pull'
 alias rgrep='grep --color=always --exclude-dir=.git -arn'
 
 if which vim > /dev/null 2>&1; then
-    alias cleanvim='vim -u ~/.vim/cleanvimrc'
+    alias cvim='vim -u ~/.config/cvim/vimrc --cmd "set runtimepath-=~/.vim" --cmd "set runtimepath-=~/.vim/after" --cmd "set runtimepath^=~/.config/cvim" --cmd "set runtimepath+=~/.config/cvim/after" '
 fi
 
 if which nvim > /dev/null 2>&1; then

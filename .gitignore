@@ -26,6 +26,9 @@
 # Plugin manager: vim-plug
 /.vim/autoload/plug.vim
 
+!/.config/cvim/
+!/.config/cvim/**
+
 # Neovim
 !/.config/nvim/
 !/.config/nvim/**

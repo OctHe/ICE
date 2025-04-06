@@ -1,7 +1,7 @@
 " 
-" Vim run command based on dein.vim
+" Vim run command that clean the runtimepath with dein.vim
 " Author: OctHe
-" Copyright (C): 2024
+" Copyright (C): 2025
 " 
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -22,11 +22,6 @@ filetype indent on
 " This command must be before all keymappings and plugin configs
 let mapleader = ' '
 
-" It changes the behavior of star to not jump to next word
-" Yank the word into the register s, and then assign it in to the yank
-" register (The register / is not writeable directly)
-nmap <silent> * "syiw:let @/ = @s<CR>
-
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
@@ -45,11 +40,11 @@ if &runtimepath !~# '/dein.vim'
     if !(s:dein_src->isdirectory())
         execute '!git clone https://github.com/Shougo/dein.vim' s:dein_src
     endif
-    execute 'set runtimepath+=' .. s:dein_src
+    execute 'set runtimepath^=' .. s:dein_src
 endif
 
 " Call dein initialization (required)
-call dein#begin($CACHE .. 'dein')
+call dein#begin($CACHE .. '/dein')
 
 call dein#add(s:dein_src)
 
@@ -77,23 +72,23 @@ call dein#add('dense-analysis/ale')
 call dein#add('vim-scripts/star-search')
 if  has('python3') && executable('/bin/gcc')
     call dein#add('Yggdroot/LeaderF', { 'build': ':LeaderfInstallCExtension' })
-else
-    call dein#add('Shougo/unite.vim')
-endif
 
-if  has('python3') && executable('/bin/gcc')
-    call dein#add('ycm-core/YouCompleteMe', { 'build': './install.py --clangd-completer' })
-    
     " Snippets are separated from the engine
     call dein#add('honza/vim-snippets')
     " Track the engine   
     call dein#add('SirVer/ultisnips')
-else 
-    call dein#add('skywind3000/vim-auto-popmenu')
-    call dein#add('skywind3000/vim-dict')
+else
+    call dein#add('Shougo/unite.vim')
 endif
 
-if exists('python3') && exists('python3_compiled')
+if  has('python3') && executable('/bin/cmake')
+    call dein#add('ycm-core/YouCompleteMe', { 'build': './install.py --clangd-completer' })
+    
+else 
+    call dein#add('skywind3000/vim-auto-popmenu')
+endif
+
+if has('python3')
     call dein#add('puremourning/vimspector')
 endif
 call dein#add('skywind3000/asyncrun.vim')

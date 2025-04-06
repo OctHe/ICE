@@ -152,7 +152,7 @@ function! packless#PluginConfig()
     "   sudo apt install cmake make g++ python3-dev
     " In openSUSE with
     "   sudo zypper install cmake make g++ python3-deval
-    if 0
+    if !empty(globpath(&rtp, '/plugin/youcompleteme.vim'))
 
         let g:ycm_confirm_extra_conf = 0
         let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
