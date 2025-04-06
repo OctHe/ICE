@@ -317,7 +317,7 @@ if !empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
                     \ | wincmd p | diffthis
     endif
 
-    augroup PLStart
+    augroup OnePointStart
         au!
 
         " A more suitable help file

@@ -1,14 +1,14 @@
-# Packless
+# onePoint
 
-Packless (PL) is a dotfile and script project across a variety of Linux distributions.
+OnePoint is a dotfile and script project across a variety of Linux distributions.
 
-Install PL is easy:
+Installation is easy:
 
-    git clone --bare https://github.com/OctHe/Packless .packless
-    alias pl='/usr/bin/git --git-dir=$HOME/.packless/ --work-tree=$HOME'
-    pl checkout
+    git clone --bare https://github.com/OctHe/OnePoint .onepoint
+    alias onepoint='/usr/bin/git --git-dir=$HOME/.onepoint/ --work-tree=$HOME'
+    onepoint checkout
 
-Be careful! `pl checkout` overwritten other personal configuration files.
+Be careful! `onepoint checkout` overwritten other personal configuration files.
 Please backup them manual.
 
 Since lots of Linux use bash as their default shell.
@@ -20,7 +20,7 @@ To enable PL's bash config, use
 
 The python packages of PL uses virtual environment:
 
-    python3 -m venv .local/share/python/venv/pl
+    python3 -m venv .local/share/python/venv/onepoint
 
 The packages is installed by
 

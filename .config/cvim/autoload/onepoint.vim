@@ -7,7 +7,7 @@
 " 
 " =====================================================================
 
-function! packless#PluginConfig()
+function! onepoint#PluginConfig()
     " Load plugins' config
     " Navigation 
     " {{{1

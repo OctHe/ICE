@@ -4,7 +4,7 @@
 #
 
 # This project
-alias pl='/usr/bin/git --git-dir=$HOME/.packless/ --work-tree=$HOME'
+alias onepoint='/usr/bin/git --git-dir=$HOME/.onepoint/ --work-tree=$HOME'
 
 # ls
 alias l='ls --color=always -lh'

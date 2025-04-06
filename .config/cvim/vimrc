@@ -115,7 +115,7 @@ call dein#add('morhetz/gruvbox')
 " Finish dein initialization (required)
 call dein#end()
 
-call packless#PluginConfig()
+call onepoint#PluginConfig()
 
 " View {{{1
 try
@@ -166,7 +166,7 @@ syntax enable       " This enables Vim's syntax-related features.
 
 " Commends {{{1
 
-augroup PLStart
+augroup CVimStart
     au!
 
     " A more suitable help file
