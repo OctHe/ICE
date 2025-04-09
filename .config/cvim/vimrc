@@ -98,7 +98,7 @@ call dein#add('chrisbra/csv.vim')
 call dein#add('sbdchd/neoformat')
 
 call dein#add('tpope/vim-fugitive')
-call dein#add('airblade/vim-gitgutter')
+call dein#add('mhinz/vim-signify')
 
 call dein#add('voldikss/vim-floaterm')
 call dein#add('christoomey/vim-tmux-navigator')
@@ -110,7 +110,7 @@ call dein#add('luochen1990/rainbow')
 call dein#add('psliwka/vim-smoothie')
 call dein#add('itchyny/lightline.vim')
 call dein#add('liuchengxu/vim-which-key')
-call dein#add('morhetz/gruvbox')
+call dein#add('rafi/awesome-vim-colorschemes')
 
 " Finish dein initialization (required)
 call dein#end()
@@ -119,11 +119,11 @@ call onepoint#PluginConfig()
 
 " View {{{1
 try
-    " Colorscheme may use plugin
-    colorscheme gruvbox
+    " Colorscheme may use plugin: gruvbox
+    "colorscheme habamax
+    colorscheme iceberg
 catch
     " Builtin colorschemes: desert, peachpuff, quiet, slate
-    " Colorschemes plugin: gruvbox
     colorscheme desert
 endtry
 " }}}1
@@ -151,13 +151,11 @@ set splitright      " New buffer splits right by default
 set mouse=a         " Enable mouse in all mode
 set scrolloff=5     " Show a few lines around the cursor
 set fileencodings=utf-8,gb18030,latin1
+set background=dark
 
 if has('gui_running')
     " GUI options
     set guioptions=aegrLt
-    set background=light
-else
-    set background=dark
 endif
 
 syntax enable       " This enables Vim's syntax-related features. 

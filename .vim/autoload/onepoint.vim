@@ -129,16 +129,18 @@ function! onepoint#PluginConfig()
     " vim-repeat: Plugin repeat support
 
     " Nerdcomment: 
-    if !empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
 
-        let g:NERDSpaceDelims = 1
-        let g:NERDRemoveExtraSpaces = 1
-
+    " commentary:
+    if !empty(globpath(&rtp, '/plugin/commentary.vim'))
+        xmap <Leader>c  <Plug>Commentary
+        vmap <Leader>c  <Plug>Commentary
+        omap <Leader>c  <Plug>Commentary
+        nmap <Leader>cc <Plug>CommentaryLine
+        nmap <Leader>cu <Plug>Commentary<Plug>Commentary
     endif
 
-
-    " YCM: a powerful completion plugin based on LSP. It relies on cmake, 
-    " make, g++, python3-dev and LSP. YCM does not use system-wide LSP.
+    " YCM: a powerful completion plugin based on LSP It relies on cmake, 
+    " make, g++, python3-dev and LSP. YCM does not use LSP from the system. 
     " Install the prerequisites in Debian with
     "   sudo apt install cmake make g++ python3-dev
     " In openSUSE with
