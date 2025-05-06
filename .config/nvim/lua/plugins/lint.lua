@@ -39,14 +39,16 @@ return {
                     -- Coorperation with cmp.nvim
                     capabilities = require("cmp_nvim_lsp").default_capabilities(),
                 })
-            else
             end
 
-            if vim.fn.executable("lua-language-server") == 1 then
+            if vim.fn.executable("clangd") == 1 then
                 lspconfig.clangd.setup({})
-            else
             end
         end,
+
+        keys = {
+            { "gf", "<CMD>lua vim.lsp.buf.definition()<CR>", mode = { "n", "v" }, desc = "Goto file" },
+        },
     },
 
     {
