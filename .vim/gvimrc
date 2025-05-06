@@ -1,0 +1,11 @@
+" 
+" Default gvim run command file
+" Author: OctHe
+" Copyright (C): 2025
+" 
+" =====================================================================
+
+set guioptions=aegrLt
+set background=light
+
+" vim: set sw=4 sts=4 et fdm=marker:

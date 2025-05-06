@@ -25,9 +25,9 @@ function! lint#Config()
     " Tagbar: 
     if !empty(globpath(&rtp, '/plugin/tagbar.vim'))
         " Automatic open Tagbar when open vim
-        autocmd VimEnter *.{py,h,c} Tagbar
+        " autocmd VimEnter *.{py,h,c} Tagbar
 
-        " t means tag
+        " s means symbol
         nnoremap <silent> <Leader>s :Tagbar<CR>  
     endif
 
@@ -41,15 +41,20 @@ function! lint#Config()
     " ALE:
     if !empty(globpath(&rtp, '/plugin/ale.vim'))
 
-        " Most Linux distributions use gcc by default, so use gcc at first
-        if !empty('gcc')
-            let g:ale_c_cc_executable = 'gcc'
-            let g:ale_cpp_cc_executable = 'gcc'
+        if executable('clangd')
+            let g:ale_c_cc_executable = 'clangd'
+            let g:ale_cpp_cc_executable = 'clangd'
         endif
 
     endif
 
     " neomake
+
+    if !empty(globpath(&rtp, '/plugin/neomake.vim'))
+
+        " Run neomake when writing
+        " call neomake#configure#automake('w')
+    endif
 
     " splitjoin
 
