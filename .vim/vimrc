@@ -1,7 +1,7 @@
 " 
 " Default vim run command file
 " Author: OctHe
-" Copyright (C): 2023-2024
+" Copyright (C): 2023-2025
 " 
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -105,8 +105,8 @@ if has('python3')
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
 endif
-if v:versionlong >= 9010646
-    Plug 'girishji/vimcomplete'
+if v:versionlong >= 9010016 && has('python3') && executable('cmake')
+    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 else 
     Plug 'ervandew/supertab'
 endif

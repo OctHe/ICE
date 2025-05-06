@@ -23,6 +23,14 @@ function! completer#Config()
 
     endif
 
+    " Commentary
+    if !empty(globpath(&rtp, '/plugin/commentary.vim'))
+
+       nmap <Leader>cc <Plug>CommentaryLine 
+       vmap <Leader>c <Plug>Commentary 
+       nmap <Leader>c <Plug>Commentary 
+    endif
+
 
     " YCM: a powerful completion plugin based on LSP. It relies on cmake, 
     " make, g++, python3-dev and LSP. YCM does not use system-wide LSP.

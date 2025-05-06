@@ -15,7 +15,7 @@ filetype plugin on
 " Enable automatic indentation.
 filetype indent on
 
-source $VIMRUNTIME/vimrc_example.vim
+" source $VIMRUNTIME/vimrc_example.vim
 
 " Keymappings {{{1
 
@@ -26,9 +26,6 @@ let mapleader = ' '
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
-
-" Show mappings
-nnoremap <silent> <Leader>m :verbose map 
 
 " }}}1
 
@@ -46,8 +43,6 @@ endif
 
 " Call dein initialization (required)
 call dein#begin($CACHE .. '/dein')
-
-call dein#add(s:dein_src)
 
 call dein#add('LunarWatcher/auto-pairs')
 call dein#add('machakann/vim-sandwich')
@@ -68,7 +63,7 @@ call dein#add('AndrewRadev/splitjoin.vim')
 call dein#add('preservim/nerdcommenter')
 
 call dein#add('liuchengxu/vista.vim')
-call dein#add('dense-analysis/ale')
+call dein#add('neomake/neomake')
 
 call dein#add('vim-scripts/star-search')
 if  has('python3') && executable('/bin/gcc')
@@ -82,9 +77,8 @@ else
     call dein#add('Shougo/unite.vim')
 endif
 
-if  has('python3') && executable('/bin/cmake')
-    call dein#add('ycm-core/YouCompleteMe', { 'build': './install.py --clangd-completer' })
-    
+if v:versionlong >= 9010646
+    call dein#add('girishji/vimcomplete')
 else 
     call dein#add('skywind3000/vim-auto-popmenu')
 endif

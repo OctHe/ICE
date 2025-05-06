@@ -27,18 +27,28 @@ function! view#Config()
     " Whichkey: 
     if !empty(globpath(&rtp, '/plugin/which_key.vim'))
         let g:which_key_map = {}
-        let g:which_key_map.g = {
-                                \ 'name': '+git',
-                                \ 'd': '+diff',
-                                \ }
         let g:which_key_map.c = {
-                                \ 'name': '+comment',
+                                \ 'name': '+Comment',
+                                \ 'c': 'Comment line',
                                 \ }
         let g:which_key_map.f = {
-                                \ 'name': '+find',
+                                \ 'name': '+Find',
+                                \ }
+        let g:which_key_map.g = {
+                                \ 'name': '+Git',
+                                \ 'd': 'Diff',
+                                \ }
+        let g:which_key_map.h = {
+                                \ 'name': '+Hunk',
+                                \ 'p': 'Preview the hunk',
+                                \ 's': 'Stage the hunk',
+                                \ 'u': 'Undo the hunk',
                                 \ }
         let g:which_key_map.s = {
-                                \ 'name': '+symbol',
+                                \ 'name': '+Symbol',
+                                \ }
+        let g:which_key_map.t = {
+                                \ 'name': '+Terminal',
                                 \ }
         call which_key#register('<Space>', "g:which_key_map")
 
@@ -55,14 +65,6 @@ function! view#Config()
         " Set to 0 to enable it later via :RainbowToggle
         let g:rainbow_active = 1 
     endif
-
-
-    " Context: Show the function, for-loop and condition.
-    " It will stuck vim, so don't enable it automatically
-
-    " Startify
-
-    " gruvbox: 
 
 endfunction
 
