@@ -27,11 +27,12 @@ let mapleader = ' '
 " Yank the word into the register s, and then assign it in to the yank
 " register (The register / is not writeable directly)
 nmap <silent> * "syiw:let @/ = @s<CR>
-
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
-
+" Easy indent
+vmap < <gv
+vmap > >gv
 " Show mappings
 nnoremap <silent> <Leader>m :verbose map 
 

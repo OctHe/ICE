@@ -1,6 +1,6 @@
 " =====================================================================
 " 
-" UI
+" UI: Colorscheme, status line, indent. Let Vim looks better
 "
 " Author: OctHe
 " Copyright (C): 2025
@@ -8,21 +8,6 @@
 " =====================================================================
 
 function! view#Config()
-    " UI: Colorscheme, status line, indent. Let Vim looks better
-    " airline:
-    if !empty(globpath(&rtp, '/plugin/airline.vim'))
-        " Enhanced tabline
-        let g:airline#extensions#tabline#enabled = 1
-        " Show buffer number so I can quickly pick a buffer
-        let g:airline#extensions#tabline#buffer_nr_show = 1
-
-    endif
-
-    " Lightline
-
-    " indentline
-
-    " indentguide
 
     " Whichkey: 
     if !empty(globpath(&rtp, '/plugin/which_key.vim'))
@@ -55,14 +40,6 @@ function! view#Config()
         " Set to 0 to enable it later via :RainbowToggle
         let g:rainbow_active = 1 
     endif
-
-
-    " Context: Show the function, for-loop and condition.
-    " It will stuck vim, so don't enable it automatically
-
-    " Startify
-
-    " gruvbox: 
 
 endfunction
 

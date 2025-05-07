@@ -26,6 +26,9 @@ let mapleader = ' '
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
+" Easy indent
+vmap < <gv
+vmap > >gv
 
 " }}}1
 
@@ -99,9 +102,11 @@ call dein#add('voldikss/vim-floaterm')
 
 call dein#add('junegunn/vim-easy-align')
 call dein#add('mhinz/vim-startify')
+" Context: Show the function, for-loop and condition.
 call dein#add('wellle/context.vim')
 call dein#add('luochen1990/rainbow')
 call dein#add('psliwka/vim-smoothie')
+" lightline does not process buffer in tabline
 call dein#add('itchyny/lightline.vim')
 call dein#add('liuchengxu/vim-which-key')
 call dein#add('rafi/awesome-vim-colorschemes')
