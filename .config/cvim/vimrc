@@ -32,6 +32,14 @@ vmap > >gv
 
 " }}}1
 
+" View {{{1
+
+" Default colorscheme if plugins does not load. 
+" Chosen from these builtin colorschemes: desert, peachpuff, quiet, slate
+colorscheme desert
+
+" }}}1
+
 let $CACHE = expand('~/.cache')
 if !($CACHE->isdirectory())
     call mkdir($CACHE, 'p')
@@ -42,14 +50,21 @@ if &runtimepath !~# '/dein.vim'
         execute '!git clone https://github.com/Shougo/dein.vim' s:dein_src
     endif
     execute 'set runtimepath^=' .. s:dein_src
+    execute 'helptags ' s:dein_src .. '/doc'
 endif
+
+nnoremap <Leader>pi :call dein#install()<CR>
+nnoremap <Leader>pu :call dein#update()<CR>
+nnoremap <Leader>prc :call dein#recache_runtimepath()<CR>
+nnoremap <Leader>prd :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+
 
 " Call dein initialization (required)
 call dein#begin($CACHE .. '/dein')
 
 call dein#add('LunarWatcher/auto-pairs')
 call dein#add('machakann/vim-sandwich')
-call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-repeat') " Plugin repeat support
 call dein#add('tpope/vim-endwise')
 
 if has('python3')
@@ -60,22 +75,24 @@ endif
 
 call dein#add('preservim/vim-indent-guides')
 
-call dein#add('justinmk/vim-sneak')
+call dein#add('justinmk/vim-sneak', {'hook_source': ':call navigator#Sneak()'})
 call dein#add('AndrewRadev/splitjoin.vim')
 
-call dein#add('preservim/nerdcommenter')
+call dein#add('preservim/nerdcommenter', {'hook_source': ':call completer#Nerdcommenter()'})
 
-call dein#add('liuchengxu/vista.vim')
+call dein#add('liuchengxu/vista.vim', {'hook_source': ':call lint#Vista()'})
 call dein#add('neomake/neomake')
 
 call dein#add('vim-scripts/star-search')
 if  has('python3') && executable('/bin/gcc')
-    call dein#add('Yggdroot/LeaderF', { 'build': ':LeaderfInstallCExtension' })
+    call dein#add('Yggdroot/LeaderF', { 
+                \ 'build': ':LeaderfInstallCExtension',
+                \ 'hook_source': ':call navigator#LeaderF()'})
 
     " Snippets are separated from the engine
     call dein#add('honza/vim-snippets')
     " Track the engine   
-    call dein#add('SirVer/ultisnips')
+    call dein#add('SirVer/ultisnips', {'hook_source': ':call completer#Ultisnips()'})
 else
     call dein#add('Shougo/unite.vim')
 endif
@@ -83,54 +100,34 @@ endif
 if v:versionlong >= 9010646
     call dein#add('girishji/vimcomplete')
 else 
-    call dein#add('skywind3000/vim-auto-popmenu')
+    call dein#add('skywind3000/vim-auto-popmenu', {'hook_source': ':call completer#VimAutoPopemenu()'})
 endif
 
 if has('python3')
-    call dein#add('puremourning/vimspector')
+    call dein#add('puremourning/vimspector', {'hook_source': ':call runner#vimspector()'})
 endif
-call dein#add('skywind3000/asyncrun.vim')
-call dein#add('lervag/vimtex')
+call dein#add('lervag/vimtex', {'hook_source': ':call runner#vimtex()'})
 call dein#add('chrisbra/csv.vim')
 
 call dein#add('sbdchd/neoformat')
 
-call dein#add('tpope/vim-fugitive')
+call dein#add('tpope/vim-fugitive', {'hook_source': ':call vcs#Fugitive()'})
 call dein#add('mhinz/vim-signify')
 
-call dein#add('voldikss/vim-floaterm')
+call dein#add('voldikss/vim-floaterm', {'hook_source': ':call runner#Floaterm()'})
 
 call dein#add('junegunn/vim-easy-align')
 call dein#add('mhinz/vim-startify')
-" Context: Show the function, for-loop and condition.
-call dein#add('wellle/context.vim')
-call dein#add('luochen1990/rainbow')
+call dein#add('wellle/context.vim') " Context: Show the function, for-loop and condition.
+call dein#add('luochen1990/rainbow', {'hook_source': ':call view#Rainbow()'})
 call dein#add('psliwka/vim-smoothie')
-" lightline does not process buffer in tabline
-call dein#add('itchyny/lightline.vim')
-call dein#add('liuchengxu/vim-which-key')
-call dein#add('rafi/awesome-vim-colorschemes')
+call dein#add('itchyny/lightline.vim') " lightline does not process buffer in tabline
+call dein#add('liuchengxu/vim-which-key', {'hook_source': ':call view#Whichkey()'})
+call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': ':call view#AwesomeColorschemes()'})
 
 " Finish dein initialization (required)
 call dein#end()
-
-call navigator#Config()
-call lint#Config()
-call completer#Config()
-call runner#Config()
-call vcs#Config()
-call view#Config()
-
-" View {{{1
-try
-    " Colorscheme may use plugin: gruvbox
-    "colorscheme habamax
-    colorscheme iceberg
-catch
-    " Builtin colorschemes: desert, peachpuff, quiet, slate
-    colorscheme desert
-endtry
-" }}}1
+call dein#call_hook('source')
 
 " Options {{{1
 set hlsearch    " Highlight the search results

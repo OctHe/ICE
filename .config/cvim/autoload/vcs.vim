@@ -3,22 +3,19 @@
 " Version control system
 "
 " Author: OctHe
-" Copyright (C): 2025
+" Copyright (C)
 " 
 " =====================================================================
 
-function! vcs#Config()
-    " VCS
-    " fugitive: Provide common git options (diff, status, add, commit, etc)
-    if !empty(globpath(&rtp, '/plugin/fugitive.vim'))
+" fugitive: Provide common git options (diff, status, add, commit, etc)
+function! vcs#Fugitive()
 
-        nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
-        nnoremap <silent> <Leader>gs :Git status<CR>
-
+    if empty(globpath(&rtp, '/plugin/fugitive.vim'))
+        return
     endif
 
-    " gitgutter: Show diff in the column sign (See :help signcolumn)
-
+    nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
+    nnoremap <silent> <Leader>gs :Git status<CR>
 
 endfunction
 
