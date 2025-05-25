@@ -1,5 +1,6 @@
 " 
-" Vim run command that clean the runtimepath with dein.vim
+" Vim run command with dark-powered dein.vim.
+" Dark-powered means do everything in the vim by the author of dein.vim
 " Author: OctHe
 " Copyright (C): 2025
 " 

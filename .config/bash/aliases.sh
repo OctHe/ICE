@@ -27,7 +27,7 @@ alias rgrep='grep --color=always --exclude-dir=.git -arn'
 # fi
 
 if which nvim > /dev/null 2>&1; then
-    alias cim='NVIM_APPNAME=cim nvim'
+    alias darkvim='NVIM_APPNAME=darkvim nvim'
 fi
 if which nvim > /dev/null 2>&1; then
     alias nvimini='NVIM_APPNAME=nvimini nvim'

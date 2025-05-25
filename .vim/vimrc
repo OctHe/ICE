@@ -82,7 +82,7 @@ Plug 'preservim/nerdtree'
 Plug 'preservim/tagbar'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
-Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
+" Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
 Plug 'dense-analysis/ale'
 
 if  has('python3')
@@ -117,7 +117,7 @@ Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'lervag/vimtex'
 
