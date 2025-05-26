@@ -160,23 +160,4 @@ syntax enable       " This enables Vim's syntax-related features.
 " Without this, some VimTeX features will not work 
 " }}}1
 
-" Commends {{{1
-
-augroup CVimStart
-    au!
-
-    " A more suitable help file
-    autocmd BufWinEnter * 
-                \ if &filetype == 'help'
-                \ |   set number 
-                \ |   if winwidth('%') > 180
-                \ |       wincmd L 
-                \ |       vertical resize 90
-                \ |   endif
-                \ | endif
-
-augroup END
-
-" }}}1
-
 " vim: set sw=4 sts=4 et:

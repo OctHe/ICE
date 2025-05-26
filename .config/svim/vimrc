@@ -1,0 +1,180 @@
+" 
+" Simple vim run command file
+" Author: OctHe
+" Copyright (C)
+" 
+" =====================================================================
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+if &compatible
+    set nocompatible
+endif
+
+" Enable file type detection.
+filetype plugin on
+" Enable automatic indentation.
+filetype indent on
+
+set runtimepath-=~/.vim
+set runtimepath-=~/.vim/after
+set runtimepath^=~/.config/svim
+set runtimepath+=~/.config/svim/after
+set packpath-=~/.vim
+set packpath-=~/.vim/after
+set packpath^=~/.config/svim
+set packpath+=~/.config/svim/after
+
+" Keymappings {{{1
+
+" Use <Space> as the <Leader>
+" This command must be before all keymappings and plugin configs
+let mapleader = ' '
+
+" It changes the behavior of star to not jump to next word
+" Yank the word into the register s, and then assign it in to the yank
+" register (The register / is not writeable directly)
+nmap <silent> * "syiw:let @/ = @s<CR>
+" Easy-nohlsearch
+nnoremap <silent> <Esc> :nohlsearch<CR>
+tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
+" Easy indent
+vmap < <gv
+vmap > >gv
+" Show mappings
+nnoremap <silent> <Leader>m :verbose map 
+
+" }}}1
+
+
+" Try to install minpac
+if empty(glob('~/.config/svim/pack/minpac/opt/minpac'))
+    !git clone --depth=1 https://github.com/k-takata/minpac.git ~/.config/svim/pack/minpac/opt/minpac
+endif
+packadd minpac
+
+function! PackInit() abort
+    packadd minpac
+
+    call minpac#init()
+    call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+    " Additional plugins here.
+    call minpac#add('LunarWatcher/auto-pairs', {'package_name': 'completer'})
+    call minpac#add('tpope/vim-surround', {'package_name': 'completer'})
+    call minpac#add('tpope/vim-repeat', {'package_name': 'completer'})
+    call minpac#add('tpope/vim-endwise', {'package_name': 'completer'})
+
+    call minpac#add('tpope/vim-commentary', {'package_name': 'completer'})
+
+    call minpac#add('Yggdroot/indentLine', {'package_name': 'view'})
+
+    call minpac#add('timsu92/vim-easymotion', {'package_name': 'navigator'})
+    call minpac#add('AndrewRadev/splitjoin.vim', {'package_name': 'navigator'})
+
+    call minpac#add('preservim/nerdtree', {'package_name': 'navigator'})
+
+    call minpac#add('preservim/tagbar', {'package_name': 'navigator'})
+
+    call minpac#add('ludovicchabant/vim-gutentags', {'package_name': 'lint'})
+    call minpac#add('vim-scripts/CCTree', {'package_name': 'lint'})
+
+    call minpac#add('ctrlpvim/ctrlp.vim', {'package_name': 'navigator'})
+
+    call minpac#add('ervandew/supertab', {'package_name': 'completer'})
+
+    call minpac#add('sbdchd/neoformat', {'package_name': 'lint'})
+
+    call minpac#add('tpope/vim-fugitive', {'package_name': 'vcs'})
+    call minpac#add('airblade/vim-gitgutter', {'package_name': 'vcs'})
+
+    call minpac#add('tpope/vim-dispatch', {'package_name': 'runner'})
+
+    call minpac#add('voldikss/vim-floaterm', {'package_name': 'runner'})
+
+    call minpac#add('luochen1990/rainbow', {'package_name': 'view'})
+    call minpac#add('wellle/context.vim', {'package_name': 'view'})
+    call minpac#add('liuchengxu/vim-which-key', {'package_name': 'view'})
+    call minpac#add('morhetz/gruvbox', {'package_name': 'view'})
+
+endfunction
+
+" Define user commands for updating/cleaning the plugins.
+" Each of them calls PackInit() to load minpac and register
+" the information of plugins, then performs the task.
+command! PackUpdate call PackInit() | call minpac#update()
+command! PackClean  call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
+
+call navigator#Config()
+call lint#Config()
+call completer#Config()
+call runner#Config()
+call vcs#Config()
+call view#Config()
+
+" View {{{1
+try
+    " Colorscheme may use plugin: gruvbox
+    colorscheme gruvbox
+catch
+    " Builtin colorschemes: desert, peachpuff, quiet, slate
+    colorscheme desert
+endtry
+" }}}1
+
+" Options {{{1
+set hlsearch    " Highlight the search results
+set incsearch   " Show the pattern while typing
+
+set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+
+set hidden  " Hide unsaved buffer
+
+set expandtab   " Expand tag to space
+set tabstop=4   " One tab includes four spaces
+set shiftwidth=4    " The width of '<' and '>'
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+
+set smartindent     " Do smart autoindenting
+
+set ruler           " show the cursor position 
+set wildmenu        " display completion matches in a status line
+set number          " Show line number
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set mouse=a         " Enable mouse in all mode
+set scrolloff=5     " Show a few lines around the cursor
+set fileencodings=utf-8,gb18030,latin1
+
+set background=dark
+
+syntax enable       " This enables Vim's syntax-related features. 
+" Without this, some VimTeX features will not work 
+" }}}1
+
+" Commends {{{1
+
+" Command to see the difference between the current buffer and the file loaded from.
+if !exists(':DiffOrig')
+    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+                \ | wincmd p | diffthis
+endif
+
+augroup OnePointStart
+    au!
+
+    " A more suitable help file
+    autocmd BufWinEnter * 
+                \ if &filetype == 'help'
+                \ |   set number 
+                \ |   if winwidth('%') > 180
+                \ |       wincmd L 
+                \ |       vertical resize 90
+                \ |   endif
+                \ | endif
+
+augroup END
+
+" }}}1
+
+" vim: set sw=4 sts=4 et fdm=marker:

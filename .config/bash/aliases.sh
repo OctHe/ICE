@@ -23,8 +23,11 @@ alias gpl='git pull'
 alias rgrep='grep --color=always --exclude-dir=.git -arn'
 
 # if which vim > /dev/null 2>&1; then
-#     alias cvim='vim -u ~/.config/cvim/vimrc --cmd "set runtimepath-=~/.vim" --cmd "set runtimepath-=~/.vim/after" --cmd "set runtimepath^=~/.config/cvim" --cmd "set runtimepath+=~/.config/cvim/after" '
+#     alias svim='vim -u ~/.config/svim/vimrc --cmd "set runtimepath-=~/.vim" --cmd "set runtimepath-=~/.vim/after" --cmd "set runtimepath^=~/.config/svim" --cmd "set runtimepath+=~/.config/svim/after"  --cmd "set packpath-=~/.vim" --cmd "set packpath-=~/.vim/after" --cmd "set packpath^=~/.config/svim" --cmd "set packpath+=~/.config/svim/after"'
 # fi
+if which vim > /dev/null 2>&1; then
+    alias svim='vim -u ~/.config/svim/vimrc'
+fi
 
 if which nvim > /dev/null 2>&1; then
     alias darkvim='NVIM_APPNAME=darkvim nvim'
