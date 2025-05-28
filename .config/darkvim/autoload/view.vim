@@ -31,11 +31,11 @@ function! view#Whichkey()
                 \ 'name': '+Plugin',
                 \ 'i': 'Install',
                 \ 'u': 'Update',
+                \ 'd': 'Delete',
                 \ }
     let g:which_key_map.p.r = {
-                \ 'name': '+Remove',
+                \ 'name': '+Recache',
                 \ 'c': 'Recache',
-                \ 'd': 'Delete',
                 \ }
     call which_key#register('<Space>', "g:which_key_map")
 

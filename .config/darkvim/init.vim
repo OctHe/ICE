@@ -57,7 +57,7 @@ endif
 nnoremap <Leader>pi :call dein#install()<CR>
 nnoremap <Leader>pu :call dein#update()<CR>
 nnoremap <Leader>prc :call dein#recache_runtimepath()<CR>
-nnoremap <Leader>prd :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+nnoremap <Leader>pd :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 
 
 " Call dein initialization (required)
@@ -86,17 +86,11 @@ call dein#add('neomake/neomake')
 
 call dein#add('vim-scripts/star-search')
 if  has('python3') && executable('/bin/gcc')
-    call dein#add('Yggdroot/LeaderF', { 
-                \ 'build': ':LeaderfInstallCExtension',
-                \ 'hook_source': ':call navigator#LeaderF()'})
-
-    " Snippets are separated from the engine
     call dein#add('honza/vim-snippets')
     " Track the engine   
     call dein#add('SirVer/ultisnips', {'hook_source': ':call completer#Ultisnips()'})
-else
-    call dein#add('Shougo/unite.vim')
 endif
+call dein#add('Shougo/unite.vim')
 
 call dein#add('skywind3000/vim-auto-popmenu', {'hook_source': ':call completer#VimAutoPopemenu()'})
 
