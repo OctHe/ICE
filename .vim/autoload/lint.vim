@@ -7,56 +7,42 @@
 " 
 " =====================================================================
 
-function! lint#Config()
+function! lint#Tagbar()
 
-    " Lint
-    " Vista: Vista relies on universal-ctags. Please careful to install the
-    " correct version. 
-    " In openSUSE:
-    "   sudo zypper install universal-ctags 
-    if !empty(globpath(&rtp, '/plugin/vista.vim'))
-        let g:vista_sidebar_width = 50
-
-        " t means tag
-        nnoremap <silent> <Leader>s :Vista!!<CR>  
-
+    if empty(globpath(&rtp, '/plugin/tagbar.vim'))
+        return
     endif
 
-    " Tagbar: 
-    if !empty(globpath(&rtp, '/plugin/tagbar.vim'))
-        " Automatic open Tagbar when open vim
-        " autocmd VimEnter *.{py,h,c} Tagbar
+    " Automatic open Tagbar when open vim
+    " autocmd VimEnter *.{py,h,c} Tagbar
 
-        " s means symbol
-        nnoremap <silent> <Leader>s :Tagbar<CR>  
+    " s means symbol
+    nnoremap <silent> <Leader>s :Tagbar<CR>  
+
+endfunction
+
+function! lint#Gutentags()
+
+    if empty(globpath(&rtp, '/plugin/gutentags.vim'))
+        return
     endif
 
-    " Auto generate tags
-    if !empty(globpath(&rtp, '/plugin/gutentags.vim'))
-        " Use existing tag file if it exists
-        let g:gutentags_ctags_auto_set_tags = 0
+    " Use existing tag file if it exists
+    let g:gutentags_ctags_auto_set_tags = 0
 
+
+endfunction
+
+function! lint#ALE()
+
+    if empty(globpath(&rtp, '/plugin/ale.vim'))
+        return
     endif
 
-    " ALE:
-    if !empty(globpath(&rtp, '/plugin/ale.vim'))
-
-        if executable('clangd')
-            let g:ale_c_cc_executable = 'clangd'
-            let g:ale_cpp_cc_executable = 'clangd'
-        endif
-
+    if executable('clangd')
+        let g:ale_c_cc_executable = 'clangd'
+        let g:ale_cpp_cc_executable = 'clangd'
     endif
-
-    " neomake
-
-    if !empty(globpath(&rtp, '/plugin/neomake.vim'))
-
-        " Run neomake when writing
-        " call neomake#configure#automake('w')
-    endif
-
-    " splitjoin
 
 endfunction
 

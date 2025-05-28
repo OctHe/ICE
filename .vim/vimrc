@@ -56,8 +56,8 @@ endif
 
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
-let s:plugins = expand('~/.local/share/vim/plugins/')
-call plug#begin(s:plugins)
+call plug#begin(expand('~/.local/share/vim/plugins/'))
+autocmd User plugin_config
 
 " Register vim-plug as a plugin to get the help doc.
 " Note that vim-plug (the plug.vim file) in this file is not working.
@@ -68,8 +68,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 
-" Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 
 Plug 'Yggdroot/indentLine'
 
@@ -78,76 +77,89 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " NERDTree: File explorer. 
 Plug 'preservim/nerdtree'
+autocmd User plugin_config call navigator#NerdTree()
 
 Plug 'preservim/tagbar'
+autocmd User plugin_config call lint#Tagbar()
 
+" Auto generate tags
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
-" Plug 'vim-scripts/CCTree', { 'for': ['c', 'cpp'], }
+autocmd User plugin_config call lint#Gutentags()
 Plug 'dense-analysis/ale'
+autocmd User plugin_config call lint#ALE()
 
 if  has('python3')
     " LeaderF: Asynchronous fuzzy finder with popup window
-    if  executable('pip3') && executable('/bin/gcc')
+    if  executable('pip3') && executable('gcc')
         Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
     else
         Plug 'Yggdroot/LeaderF'
     endif
-
+    autocmd User plugin_config call navigator#LeaderF()
 else
-    if executable('/bin/fzf')
+    if executable('fzf')
         Plug 'junegunn/fzf'
     else
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-        " Plug 'ctrlpvim/ctrlp.vim'
     endif
 endif
 
 if has('python3')
+    " Ultisnips: snippets engine that uses snippet database
+    " vim-snippets: snippet database
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
+    autocmd User plugin_config call completer#UltiSnips()
 endif
 if v:versionlong >= 9010016 && has('python3') && executable('cmake')
     Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
+    autocmd User plugin_config call completer#YCM()
 else 
     Plug 'ervandew/supertab'
 endif
 
 Plug 'sbdchd/neoformat'
 
+" fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
+autocmd User plugin_config call vcs#Fugitive()
+" gitgutter: Show diff in the column sign (See :help signcolumn)
 Plug 'airblade/vim-gitgutter'
 
-" Plug 'tpope/vim-dispatch'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'lervag/vimtex'
 
 Plug 'voldikss/vim-floaterm'
+autocmd User plugin_config call runner#Floaterm()
 
+" Vim-tmux-navigator: It requires configuration in tmux
 " TODO: Use the same file for both vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 
+" rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'
+autocmd User plugin_config call view#Rainbow()
 Plug 'junegunn/vim-easy-align'
 Plug 'wellle/context.vim'
 Plug 'mhinz/vim-startify'
 Plug 'vim-airline/vim-airline'
+autocmd User plugin_config call view#Airline()
 Plug 'liuchengxu/vim-which-key'
+autocmd User plugin_config call view#Whichkey()
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Initialize plugin system
 call plug#end()
-
-call navigator#Config()
-call lint#Config()
-call completer#Config()
-call runner#Config()
-call vcs#Config()
-call view#Config()
+doautocmd User plugin_config
 
 " View {{{1
 try
-    " Colorscheme may use plugin: gruvbox
-    colorscheme gruvbox
+    " Colorscheme may use plugin
+    if has('gui_running')
+        colorscheme PaperColor
+    else
+        colorscheme gruvbox
+    endif
 catch
     " Builtin colorschemes: desert, peachpuff, quiet, slate
     colorscheme desert
