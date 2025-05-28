@@ -59,42 +59,42 @@ function! PackInit() abort
     call minpac#add('k-takata/minpac', {'type': 'opt'})
 
     " Additional plugins here.
-    call minpac#add('LunarWatcher/auto-pairs', {'package_name': 'completer'})
-    call minpac#add('tpope/vim-surround', {'package_name': 'completer'})
-    call minpac#add('tpope/vim-repeat', {'package_name': 'completer'})
-    call minpac#add('tpope/vim-endwise', {'package_name': 'completer'})
+    call minpac#add('LunarWatcher/auto-pairs')
+    call minpac#add('tpope/vim-surround')
+    call minpac#add('tpope/vim-repeat')
+    call minpac#add('tpope/vim-endwise')
 
-    call minpac#add('tpope/vim-commentary', {'package_name': 'completer'})
+    call minpac#add('tpope/vim-commentary')
 
-    call minpac#add('Yggdroot/indentLine', {'package_name': 'view'})
+    call minpac#add('Yggdroot/indentLine')
 
-    call minpac#add('timsu92/vim-easymotion', {'package_name': 'navigator'})
-    call minpac#add('AndrewRadev/splitjoin.vim', {'package_name': 'navigator'})
+    call minpac#add('timsu92/vim-easymotion')
+    call minpac#add('AndrewRadev/splitjoin.vim')
 
-    call minpac#add('preservim/nerdtree', {'package_name': 'navigator'})
+    call minpac#add('preservim/nerdtree')
 
-    call minpac#add('preservim/tagbar', {'package_name': 'navigator'})
+    call minpac#add('preservim/tagbar')
 
-    call minpac#add('ludovicchabant/vim-gutentags', {'package_name': 'lint'})
-    call minpac#add('vim-scripts/CCTree', {'package_name': 'lint'})
+    call minpac#add('ludovicchabant/vim-gutentags')
+    call minpac#add('vim-scripts/CCTree')
 
-    call minpac#add('ctrlpvim/ctrlp.vim', {'package_name': 'navigator'})
+    call minpac#add('ctrlpvim/ctrlp.vim')
 
-    call minpac#add('ervandew/supertab', {'package_name': 'completer'})
+    call minpac#add('ervandew/supertab')
 
-    call minpac#add('sbdchd/neoformat', {'package_name': 'lint'})
+    call minpac#add('sbdchd/neoformat')
 
-    call minpac#add('tpope/vim-fugitive', {'package_name': 'vcs'})
-    call minpac#add('airblade/vim-gitgutter', {'package_name': 'vcs'})
+    call minpac#add('tpope/vim-fugitive')
+    call minpac#add('airblade/vim-gitgutter')
 
-    call minpac#add('tpope/vim-dispatch', {'package_name': 'runner'})
+    call minpac#add('tpope/vim-dispatch')
 
-    call minpac#add('voldikss/vim-floaterm', {'package_name': 'runner'})
+    call minpac#add('voldikss/vim-floaterm')
 
-    call minpac#add('luochen1990/rainbow', {'package_name': 'view'})
-    call minpac#add('wellle/context.vim', {'package_name': 'view'})
-    call minpac#add('liuchengxu/vim-which-key', {'package_name': 'view'})
-    call minpac#add('morhetz/gruvbox', {'package_name': 'view'})
+    call minpac#add('luochen1990/rainbow')
+    call minpac#add('wellle/context.vim')
+    call minpac#add('liuchengxu/vim-which-key')
+    call minpac#add('morhetz/gruvbox')
 
 endfunction
 
