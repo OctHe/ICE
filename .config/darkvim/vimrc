@@ -16,7 +16,14 @@ filetype plugin on
 " Enable automatic indentation.
 filetype indent on
 
-" source $VIMRUNTIME/vimrc_example.vim
+set runtimepath-=~/.vim
+set runtimepath-=~/.vim/after
+set runtimepath^=~/.config/darkvim
+set runtimepath+=~/.config/darkvim/after
+set packpath-=~/.vim
+set packpath-=~/.vim/after
+set packpath^=~/.config/darkvim
+set packpath+=~/.config/darkvim/after
 
 " Keymappings {{{1
 
@@ -52,6 +59,7 @@ if &runtimepath !~# '/dein.vim'
     endif
     execute 'set runtimepath^=' .. s:dein_src
     execute 'helptags ' s:dein_src .. '/doc'
+    let g:dein#install_process_timeout = 1200
 endif
 
 nnoremap <Leader>pi :call dein#install()<CR>
@@ -65,34 +73,33 @@ call dein#begin($CACHE .. '/dein')
 
 call dein#add('LunarWatcher/auto-pairs')
 call dein#add('machakann/vim-sandwich')
+
 call dein#add('tpope/vim-repeat') " Plugin repeat support
 call dein#add('tpope/vim-endwise')
+call dein#add('tpope/vim-fugitive', {'hook_source': ':call vcs#Fugitive()'})
 
-if has('python3')
-    call dein#add('Shougo/defx.nvim')
-else
-    call dein#add('tpope/vim-vinegar')
-endif
-
-call dein#add('preservim/vim-indent-guides')
-
+call dein#add('Shougo/unite.vim')
+call dein#add('preservim/nerdtree', {'hook_source': ':call navigator#NerdTree()'})
 call dein#add('justinmk/vim-sneak', {'hook_source': ':call navigator#Sneak()'})
 call dein#add('AndrewRadev/splitjoin.vim')
 
-call dein#add('preservim/nerdcommenter', {'hook_source': ':call completer#Nerdcommenter()'})
+call dein#add('tomtom/tcomment_vim')
 
-call dein#add('liuchengxu/vista.vim', {'hook_source': ':call lint#Vista()'})
 call dein#add('neomake/neomake')
 
 call dein#add('vim-scripts/star-search')
-if  has('python3') && executable('/bin/gcc')
+if  has('python3')
     call dein#add('honza/vim-snippets')
     " Track the engine   
     call dein#add('SirVer/ultisnips', {'hook_source': ':call completer#Ultisnips()'})
 endif
-call dein#add('Shougo/unite.vim')
 
-call dein#add('skywind3000/vim-auto-popmenu', {'hook_source': ':call completer#VimAutoPopemenu()'})
+if v:versionlong >= 9010016 && has('python3') && executable('cmake')
+    call dein#add('ycm-core/YouCompleteMe', {
+                \ 'build': './install.py --clangd-completer',
+                \ 'hook_source': ':call completer#YCM()'
+                \ })
+endif
 
 if has('python3')
     call dein#add('puremourning/vimspector', {'hook_source': ':call runner#vimspector()'})
@@ -102,18 +109,21 @@ call dein#add('chrisbra/csv.vim')
 
 call dein#add('sbdchd/neoformat')
 
-call dein#add('tpope/vim-fugitive', {'hook_source': ':call vcs#Fugitive()'})
 call dein#add('mhinz/vim-signify')
 
 call dein#add('voldikss/vim-floaterm', {'hook_source': ':call runner#Floaterm()'})
 
 call dein#add('junegunn/vim-easy-align')
 call dein#add('mhinz/vim-startify')
-call dein#add('wellle/context.vim') " Context: Show the function, for-loop and condition.
+" Context: Show the function, for-loop and condition.
+call dein#add('wellle/context.vim')
 call dein#add('luochen1990/rainbow', {'hook_source': ':call view#Rainbow()'})
 call dein#add('psliwka/vim-smoothie')
-call dein#add('itchyny/lightline.vim') " lightline does not process buffer in tabline
+call dein#add('vim-airline/vim-airline', {'hook_source': ':call view#Airline()'})
+
+call dein#add('liuchengxu/vista.vim', {'hook_source': ':call lint#Vista()'})
 call dein#add('liuchengxu/vim-which-key', {'hook_source': ':call view#Whichkey()'})
+
 call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': ':call view#AwesomeColorschemes()'})
 
 " Finish dein initialization (required)

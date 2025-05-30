@@ -1,11 +1,23 @@
 " =====================================================================
 " 
-" UI: Colorscheme, status line, indent. Let Vim looks better
+" Colorscheme, status line, indent. Let Vim looks better
 "
 " Author: OctHe
 " Copyright (C)
 " 
 " =====================================================================
+
+function! view#Airline()
+    if empty(globpath(&rtp, '/plugin/airline.vim'))
+        return
+    endif
+
+    " Enhanced tabline
+    let g:airline#extensions#tabline#enabled = 1
+    " Show buffer number so I can quickly pick a buffer
+    let g:airline#extensions#tabline#buffer_nr_show = 1
+
+endfunction
 
 function! view#Whichkey()
 
