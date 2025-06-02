@@ -3,7 +3,7 @@
 " Lint and LSP
 "
 " Author: OctHe
-" Copyright (C): 2025
+" Copyright (C)
 " 
 " =====================================================================
 
@@ -17,21 +17,10 @@ function! lint#Tagbar()
     " autocmd VimEnter *.{py,h,c} Tagbar
 
     " s means symbol
-    nnoremap <silent> <Leader>s :Tagbar<CR>  
+    nnoremap <silent> <Leader>s :Tagbar<CR>
 
 endfunction
 
-function! lint#Gutentags()
-
-    if empty(globpath(&rtp, '/plugin/gutentags.vim'))
-        return
-    endif
-
-    " Use existing tag file if it exists
-    let g:gutentags_ctags_auto_set_tags = 0
-
-
-endfunction
 
 function! lint#ALE()
 

@@ -23,10 +23,6 @@ source $VIMRUNTIME/vimrc_example.vim
 " This command must be before all keymappings and plugin configs
 let mapleader = ' '
 
-" It changes the behavior of star to not jump to next word
-" Yank the word into the register s, and then assign it in to the yank
-" register (The register / is not writeable directly)
-nmap <silent> * "syiw:let @/ = @s<CR>
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
@@ -57,75 +53,74 @@ endif
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(expand('~/.local/share/vim/plugins/'))
-autocmd User plugin_config
+" autocmd User plugin_config
 
 " Register vim-plug as a plugin to get the help doc.
 " Note that vim-plug (the plug.vim file) in this file is not working.
 Plug 'junegunn/vim-plug'
 
-Plug 'LunarWatcher/auto-pairs'
-Plug 'tpope/vim-surround'
+Plug 'Raimondi/delimitMate'
+
+Plug'vim-scripts/star-search'
+
+Plug 'machakann/vim-sandwich'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
-
-Plug 'tomtom/tcomment_vim'
-
-Plug 'Yggdroot/indentLine'
+" fugitive: Provide common git options (diff, status, add, commit, etc)
+Plug 'tpope/vim-fugitive'
+autocmd User plugin_config call vcs#Fugitive()
 
 Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
-Plug 'AndrewRadev/splitjoin.vim'
 
-" NERDTree: File explorer. 
+Plug 'mbbill/undotree'
+autocmd User plugin_config call view#Undotree()
+
+" NERDTree: File explorer.
 Plug 'preservim/nerdtree'
 autocmd User plugin_config call navigator#NerdTree()
-
-Plug 'preservim/tagbar'
+Plug 'preservim/tagbar' 
 autocmd User plugin_config call lint#Tagbar()
+Plug 'preservim/nerdcommenter'
+autocmd User plugin_config call completer#Nerdcommenter()
+Plug 'preservim/vim-indent-guides'
 
-" Auto generate tags
-Plug 'ludovicchabant/vim-gutentags', { 'for': ['c', 'cpp'], } 
-autocmd User plugin_config call lint#Gutentags()
 Plug 'dense-analysis/ale'
 autocmd User plugin_config call lint#ALE()
 
-if  has('python3')
-    " LeaderF: Asynchronous fuzzy finder with popup window
-    if  executable('pip3') && executable('gcc')
-        Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-    else
-        Plug 'Yggdroot/LeaderF'
-    endif
-    autocmd User plugin_config call navigator#LeaderF()
+if executable('fzf')
+    Plug 'junegunn/fzf'
 else
-    if executable('fzf')
-        Plug 'junegunn/fzf'
-    else
-        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    endif
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 endif
+Plug 'junegunn/vim-easy-align'
+" goyo.vim and limelight.vim improves text experience
+Plug 'junegunn/goyo.vim'
+autocmd User plugin_config call view#Goyo()
+Plug 'junegunn/limelight.vim'
+autocmd User plugin_config call view#Limelight()
+" Display contents in register
+Plug 'junegunn/vim-peekaboo'
+" Colorscheme
+Plug 'junegunn/seoul256.vim'
 
 if has('python3')
     " Ultisnips: snippets engine that uses snippet database
     " vim-snippets: snippet database
-    Plug 'honza/vim-snippets'
-    Plug 'SirVer/ultisnips'
+    Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
     autocmd User plugin_config call completer#UltiSnips()
 endif
-if v:versionlong >= 9010016 && has('python3') && executable('cmake')
-    Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --clangd-completer' }
-    autocmd User plugin_config call completer#YCM()
-else 
-    Plug 'ervandew/supertab'
+
+
+if has('python3')
+  " Auto detects predefined formatters.
+  Plug 'vim-autoformat/vim-autoformat'
 endif
 
-Plug 'sbdchd/neoformat'
-
-" fugitive: Provide common git options (diff, status, add, commit, etc)
-Plug 'tpope/vim-fugitive'
-autocmd User plugin_config call vcs#Fugitive()
 " gitgutter: Show diff in the column sign (See :help signcolumn)
 Plug 'airblade/vim-gitgutter'
 
+Plug 'skywind3000/vim-auto-popmenu'
+autocmd User plugin_config call completer#VimAutoPopemenu()
 Plug 'skywind3000/asyncrun.vim'
 
 Plug 'voldikss/vim-floaterm'
@@ -138,14 +133,14 @@ Plug 'christoomey/vim-tmux-navigator'
 " rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow()
-Plug 'junegunn/vim-easy-align'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'wellle/context.vim'
 Plug 'mhinz/vim-startify'
-Plug 'vim-airline/vim-airline'
-autocmd User plugin_config call view#Airline()
+" vim-signature: Manage marks with column
+Plug 'kshenoy/vim-signature'
+Plug 'itchyny/lightline.vim'
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
-Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
 
 " Initialize plugin system
@@ -158,7 +153,7 @@ try
     if has('gui_running')
         colorscheme PaperColor
     else
-        colorscheme gruvbox
+        colorscheme seoul256
     endif
 catch
     " Builtin colorschemes: desert, peachpuff, quiet, slate
@@ -196,18 +191,10 @@ syntax enable       " This enables Vim's syntax-related features.
 " Without this, some VimTeX features will not work 
 " }}}1
 
-" Commends {{{1
-
-" Command to see the difference between the current buffer and the file loaded from.
-if !exists(':DiffOrig')
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
-
-augroup OnePointStart
+" Commands {{{1
+augroup EnhancedHelp
     au!
 
-    " A more suitable help file
     autocmd BufWinEnter * 
                 \ if &filetype == 'help'
                 \ |   set number 
@@ -218,7 +205,5 @@ augroup OnePointStart
                 \ | endif
 
 augroup END
-
 " }}}1
-
-" vim: set sw=4 sts=4 et fdm=marker:
+" vim: set sw=4 sts=4 et:

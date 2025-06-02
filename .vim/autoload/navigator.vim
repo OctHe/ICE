@@ -7,25 +7,6 @@
 " 
 " =====================================================================
 
-function! navigator#LeaderF()
-
-    if empty(globpath(&rtp, '/plugin/leaderf.vim'))
-        return
-    endif
-
-    let g:Lf_WindowPosition = 'popup'
-
-    " Vista.vim:
-    function! NearestMethodOrFunction() abort
-        return get(b:, 'vista_nearest_method_or_function', '')
-    endfunction
-
-    set statusline+=%{NearestMethodOrFunction()}
-
-    let g:Lf_ShortcutF = '<leader>ff'
-    let g:Lf_ShortcutB = '<leader>fb'
-
-endfunction
 
 function! navigator#NerdTree()
 

@@ -3,30 +3,18 @@
 " Autocompletion
 "
 " Author: OctHe
-" Copyright (C): 2025
+" Copyright (C)
 " 
 " =====================================================================
 
-" YCM: a powerful completion plugin based on LSP. It relies on cmake, 
-" make, g++, python3-dev and LSP. YCM does not use system-wide LSP.
-" Install the prerequisites in Debian with
-"   sudo apt install cmake make g++ python3-dev
-" In openSUSE with
-"   sudo zypper install cmake make g++ python3-deval
-function! completer#YCM()
+function! completer#Nerdcommenter()
 
-    if empty(globpath(&rtp, '/plugin/youcompleteme.vim'))
+    if empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
         return
     endif
 
-    let g:ycm_confirm_extra_conf = 0
-    let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-
-    let g:ycm_show_diagnostics_ui = 0
-
-    " Clear the YCM blacklist, so it works for all files
-    let g:ycm_filetype_blacklist = {}
-
+    let g:NERDSpaceDelims = 1
+    let g:NERDRemoveExtraSpaces = 1
 
 endfunction
 
@@ -46,5 +34,27 @@ function! completer#UltiSnips()
     let g:UltiSnipsEditSplit="vertical"
 
 endfunction
+
+function! completer#VimAutoPopemenu()
+
+    if empty(globpath(&rtp, '/plugin/apc.vim'))
+        return
+    endif
+
+    " enable this plugin for filetypes, '*' for all files.
+    "let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+    let g:apc_enable_ft = {'*':1}
+
+    " source for dictionary, current or other loaded buffers, see ':help cpt'
+    set cpt=.,k,w,b
+
+    " don't select the first item.
+    set completeopt=menu,menuone,noselect
+
+    " suppress annoy messages.
+    set shortmess+=c
+
+endfunction
+
 
 " vim: set sw=4 sts=4 et fdm=marker:
