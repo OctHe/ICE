@@ -24,6 +24,10 @@
 # Git
 !.gitignore
 
+# rg
+!.ignore
+!.rgignore
+
 # Vim
 !/.vim/
 !/.vim/**

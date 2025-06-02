@@ -1,14 +1,14 @@
-" 
 " Vim run command with dark-powered dein.vim.
 " Dark-powered means do everything in the vim by the author of dein.vim
+"
 " Author: OctHe
-" Copyright (C): 2025
-" 
+" Copyright (C)
+"
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
 " Enable file type detection.
@@ -42,7 +42,7 @@ vmap > >gv
 
 " View {{{1
 
-" Default colorscheme if plugins does not load. 
+" Default colorscheme if plugins does not load.
 " Chosen from these builtin colorschemes: desert, peachpuff, quiet, slate
 colorscheme desert
 
@@ -50,81 +50,96 @@ colorscheme desert
 
 let $CACHE = expand('~/.cache')
 if !($CACHE->isdirectory())
-    call mkdir($CACHE, 'p')
+  call mkdir($CACHE, 'p')
 endif
 if &runtimepath !~# '/dein.vim'
-    let s:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
-    if !(s:dein_src->isdirectory())
-        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_src
-    endif
-    execute 'set runtimepath^=' .. s:dein_src
-    execute 'helptags ' s:dein_src .. '/doc'
-    let g:dein#install_process_timeout = 1200
+  let s:dein_src = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+  if !(s:dein_src->isdirectory())
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_src
+  endif
+  execute 'set runtimepath^=' .. s:dein_src
+  execute 'helptags ' s:dein_src .. '/doc'
+  let g:dein#install_process_timeout = 1200
+
+  nnoremap <Leader>pi :call dein#install()<CR>
+  nnoremap <Leader>pu :call dein#update()<CR>
+  nnoremap <Leader>prc :call dein#recache_runtimepath()<CR>
+  nnoremap <Leader>pd :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+
 endif
 
-nnoremap <Leader>pi :call dein#install()<CR>
-nnoremap <Leader>pu :call dein#update()<CR>
-nnoremap <Leader>prc :call dein#recache_runtimepath()<CR>
-nnoremap <Leader>pd :call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 
 
 " Call dein initialization (required)
 call dein#begin($CACHE .. '/dein')
 
-call dein#add('LunarWatcher/auto-pairs')
-call dein#add('machakann/vim-sandwich')
-
 call dein#add('tpope/vim-repeat') " Plugin repeat support
 call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-fugitive', {'hook_source': ':call vcs#Fugitive()'})
+call dein#add('tpope/vim-fugitive', {'hook_source': 'call vcs#Fugitive()'})
+call dein#add('tpope/vim-surround')
 
-call dein#add('Shougo/unite.vim')
-call dein#add('preservim/nerdtree', {'hook_source': ':call navigator#NerdTree()'})
-call dein#add('justinmk/vim-sneak', {'hook_source': ':call navigator#Sneak()'})
+" Automatic closing of quotes, parenthesis, brackets,
+call dein#add('Raimondi/delimitMate')
+call dein#add('mbbill/undotree', {'hook_source': 'call view#Undotree()'})
+
+call dein#add('Yggdroot/indentLine')
+" LeaderF: Asynchronous fuzzy finder with popup window
+if  has('python3') &&  executable('pip3')
+  call dein#add('Yggdroot/LeaderF', {
+        \ 'hook_post_update': 'LeaderfInstallCExtension',
+        \ 'hook_source': 'call navigator#LeaderF()'})
+endif
+
+call dein#add('preservim/nerdtree', {'hook_source': 'call navigator#NerdTree()'})
+call dein#add('justinmk/vim-sneak', {'hook_source': 'call navigator#Sneak()'})
 call dein#add('AndrewRadev/splitjoin.vim')
 
-call dein#add('tomtom/tcomment_vim')
+call dein#add('tomtom/tcomment_vim', {'hook_source': 'call completer#TComment()'})
 
 call dein#add('neomake/neomake')
 
-call dein#add('vim-scripts/star-search')
 if  has('python3')
-    call dein#add('honza/vim-snippets')
-    " Track the engine   
-    call dein#add('SirVer/ultisnips', {'hook_source': ':call completer#Ultisnips()'})
+  call dein#add('honza/vim-snippets') | call dein#add('SirVer/ultisnips', {'hook_source': 'call completer#Ultisnips()'})
 endif
 
 if v:versionlong >= 9010016 && has('python3') && executable('cmake')
-    call dein#add('ycm-core/YouCompleteMe', {
-                \ 'build': './install.py --clangd-completer',
-                \ 'hook_source': ':call completer#YCM()'
-                \ })
+  call dein#add('ycm-core/YouCompleteMe', {
+        \ 'build': './install.py --clangd-completer',
+        \ 'hook_source': 'call completer#YCM()'
+        \ })
 endif
 
 if has('python3')
-    call dein#add('puremourning/vimspector', {'hook_source': ':call runner#vimspector()'})
+  call dein#add('puremourning/vimspector', {'hook_source': 'call runner#vimspector()'})
 endif
-call dein#add('lervag/vimtex', {'hook_source': ':call runner#vimtex()'})
+call dein#add('lervag/vimtex', {'hook_source': 'call runner#vimtex()'})
 call dein#add('chrisbra/csv.vim')
 
 call dein#add('sbdchd/neoformat')
 
-call dein#add('mhinz/vim-signify')
+" Grep the results into a quickfix. It can replace '/' command
+call dein#add('mhinz/vim-grepper', {'hook_source': 'call navigator#Grepper()'})
+call dein#add('mhinz/vim-signify', {'hook_source': 'call vcs#Signify()'})
+call dein#add('mhinz/vim-startify')
 
-call dein#add('voldikss/vim-floaterm', {'hook_source': ':call runner#Floaterm()'})
+call dein#add('voldikss/vim-floaterm', {'hook_source': 'call runner#Floaterm()'})
 
 call dein#add('junegunn/vim-easy-align')
-call dein#add('mhinz/vim-startify')
+" Display contents in register
+call dein#add('junegunn/vim-peekaboo')
+
+call dein#add('ntpeters/vim-better-whitespace')
+call dein#add('kshenoy/vim-signature')
 " Context: Show the function, for-loop and condition.
 call dein#add('wellle/context.vim')
-call dein#add('luochen1990/rainbow', {'hook_source': ':call view#Rainbow()'})
+call dein#add('luochen1990/rainbow', {'hook_source': 'call view#Rainbow()'})
 call dein#add('psliwka/vim-smoothie')
-call dein#add('vim-airline/vim-airline', {'hook_source': ':call view#Airline()'})
+call dein#add('vim-airline/vim-airline', {'hook_source': 'call view#Airline()'})
 
-call dein#add('liuchengxu/vista.vim', {'hook_source': ':call lint#Vista()'})
-call dein#add('liuchengxu/vim-which-key', {'hook_source': ':call view#Whichkey()'})
+call dein#add('liuchengxu/vista.vim', {'hook_source': 'call lint#Vista()'})
+call dein#add('liuchengxu/vim-which-key', {'hook_source': 'call view#Whichkey()'})
 
-call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': ':call view#AwesomeColorschemes()'})
+call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': 'call view#AwesomeColorschemes()'})
 
 " Finish dein initialization (required)
 call dein#end()
@@ -145,7 +160,7 @@ set backspace=indent,eol,start  " Allow backspacing over everything in insert mo
 
 set smartindent     " Do smart autoindenting
 
-set ruler           " show the cursor position 
+set ruler           " show the cursor position
 set wildmenu        " display completion matches in a status line
 set number          " Show line number
 set splitbelow      " New buffer splits below by default
@@ -156,12 +171,27 @@ set fileencodings=utf-8,gb18030,latin1
 set background=dark
 
 if has('gui_running')
-    " GUI options
-    set guioptions=aegrLt
+  " GUI options
+  set guioptions=aegrLt
 endif
 
-syntax enable       " This enables Vim's syntax-related features. 
-" Without this, some VimTeX features will not work 
+syntax enable       " This enables Vim's syntax-related features.
+" Without this, some VimTeX features will not work
 " }}}1
 
-" vim: set sw=4 sts=4 et:
+" Commands {{{1
+augroup EnhancedHelp
+  au!
+
+  autocmd BufWinEnter *
+        \ if &filetype == 'help'
+        \ |   set number
+        \ |   if winwidth('%') > 180
+        \ |       wincmd L
+        \ |       vertical resize 90
+        \ |   endif
+        \ | endif
+
+augroup END
+" }}}1
+" vim: set sw=2 sts=2 et:
