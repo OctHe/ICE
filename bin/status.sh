@@ -76,7 +76,7 @@ linter=(
 )
 
 formatter=(
-    uncrustify astyle \\n
+    uncrustify astyle clang-format\\n
     black yapf autopep8 \\n
     stylua \\n
 )
