@@ -7,6 +7,18 @@
 " 
 " =====================================================================
 
+function! lint#Gutentags()
+
+    if empty(globpath(&rtp, '/plugin/gutentags.vim'))
+        return
+    endif
+
+    " Use existing tag file if it exists
+    let g:gutentags_ctags_auto_set_tags = 0
+
+
+endfunction
+
 function! lint#Config()
 
     " Lint

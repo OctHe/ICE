@@ -60,34 +60,34 @@ function! PackInit() abort
 
     " Additional plugins here.
     call minpac#add('LunarWatcher/auto-pairs')
+
     call minpac#add('tpope/vim-surround')
     call minpac#add('tpope/vim-repeat')
     call minpac#add('tpope/vim-endwise')
-
     call minpac#add('tpope/vim-commentary')
+    call minpac#add('tpope/vim-vinegar')
+    call minpac#add('tpope/vim-dispatch')
+    call minpac#add('tpope/vim-fugitive')
 
     call minpac#add('Yggdroot/indentLine')
 
     call minpac#add('timsu92/vim-easymotion')
-    call minpac#add('AndrewRadev/splitjoin.vim')
-
-    call minpac#add('preservim/nerdtree')
 
     call minpac#add('preservim/tagbar')
-
     call minpac#add('ludovicchabant/vim-gutentags')
+
     call minpac#add('vim-scripts/CCTree')
+    call minpac#add('vim-scripts/Gundo')
+
+call minpac#add'mg979/vim-visual-multi')
 
     call minpac#add('ctrlpvim/ctrlp.vim')
 
     call minpac#add('ervandew/supertab')
 
-    call minpac#add('sbdchd/neoformat')
+    call minpac#add('godlygeek/tabular')
 
-    call minpac#add('tpope/vim-fugitive')
     call minpac#add('airblade/vim-gitgutter')
-
-    call minpac#add('tpope/vim-dispatch')
 
     call minpac#add('voldikss/vim-floaterm')
 
@@ -103,7 +103,7 @@ endfunction
 " the information of plugins, then performs the task.
 command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
-command! PackStatus packadd minpac | call minpac#status()
+command! PackStatus packadd minpac | call minpac#init() | call minpac#status()
 
 call navigator#Config()
 call lint#Config()
@@ -154,16 +154,9 @@ syntax enable       " This enables Vim's syntax-related features.
 
 " Commends {{{1
 
-" Command to see the difference between the current buffer and the file loaded from.
-if !exists(':DiffOrig')
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-                \ | wincmd p | diffthis
-endif
-
-augroup OnePointStart
+augroup EnhancedHelp
     au!
 
-    " A more suitable help file
     autocmd BufWinEnter * 
                 \ if &filetype == 'help'
                 \ |   set number 
@@ -177,4 +170,5 @@ augroup END
 
 " }}}1
 
-" vim: set sw=4 sts=4 et fdm=marker:
+   
+" vim: set sw=2 sts=2 et fdm=marker:
