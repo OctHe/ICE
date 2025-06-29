@@ -29,4 +29,4 @@ if status is-interactive
     end
 end
 
-alias onepoint "/usr/bin/git --git-dir=$HOME/.onepoint/ --work-tree=$HOME"
+alias ice "/usr/bin/git --git-dir=$HOME/.ice/ --work-tree=$HOME"

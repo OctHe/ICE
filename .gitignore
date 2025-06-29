@@ -38,6 +38,7 @@
 !/.config/svim/
 !/.config/svim/**
 /.config/svim/pack/**
+/.config/svim/.netrwhist
 
 # Neovim
 !/.config/nvim/

@@ -75,6 +75,8 @@ Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
 Plug 'mbbill/undotree'
 autocmd User plugin_config call view#Undotree()
 
+Plug 'mg979/vim-visual-multi'
+
 " NERDTree: File explorer.
 Plug 'preservim/nerdtree'
 autocmd User plugin_config call navigator#NerdTree()

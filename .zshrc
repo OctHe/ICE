@@ -113,7 +113,7 @@ zinit light supercrabtree/k
 zinit light agnoster/agnoster-zsh-theme
 
 ## Virtual environment
-PYTHON_VENV=~/.local/share/python/venv/onepoint
+PYTHON_VENV=~/.local/share/python/venv/ice
 [ -d ${PYTHON_VENV} ] && source ${PYTHON_VENV}/bin/activate
 
 # Remove segment 2 of agnoster prompt. Default segments are :

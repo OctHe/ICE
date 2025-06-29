@@ -1,12 +1,12 @@
-# onePoint
+# Integrated Configuration Environment
 
-OnePoint is a collection of dotfiles and scripts.
+Integrated Configuration Environment(ICE) is a collection of dotfiles.
 
 Installation is easy:
 
-    git clone --bare https://github.com/OctHe/OnePoint .onepoint
-    alias onepoint='/usr/bin/git --git-dir=$HOME/.onepoint/ --work-tree=$HOME'
-    onepoint checkout
+    git clone --bare https://github.com/OctHe/ICE .ice
+    alias ice='/usr/bin/git --git-dir=$HOME/.ice/ --work-tree=$HOME'
+    ice checkout
 
 Since lots of Linux use bash as their default shell.
 The project does not directly change the `.bashrc` file.
@@ -17,7 +17,7 @@ To enable Bash's config, use
 
 To use the python virtual environment:
 
-    python3 -m venv .local/share/python/venv/onepoint
+    python3 -m venv .local/share/python/venv/ice
 
 The packages is installed by
 
