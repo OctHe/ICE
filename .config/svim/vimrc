@@ -73,13 +73,12 @@ function! PackInit() abort
 
     call minpac#add('timsu92/vim-easymotion')
 
-    call minpac#add('preservim/tagbar')
     call minpac#add('ludovicchabant/vim-gutentags')
 
     call minpac#add('vim-scripts/CCTree')
     call minpac#add('vim-scripts/Gundo')
 
-call minpac#add'mg979/vim-visual-multi')
+    call minpac#add('mg979/vim-visual-multi')
 
     call minpac#add('ctrlpvim/ctrlp.vim')
 
@@ -87,13 +86,20 @@ call minpac#add'mg979/vim-visual-multi')
 
     call minpac#add('godlygeek/tabular')
 
+    " gitgutter: Show diff in the column sign (See :help signcolumn)
     call minpac#add('airblade/vim-gitgutter')
 
     call minpac#add('voldikss/vim-floaterm')
 
     call minpac#add('luochen1990/rainbow')
+
     call minpac#add('wellle/context.vim')
+
+    call minpac#add('liuchengxu/vista.vim')
     call minpac#add('liuchengxu/vim-which-key')
+
+    call minpac#add('vim-airline/vim-airline')
+
     call minpac#add('morhetz/gruvbox')
 
 endfunction

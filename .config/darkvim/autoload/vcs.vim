@@ -18,16 +18,4 @@ function! vcs#Signify()
 
 endfunction
 
-" fugitive: Provide common git options (diff, status, add, commit, etc)
-function! vcs#Fugitive()
-
-  if empty(globpath(&rtp, '/plugin/fugitive.vim'))
-    return
-  endif
-
-  nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
-  nnoremap <silent> <Leader>gs :Git status<CR>
-
-endfunction
-
 " vim: set sw=2 sts=2 et fdm=marker:

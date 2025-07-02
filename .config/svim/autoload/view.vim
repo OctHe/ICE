@@ -8,7 +8,6 @@
 " =====================================================================
 
 function! view#Config()
-    " UI: Colorscheme, status line, indent. Let Vim looks better
     " airline:
     if !empty(globpath(&rtp, '/plugin/airline.vim'))
         " Enhanced tabline
@@ -17,12 +16,6 @@ function! view#Config()
         let g:airline#extensions#tabline#buffer_nr_show = 1
 
     endif
-
-    " Lightline
-
-    " indentline
-
-    " indentguide
 
     " Whichkey: 
     if !empty(globpath(&rtp, '/plugin/which_key.vim'))

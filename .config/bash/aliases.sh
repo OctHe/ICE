@@ -26,7 +26,7 @@ if which vim > /dev/null 2>&1; then
     alias svim='vim -u ~/.config/svim/vimrc'
 fi
 
-if which nvim > /dev/null 2>&1; then
+if which vim > /dev/null 2>&1; then
     alias darkvim='vim -u ~/.config/darkvim/vimrc'
 fi
 if which nvim > /dev/null 2>&1; then

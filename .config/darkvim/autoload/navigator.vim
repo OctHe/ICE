@@ -34,39 +34,6 @@ function! navigator#LeaderF()
 
 endfunction
 
-function! navigator#Grepper()
-
-  if empty(globpath(&rtp, '/plugin/grepper.vim'))
-    return
-  endif
-
-  noremap <Leader>fg :Grepper<CR>
-
-endfunction
-
-" Sneak: Jump with 2 chars.
-function! navigator#Sneak()
-
-  if empty(globpath(&rtp, '/plugin/sneak.vim'))
-    return
-  endif
-
-  " 1-charactor sneak for enhanced f/F/t/T
-  nmap f <Plug>Sneak_f
-  nmap F <Plug>Sneak_F
-  xmap f <Plug>Sneak_f
-  xmap F <Plug>Sneak_F
-  omap f <Plug>Sneak_f
-  omap F <Plug>Sneak_F
-  nmap t <Plug>Sneak_t
-  nmap T <Plug>Sneak_T
-  xmap t <Plug>Sneak_t
-  xmap T <Plug>Sneak_T
-  omap t <Plug>Sneak_t
-  omap T <Plug>Sneak_T
-
-endfunction
-
 function! navigator#NerdTree()
 
   if empty(globpath(&rtp, '/plugin/NERD_tree.vim'))

@@ -73,18 +73,7 @@ endif
 " Call dein initialization (required)
 call dein#begin($CACHE .. '/dein')
 
-call dein#add('tpope/vim-repeat') " Plugin repeat support
-call dein#add('tpope/vim-endwise')
-call dein#add('tpope/vim-fugitive', {'hook_source': 'call vcs#Fugitive()'})
-call dein#add('tpope/vim-surround')
-
-" Automatic closing of quotes, parenthesis, brackets,
-call dein#add('Raimondi/delimitMate')
-call dein#add('mbbill/undotree', {'hook_source': 'call view#Undotree()'})
-
-call dein#add('mg979/vim-visual-multi')
-
-call dein#add('Yggdroot/indentLine')
+" call dein#add('Yggdroot/indentLine')
 " LeaderF: Asynchronous fuzzy finder with popup window
 if  has('python3') &&  executable('pip3')
   call dein#add('Yggdroot/LeaderF', {
@@ -92,18 +81,9 @@ if  has('python3') &&  executable('pip3')
         \ 'hook_source': 'call navigator#LeaderF()'})
 endif
 
-call dein#add('preservim/nerdtree', {'hook_source': 'call navigator#NerdTree()'})
-call dein#add('justinmk/vim-sneak', {'hook_source': 'call navigator#Sneak()'})
-call dein#add('AndrewRadev/splitjoin.vim')
-
 call dein#add('tomtom/tcomment_vim', {'hook_source': 'call completer#TComment()'})
 
 call dein#add('neomake/neomake')
-
-if  has('python3')
-  call dein#add('honza/vim-snippets')
-  call dein#add('SirVer/ultisnips', {'hook_source': 'call completer#Ultisnips()'})
-endif
 
 if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   call dein#add('ycm-core/YouCompleteMe', {
@@ -111,36 +91,6 @@ if v:versionlong >= 9010016 && has('python3') && executable('cmake')
         \ 'hook_source': 'call completer#YCM()'
         \ })
 endif
-
-if has('python3')
-  call dein#add('puremourning/vimspector', {'hook_source': 'call runner#vimspector()'})
-endif
-call dein#add('lervag/vimtex', {'hook_source': 'call runner#vimtex()'})
-call dein#add('chrisbra/csv.vim')
-
-call dein#add('sbdchd/neoformat')
-
-" Grep the results into a quickfix. It can replace '/' command
-call dein#add('mhinz/vim-grepper', {'hook_source': 'call navigator#Grepper()'})
-call dein#add('mhinz/vim-signify', {'hook_source': 'call vcs#Signify()'})
-call dein#add('mhinz/vim-startify')
-
-call dein#add('voldikss/vim-floaterm', {'hook_source': 'call runner#Floaterm()'})
-
-call dein#add('junegunn/vim-easy-align')
-" Display contents in register
-call dein#add('junegunn/vim-peekaboo')
-
-call dein#add('ntpeters/vim-better-whitespace')
-call dein#add('kshenoy/vim-signature')
-" Context: Show the function, for-loop and condition.
-call dein#add('wellle/context.vim')
-call dein#add('luochen1990/rainbow', {'hook_source': 'call view#Rainbow()'})
-call dein#add('psliwka/vim-smoothie')
-call dein#add('vim-airline/vim-airline', {'hook_source': 'call view#Airline()'})
-
-call dein#add('liuchengxu/vista.vim', {'hook_source': 'call lint#Vista()'})
-call dein#add('liuchengxu/vim-which-key', {'hook_source': 'call view#Whichkey()'})
 
 call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': 'call view#AwesomeColorschemes()'})
 

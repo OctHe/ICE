@@ -1,7 +1,7 @@
 " 
 " Default vim run command file
 " Author: OctHe
-" Copyright (C): 2023-2025
+" Copyright (C)
 " 
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
@@ -55,10 +55,7 @@ endif
 call plug#begin(expand('~/.local/share/vim/plugins/'))
 " autocmd User plugin_config
 
-" Register vim-plug as a plugin to get the help doc.
-" Note that vim-plug (the plug.vim file) in this file is not working.
-Plug 'junegunn/vim-plug'
-
+" Automatic closing of quotes, parenthesis, brackets,
 Plug 'Raimondi/delimitMate'
 
 Plug'vim-scripts/star-search'
@@ -70,7 +67,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
 
-Plug 'timsu92/vim-easymotion' " This version fixes a bug in folding
+" Sneak: Jump with 2 chars.
+Plug 'justinmk/vim-sneak'
+autocmd User plugin_config call navigator#Sneak()
 
 Plug 'mbbill/undotree'
 autocmd User plugin_config call view#Undotree()
@@ -89,6 +88,9 @@ Plug 'preservim/vim-indent-guides'
 Plug 'dense-analysis/ale'
 autocmd User plugin_config call lint#ALE()
 
+" Register vim-plug as a plugin to get the help doc.
+" Note that vim-plug (the plug.vim file) in this file is not working.
+Plug 'junegunn/vim-plug'
 if executable('fzf')
     Plug 'junegunn/fzf'
 else
@@ -118,8 +120,7 @@ if has('python3')
   Plug 'vim-autoformat/vim-autoformat'
 endif
 
-" gitgutter: Show diff in the column sign (See :help signcolumn)
-Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'skywind3000/vim-auto-popmenu'
 autocmd User plugin_config call completer#VimAutoPopemenu()
@@ -137,10 +138,28 @@ Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow()
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'wellle/context.vim'
+Plug 'psliwka/vim-smoothie'
+
+Plug 'mhinz/vim-signify'
+autocmd User plugin_config call vcs#Signify()
+" Grep the results into a quickfix.
+Plug 'mhinz/vim-grepper'
+autocmd User plugin_config call navigator#Grepper()
 Plug 'mhinz/vim-startify'
+
+if has('python3')
+  Plug 'puremourning/vimspector'
+  autocmd User plugin_config call runner#vimspector()
+endif
+
+Plug 'lervag/vimtex'
+autocmd User plugin_config call runner#vimtex()
+
 " vim-signature: Manage marks with column
 Plug 'kshenoy/vim-signature'
+
 Plug 'itchyny/lightline.vim'
+
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
 Plug 'NLKNguyen/papercolor-theme'
@@ -178,7 +197,7 @@ set backspace=indent,eol,start  " Allow backspacing over everything in insert mo
 
 set smartindent     " Do smart autoindenting
 
-set ruler           " show the cursor position 
+set ruler           " show the cursor position
 set wildmenu        " display completion matches in a status line
 set number          " Show line number
 set splitbelow      " New buffer splits below by default
@@ -186,7 +205,6 @@ set splitright      " New buffer splits right by default
 set mouse=a         " Enable mouse in all mode
 set scrolloff=5     " Show a few lines around the cursor
 set fileencodings=utf-8,gb18030,latin1
-
 set background=dark
 
 syntax enable       " This enables Vim's syntax-related features. 
@@ -208,4 +226,4 @@ augroup EnhancedHelp
 
 augroup END
 " }}}1
-" vim: set sw=4 sts=4 et:
+" vim: set sw=2 sts=2 et:
