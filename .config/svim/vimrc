@@ -76,6 +76,7 @@ function! PackInit() abort
     call minpac#add('ludovicchabant/vim-gutentags')
 
     call minpac#add('vim-scripts/star-search')
+    call minpac#add('vim-scripts/AutoComplPop')
     call minpac#add('vim-scripts/CCTree')
     call minpac#add('vim-scripts/Gundo')
 
@@ -87,7 +88,6 @@ function! PackInit() abort
 
     call minpac#add('ctrlpvim/ctrlp.vim')
 
-    call minpac#add('ervandew/supertab')
 
     call minpac#add('godlygeek/tabular')
 

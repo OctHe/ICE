@@ -17,29 +17,6 @@ function! completer#TComment()
 
 endfunction
 
-" YCM: a powerful completion plugin based on LSP. It relies on cmake,
-" make, g++, python3-dev and LSP. YCM does not use system-wide LSP.
-" Install the prerequisites in Debian with
-"   sudo apt install cmake make g++ python3-dev
-" In openSUSE with
-"   sudo zypper install cmake make g++ python3-deval
-function! completer#YCM()
-
-  if empty(globpath(&rtp, '/plugin/youcompleteme.vim'))
-    return
-  endif
-
-  let g:ycm_confirm_extra_conf = 0
-  let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
-
-  let g:ycm_show_diagnostics_ui = 0
-
-  " Clear the YCM blacklist, so it works for all files
-  let g:ycm_filetype_blacklist = {}
-
-
-endfunction
-
 " Ultisnips: snippets engine that uses snippet database
 " vim-snippets: snippet database
 function! completer#Ultisnips()

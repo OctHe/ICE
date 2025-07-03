@@ -35,26 +35,20 @@ function! completer#UltiSnips()
 
 endfunction
 
-function! completer#VimAutoPopemenu()
+function! completer#YCM()
 
-    if empty(globpath(&rtp, '/plugin/apc.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/youcompleteme.vim'))
+    return
+  endif
 
-    " enable this plugin for filetypes, '*' for all files.
-    "let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
-    let g:apc_enable_ft = {'*':1}
+  let g:ycm_confirm_extra_conf = 0
+  let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 
-    " source for dictionary, current or other loaded buffers, see ':help cpt'
-    set cpt=.,k,w,b
+  let g:ycm_show_diagnostics_ui = 0
 
-    " don't select the first item.
-    set completeopt=menu,menuone,noselect
-
-    " suppress annoy messages.
-    set shortmess+=c
+  " Clear the YCM blacklist, so it works for all files
+  let g:ycm_filetype_blacklist = {}
 
 endfunction
-
 
 " vim: set sw=4 sts=4 et fdm=marker:
