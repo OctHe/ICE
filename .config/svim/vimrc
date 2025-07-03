@@ -75,10 +75,15 @@ function! PackInit() abort
 
     call minpac#add('ludovicchabant/vim-gutentags')
 
+    call minpac#add('vim-scripts/star-search')
     call minpac#add('vim-scripts/CCTree')
     call minpac#add('vim-scripts/Gundo')
 
+    call minpac#add('neomake/neomake')
+
     call minpac#add('mg979/vim-visual-multi')
+
+    call minpac#add('sbdchd/neoformat')
 
     call minpac#add('ctrlpvim/ctrlp.vim')
 
@@ -100,8 +105,7 @@ function! PackInit() abort
 
     call minpac#add('vim-airline/vim-airline')
 
-    call minpac#add('morhetz/gruvbox')
-
+    call minpac#add('rafi/awesome-vim-colorschemes')
 endfunction
 
 " Define user commands for updating/cleaning the plugins.

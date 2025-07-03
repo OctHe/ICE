@@ -83,16 +83,12 @@ endif
 
 call dein#add('tomtom/tcomment_vim', {'hook_source': 'call completer#TComment()'})
 
-call dein#add('neomake/neomake')
-
 if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   call dein#add('ycm-core/YouCompleteMe', {
         \ 'build': './install.py --clangd-completer',
         \ 'hook_source': 'call completer#YCM()'
         \ })
 endif
-
-call dein#add('rafi/awesome-vim-colorschemes', {'hook_source': 'call view#AwesomeColorschemes()'})
 
 " Finish dein initialization (required)
 call dein#end()
