@@ -111,8 +111,6 @@ Plug 'junegunn/limelight.vim'
 autocmd User plugin_config call view#Limelight()
 " Display contents in register
 Plug 'junegunn/vim-peekaboo'
-" Colorscheme
-Plug 'junegunn/seoul256.vim'
 
 if has('python3')
   " Ultisnips: snippets engine that uses snippet database
@@ -186,7 +184,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
 
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'rafi/awesome-vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()
@@ -195,11 +193,7 @@ doautocmd User plugin_config
 " View {{{1
 try
   " Colorscheme may use plugin
-  if has('gui_running')
-    colorscheme PaperColor
-  else
-    colorscheme seoul256
-  endif
+  colorscheme gruvbox
 catch
   " Builtin colorschemes: desert, peachpuff, quiet, slate
   colorscheme desert
