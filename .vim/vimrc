@@ -7,7 +7,7 @@
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
 " Enable file type detection.
@@ -37,16 +37,16 @@ nnoremap <silent> <Leader>m :verbose map
 
 " Try to install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-    if empty(glob('~/.vim/autoload/plug.vim'))
-        echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
 
-        silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-        silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
-        silent !rm -rf /tmp/vim-plug
-    endif
+    silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
+    silent !cp /tmp/vim-plug/plug.vim ~/.vim/autoload/
+    silent !rm -rf /tmp/vim-plug
+  endif
 
 endif
 
@@ -61,6 +61,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/star-search'
 
 Plug 'machakann/vim-sandwich'
+
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
@@ -70,6 +71,8 @@ autocmd User plugin_config call vcs#Fugitive()
 " Sneak: Jump with 2 chars.
 Plug 'justinmk/vim-sneak'
 autocmd User plugin_config call navigator#Sneak()
+
+Plug 'unblevable/quick-scope'
 
 Plug 'mbbill/undotree'
 autocmd User plugin_config call view#Undotree()
@@ -88,14 +91,18 @@ Plug 'preservim/vim-indent-guides'
 Plug 'dense-analysis/ale'
 autocmd User plugin_config call lint#ALE()
 
-" Register vim-plug as a plugin to get the help doc.
+" LeaderF: Asynchronous fuzzy finder with popup window
+if  has('python3') &&  executable('pip3')
+  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
+  autocmd User plugin_config call navigator#LeaderF()
+endif
+
+" vim-plug: Register vim-plug as a plugin to get the help doc.
 " Note that vim-plug (the plug.vim file) in this file is not working.
 Plug 'junegunn/vim-plug'
-if executable('fzf')
-    Plug 'junegunn/fzf'
-else
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-endif
+" Use the latest fzf instead of the system-wide fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 " goyo.vim and limelight.vim improves text experience
 Plug 'junegunn/goyo.vim'
@@ -108,13 +115,11 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/seoul256.vim'
 
 if has('python3')
-    " Ultisnips: snippets engine that uses snippet database
-    " vim-snippets: snippet database
-    Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
-    autocmd User plugin_config call completer#UltiSnips()
-endif
+  " Ultisnips: snippets engine that uses snippet database
+  " vim-snippets: snippet database
+  Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
+  autocmd User plugin_config call completer#UltiSnips()
 
-if has('python3')
   " Auto detects predefined formatters.
   Plug 'vim-autoformat/vim-autoformat'
 endif
@@ -128,9 +133,7 @@ if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   "   sudo apt install cmake make g++ python3-dev
   " In openSUSE with
   "   sudo zypper install cmake make g++ python3-deval
-  Plug 'ycm-core/YouCompleteMe', {
-        \ 'do': './install.py --clangd-completer',
-        \ }
+  Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
   autocmd User plugin_config call completer#YCM() 
 else
   Plug 'ervandew/supertab'
@@ -141,15 +144,23 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'voldikss/vim-floaterm'
 autocmd User plugin_config call runner#Floaterm()
 
-" Vim-tmux-navigator: It requires configuration in tmux
-" TODO: Use the same file for both vim and tmux
-Plug 'christoomey/vim-tmux-navigator'
+" vim-tmux-navigator
+" It requires configuration in tmux
+if isdirectory(glob('~/.local/share/tmux/plugin/vim-tmux-navigator'))
+  " Use the same file for both vim and tmux 
+  Plug '~/.local/share/tmux/plugin/vim-tmux-navigator'
+else
+  Plug 'christoomey/vim-tmux-navigator'
+endif
 
 " rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow()
+
 Plug 'ntpeters/vim-better-whitespace'
+
 Plug 'wellle/context.vim'
+
 Plug 'psliwka/vim-smoothie'
 
 Plug 'mhinz/vim-signify'
@@ -174,6 +185,7 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
+
 Plug 'NLKNguyen/papercolor-theme'
 
 " Initialize plugin system
@@ -182,15 +194,15 @@ doautocmd User plugin_config
 
 " View {{{1
 try
-    " Colorscheme may use plugin
-    if has('gui_running')
-        colorscheme PaperColor
-    else
-        colorscheme seoul256
-    endif
+  " Colorscheme may use plugin
+  if has('gui_running')
+    colorscheme PaperColor
+  else
+    colorscheme seoul256
+  endif
 catch
-    " Builtin colorschemes: desert, peachpuff, quiet, slate
-    colorscheme desert
+  " Builtin colorschemes: desert, peachpuff, quiet, slate
+  colorscheme desert
 endtry
 " }}}1
 
@@ -225,16 +237,16 @@ syntax enable       " This enables Vim's syntax-related features.
 
 " Commands {{{1
 augroup EnhancedHelp
-    au!
+  au!
 
-    autocmd BufWinEnter * 
-                \ if &filetype == 'help'
-                \ |   set number 
-                \ |   if winwidth('%') > 180
-                \ |       wincmd L 
-                \ |       vertical resize 90
-                \ |   endif
-                \ | endif
+  autocmd BufWinEnter * 
+        \ if &filetype == 'help'
+        \ |   set number 
+        \ |   if winwidth('%') > 180
+        \ |       wincmd L 
+        \ |       vertical resize 90
+        \ |   endif
+        \ | endif
 
 augroup END
 " }}}1

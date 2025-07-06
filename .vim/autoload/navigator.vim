@@ -72,4 +72,30 @@ function! navigator#NerdTree()
 
 endfunction
 
+function! navigator#LeaderF()
+
+  if empty(globpath(&rtp, '/plugin/leaderf.vim'))
+    return
+  endif
+
+  let g:Lf_WindowPosition = 'popup'
+
+  " Vista.vim:
+  function! NearestMethodOrFunction() abort
+    return get(b:, 'vista_nearest_method_or_function', '')
+  endfunction
+
+  set statusline+=%{NearestMethodOrFunction()}
+
+  let g:Lf_WildIgnore = {
+        \ 'dir': ['.git', '.svn', '.hg'],
+        \ 'file': ['*~']
+        \}
+
+  let g:Lf_ShortcutF = '<leader>ff'
+  let g:Lf_ShortcutB = '<leader>fb'
+  noremap <Leader>fr :Leaderf rg<CR>
+
+endfunction
+
 " vim: set sw=4 sts=4 et fdm=marker:

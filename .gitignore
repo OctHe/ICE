@@ -43,8 +43,6 @@
 # Neovim
 !/.config/nvim/
 !/.config/nvim/**
-!/.config/darkvim/
-!/.config/darkvim/**
 /.config/nvim/.luarc.json
 !/.config/nvimini/
 !/.config/nvimini/**
