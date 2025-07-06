@@ -35,10 +35,10 @@
 # Plugin manager: vim-plug
 /.vim/autoload/plug.vim
 
-!/.config/svim/
-!/.config/svim/**
-/.config/svim/pack/**
-/.config/svim/.netrwhist
+!/.config/slim/
+!/.config/slim/**
+/.config/slim/pack/**
+/.config/slim/.netrwhist
 
 # Neovim
 !/.config/nvim/
