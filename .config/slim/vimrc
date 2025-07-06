@@ -72,8 +72,6 @@ function! PackInit() abort
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('tpope/vim-fugitive')
 
-  call minpac#add('Yggdroot/indentLine')
-
   call minpac#add('timsu92/vim-easymotion')
 
   call minpac#add('ludovicchabant/vim-gutentags')
