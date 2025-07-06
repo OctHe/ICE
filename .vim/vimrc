@@ -95,14 +95,13 @@ autocmd User plugin_config call lint#ALE()
 if  has('python3') &&  executable('pip3')
   Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
   autocmd User plugin_config call navigator#LeaderF()
+else
+  " Use the latest fzf instead of the system-wide fzf
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 endif
-
 " vim-plug: Register vim-plug as a plugin to get the help doc.
-" Note that vim-plug (the plug.vim file) in this file is not working.
 Plug 'junegunn/vim-plug'
-" Use the latest fzf instead of the system-wide fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 " goyo.vim and limelight.vim improves text experience
 Plug 'junegunn/goyo.vim'
