@@ -30,3 +30,4 @@ if status is-interactive
 end
 
 alias ice "/usr/bin/git --git-dir=$HOME/.ice/ --work-tree=$HOME"
+alias slim "vim -u ~/.config/slim/vimrc"

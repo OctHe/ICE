@@ -22,18 +22,19 @@ setopt prompt_subst             # Make PROMPT works right
 
 # Alias
 common_alias=~/.config/bash/aliases.sh
-test -s ${common_alias} && source ${common_alias} 
+test -s ${common_alias} && source ${common_alias}
 
 # Autoload functions
-autoload -U compinit && compinit	# Completion initalization 
+autoload -U compinit && compinit	# Completion initalization
 autoload -U colors && colors 		# Functions to easily use colors
 
 # ls color
 eval `dircolors`
 
-# zsh completion (from manjaro zsh configuration)
+# zsh completion
 # Run 'run-help zshmodules' to get help for zstyle
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'   # Coomplete partial words
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'   # Complete partial words
+zstyle ':completion:*' completer _complete _ignored _files # Complete with directory and file
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
 
 # History file
@@ -69,17 +70,6 @@ function man() {
     env $environment $0 $@
 }
 
-# Expand multiple dots for cd
-function expand-dots() {
-    # LBUFFER is the part before the cursor
-    # Update LBUFFER with modifier 
-    if [[ $LBUFFER =~ '(^| )\.\.\.+' ]]; then
-        LBUFFER=${LBUFFER:fs/\.\.\./..\/../}
-    fi
-    zle accept-line
-}
-zle -N expand-dots
-bindkey '^M' expand-dots
 
 
 # zinit: A fast zsh plugin manager
@@ -112,10 +102,6 @@ zinit light supercrabtree/k
 #   sudo apt install fonts-powerline
 zinit light agnoster/agnoster-zsh-theme
 
-## Virtual environment
-PYTHON_VENV=~/.local/share/python/venv/ice
-[ -d ${PYTHON_VENV} ] && source ${PYTHON_VENV}/bin/activate
-
 # Remove segment 2 of agnoster prompt. Default segments are :
 #     1	prompt_status
 #     2	prompt_context
@@ -124,4 +110,8 @@ PYTHON_VENV=~/.local/share/python/venv/ice
 #     5	prompt_git
 #     6	prompt_end
 AGNOSTER_PROMPT_SEGMENTS[2]=
+
+## Virtual environment
+PYTHON_VENV=~/.local/share/python/venv/ice
+[ -d ${PYTHON_VENV} ] && source ${PYTHON_VENV}/bin/activate
 
