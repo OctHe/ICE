@@ -1,37 +1,37 @@
 " =====================================================================
-" 
+"
 " Autocompletion
 "
 " Author: OctHe
 " Copyright (C)
-" 
+"
 " =====================================================================
 
 function! completer#Nerdcommenter()
 
-    if empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
+    return
+  endif
 
-    let g:NERDSpaceDelims = 1
-    let g:NERDRemoveExtraSpaces = 1
+  let g:NERDSpaceDelims = 1
+  let g:NERDRemoveExtraSpaces = 1
 
 endfunction
 
 function! completer#UltiSnips()
 
-    if empty(globpath(&rtp, '/plugin/UltiSnips.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/UltiSnips.vim'))
+    return
+  endif
 
-    " Trigger configuration. Change this to something other than <tab> if use one 
-    " of the following:
-    " - https://github.com/Valloric/YouCompleteMe
-    " - https://github.com/nvim-lua/completion-nvim
-    let g:UltiSnipsExpandTrigger="<CR>"
+  " Trigger configuration. Change this to something other than <tab> if use one 
+  " of the following:
+  " - https://github.com/Valloric/YouCompleteMe
+  " - https://github.com/nvim-lua/completion-nvim
+  let g:UltiSnipsExpandTrigger="<CR>"
 
-    " If you want :UltiSnipsEdit to split your window.
-    let g:UltiSnipsEditSplit="vertical"
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
 
 endfunction
 
@@ -51,4 +51,4 @@ function! completer#YCM()
 
 endfunction
 
-" vim: set sw=4 sts=4 et fdm=marker:
+" vim: set sw=2 sts=2 et fdm=marker:

@@ -1,10 +1,10 @@
 " =====================================================================
-" 
+"
 " Navigator
 "
 " Author: OctHe
 " Copyright (C)
-" 
+"
 " =====================================================================
 
 function! navigator#Grepper()
@@ -41,34 +41,43 @@ endfunction
 
 function! navigator#NerdTree()
 
-    if empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
+    return
+  endif
 
-    let NERTTreeCaseSensitiveSort = 1
-    let NERDTreeWinSize = 35
+  let NERTTreeCaseSensitiveSort = 1
+  let NERDTreeWinSize = 35
 
-    augroup NERDTree
-        au!
+  augroup NERDTree
+    au!
 
-        " Close vim if the only window left open is a NERDTree
-        autocmd BufEnter * 
-                    \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-                    \ |   quit
-                    \ | endif
+    " Close vim if the only window left open is a NERDTree
+    autocmd BufEnter *
+          \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+          \ |   quit
+          \ | endif
 
-        " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-        autocmd BufEnter *
-                    \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
-                    \ |   let buf=bufnr('%') 
-                    \ |   buffer# 
-                    \ |   execute "normal! \<C-W>w"
-                    \ |   execute 'buffer'.buf
-                    \ | endif
-    augroup END
+    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+    autocmd BufEnter *
+          \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+          \ |   let buf=bufnr('%')
+          \ |   buffer#
+          \ |   execute "normal! \<C-W>w"
+          \ |   execute 'buffer'.buf
+          \ | endif
+  augroup END
 
-    " e means explore 
-    nnoremap <silent> <Leader>e :NERDTreeToggle<CR>  
+  " e means explore
+  nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+
+endfunction
+
+function! navigator#IndentGuides()
+  if empty(globpath(&rtp, '/plugin/indent_guides.vim'))
+    return
+  endif
+
+  let g:indent_guides_enable_on_vim_startup = 1
 
 endfunction
 
@@ -98,4 +107,4 @@ function! navigator#LeaderF()
 
 endfunction
 
-" vim: set sw=4 sts=4 et fdm=marker:
+" vim: set sw=2 sts=2 et fdm=marker:

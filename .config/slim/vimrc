@@ -62,7 +62,9 @@ function! PackInit() abort
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
-  call minpac#add('LunarWatcher/auto-pairs')
+
+  " Automatic closing of quotes, parenthesis, brackets,
+  call minpac#add('Raimondi/delimitMate')
 
   call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-repeat')

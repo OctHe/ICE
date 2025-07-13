@@ -1,8 +1,8 @@
-" 
+"
 " Default vim run command file
 " Author: OctHe
 " Copyright (C)
-" 
+"
 " =====================================================================
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -30,7 +30,7 @@ tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 vmap < <gv
 vmap > >gv
 " Show mappings
-nnoremap <silent> <Leader>m :verbose map 
+nnoremap <silent> <Leader>m :verbose map
 
 " }}}1
 
@@ -55,8 +55,8 @@ endif
 call plug#begin(expand('~/.local/share/vim/plugins/'))
 " autocmd User plugin_config
 
-" Automatic closing of quotes, parenthesis, brackets,
-Plug 'Raimondi/delimitMate'
+" Auto close parentheses and repeat by dot dot dot...
+Plug 'cohama/lexima.vim'
 
 Plug 'vim-scripts/star-search'
 
@@ -82,11 +82,12 @@ Plug 'mg979/vim-visual-multi'
 " NERDTree: File explorer.
 Plug 'preservim/nerdtree'
 autocmd User plugin_config call navigator#NerdTree()
-Plug 'preservim/tagbar' 
+Plug 'preservim/tagbar'
 autocmd User plugin_config call lint#Tagbar()
 Plug 'preservim/nerdcommenter'
 autocmd User plugin_config call completer#Nerdcommenter()
 Plug 'preservim/vim-indent-guides'
+autocmd User plugin_config call navigator#IndentGuides()
 
 Plug 'dense-analysis/ale'
 autocmd User plugin_config call lint#ALE()
@@ -131,7 +132,7 @@ if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   " In openSUSE with
   "   sudo zypper install cmake make g++ python3-deval
   Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
-  autocmd User plugin_config call completer#YCM() 
+  autocmd User plugin_config call completer#YCM()
 else
   Plug 'ervandew/supertab'
 endif
@@ -144,7 +145,7 @@ autocmd User plugin_config call runner#Floaterm()
 " vim-tmux-navigator
 " It requires configuration in tmux
 if isdirectory(glob('~/.local/share/tmux/plugin/vim-tmux-navigator'))
-  " Use the same file for both vim and tmux 
+  " Use the same file for both vim and tmux
   Plug '~/.local/share/tmux/plugin/vim-tmux-navigator'
 else
   Plug 'christoomey/vim-tmux-navigator'
@@ -224,19 +225,19 @@ set scrolloff=5     " Show a few lines around the cursor
 set fileencodings=utf-8,gb18030,latin1
 set background=dark
 
-syntax enable       " This enables Vim's syntax-related features. 
-" Without this, some VimTeX features will not work 
+syntax enable       " This enables Vim's syntax-related features.
+" Without this, some VimTeX features will not work
 " }}}1
 
 " Commands {{{1
 augroup EnhancedHelp
   au!
 
-  autocmd BufWinEnter * 
+  autocmd BufWinEnter *
         \ if &filetype == 'help'
-        \ |   set number 
+        \ |   set number
         \ |   if winwidth('%') > 180
-        \ |       wincmd L 
+        \ |       wincmd L
         \ |       vertical resize 90
         \ |   endif
         \ | endif

@@ -60,7 +60,7 @@ function! view#Whichkey()
         \ 'u': 'undo the hunk',
         \ }
   let g:which_key_map.s = {
-        \ 'name': '+symbol',
+        \ 'name': 'symbol',
         \ }
   let g:which_key_map.t = {
         \ 'name': '+terminal',

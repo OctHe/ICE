@@ -1,38 +1,38 @@
 " =====================================================================
-" 
+"
 " Lint and LSP
 "
 " Author: OctHe
 " Copyright (C)
-" 
+"
 " =====================================================================
 
 function! lint#Tagbar()
 
-    if empty(globpath(&rtp, '/plugin/tagbar.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/tagbar.vim'))
+    return
+  endif
 
-    " Automatic open Tagbar when open vim
-    " autocmd VimEnter *.{py,h,c} Tagbar
+  " Automatic open Tagbar when open vim
+  " autocmd VimEnter *.{py,h,c} Tagbar
 
-    " s means symbol
-    nnoremap <silent> <Leader>s :Tagbar<CR>
+  " s means symbol
+  nnoremap <silent> <Leader>s :Tagbar<CR>
 
 endfunction
 
 
 function! lint#ALE()
 
-    if empty(globpath(&rtp, '/plugin/ale.vim'))
-        return
-    endif
+  if empty(globpath(&rtp, '/plugin/ale.vim'))
+    return
+  endif
 
-    if executable('clangd')
-        let g:ale_c_cc_executable = 'clangd'
-        let g:ale_cpp_cc_executable = 'clangd'
-    endif
+  if executable('clangd')
+    let g:ale_c_cc_executable = 'clangd'
+    let g:ale_cpp_cc_executable = 'clangd'
+  endif
 
 endfunction
 
-" vim: set sw=4 sts=4 et fdm=marker:
+" vim: set sw=2 sts=2 et fdm=marker:
