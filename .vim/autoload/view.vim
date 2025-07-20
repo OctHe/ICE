@@ -41,11 +41,6 @@ function! view#Whichkey()
   endif
 
   let g:which_key_map = {}
-  let g:which_key_map.c = {
-        \ 'name': '+comment',
-        \ 'c': 'comment line',
-        \ 'u': 'uncomment',
-        \ }
   let g:which_key_map.f = {
         \ 'name': '+find',
         \ }

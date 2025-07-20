@@ -7,24 +7,13 @@
 "
 " =====================================================================
 
-function! completer#Nerdcommenter()
-
-  if empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
-    return
-  endif
-
-  let g:NERDSpaceDelims = 1
-  let g:NERDRemoveExtraSpaces = 1
-
-endfunction
-
 function! completer#UltiSnips()
 
   if empty(globpath(&rtp, '/plugin/UltiSnips.vim'))
     return
   endif
 
-  " Trigger configuration. Change this to something other than <tab> if use one 
+  " Trigger configuration. Change this to something other than <tab> if use one
   " of the following:
   " - https://github.com/Valloric/YouCompleteMe
   " - https://github.com/nvim-lua/completion-nvim

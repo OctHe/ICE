@@ -58,12 +58,16 @@ call plug#begin(expand('~/.local/share/vim/plugins/'))
 " Auto close parentheses and repeat by dot dot dot...
 Plug 'cohama/lexima.vim'
 
+" starsearch: Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
 
-Plug 'machakann/vim-sandwich'
-
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-dispatch'
+" Vim sugar for the UNIX shell commands that need it the most
+Plug 'tpope/vim-eunuch'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
@@ -72,6 +76,9 @@ autocmd User plugin_config call vcs#Fugitive()
 Plug 'justinmk/vim-sneak'
 autocmd User plugin_config call navigator#Sneak()
 
+" Path navigator
+Plug 'justinmk/vim-dirvish'
+
 Plug 'unblevable/quick-scope'
 
 Plug 'mbbill/undotree'
@@ -79,19 +86,10 @@ autocmd User plugin_config call view#Undotree()
 
 Plug 'mg979/vim-visual-multi'
 
-" NERDTree: File explorer.
-Plug 'preservim/nerdtree'
-autocmd User plugin_config call navigator#NerdTree()
-Plug 'preservim/tagbar'
-autocmd User plugin_config call lint#Tagbar()
-Plug 'preservim/nerdcommenter'
-autocmd User plugin_config call completer#Nerdcommenter()
-Plug 'preservim/vim-indent-guides'
-autocmd User plugin_config call navigator#IndentGuides()
-
 Plug 'dense-analysis/ale'
 autocmd User plugin_config call lint#ALE()
 
+Plug 'Yggdroot/indentLine'
 " LeaderF: Asynchronous fuzzy finder with popup window
 if  has('python3') &&  executable('pip3')
   Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
@@ -137,8 +135,6 @@ else
   Plug 'ervandew/supertab'
 endif
 
-Plug 'skywind3000/asyncrun.vim'
-
 Plug 'voldikss/vim-floaterm'
 autocmd User plugin_config call runner#Floaterm()
 
@@ -181,6 +177,9 @@ Plug 'kshenoy/vim-signature'
 
 Plug 'itchyny/lightline.vim'
 
+" Vista relies on universal-ctags. Please carefully install the correct version.
+Plug 'liuchengxu/vista.vim'
+autocmd User plugin_config call lint#Vista()
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
 

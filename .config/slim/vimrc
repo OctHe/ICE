@@ -66,13 +66,9 @@ function! PackInit() abort
   " Automatic closing of quotes, parenthesis, brackets,
   call minpac#add('Raimondi/delimitMate')
 
-  call minpac#add('tpope/vim-surround')
-  call minpac#add('tpope/vim-repeat')
-  call minpac#add('tpope/vim-endwise')
-  call minpac#add('tpope/vim-commentary')
-  call minpac#add('tpope/vim-vinegar')
-  call minpac#add('tpope/vim-dispatch')
   call minpac#add('tpope/vim-fugitive')
+
+  call minpac#add('machakann/vim-sandwich')
 
   call minpac#add('timsu92/vim-easymotion')
 
@@ -83,6 +79,12 @@ function! PackInit() abort
   call minpac#add('vim-scripts/AutoComplPop')
   call minpac#add('vim-scripts/CCTree')
   call minpac#add('vim-scripts/Gundo')
+
+  " NERDTree: File explorer.
+  call minpac#add('preservim/nerdtree')
+  call minpac#add('preservim/tagbar')
+  call minpac#add('preservim/nerdcommenter')
+  call minpac#add('preservim/vim-indent-guides')
 
   call minpac#add('mg979/vim-visual-multi')
 
@@ -103,9 +105,9 @@ function! PackInit() abort
 
   call minpac#add('wellle/context.vim')
 
-  " Vista: Vista relies on universal-ctags. Please carefully install the correct version. 
-  call minpac#add('liuchengxu/vista.vim')
   call minpac#add('liuchengxu/vim-which-key')
+
+  call minpac#add('skywind3000/asyncrun.vim')
 
   call minpac#add('vim-airline/vim-airline')
 
@@ -119,13 +121,54 @@ command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#init() | call minpac#status()
 
-" Plugin customization {{{1
+" Plugin customization
 
-if !empty(globpath(&rtp, '/plugin/vista.vim'))
-  let g:vista_sidebar_width = 90
+if !empty(globpath(&rtp, '/plugin/tagbar.vim'))
 
-  " t means tag
-  nnoremap <silent> <Leader>s :Vista!!<CR>  
+  " s means symbol
+  nnoremap <silent> <Leader>s :Tagbar<CR>
+endif
+
+if !empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
+
+  let g:NERDSpaceDelims = 1
+  let g:NERDRemoveExtraSpaces = 1
+
+endif
+
+if !empty(globpath(&rtp, '/plugin/indent_guides.vim'))
+
+  let g:indent_guides_enable_on_vim_startup = 1
+
+endif
+
+if !empty(globpath(&rtp, '/plugin/NERD_tree.vim'))
+
+  let NERTTreeCaseSensitiveSort = 1
+  let NERDTreeWinSize = 35
+
+  augroup NERDTree
+    au!
+
+    " Close vim if the only window left open is a NERDTree
+    autocmd BufEnter *
+          \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+          \ |   quit
+          \ | endif
+
+    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+    autocmd BufEnter *
+          \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+          \ |   let buf=bufnr('%')
+          \ |   buffer#
+          \ |   execute "normal! \<C-W>w"
+          \ |   execute 'buffer'.buf
+          \ | endif
+  augroup END
+
+  " e means explore
+  echo "nerdtree"
+  nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 
 endif
 
@@ -152,9 +195,9 @@ if !empty(globpath(&rtp, '/plugin/airline.vim'))
 endif
 
 if !empty(globpath(&rtp, '/plugin/rainbow_main.vim'))
-  " This variable must be defined to use rainbow. 
+  " This variable must be defined to use rainbow.
   " Set to 0 to enable it later via :RainbowToggle
-  let g:rainbow_active = 1 
+  let g:rainbow_active = 1
 endif
 
 if !empty(globpath(&rtp, '/plugin/which_key.vim'))
@@ -162,6 +205,9 @@ if !empty(globpath(&rtp, '/plugin/which_key.vim'))
   let g:which_key_map.c = {
         \ 'name': '+Comment',
         \ 'c': 'Comment line',
+        \ }
+  let g:which_key_map.e = {
+        \ 'name': 'Explorer',
         \ }
   let g:which_key_map.f = {
         \ 'name': '+Find',
@@ -190,8 +236,6 @@ if !empty(globpath(&rtp, '/plugin/which_key.vim'))
   vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
 
 endif
-
-" }}}1
 
 " View {{{1
 try
