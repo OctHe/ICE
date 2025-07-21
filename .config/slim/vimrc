@@ -50,8 +50,6 @@ nnoremap <silent> <Leader>m :verbose map
 let s:minpac_dir = expand('~/.config/slim/pack/minpac/opt/minpac')
 if !(s:minpac_dir->isdirectory())
   execute '!git clone --depth=1 https://github.com/k-takata/minpac.git' s:minpac_dir
-endif
-if s:minpac_dir->isdirectory()
   packadd minpac
 endif
 
