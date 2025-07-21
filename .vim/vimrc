@@ -62,7 +62,6 @@ Plug 'cohama/lexima.vim'
 Plug 'vim-scripts/star-search'
 
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
@@ -71,6 +70,8 @@ Plug 'tpope/vim-eunuch'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
+
+Plug 'tomtom/tcomment_vim'
 
 " Sneak: Jump with 2 chars.
 Plug 'justinmk/vim-sneak'
