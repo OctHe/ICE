@@ -1,0 +1,169 @@
+" A vim ide.
+" Author: OctHe
+" Copyright (C)
+"
+" =====================================================================
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+if &compatible
+  set nocompatible
+endif
+
+" Enable file type detection.
+filetype plugin on
+" Enable automatic indentation.
+filetype indent on
+
+set runtimepath-=~/.vim
+set runtimepath-=~/.vim/after
+set runtimepath^=~/.config/vide
+set runtimepath+=~/.config/vide/after
+set packpath-=~/.vim
+set packpath-=~/.vim/after
+set packpath^=~/.config/vide
+set packpath+=~/.config/vide/after
+
+" Use <Space> as the <Leader>
+" This command must be before all keymappings and plugin configs
+let mapleader = ' '
+
+" It changes the behavior of star to not jump to next word
+" Yank the word into the register s, and then assign it in to the yank
+" register (The register / is not writeable directly)
+nmap <silent> * "syiw:let @/ = @s<CR>
+" Easy-nohlsearch
+nnoremap <silent> <Esc> :nohlsearch<CR>
+tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
+" Easy indent
+vmap < <gv
+vmap > >gv
+" Show mappings
+nnoremap <silent> <Leader>m :verbose map
+
+
+" Try to install jetpack if not found
+if empty(glob('~/.config/vide/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'))
+  silent !git clone https://github.com/tani/vim-jetpack ~/.config/vide/pack/jetpack/opt/vim-jetpack
+endif
+packadd vim-jetpack
+
+call jetpack#begin(expand('~/.local/share/vide/plugins/'))
+
+call jetpack#add("tani/vim-jetpack")
+
+Jetpack 'tpope/vim-fugitive'
+
+" starsearch: Enhanced star keymapping. Avoid jumping to next
+Jetpack 'vim-scripts/star-search'
+Jetpack 'vim-scripts/AutoComplPop'
+Jetpack 'vim-scripts/CCTree'
+Jetpack 'vim-scripts/Gundo'
+
+" NERDTree: File explorer.
+Jetpack 'preservim/nerdtree'
+autocmd User plugin_config call navigator#NerdTree()
+Jetpack 'preservim/tagbar'
+autocmd User plugin_config call lint#Tagbar()
+Jetpack 'preservim/nerdcommenter'
+autocmd User plugin_config call completer#NerdCommenter()
+Jetpack 'preservim/vim-indent-guides'
+autocmd User plugin_config call view#IndentGuides()
+Jetpack 'preservim/vim-pencil'
+
+" LeaderF: Asynchronous fuzzy finder with popup window
+if  has('python3') &&  executable('pip3')
+  Jetpack 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
+  autocmd User plugin_config call navigator#LeaderF()
+endif
+
+" Automatic closing of quotes, parenthesis, brackets,
+Jetpack 'Raimondi/delimitMate'
+
+Jetpack 'machakann/vim-sandwich'
+
+Jetpack 'timsu92/vim-easymotion'
+
+Jetpack 'ludovicchabant/vim-gutentags'
+
+Jetpack 'sbdchd/neoformat'
+
+" Align
+Jetpack 'godlygeek/tabular'
+
+Jetpack 'neomake/neomake'
+
+Jetpack 'skywind3000/asyncrun.vim'
+
+" gitgutter: Show diff in the column sign (See :help signcolumn
+Jetpack 'airblade/vim-gitgutter'
+
+Jetpack 'liuchengxu/vim-which-key'
+autocmd User plugin_config call view#Whichkey()
+
+Jetpack 'vim-airline/vim-airline'
+autocmd User plugin_config call view#Airline()
+
+Jetpack 'rafi/awesome-vim-colorschemes'
+
+call jetpack#end()
+doautocmd User plugin_config
+
+" View {{{1
+try
+  " Colorscheme may use plugin
+  colorscheme OceanicNext
+catch
+  " Builtin colorschemes: desert, peachpuff, quiet, slate
+  colorscheme desert
+endtry
+" }}}1
+
+" Options {{{1
+set hlsearch    " Highlight the search results
+set incsearch   " Show the pattern while typing
+
+set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+
+set hidden  " Hide unsaved buffer
+
+set expandtab   " Expand tag to space
+set tabstop=4   " One tab includes four spaces
+set shiftwidth=4    " The width of '<' and '>'
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+
+set smartindent     " Do smart autoindenting
+
+set ruler           " show the cursor position
+set wildmenu        " display completion matches in a status line
+set number          " Show line number
+set splitbelow      " New buffer splits below by default
+set splitright      " New buffer splits right by default
+set mouse=a         " Enable mouse in all mode
+set scrolloff=5     " Show a few lines around the cursor
+set fileencodings=utf-8,gb18030,latin1
+
+set background=dark
+
+syntax enable       " This enables Vim's syntax-related features.
+" }}}1
+
+" Commends {{{1
+
+augroup EnhancedHelp
+  au!
+
+  autocmd BufWinEnter *
+        \ if &filetype == 'help'
+        \ |   set number
+        \ |   if winwidth('%') > 180
+        \ |       wincmd L
+        \ |       vertical resize 90
+        \ |   endif
+        \ | endif
+
+augroup END
+
+" }}}1
+
+
+" vim: set sw=2 sts=2 et fdm=marker:
