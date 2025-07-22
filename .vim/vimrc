@@ -53,10 +53,6 @@ endif
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(expand('~/.local/share/vim/plugins/'))
-" autocmd User plugin_config
-
-" Auto close parentheses and repeat by dot dot dot...
-Plug 'cohama/lexima.vim'
 
 " starsearch: Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
@@ -71,24 +67,11 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
 
-Plug 'tomtom/tcomment_vim'
-
 " Sneak: Jump with 2 chars.
 Plug 'justinmk/vim-sneak'
 autocmd User plugin_config call navigator#Sneak()
-
 " Path navigator
 Plug 'justinmk/vim-dirvish'
-
-Plug 'unblevable/quick-scope'
-
-Plug 'mbbill/undotree'
-autocmd User plugin_config call view#Undotree()
-
-Plug 'mg979/vim-visual-multi'
-
-Plug 'dense-analysis/ale'
-autocmd User plugin_config call lint#ALE()
 
 Plug 'Yggdroot/indentLine'
 " LeaderF: Asynchronous fuzzy finder with popup window
@@ -111,6 +94,22 @@ autocmd User plugin_config call view#Limelight()
 " Display contents in register
 Plug 'junegunn/vim-peekaboo'
 
+" Vista relies on universal-ctags. Please carefully install the correct version.
+Plug 'liuchengxu/vista.vim'
+autocmd User plugin_config call lint#Vista()
+Plug 'liuchengxu/vim-which-key'
+autocmd User plugin_config call view#Whichkey()
+
+Plug 'mhinz/vim-signify'
+autocmd User plugin_config call vcs#Signify()
+" Grep the results into a quickfix.
+Plug 'mhinz/vim-grepper'
+autocmd User plugin_config call navigator#Grepper()
+Plug 'mhinz/vim-startify'
+
+Plug 'itchyny/vim-cursorword'
+Plug 'itchyny/lightline.vim'
+
 if has('python3')
   " Ultisnips: snippets engine that uses snippet database
   " vim-snippets: snippet database
@@ -119,9 +118,10 @@ if has('python3')
 
   " Auto detects predefined formatters.
   Plug 'vim-autoformat/vim-autoformat'
-endif
 
-Plug 'AndrewRadev/splitjoin.vim'
+  Plug 'puremourning/vimspector'
+  autocmd User plugin_config call runner#vimspector()
+endif
 
 if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   " YCM: a powerful completion engine based on LSP. It relies on cmake,
@@ -152,37 +152,34 @@ endif
 Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow()
 
+Plug 'unblevable/quick-scope'
+
+Plug 'mbbill/undotree'
+autocmd User plugin_config call view#Undotree()
+
+" Auto close parentheses and repeat by dot dot dot...
+Plug 'cohama/lexima.vim'
+
+Plug 'tomtom/tcomment_vim'
+
+Plug 'mg979/vim-visual-multi'
+
+Plug 'dense-analysis/ale'
+autocmd User plugin_config call lint#ALE()
+
+Plug 'AndrewRadev/splitjoin.vim'
+
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'wellle/context.vim'
 
 Plug 'psliwka/vim-smoothie'
 
-Plug 'mhinz/vim-signify'
-autocmd User plugin_config call vcs#Signify()
-" Grep the results into a quickfix.
-Plug 'mhinz/vim-grepper'
-autocmd User plugin_config call navigator#Grepper()
-Plug 'mhinz/vim-startify'
-
-if has('python3')
-  Plug 'puremourning/vimspector'
-  autocmd User plugin_config call runner#vimspector()
-endif
-
 Plug 'lervag/vimtex'
 autocmd User plugin_config call runner#vimtex()
 
 " vim-signature: Manage marks with column
 Plug 'kshenoy/vim-signature'
-
-Plug 'itchyny/lightline.vim'
-
-" Vista relies on universal-ctags. Please carefully install the correct version.
-Plug 'liuchengxu/vista.vim'
-autocmd User plugin_config call lint#Vista()
-Plug 'liuchengxu/vim-which-key'
-autocmd User plugin_config call view#Whichkey()
 
 Plug 'rafi/awesome-vim-colorschemes'
 

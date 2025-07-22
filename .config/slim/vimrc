@@ -1,4 +1,3 @@
-" 
 " Simple and lighweight vim run command file. It only contains one file.
 " Author: OctHe
 " Copyright (C)
@@ -24,8 +23,6 @@ set packpath-=~/.vim/after
 set packpath^=~/.config/slim
 set packpath+=~/.config/slim/after
 
-" Keymappings {{{1
-
 " Use <Space> as the <Leader>
 " This command must be before all keymappings and plugin configs
 let mapleader = ' '
@@ -41,9 +38,7 @@ tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 vmap < <gv
 vmap > >gv
 " Show mappings
-nnoremap <silent> <Leader>m :verbose map 
-
-" }}}1
+nnoremap <silent> <Leader>m :verbose map
 
 
 " Try to install minpac
@@ -61,16 +56,7 @@ function! PackInit() abort
 
   " Additional plugins here.
 
-  " Automatic closing of quotes, parenthesis, brackets,
-  call minpac#add('Raimondi/delimitMate')
-
   call minpac#add('tpope/vim-fugitive')
-
-  call minpac#add('machakann/vim-sandwich')
-
-  call minpac#add('timsu92/vim-easymotion')
-
-  call minpac#add('ludovicchabant/vim-gutentags')
 
   " starsearch: Enhanced star keymapping. Avoid jumping to next
   call minpac#add('vim-scripts/star-search')
@@ -84,28 +70,30 @@ function! PackInit() abort
   call minpac#add('preservim/nerdcommenter')
   call minpac#add('preservim/vim-indent-guides')
 
-  call minpac#add('mg979/vim-visual-multi')
+  " Automatic closing of quotes, parenthesis, brackets,
+  call minpac#add('Raimondi/delimitMate')
+
+  call minpac#add('machakann/vim-sandwich')
+
+  call minpac#add('timsu92/vim-easymotion')
+
+  call minpac#add('ludovicchabant/vim-gutentags')
 
   call minpac#add('sbdchd/neoformat')
 
   call minpac#add('ctrlpvim/ctrlp.vim')
 
+  " Align
   call minpac#add('godlygeek/tabular')
+
+  call minpac#add('neomake/neomake')
+
+  call minpac#add('skywind3000/asyncrun.vim')
 
   " gitgutter: Show diff in the column sign (See :help signcolumn)
   call minpac#add('airblade/vim-gitgutter')
 
-  call minpac#add('neomake/neomake')
-
-  call minpac#add('voldikss/vim-floaterm')
-
-  call minpac#add('luochen1990/rainbow')
-
-  call minpac#add('wellle/context.vim')
-
   call minpac#add('liuchengxu/vim-which-key')
-
-  call minpac#add('skywind3000/asyncrun.vim')
 
   call minpac#add('vim-airline/vim-airline')
 
@@ -169,32 +157,12 @@ function PackConfig()
 
 endif
 
-if !empty(globpath(&rtp, '/plugin/neomake.vim'))
-
-  " Run neomake when writing
-  call neomake#configure#automake('w')
-endif
-
-if !empty(globpath(&rtp, '/plugin/floaterm.vim'))
-  nmap <Leader>tb :FloatermPrev<CR>
-  nmap <Leader>tn :FloatermNext<CR>
-  nmap <Leader>tN :FloatermNew<CR>
-  nmap <Leader>tk :FloatermKill<CR>
-  nmap <Leader>tt :FloatermToggle<CR>
-endif
-
 if !empty(globpath(&rtp, '/plugin/airline.vim'))
   " Enhanced tabline
   let g:airline#extensions#tabline#enabled = 1
   " Show buffer number so the buffer can be quickly picked
   let g:airline#extensions#tabline#buffer_nr_show = 1
 
-endif
-
-if !empty(globpath(&rtp, '/plugin/rainbow_main.vim'))
-  " This variable must be defined to use rainbow.
-  " Set to 0 to enable it later via :RainbowToggle
-  let g:rainbow_active = 1
 endif
 
 if !empty(globpath(&rtp, '/plugin/which_key.vim'))
@@ -220,10 +188,7 @@ if !empty(globpath(&rtp, '/plugin/which_key.vim'))
         \ 'u': 'Undo the hunk',
         \ }
   let g:which_key_map.s = {
-        \ 'name': '+Symbol',
-        \ }
-  let g:which_key_map.t = {
-        \ 'name': '+Terminal',
+        \ 'name': 'Symbol',
         \ }
   call which_key#register('<Space>', "g:which_key_map")
 
