@@ -61,8 +61,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
-" Vim sugar for the UNIX shell commands that need it the most
-Plug 'tpope/vim-eunuch'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
@@ -73,16 +71,9 @@ autocmd User plugin_config call navigator#Sneak()
 " Path navigator
 Plug 'justinmk/vim-dirvish'
 
-Plug 'Yggdroot/indentLine'
-" LeaderF: Asynchronous fuzzy finder with popup window
-if  has('python3') &&  executable('pip3')
-  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
-  autocmd User plugin_config call navigator#LeaderF()
-else
-  " Use the latest fzf instead of the system-wide fzf
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
-endif
+" Use the latest fzf instead of the system-wide fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " vim-plug: Register vim-plug as a plugin to get the help doc.
 Plug 'junegunn/vim-plug'
 Plug 'junegunn/vim-easy-align'

@@ -1,6 +1,6 @@
 # Integrated Configuration Environment
 
-Integrated Configuration Environment(ICE) is a collection of dotfiles.
+Integrated Configuration Environment (ICE) is a collection of dotfiles.
 
 Installation is easy:
 
