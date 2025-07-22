@@ -7,19 +7,16 @@
 "
 " =====================================================================
 
-function! lint#Vista()
+function! lint#Tagbar()
 
-  if empty(globpath(&rtp, '/plugin/vista.vim'))
+  if empty(globpath(&rtp, '/plugin/tagbar.vim'))
     return
   endif
 
-  let g:vista_sidebar_width = 90
-
   " s means symbol
-  nnoremap <silent> <Leader>s :Vista!!<CR>
+  nnoremap <silent> <Leader>s :Tagbar<CR>
 
 endfunction
-
 
 function! lint#ALE()
 

@@ -7,6 +7,17 @@
 "
 " =====================================================================
 
+function! completer#NerdCommenter()
+
+  if empty(globpath(&rtp, '/plugin/nerdcommenter.vim'))
+    return
+  endif
+
+  let g:NERDSpaceDelims = 1
+  let g:NERDRemoveExtraSpaces = 1
+
+endfunction
+
 function! completer#UltiSnips()
 
   if empty(globpath(&rtp, '/plugin/UltiSnips.vim'))

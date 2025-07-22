@@ -57,19 +57,21 @@ call plug#begin(expand('~/.local/share/vim/plugins/'))
 " starsearch: Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dispatch'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
 
-" Sneak: Jump with 2 chars.
-Plug 'justinmk/vim-sneak'
-autocmd User plugin_config call navigator#Sneak()
-" Path navigator
-Plug 'justinmk/vim-dirvish'
+" NERDTree: File explorer.
+Plug 'preservim/nerdtree'
+autocmd User plugin_config call navigator#NerdTree()
+Plug 'preservim/tagbar'
+autocmd User plugin_config call lint#Tagbar()
+Plug 'preservim/nerdcommenter'
+autocmd User plugin_config call completer#NerdCommenter()
+Plug 'preservim/vim-indent-guides'
+autocmd User plugin_config call view#IndentGuides()
+Plug 'preservim/vim-pencil'
 
 " Use the latest fzf instead of the system-wide fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -85,9 +87,6 @@ autocmd User plugin_config call view#Limelight()
 " Display contents in register
 Plug 'junegunn/vim-peekaboo'
 
-" Vista relies on universal-ctags. Please carefully install the correct version.
-Plug 'liuchengxu/vista.vim'
-autocmd User plugin_config call lint#Vista()
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
 
@@ -139,6 +138,10 @@ else
   Plug 'christoomey/vim-tmux-navigator'
 endif
 
+Plug 'machakann/vim-sandwich'
+
+Plug 'timsu92/vim-easymotion'
+
 " rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow()
@@ -150,8 +153,6 @@ autocmd User plugin_config call view#Undotree()
 
 " Auto close parentheses and repeat by dot dot dot...
 Plug 'cohama/lexima.vim'
-
-Plug 'tomtom/tcomment_vim'
 
 Plug 'mg979/vim-visual-multi'
 

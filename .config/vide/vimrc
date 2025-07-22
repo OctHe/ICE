@@ -51,6 +51,7 @@ call jetpack#begin(expand('~/.local/share/vide/plugins/'))
 
 call jetpack#add("tani/vim-jetpack")
 
+Jetpack 'tpope/vim-surround'
 Jetpack 'tpope/vim-fugitive'
 
 " starsearch: Enhanced star keymapping. Avoid jumping to next
@@ -59,29 +60,23 @@ Jetpack 'vim-scripts/AutoComplPop'
 Jetpack 'vim-scripts/CCTree'
 Jetpack 'vim-scripts/Gundo'
 
-" NERDTree: File explorer.
-Jetpack 'preservim/nerdtree'
-autocmd User plugin_config call navigator#NerdTree()
-Jetpack 'preservim/tagbar'
-autocmd User plugin_config call lint#Tagbar()
-Jetpack 'preservim/nerdcommenter'
-autocmd User plugin_config call completer#NerdCommenter()
-Jetpack 'preservim/vim-indent-guides'
-autocmd User plugin_config call view#IndentGuides()
-Jetpack 'preservim/vim-pencil'
+" Sneak: Jump with 2 chars.
+Jetpack 'justinmk/vim-sneak'
+autocmd User plugin_config call navigator#Sneak()
+" Path navigator
+Jetpack 'justinmk/vim-dirvish'
 
+Jetpack 'Yggdroot/indentLine'
 " LeaderF: Asynchronous fuzzy finder with popup window
 if  has('python3') &&  executable('pip3')
   Jetpack 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
   autocmd User plugin_config call navigator#LeaderF()
 endif
 
+Jetpack 'tomtom/tcomment_vim'
+
 " Automatic closing of quotes, parenthesis, brackets,
 Jetpack 'Raimondi/delimitMate'
-
-Jetpack 'machakann/vim-sandwich'
-
-Jetpack 'timsu92/vim-easymotion'
 
 Jetpack 'ludovicchabant/vim-gutentags'
 
@@ -97,6 +92,8 @@ Jetpack 'skywind3000/asyncrun.vim'
 " gitgutter: Show diff in the column sign (See :help signcolumn
 Jetpack 'airblade/vim-gitgutter'
 
+Jetpack 'liuchengxu/vista.vim'
+autocmd User plugin_config call lint#Vista()
 Jetpack 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
 

@@ -7,15 +7,6 @@
 "
 " =====================================================================
 
-function! view#IndentGuides()
-  if empty(globpath(&rtp, '/plugin/indent_guides.vim'))
-    return
-  endif
-
-  let g:indent_guides_enable_on_vim_startup = 1
-
-endfunction
-
 function! view#Airline()
   if empty(globpath(&rtp, '/plugin/airline.vim'))
     return

@@ -34,6 +34,15 @@ function! view#Limelight()
 
 endfunction
 
+function! view#IndentGuides()
+  if empty(globpath(&rtp, '/plugin/indent_guides.vim'))
+    return
+  endif
+
+  let g:indent_guides_enable_on_vim_startup = 1
+
+endfunction
+
 function! view#Whichkey()
 
   if empty(globpath(&rtp, '/plugin/which_key.vim'))
