@@ -2,7 +2,7 @@
 --
 -- Let nvim looks better
 -- Author: OctHe
--- Copyright (C): 2024
+-- Copyright (C)
 --
 -- ---------------------------------------------------------------------
 
