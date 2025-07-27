@@ -29,25 +29,27 @@ let mapleader = ' '
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
+
 " Easy indent
 vmap < <gv
 vmap > >gv
+
 " Show mappings
 nnoremap <silent> <Leader>m :verbose map
 
 " }}}1
 
-
 " Try to install vim-plug if not found
-if empty(glob('~/.config/vide/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/vide/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+let s:vim_plug = expand('~/.config/vide/autoload/plug.vim')
+if !filereadable(s:vim_plug)
+  execute '!curl -fLo' s:vim_plug
+        \ '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-  if empty(glob('~/.config/vide/autoload/plug.vim'))
+  if empty(s:vim_plug)
     echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
 
     silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-    silent !cp /tmp/vim-plug/plug.vim ~/.config/vide/autoload/
+    execute '!cp /tmp/vim-plug/plug.vim' s:vim_plug
     silent !rm -rf /tmp/vim-plug
   endif
 

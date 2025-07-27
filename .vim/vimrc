@@ -21,13 +21,10 @@ filetype indent on
 " This command must be before all keymappings and plugin configs
 let mapleader = ' '
 
-" It changes the behavior of star to not jump to next word
-" Yank the word into the register s, and then assign it in to the yank
-" register (The register / is not writeable directly)
-nmap <silent> * "syiw:let @/ = @s<CR>
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
 tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
+
 " Easy indent
 vmap < <gv
 vmap > >gv
@@ -35,8 +32,9 @@ vmap > >gv
 " }}}1
 
 " Try to install jetpack if not found
-if empty(glob('~/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'))
-  silent !git clone https://github.com/tani/vim-jetpack ~/.vim/pack/jetpack/opt/vim-jetpack
+let s:jetpack_dir = expand('~/.vim/pack/jetpack/opt/vim-jetpack')
+if !(s:jetpack_dir->isdirectory())
+  execute '!git clone https://github.com/tani/vim-jetpack' s:jetpack_dir
 endif
 packadd vim-jetpack
 
