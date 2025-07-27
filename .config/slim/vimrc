@@ -61,30 +61,24 @@ command! PackStatus packadd minpac | call minpac#init() | call minpac#status()
 set hlsearch    " Highlight the search results
 set incsearch   " Show the pattern while typing
 
-set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
-
-set hidden  " Hide unsaved buffer
-
 set expandtab   " Expand tag to space
 set tabstop=4   " One tab includes four spaces
 set shiftwidth=4    " The width of '<' and '>'
 set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
 
+set hidden  " Hide unsaved buffer
 set smartindent     " Do smart autoindenting
-
+set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
 set ruler           " show the cursor position
 set wildmenu        " display completion matches in a status line
 set number          " Show line number
-set splitbelow      " New buffer splits below by default
-set splitright      " New buffer splits right by default
 set mouse=a         " Enable mouse in all mode
 set scrolloff=5     " Show a few lines around the cursor
 set fileencodings=utf-8,gb18030,latin1
-set background=dark
 
 syntax enable       " This enables Vim's syntax-related features.
 
-" Builtin colorschemes: desert, peachpuff, quiet, slate
-colorscheme desert
+" Builtin colorschemes: peachpuff, quiet, slate
+colorscheme slate
 
 " vim: set sw=2 sts=2 et fdm=marker:

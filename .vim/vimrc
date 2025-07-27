@@ -4,18 +4,12 @@
 " Copyright (C)
 "
 " =====================================================================
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-if &compatible
-  set nocompatible
-endif
+source $VIMRUNTIME/vimrc_example.vim
 
 " Enable file type detection.
 filetype plugin on
 " Enable automatic indentation.
 filetype indent on
-
-source $VIMRUNTIME/vimrc_example.vim
 
 " Keymappings {{{1
 
@@ -179,38 +173,34 @@ Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
 doautocmd User plugin_config
 
-" View {{{1
+" View
 try
   " Colorscheme may use plugin
   colorscheme gruvbox
 catch
-  " Builtin colorschemes: desert, peachpuff, quiet, slate
+  " Builtin colorschemes: desert, peachpuff, slate
   colorscheme desert
 endtry
-" }}}1
 
 " Options {{{1
-set hlsearch    " Highlight the search results
-set incsearch   " Show the pattern while typing
+set hlsearch                   " Highlight the search results
+set incsearch                  " Show the pattern while typing
 
-set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+set smartindent                " Do smart autoindenting
+set expandtab                  " Expand tag to space
+set tabstop=4                  " One tab includes four spaces
+set shiftwidth=4               " The width of '<' and '>'
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode.
 
-set hidden  " Hide unsaved buffer
+set splitbelow                 " New buffer splits below by default
+set splitright                 " New buffer splits right by default
 
-set expandtab   " Expand tag to space
-set tabstop=4   " One tab includes four spaces
-set shiftwidth=4    " The width of '<' and '>'
-set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
-
-set smartindent     " Do smart autoindenting
-
-set ruler           " show the cursor position
-set wildmenu        " display completion matches in a status line
-set number          " Show line number
-set splitbelow      " New buffer splits below by default
-set splitright      " New buffer splits right by default
-set mouse=a         " Enable mouse in all mode
-set scrolloff=5     " Show a few lines around the cursor
+set modeline                   " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+set hidden                     " Hide unsaved buffer
+set ruler                      " show the cursor position
+set wildmenu                   " display completion matches in a status line
+set number                     " Show line number
+set mouse=a                    " Enable mouse in all mode
 set fileencodings=utf-8,gb18030,latin1
 set background=dark
 

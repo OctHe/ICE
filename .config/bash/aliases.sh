@@ -26,6 +26,10 @@ if which vim > /dev/null 2>&1; then
     alias slim='vim -u ~/.config/slim/vimrc'
 fi
 
+if which vim > /dev/null 2>&1; then
+    alias vide='vim -u ~/.config/vide/vimrc'
+fi
+
 if which nvim > /dev/null 2>&1; then
     alias nvimini='NVIM_APPNAME=nvimini nvim'
 fi
