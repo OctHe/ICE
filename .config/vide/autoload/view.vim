@@ -7,15 +7,39 @@
 "
 " =====================================================================
 
-function! view#Airline()
-  if empty(globpath(&rtp, '/plugin/airline.vim'))
+function! view#Undotree()
+  if empty(globpath(&rtp, '/plugin/undotree.vim'))
     return
   endif
 
-  " Enhanced tabline
-  let g:airline#extensions#tabline#enabled = 1
-  " Show buffer number so the buffer can be quickly picked
-  let g:airline#extensions#tabline#buffer_nr_show = 1
+  nnoremap <Leader>u :UndotreeToggle<CR>
+
+endfunction
+
+function! view#Goyo()
+  if empty(globpath(&rtp, '/plugin/goyo.vim'))
+    return
+  endif
+
+  nnoremap <Leader>wg :Goyo<CR>
+
+endfunction
+
+function! view#Limelight()
+  if empty(globpath(&rtp, '/plugin/limelight.vim'))
+    return
+  endif
+
+  nnoremap <Leader>wl :Limelight!!<CR>
+
+endfunction
+
+function! view#IndentGuides()
+  if empty(globpath(&rtp, '/plugin/indent_guides.vim'))
+    return
+  endif
+
+  let g:indent_guides_enable_on_vim_startup = 1
 
 endfunction
 
@@ -26,28 +50,32 @@ function! view#Whichkey()
   endif
 
   let g:which_key_map = {}
-  let g:which_key_map.c = {
-        \ 'name': '+Comment',
-        \ 'c': 'Comment line',
-        \ }
-  let g:which_key_map.e = {
-        \ 'name': 'Explorer',
-        \ }
   let g:which_key_map.f = {
-        \ 'name': '+Find',
+        \ 'name': '+find',
         \ }
   let g:which_key_map.g = {
-        \ 'name': '+Git',
-        \ 'd': 'Diff',
+        \ 'name': '+git',
+        \ 'd': 'diff',
         \ }
   let g:which_key_map.h = {
-        \ 'name': '+Hunk',
-        \ 'p': 'Preview the hunk',
-        \ 's': 'Stage the hunk',
-        \ 'u': 'Undo the hunk',
+        \ 'name': '+hunk',
+        \ 'p': 'preview the hunk',
+        \ 's': 'stage the hunk',
+        \ 'u': 'undo the hunk',
         \ }
   let g:which_key_map.s = {
-        \ 'name': 'Symbol',
+        \ 'name': 'symbol',
+        \ }
+  let g:which_key_map.t = {
+        \ 'name': '+terminal',
+        \ }
+  let g:which_key_map.u = {
+        \ 'name': 'undo tree',
+        \ }
+  let g:which_key_map.w = {
+        \ 'name': '+writing',
+        \ 'g': 'goyo',
+        \ 'l': 'limelight',
         \ }
   call which_key#register('<Space>', "g:which_key_map")
 
@@ -57,4 +85,15 @@ function! view#Whichkey()
   vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
 
 endfunction
+function! view#Rainbow()
+
+  if empty(globpath(&rtp, '/plugin/rainbow_main.vim'))
+    return
+  endif
+  " This variable must be defined to use rainbow.
+  " Set to 0 to enable it later via :RainbowToggle
+  let g:rainbow_active = 1
+
+endfunction
+
 " vim: set sw=2 sts=2 et fdm=marker:

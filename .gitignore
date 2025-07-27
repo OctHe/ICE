@@ -31,13 +31,13 @@
 # Vim
 !/.vim/
 !/.vim/**
+/.vim/pack/**
 /.vim/.netrwhist
-# Plugin manager: vim-plug
-/.vim/autoload/plug.vim
 
 !/.config/vide/
 !/.config/vide/**
-/.config/vide/pack/**
+# Plugin manager: vim-plug
+/.config/vide/autoload/plug.vim
 /.config/vide/.netrwhist
 
 !/.config/slim/
