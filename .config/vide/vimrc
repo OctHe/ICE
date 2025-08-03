@@ -91,6 +91,8 @@ Plug 'junegunn/limelight.vim'
 autocmd User plugin_config call view#Limelight()
 " Display contents in register
 Plug 'junegunn/vim-peekaboo'
+" Colorscheme
+Plug 'junegunn/seoul256.vim'
 
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey()
@@ -177,7 +179,7 @@ autocmd User plugin_config call runner#vimtex()
 " vim-signature: Manage marks with column
 Plug 'kshenoy/vim-signature'
 
-Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()
@@ -186,7 +188,7 @@ doautocmd User plugin_config
 " View {{{1
 try
   " Plugin colorscheme
-  colorscheme OceanicNext
+  colorscheme seoul256
 catch
   " Builtin colorscheme
   colorscheme desert

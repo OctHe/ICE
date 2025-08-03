@@ -92,7 +92,7 @@ autocmd User plugin_config call view#Whichkey()
 Jetpack 'vim-airline/vim-airline'
 autocmd User plugin_config call view#Airline()
 
-Jetpack 'morhetz/gruvbox'
+Jetpack 'rafi/awesome-vim-colorschemes'
 
 call jetpack#end()
 doautocmd User plugin_config
