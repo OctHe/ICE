@@ -76,10 +76,7 @@ Jetpack 'sbdchd/neoformat'
 " Align
 Jetpack 'godlygeek/tabular'
 
-Jetpack 'dense-analysis/ale'
-autocmd User plugin_config call lint#ALE()
-
-Jetpack 'skywind3000/asyncrun.vim'
+Jetpack 'neomake/neomake'
 
 " gitgutter: Show diff in the column sign (See :help signcolumn
 Jetpack 'airblade/vim-gitgutter'

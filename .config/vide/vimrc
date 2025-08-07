@@ -28,7 +28,6 @@ let mapleader = ' '
 
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
-tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 
 " Easy indent
 vmap < <gv
@@ -161,7 +160,10 @@ autocmd User plugin_config call view#Undotree()
 " Auto close parentheses and repeat by dot dot dot...
 Plug 'cohama/lexima.vim'
 
-Plug 'neomake/neomake'
+Plug 'dense-analysis/ale'
+autocmd User plugin_config call lint#ALE()
+
+Plug 'skywind3000/asyncrun.vim'
 
 Plug 'mg979/vim-visual-multi'
 
