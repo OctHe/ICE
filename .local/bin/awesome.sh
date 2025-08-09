@@ -2,35 +2,35 @@
 #
 # Collection of awesome open source projects from github
 
-gl_shell=(
+ice_shell=(
     Bash-it/bash-it \\n
     ohmyzsh/ohmyzsh \\n
     fish-shell/fish-shell \\n
 )
 
-gl_pkg=(
+ice_pkg=(
     flatpak/flatpak \\n
     Jguer/yay \\n
     pypa/pip \\n
     rust-lang/cargo \\n
 )
 
-gl_tool=(
+ice_tool=(
     sharkdp/bat ajeetdsouza/zoxide eza-community/eza htop-dev/htop \\n
     dylanaraps/neofetch \\n
     flameshot-org/flameshot \\n
     gnome-terminator/terminator \\n
 )
 
-gl_win=(
+ice_win=(
     tmux/tmux \\n
 )
 
-gl_net=(
+ice_net=(
     soimort/translate-shell \\n
 )
 
-gl_editor=(
+ice_editor=(
     vim/vim \\n
     neovim/neovim ggandor/leap.nvim folke/zen-mode.nvim folke/neodev.nvim \\n
     mawww/kakoune \\n
@@ -38,50 +38,56 @@ gl_editor=(
     zyedidia/micro \\n
 )
 
-gl_finder=(
+ice_finder=(
     sharkdp/fd junegunn/fzf \\n
     Genivia/ugrep beyondgrep/ack3 ggreer/the_silver_searcher BurntSushi/ripgrep \\n
 )
 
 # Help manual, PDF viewver, file explorer, and web browser
-gl_viewer=(
+ice_viewer=(
     cheat/cheat \\n
     atlas-engineer/nyxt qutebrowser/qutebrowser fanglingsu/vimb \\n
     jarun/nnn ranger/ranger vifm/vifm \\n
 )
 
-gl_code=(universal-ctags/ctags danmar/cppcheck llvm/llvm-project \\n)
+ice_code=(universal-ctags/ctags danmar/cppcheck llvm/llvm-project \\n)
 
-gl_build=(
+ice_build=(
     xmake-io/xmake bazelbuild/bazel rizsotto/Bear ccache/ccache \\n
     python/cpython rust-lang/rust golang/go \\n
     doxygen/doxygen jgm/pandoc \\n
 )
 
-gl_langsrv=(
+ice_langsrv=(
     MaskRay/ccls \\n
     koalaman/shellcheck \\n
     LuaLS/lua-language-server \\n
 )
 
 # Get repos info
-function gl_repos() {
-  for arg in $@
-  do
-    echo ${arg}
-    app_name=gl_${arg}[@]
-    apps=${!app_name}
+function ice_repos() {
 
-    for app in ${apps[@]}; do
-        if [ ${app} = "\n" ]; then
-            echo
-            continue
-        fi
-        echo -en " ${app} [star: $(curl -s https://api.github.com/repos/${app} | jq '.stargazers_count')]\t"
+    for arg in $@
+    do
+        echo ${arg}
+        app_name=ice_${arg}[@]
+        apps=${!app_name}
+
+        for app in ${apps[@]}; do
+            if [ ${app} = "\n" ]; then
+                echo
+                continue
+            fi
+            echo -en " ${app} [star: $(curl -s https://api.github.com/repos/${app} | jq '.stargazers_count')]\t"
+        done
     done
-  done
 }
 
 
-gl_repos shell pkg tool win net editor finder viewer code build langsrv
+if [ $# -eq 0 ]; then
+    ice_repos shell pkg tool win net editor finder viewer code build langsrv
+else
+    echo "This script does not support args now."
+fi
+
 

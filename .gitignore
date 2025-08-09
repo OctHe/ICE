@@ -5,8 +5,11 @@
 !README.md
 
 # Script
-!/bin
-!/bin/**
+!/.local/
+!/.local/bin/
+!/.local/bin/awesome.sh
+!/.local/bin/cmd_online_help.sh
+!/.local/bin/status.sh
 
 
 # User config directory

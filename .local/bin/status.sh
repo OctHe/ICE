@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# Effective applications for graphicless. This is a bash script, 
-# it does not compatible with zsh or other shells
+# Command detection
 
 # bash is the default shell for most Linux distributions
 # ash is the shell from busybox
@@ -69,10 +68,17 @@ viewer=(
 #   sudo apt install libxml2-utils
 linter=(
     ctags cscope cppcheck cpplint \\n
-    pyflakes flake8 \\n
+    flake8 mypy \\n
     vint \\n
     gitlint \\n
     xmllint \\n
+)
+
+lsp=(
+    clangd ccls \\n
+    pyright \\n
+    shellcheck \\n
+    lua-language-server \\n
 )
 
 formatter=(
@@ -103,18 +109,10 @@ builder=(
 # ddd is the GUI of gdb
 debugger=(gdb ddd lldb \\n)
 
-langsrv=(
-    clangd ccls \\n
-    shellcheck \\n
-    lua-language-server \\n
-)
-
-# osc: openSUSE Commander. The commandline tool for packaging openSUSE packages
 vcs=(
     svn  \\n
     git lazygit onefetch \\n
     hg \\n
-    osc \\n
 )
 
 # Graphicless desktop environment
@@ -161,7 +159,11 @@ function status_command() {
     fi
 }
 
-status shell pkg tool win mail net viewer
-status editor finder linter formatter builder debugger langsrv vcs
+if [ $# -eq 0 ]; then
+    status shell pkg tool win mail net viewer
+    status editor finder linter formatter builder debugger lsp vcs
+    status_command
+else
+    echo "This script does not support args now."
+fi
 
-status_command

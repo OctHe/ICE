@@ -70,7 +70,9 @@ function man() {
     env $environment $0 $@
 }
 
-
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
 
 # zinit: A fast zsh plugin manager
 ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
