@@ -106,14 +106,13 @@ Plug 'mhinz/vim-startify'
 Plug 'itchyny/vim-cursorword'
 Plug 'itchyny/lightline.vim'
 
+Plug 'sbdchd/neoformat'
+
 if has('python3')
   " Ultisnips: snippets engine that uses snippet database
   " vim-snippets: snippet database
   Plug 'honza/vim-snippets' | Plug 'SirVer/ultisnips'
   autocmd User plugin_config call completer#UltiSnips()
-
-  " Auto detects predefined formatters.
-  Plug 'vim-autoformat/vim-autoformat'
 
   Plug 'puremourning/vimspector'
   autocmd User plugin_config call runner#vimspector()
