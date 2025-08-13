@@ -106,8 +106,6 @@ Plug 'mhinz/vim-startify'
 Plug 'itchyny/vim-cursorword'
 Plug 'itchyny/lightline.vim'
 
-Plug 'sbdchd/neoformat'
-
 if has('python3')
   " Ultisnips: snippets engine that uses snippet database
   " vim-snippets: snippet database

@@ -49,6 +49,8 @@ function! PackInit() abort
 
   call minpac#add('ctrlpvim/ctrlp.vim')
 
+  call minpac#add('sbdchd/neoformat')
+
 endfunction
 
 " Define user commands for updating/cleaning the plugins.
