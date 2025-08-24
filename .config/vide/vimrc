@@ -61,7 +61,6 @@ call plug#begin(expand('~/.local/share/vide/plugins/'))
 " starsearch: Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
 
-Plug 'tpope/vim-dispatch'
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive()
@@ -177,8 +176,6 @@ autocmd User plugin_config call runner#vimtex()
 
 " vim-signature: Manage marks with column
 Plug 'kshenoy/vim-signature'
-
-" Plug 'rafi/awesome-vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()

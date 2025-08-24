@@ -29,6 +29,10 @@ function! lint#ALE()
     let g:ale_cpp_cc_executable = 'clangd'
   endif
 
+    let g:ale_fixers = {
+          \ 'python': ['isort', 'yapf', 'remove_trailing_lines']
+          \}
+
 endfunction
 
 " vim: set sw=2 sts=2 et fdm=marker:
