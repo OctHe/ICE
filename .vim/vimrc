@@ -38,7 +38,7 @@ if !(s:jetpack_dir->isdirectory())
 endif
 packadd vim-jetpack
 
-call jetpack#begin(expand('~/.local/share/vim/plugins/'))
+call jetpack#begin(expand('~/.vim/'))
 
 call jetpack#add("tani/vim-jetpack")
 
@@ -59,7 +59,7 @@ Jetpack 'justinmk/vim-dirvish'
 
 Jetpack 'Yggdroot/indentLine'
 " LeaderF: Asynchronous fuzzy finder with popup window
-if  has('python3') &&  executable('pip3')
+if  has('python3')
   Jetpack 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
   autocmd User plugin_config call navigator#LeaderF()
 endif
@@ -74,13 +74,13 @@ Jetpack 'ludovicchabant/vim-gutentags'
 
 if has('python3')
   Jetpack 'vim-autoformat/vim-autoformat'
-
 endif
 
 " Align
 Jetpack 'godlygeek/tabular'
 
 Jetpack 'neomake/neomake'
+autocmd User plugin_config call lint#Neomake()
 
 " gitgutter: Show diff in the column sign (See :help signcolumn
 Jetpack 'airblade/vim-gitgutter'
