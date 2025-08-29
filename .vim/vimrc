@@ -47,9 +47,6 @@ Jetpack 'tpope/vim-fugitive'
 
 " starsearch: Enhanced star keymapping. Avoid jumping to next
 Jetpack 'vim-scripts/star-search'
-Jetpack 'vim-scripts/AutoComplPop'
-Jetpack 'vim-scripts/CCTree'
-Jetpack 'vim-scripts/Gundo'
 
 " Sneak: Jump with 2 chars.
 Jetpack 'justinmk/vim-sneak'
@@ -68,13 +65,15 @@ Jetpack 'tomtom/tcomment_vim'
 
 " Automatic closing of quotes, parenthesis, brackets,
 Jetpack 'Raimondi/delimitMate'
+  autocmd User plugin_config call completer#delimitMate()
 
 Jetpack 'ludovicchabant/vim-gutentags'
-
 
 if has('python3')
   Jetpack 'vim-autoformat/vim-autoformat'
 endif
+
+Jetpack 'ervandew/supertab'
 
 " Align
 Jetpack 'godlygeek/tabular'
@@ -82,7 +81,7 @@ Jetpack 'godlygeek/tabular'
 Jetpack 'neomake/neomake'
 autocmd User plugin_config call lint#Neomake()
 
-" gitgutter: Show diff in the column sign (See :help signcolumn
+" gitgutter: Show diff in the column sign (See :help signcolumn)
 Jetpack 'airblade/vim-gitgutter'
 
 Jetpack 'liuchengxu/vista.vim'
