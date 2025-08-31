@@ -1,14 +1,10 @@
 "
-" Default vim run command file
+" The default vim config. Make the vim work like an IDE.
 " Author: OctHe
 " Copyright (C)
 "
 " =====================================================================
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-if &compatible
-  set nocompatible
-endif
+source $VIMRUNTIME/vimrc_example.vim
 
 " Enable file type detection.
 filetype plugin on
@@ -23,84 +19,173 @@ let mapleader = ' '
 
 " Easy-nohlsearch
 nnoremap <silent> <Esc> :nohlsearch<CR>
-tnoremap <silent> <Esc><Esc> <C-\><C-n><CR>
 
 " Easy indent
 vmap < <gv
 vmap > >gv
 
+" Show mappings
+nnoremap <silent> <Leader>m :verbose map
+
 " }}}1
 
-" Try to install jetpack if not found
-let s:jetpack_dir = expand('~/.vim/pack/jetpack/opt/vim-jetpack')
-if !(s:jetpack_dir->isdirectory())
-  execute '!git clone https://github.com/tani/vim-jetpack' s:jetpack_dir
+" Try to install vim-plug if not found
+let s:vim_plug = expand('~/.vim/autoload/plug.vim')
+if !filereadable(s:vim_plug)
+  execute '!curl -fLo' s:vim_plug
+        \ '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+  if empty(s:vim_plug)
+    echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
+
+    silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
+    execute '!cp /tmp/vim-plug/plug.vim' s:vim_plug
+    silent !rm -rf /tmp/vim-plug
+  endif
+
 endif
-packadd vim-jetpack
 
-call jetpack#begin(expand('~/.vim/'))
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+let s:plugin_dir = expand('~/.local/share/vim/plugins/')
+call plug#begin(s:plugin_dir)
 
-call jetpack#add("tani/vim-jetpack")
-
-Jetpack 'tpope/vim-surround'
-Jetpack 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+" speeddating: Use <c-a>/<c-x> to increment datas and times
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-endwise'
+" fugitive: Provide common git options (diff, status, add, commit, etc)
+Plug 'tpope/vim-fugitive'
+autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
 
 " starsearch: Enhanced star keymapping. Avoid jumping to next
-Jetpack 'vim-scripts/star-search'
+Plug 'vim-scripts/star-search'
 
-" Sneak: Jump with 2 chars.
-Jetpack 'justinmk/vim-sneak'
-autocmd User plugin_config call navigator#Sneak()
-" Path navigator
-Jetpack 'justinmk/vim-dirvish'
+" NERDTree: File explorer.
+Plug 'preservim/nerdtree'
+autocmd User plugin_config call navigator#NerdTree(s:plugin_dir)
+Plug 'preservim/tagbar'
+Plug 'preservim/nerdcommenter'
+autocmd User plugin_config call completor#NerdCommenter(s:plugin_dir)
+Plug 'preservim/vim-indent-guides'
+autocmd User plugin_config call view#IndentGuides(s:plugin_dir)
+Plug 'preservim/vim-pencil'
 
-Jetpack 'Yggdroot/indentLine'
-" LeaderF: Asynchronous fuzzy finder with popup window
-if  has('python3')
-  Jetpack 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
-  autocmd User plugin_config call navigator#LeaderF()
-endif
+" Use the latest fzf instead of the system-wide fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+" vim-plug: Register vim-plug as a plugin to get the help doc.
+Plug 'junegunn/vim-plug'
+Plug 'junegunn/vim-easy-align'
+" goyo.vim and limelight.vim improves text experience
+Plug 'junegunn/goyo.vim'
+autocmd User plugin_config call view#Goyo(s:plugin_dir)
+Plug 'junegunn/limelight.vim'
+autocmd User plugin_config call view#Limelight(s:plugin_dir)
+" Display contents in register
+Plug 'junegunn/vim-peekaboo'
+" Colorscheme
+Plug 'junegunn/seoul256.vim'
 
-Jetpack 'tomtom/tcomment_vim'
+Plug 'liuchengxu/vim-which-key'
+autocmd User plugin_config call view#Whichkey(s:plugin_dir)
 
-" Automatic closing of quotes, parenthesis, brackets,
-Jetpack 'Raimondi/delimitMate'
-  autocmd User plugin_config call completer#delimitMate()
+Plug 'mhinz/vim-signify'
+" Grep the results into a quickfix.
+Plug 'mhinz/vim-grepper'
+autocmd User plugin_config call navigator#Grepper(s:plugin_dir)
+Plug 'mhinz/vim-startify'
 
-Jetpack 'ludovicchabant/vim-gutentags'
+Plug 'itchyny/vim-cursorword'
+Plug 'itchyny/lightline.vim'
 
 if has('python3')
-  Jetpack 'vim-autoformat/vim-autoformat'
+  " Ultisnips: snippets engine that uses snippet database
+  " vim-snippets: snippet database
+  Plug 'honza/vim-snippets'
+  Plug 'SirVer/ultisnips'
+  autocmd User plugin_config call completor#UltiSnips(s:plugin_dir)
+
+  Plug 'puremourning/vimspector'
+  autocmd User plugin_config call runner#Vimspector(s:plugin_dir)
 endif
 
-Jetpack 'ervandew/supertab'
+if v:versionlong >= 9010016 && has('python3') && executable('cmake')
+  " YCM: a powerful completion engine based on LSP. It relies on cmake,
+  " make, g++, python3-dev and LSP.
+  " Install the prerequisites in Debian with
+  "   sudo apt install cmake make g++ python3-dev
+  " In openSUSE with
+  "   sudo zypper install cmake make g++ python3-deval
+  Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completor'}
+  autocmd User plugin_config call completor#YCM(s:plugin_dir)
+elseif has('python3')
+  Plug 'maralla/completor.vim'
+else
+  Plug 'ervandew/supertab'
+endif
 
-" Align
-Jetpack 'godlygeek/tabular'
+Plug 'voldikss/vim-floaterm'
+autocmd User plugin_config call runner#Floaterm(s:plugin_dir)
 
-Jetpack 'neomake/neomake'
-autocmd User plugin_config call lint#Neomake()
+" vim-tmux-navigator
+" It requires configuration in tmux
+if isdirectory(glob('~/.local/share/tmux/plugin/vim-tmux-navigator'))
+  " Use the same file for both vim and tmux
+  Plug '~/.local/share/tmux/plugin/vim-tmux-navigator'
+else
+  Plug 'christoomey/vim-tmux-navigator'
+endif
 
-" gitgutter: Show diff in the column sign (See :help signcolumn)
-Jetpack 'airblade/vim-gitgutter'
+" Sneak: Jump with 2 chars.
+Plug 'justinmk/vim-sneak'
+autocmd User plugin_config call navigator#Sneak(s:plugin_dir)
+" Path navigator
+Plug 'justinmk/vim-dirvish'
 
-Jetpack 'liuchengxu/vista.vim'
-autocmd User plugin_config call lint#Vista()
-Jetpack 'liuchengxu/vim-which-key'
-autocmd User plugin_config call view#Whichkey()
 
-Jetpack 'vim-airline/vim-airline'
-autocmd User plugin_config call view#Airline()
+" rainbow: Rainbow brackets
+Plug 'luochen1990/rainbow'
+autocmd User plugin_config call view#Rainbow(s:plugin_dir)
 
-Jetpack 'rafi/awesome-vim-colorschemes'
+Plug 'unblevable/quick-scope'
 
-call jetpack#end()
+Plug 'mbbill/undotree'
+autocmd User plugin_config call navigator#Undotree(s:plugin_dir)
+
+" Auto close parentheses and repeat by dot dot dot...
+Plug 'cohama/lexima.vim'
+
+Plug 'dense-analysis/ale'
+autocmd User plugin_config call lint#ALE(s:plugin_dir)
+
+Plug 'skywind3000/asyncrun.vim'
+
+Plug 'mg979/vim-visual-multi'
+
+Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'wellle/context.vim'
+
+Plug 'psliwka/vim-smoothie'
+
+Plug 'lervag/vimtex'
+autocmd User plugin_config call runner#vimtex(s:plugin_dir)
+
+" vim-signature: Manage marks with column
+Plug 'kshenoy/vim-signature'
+
+" Initialize plugin system
+call plug#end()
 doautocmd User plugin_config
 
 " View {{{1
 try
-  " Colorscheme may use plugin
-  colorscheme gruvbox
+  " Plugin colorscheme
+  colorscheme seoul256
 catch
   " Builtin colorscheme
   colorscheme desert
@@ -108,35 +193,30 @@ endtry
 " }}}1
 
 " Options {{{1
-syntax enable                          " This enables Vim's syntax-related features.
+set hlsearch                   " Highlight the search results
+set incsearch                  " Show the pattern while typing
 
-set hlsearch                           " Highlight the search results
-set incsearch                          " Show the pattern while typing
+set smartindent                " Do smart autoindenting
+set expandtab                  " Expand tag to space
+set tabstop=4                  " One tab includes four spaces
+set shiftwidth=4               " The width of '<' and '>'
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode.
 
-set smartindent                        " Do smart autoindenting
-set expandtab                          " Expand tag to space
-set tabstop=4                          " One tab includes four spaces
-set shiftwidth=4                       " The width of '<' and '>'
-set backspace=indent,eol,start         " Allow backspacing over everything in insert mode.
+set splitbelow                 " New buffer splits below by default
+set splitright                 " New buffer splits right by default
 
-set splitbelow                         " New buffer splits below by default
-set splitright                         " New buffer splits right by default
-
-set modeline                           " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
-set hidden                             " Hide unsaved buffer
-set ruler                              " show the cursor position
-set wildmenu                           " display completion matches in a status line
-set number                             " Show line number
-set mouse=a                            " Enable mouse in all mode
-set scrolloff=5                        " Minimal number of screen lines to keep above and below the cursor.
+set modeline                   " Modeline is the last comment line if vim is the editor. See `help modeline`
+set hidden                     " Hide unsaved buffer
+set ruler                      " show the cursor position
+set wildmenu                   " display completion matches in a status line
+set number                     " Show line number
+set mouse=a                    " Enable mouse in all mode
 set fileencodings=utf-8,gb18030,latin1
 
-set background=dark
-
+syntax enable                  " Enable syntax-related features. Without this, some VimTeX features may not work
 " }}}1
 
-" Commends {{{1
-
+" Commands {{{1
 augroup EnhancedHelp
   au!
 
@@ -150,8 +230,6 @@ augroup EnhancedHelp
         \ | endif
 
 augroup END
+"}}}
 
-" }}}1
-
-
-" vim: set sw=2 sts=2 et fdm=marker:
+" vim: set sw=2 sts=2 et:

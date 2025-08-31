@@ -1,19 +1,19 @@
 " =====================================================================
 "
-" Autocompletion
+" Version control system
 "
 " Author: OctHe
 " Copyright (C)
 "
 " =====================================================================
 
-function! completer#delimitMate()
-
-  if empty(globpath(&rtp, '/plugin/delimitMate.vim'))
+function! vcs#Fugitive(plugin_dir)
+  if empty(globpath(a:plugin_dir, 'vim-fugitive/plugin/fugitive.vim'))
     return
   endif
 
-  let g:delimitMate_balance_matchpairs = 1
+  nnoremap <silent> <Leader>gd :Git diff<CR><C-W>L
+  nnoremap <silent> <Leader>gs :Git status<CR>
 
 endfunction
 

@@ -7,9 +7,9 @@
 "
 " =====================================================================
 
-function! runner#Floaterm()
+function! runner#Floaterm(plugin_dir)
 
-  if empty(globpath(&rtp, '/plugin/floaterm.vim'))
+  if empty(globpath(a:plugin_dir, 'vim-floaterm/plugin/floaterm.vim'))
     return
   endif
 
@@ -22,9 +22,9 @@ function! runner#Floaterm()
 endfunction
 
 " Debugger with DAP
-function! runner#vimspector()
+function! runner#Vimspector(plugin_dir)
 
-  if empty(globpath(&rtp, '/plugin/vimspector.vim'))
+  if empty(globpath(a:plugin_dir, 'vimspector/plugin/vimspector.vim'))
     return
   endif
 
@@ -37,9 +37,9 @@ endfunction
 " The backward search and forward search requires xdotool according to the
 " author
 "   sudo apt install xdotool
-function! runner#vimtex()
+function! runner#vimtex(plugin_dir)
 
-  if empty(globpath(&rtp, '/plugin/vimtex.vim'))
+  if empty(globpath(a:plugin_dir, 'vimtex/plugin/vimtex.vim'))
     return
   endif
 

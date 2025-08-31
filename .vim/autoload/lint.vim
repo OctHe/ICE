@@ -7,27 +7,29 @@
 "
 " =====================================================================
 
-function! lint#Vista()
+function! lint#Tagbar(plugin_dir)
 
-  if empty(globpath(&rtp, '/plugin/vista.vim'))
+  if empty(globpath(a:plugin_dir, 'tagbar/plugin/tagbar.vim'))
     return
   endif
 
-  let g:vista_sidebar_width = 90
-
   " s means symbol
-  nnoremap <silent> <Leader>s :Vista!!<CR>
+  nnoremap <silent> <Leader>s :Tagbar<CR>
 
 endfunction
 
-function! lint#Neomake()
+function! lint#ALE(plugin_dir)
 
-  if empty(globpath(&rtp, '/plugin/neomake.vim'))
+  if empty(globpath(a:plugin_dir, 'ale/plugin/ale.vim'))
     return
   endif
 
-  " When writing a buffer, and on normal mode changes (after 750ms).
-  call neomake#configure#automake('nw', 750)
+  let g:ale_c_cc_executable = 'clangd'
+  let g:ale_cpp_cc_executable = 'clangd'
+
+  let g:ale_fixers = {
+        \ 'python': ['isort', 'black', 'remove_trailing_lines']
+        \}
 
 endfunction
 

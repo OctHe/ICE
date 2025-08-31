@@ -36,12 +36,8 @@
 !/.vim/**
 /.vim/pack/**
 /.vim/.netrwhist
-
-!/.config/vide/
-!/.config/vide/**
 # Plugin manager: vim-plug
-/.config/vide/autoload/plug.vim
-/.config/vide/.netrwhist
+/.vim/autoload/plug.vim
 
 !/.config/slim/
 !/.config/slim/**
