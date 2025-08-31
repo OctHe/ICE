@@ -12,6 +12,7 @@ alias ls='ls --color=always'
 alias ll='ls --color=always -alh'
 
 # Git
+alias gst='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gco='git checkout'
@@ -24,10 +25,6 @@ alias rgrep='grep --color=always --exclude-dir=.git -arn'
 
 if which vim > /dev/null 2>&1; then
     alias slim='vim -u ~/.config/slim/vimrc'
-fi
-
-if which vim > /dev/null 2>&1; then
-    alias vide='vim -u ~/.config/vide/vimrc'
 fi
 
 if which nvim > /dev/null 2>&1; then
