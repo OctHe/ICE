@@ -37,22 +37,125 @@ function! PackInit() abort
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
-  call minpac#add('tpope/vim-surround')
+
+  " Replace vim-surround with vim-sandwich. Disable it by default
+  call minpac#add('tpope/vim-surround', {'type': 'opt'})
   call minpac#add('tpope/vim-vinegar')
-  call minpac#add('tpope/vim-commentary')
+  " Replace vim-commentary with tcomment_vim. Disable it by default
+  call minpac#add('tpope/vim-commentary', {'type': 'opt'})
   call minpac#add('tpope/vim-repeat')
+  call minpac#add('tpope/vim-speeddating')
   call minpac#add('tpope/vim-endwise')
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('tpope/vim-fugitive')
 
-  call minpac#add('LunarWatcher/auto-pairs')
+  " starsearch: Enhanced star keymapping. Avoid jumping to next
+  call minpac#add('vim-scripts/star-search')
+  call minpac#add('vim-scripts/AutoComplPop')
+  call minpac#add('vim-scripts/CCTree')
+  call minpac#add('vim-scripts/Gundo')
 
-  call minpac#add('ctrlpvim/ctrlp.vim')
+  call minpac#add('liuchengxu/vista.vim')
+  call minpac#add('liuchengxu/vim-which-key')
+
+  call minpac#add('ludovicchabant/vim-gutentags')
+
+  call minpac#add('tomtom/tcomment_vim')
+
+  " Replace auto-pairs with delimitMate. Disable it by default
+  call minpac#add('LunarWatcher/auto-pairs', {'type': 'opt'})
+
+  " Automatic closing of quotes, parenthesis, brackets,
+  call minpac#add('Raimondi/delimitMate')
+
+  call minpac#add('timsu92/vim-easymotion')
+
+  call minpac#add('machakann/vim-sandwich')
+
+  " Align text
+  call minpac#add('godlygeek/tabular')
+
+  call minpac#add('Yggdroot/indentLine')
+  " LeaderF: Asynchronous fuzzy finder with popup window
+  if  has('python3')
+    call minpac#add('Yggdroot/LeaderF', { 'do': 'packloadall! | :LeaderfInstallCExtension'})
+  else
+    call minpac#add('ctrlpvim/ctrlp.vim')
+  endif
+
+  call minpac#add('neomake/neomake')
 
   call minpac#add('sbdchd/neoformat')
 
+  " Replace autoformat with neoformat since it lacks vim doc. Disable it by default
+  if has('python3')
+    call minpac#add('vim-autoformat/vim-autoformat', {'type': 'opt'})
+  endif
+
+  call minpac#add('vim-airline/vim-airline')
+
+  call minpac#add('rafi/awesome-vim-colorschemes')
+
 endfunction
 
+" ================ Plugin configuration ================
+" ---------------- Navigator ----------------
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_WildIgnore = {'dir': ['.git', '.svn', '.hg'], 'file': ['*~']}
+let g:Lf_ShortcutF = '<leader>ff'
+let g:Lf_ShortcutB = '<leader>fb'
+
+noremap <Leader>fr :Leaderf rg<CR>
+
+" ---------------- Tag and Linter ----------------
+let g:vista_sidebar_width = 90
+
+nnoremap <silent> <Leader>s :Vista!!<CR>
+
+" When writing a buffer, and on normal mode changes (after 750ms).
+call neomake#configure#automake('nw', 750)
+
+" ---------------- Completor ----------------
+let g:delimitMate_balance_matchpairs = 1
+
+" ---------------- VCS ----------------
+
+" ---------------- Viewer ----------------
+let g:airline#extensions#tabline#enabled = 1        " Enhanced tabline
+let g:airline#extensions#tabline#buffer_nr_show = 1 " Show buffer number
+
+let g:which_key_map = {}
+let g:which_key_map.c = {
+      \ 'name': '+Comment',
+      \ 'c': 'Comment line',
+      \ }
+let g:which_key_map.e = {
+      \ 'name': 'Explorer',
+      \ }
+let g:which_key_map.f = {
+      \ 'name': '+Find',
+      \ }
+let g:which_key_map.g = {
+      \ 'name': '+Git',
+      \ 'd': 'Diff',
+      \ }
+let g:which_key_map.h = {
+      \ 'name': '+Hunk',
+      \ 'p': 'Preview the hunk',
+      \ 's': 'Stage the hunk',
+      \ 'u': 'Undo the hunk',
+      \ }
+let g:which_key_map.s = {
+      \ 'name': 'Symbol',
+      \ }
+call which_key#register('<Space>', "g:which_key_map")
+
+nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
+vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<Leader>'<CR>
+nnoremap <silent> <LocalLeader> :<c-u>WhichKey '<LocalLeader>'<CR>
+vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
+
+" ================ Command ================
 " Define user commands for updating/cleaning the plugins.
 " Each of them calls PackInit() to load minpac and register
 " the information of plugins, then performs the task.
@@ -60,27 +163,35 @@ command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#init() | call minpac#status()
 
-set hlsearch    " Highlight the search results
-set incsearch   " Show the pattern while typing
+" ================ Options ================
+syntax enable                          " This enables Vim's syntax-related features.
 
-set expandtab   " Expand tag to space
-set tabstop=4   " One tab includes four spaces
-set shiftwidth=4    " The width of '<' and '>'
-set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+set hlsearch                           " Highlight the search results
+set incsearch                          " Show the pattern while typing
 
-set hidden  " Hide unsaved buffer
-set smartindent     " Do smart autoindenting
-set modeline    " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
-set ruler           " show the cursor position
-set wildmenu        " display completion matches in a status line
-set number          " Show line number
-set mouse=a         " Enable mouse in all mode
-set scrolloff=5     " Show a few lines around the cursor
+set expandtab                          " Expand tag to space
+set tabstop=4                          " One tab includes four spaces
+set shiftwidth=4                       " The width of '<' and '>'
+set backspace=indent,eol,start         " Allow backspacing over everything in insert mode.
+
+set hidden                             " Hide unsaved buffer
+set smartindent                        " Do smart autoindenting
+set modeline                           " Modeline is the last comment line if vim is the editor. Use `help modeline` for detail.
+set ruler                              " show the cursor position
+set wildmenu                           " display completion matches in a status line
+set number                             " Show line number
+set mouse=a                            " Enable mouse in all mode
+set scrolloff=5                        " Show a few lines around the cursor
 set fileencodings=utf-8,gb18030,latin1
 
-syntax enable       " This enables Vim's syntax-related features.
+set background=dark
 
-" Builtin colorschemes: peachpuff, quiet, slate
-colorscheme slate
+try
+  " Colorscheme may use plugin
+  colorscheme gruvbox
+catch
+  " Builtin colorscheme
+  colorscheme desert
+endtry
 
 " vim: set sw=2 sts=2 et fdm=marker:
