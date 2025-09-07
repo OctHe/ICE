@@ -112,8 +112,12 @@ let g:vista_sidebar_width = 90
 
 nnoremap <silent> <Leader>s :Vista!!<CR>
 
+let g:neomake_python_enabled_makers = ['flake8']
+
 " When writing a buffer, and on normal mode changes (after 750ms).
 call neomake#configure#automake('nw', 750)
+
+let g:neoformat_enabled_python = ['autopep8', 'isort']
 
 " ---------------- Completor ----------------
 let g:delimitMate_balance_matchpairs = 1

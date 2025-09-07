@@ -24,11 +24,12 @@ function! lint#ALE(plugin_dir)
     return
   endif
 
-  let g:ale_c_cc_executable = 'clangd'
-  let g:ale_cpp_cc_executable = 'clangd'
+  let g:ale_linters = {
+        \   'python': ['mypy', 'pylint'],
+        \ }
 
   let g:ale_fixers = {
-        \ 'python': ['isort', 'black', 'remove_trailing_lines']
+        \ 'python': ['isort', 'yapf', 'remove_trailing_lines']
         \}
 
 endfunction

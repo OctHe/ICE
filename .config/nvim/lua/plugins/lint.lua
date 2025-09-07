@@ -13,37 +13,34 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
 
-            if vim.fn.executable("lua-language-server") == 1 then
-                lspconfig.lua_ls.setup({
-                    settings = {
-                        Lua = {
-                            runtime = {
-                                -- Tell the language server which version of Lua (LuaJIT in the case of Neovim)
-                                version = "LuaJIT",
-                            },
-                            diagnostics = {
-                                -- Get the language server to recognize the `vim` global
-                                globals = { "vim" },
-                            },
-                            workspace = {
-                                -- Make the server aware of Neovim runtime files
-                                library = vim.api.nvim_get_runtime_file("", true),
-                            },
-                            -- Do not send telemetry data containing a randomized but unique identifier
-                            telemetry = {
-                                enable = false,
-                            },
+            lspconfig.lua_ls.setup({
+                settings = {
+                    Lua = {
+                        runtime = {
+                            -- Tell the language server which version of Lua (LuaJIT in the case of Neovim)
+                            version = "LuaJIT",
+                        },
+                        diagnostics = {
+                            -- Get the language server to recognize the `vim` global
+                            globals = { "vim" },
+                        },
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
+                        },
+                        -- Do not send telemetry data containing a randomized but unique identifier
+                        telemetry = {
+                            enable = false,
                         },
                     },
+                },
 
-                    -- Coorperation with cmp.nvim
-                    capabilities = require("cmp_nvim_lsp").default_capabilities(),
-                })
-            end
+                -- Coorperation with cmp.nvim
+                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            })
 
-            if vim.fn.executable("clangd") == 1 then
-                lspconfig.clangd.setup({})
-            end
+            lspconfig.clangd.setup({})
+            lspconfig.pyright.setup({})
         end,
 
         keys = {
@@ -235,7 +232,10 @@ return {
                         lua = { require("formatter.filetypes.lua").stylua, },
                         c = { require("formatter.filetypes.c").uncrustify, },
                         cpp = { require("formatter.filetypes.cpp").uncrustify, },
-                        python = { require("formatter.filetypes.python").autopep8, },
+                        python = { 
+                            require("formatter.filetypes.python").black, 
+                            require("formatter.filetypes.python").isort, 
+                        },
 
                         -- Use the special "*" filetype for defining formatter configurations on any filetype
                         -- ["*"] = { require("formatter.filetypes.any").remove_trailing_whitespace, },
