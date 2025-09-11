@@ -113,7 +113,3 @@ zinit light agnoster/agnoster-zsh-theme
 #     6	prompt_end
 AGNOSTER_PROMPT_SEGMENTS[2]=
 
-## Virtual environment
-PYTHON_VENV=~/.local/share/python/venv/ice
-[ -d ${PYTHON_VENV} ] && source ${PYTHON_VENV}/bin/activate
-

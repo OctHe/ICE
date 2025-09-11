@@ -15,10 +15,6 @@ To enable Bash's config, use
     echo 'source ~/.config/bash/bashrc' >> .bashrc
     source ~/.bashrc
 
-To use the python virtual environment:
-
-    python3 -m venv .local/share/python/venv/ice
-
 The packages is installed by
 
     pip3 install flake8 gitlint vim-vint debugpy
