@@ -5,7 +5,6 @@
 "
 " =====================================================================
 
-set guioptions=aegrLt
 set background=light
 try
   colorscheme gruvbox

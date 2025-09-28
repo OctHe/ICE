@@ -1,9 +1,8 @@
 [MAIN]
-init-hook=
+init-hook="
     import sys, os
 
-    if 'VIRTUAL_ENV' not in os.environ:
-        sys.exit(0)
+    if 'VIRTUAL_ENV' not in os.environ: sys.exit(0)
 
     ve_dir = os.environ['VIRTUAL_ENV']
-    ve_dir in sys.path or sys.path.insert(0, ve_dir)
+    ve_dir in sys.path or sys.path.insert(0, ve_dir)"
