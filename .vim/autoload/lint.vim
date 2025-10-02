@@ -28,6 +28,10 @@ function! lint#ALE(plugin_dir)
         \   'python': ['mypy', 'pylint'],
         \ }
 
+  " Options for mypy
+  let l:venv_dir = system('which python')
+  let g:ale_python_mypy_options = trim('--python-executable ' .. l:venv_dir)
+
   let g:ale_fixers = {
         \ 'python': ['isort', 'yapf', 'remove_trailing_lines']
         \}

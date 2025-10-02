@@ -213,6 +213,8 @@ set number                     " Show line number
 set mouse=a                    " Enable mouse in all mode
 set fileencodings=utf-8,gb18030,latin1
 
+set colorcolumn=81
+
 syntax enable                  " Enable syntax-related features. Without this, some VimTeX features may not work
 " }}}1
 

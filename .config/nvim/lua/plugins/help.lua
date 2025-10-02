@@ -13,6 +13,12 @@ return {
         lazy = false,
         dependencies = { "MunifTanjim/nui.nvim" },
         opts = {},
+        config = function()
+            disabled_keys = {
+                ["<Up>"] = false,
+                ["<Down>"] = false,
+            }
+        end,
     },
 
     {

@@ -190,6 +190,8 @@ set fileencodings=utf-8,gb18030,latin1
 
 set background=dark
 
+set colorcolumn=81
+
 try
   " Colorscheme may use plugin
   colorscheme gruvbox
