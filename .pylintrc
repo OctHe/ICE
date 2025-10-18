@@ -6,3 +6,5 @@ init-hook="
 
     ve_dir = os.environ['VIRTUAL_ENV']
     ve_dir in sys.path or sys.path.insert(0, ve_dir)"
+
+extension-pkg-allow-list=PyQt5,numpy
