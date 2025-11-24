@@ -118,7 +118,7 @@ if v:versionlong >= 9010016 && has('python3') && executable('cmake')
   "   sudo apt install cmake make g++ python3-dev
   " In openSUSE with
   "   sudo zypper install cmake make g++ python3-deval
-  Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completor'}
+  Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-completer'}
   autocmd User plugin_config call completor#YCM(s:plugin_dir)
 elseif has('python3')
   Plug 'maralla/completor.vim'
