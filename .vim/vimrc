@@ -50,7 +50,6 @@ endif
 let s:plugin_dir = expand('~/.local/share/vim/plugins/')
 call plug#begin(s:plugin_dir)
 
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " speeddating: Use <c-a>/<c-x> to increment datas and times
 Plug 'tpope/vim-speeddating'
@@ -144,6 +143,8 @@ autocmd User plugin_config call navigator#Sneak(s:plugin_dir)
 " Path navigator
 Plug 'justinmk/vim-dirvish'
 
+Plug 'machakann/vim-sandwich'
+autocmd User plugin_config call completor#Sandwich(s:plugin_dir)
 
 " rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'

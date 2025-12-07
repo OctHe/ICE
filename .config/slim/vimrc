@@ -38,10 +38,9 @@ function! PackInit() abort
 
   " Additional plugins here.
 
-  " Replace vim-surround with vim-sandwich. Disable it by default
-  call minpac#add('tpope/vim-surround', {'type': 'opt'})
+  call minpac#add('tpope/vim-surround')
   call minpac#add('tpope/vim-vinegar')
-  " Replace vim-commentary with tcomment_vim. Disable it by default
+  " vim-commentary does not support nest comment. Replace it with tcomment_vim. Disable it by default
   call minpac#add('tpope/vim-commentary', {'type': 'opt'})
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-speeddating')
@@ -70,8 +69,6 @@ function! PackInit() abort
 
   call minpac#add('timsu92/vim-easymotion')
 
-  call minpac#add('machakann/vim-sandwich')
-
   " Align text
   call minpac#add('godlygeek/tabular')
 
@@ -83,6 +80,7 @@ function! PackInit() abort
     call minpac#add('ctrlpvim/ctrlp.vim')
   endif
 
+  " It does not support virtualtext in vim
   call minpac#add('neomake/neomake')
 
   call minpac#add('sbdchd/neoformat')
