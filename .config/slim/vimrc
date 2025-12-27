@@ -39,8 +39,9 @@ function! PackInit() abort
   " Additional plugins here.
 
   call minpac#add('tpope/vim-surround')
-  call minpac#add('tpope/vim-vinegar')
-  " vim-commentary does not support nest comment. Replace it with tcomment_vim. Disable it by default
+  " Use nerdtree instead.
+  call minpac#add('tpope/vim-vinegar', {'type': 'opt'})
+  " vim-commentary does not support nest comment. Disable it by default
   call minpac#add('tpope/vim-commentary', {'type': 'opt'})
   call minpac#add('tpope/vim-repeat')
   call minpac#add('tpope/vim-speeddating')
@@ -54,12 +55,14 @@ function! PackInit() abort
   call minpac#add('vim-scripts/CCTree')
   call minpac#add('vim-scripts/Gundo')
 
-  call minpac#add('liuchengxu/vista.vim')
-  call minpac#add('liuchengxu/vim-which-key')
+  " NERDTree: File explorer.
+  call minpac#add('preservim/nerdtree')
+  call minpac#add('preservim/tagbar')
+  call minpac#add('preservim/nerdcommenter')
+  call minpac#add('preservim/vim-indent-guides')
+  call minpac#add('preservim/vim-pencil')
 
   call minpac#add('ludovicchabant/vim-gutentags')
-
-  call minpac#add('tomtom/tcomment_vim')
 
   " Replace auto-pairs with delimitMate. Disable it by default
   call minpac#add('LunarWatcher/auto-pairs', {'type': 'opt'})
@@ -72,13 +75,7 @@ function! PackInit() abort
   " Align text
   call minpac#add('godlygeek/tabular')
 
-  call minpac#add('Yggdroot/indentLine')
-  " LeaderF: Asynchronous fuzzy finder with popup window
-  if  has('python3')
-    call minpac#add('Yggdroot/LeaderF', { 'do': 'packloadall! | :LeaderfInstallCExtension'})
-  else
-    call minpac#add('ctrlpvim/ctrlp.vim')
-  endif
+  call minpac#add('ctrlpvim/ctrlp.vim')
 
   " It does not support virtualtext in vim
   call minpac#add('neomake/neomake')
@@ -98,18 +95,33 @@ endfunction
 
 " ================ Plugin configuration ================
 " ---------------- Navigator ----------------
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_WildIgnore = {'dir': ['.git', '.svn', '.hg'], 'file': ['*~']}
-let g:Lf_ShortcutF = '<leader>ff'
-let g:Lf_ShortcutB = '<leader>fb'
+let NERTTreeCaseSensitiveSort = 1
+let NERDTreeWinSize = 35
 
-noremap <Leader>fr :Leaderf rg<CR>
+augroup NERDTree
+  au!
+
+  " Close vim if the only window left open is a NERDTree
+  autocmd BufEnter *
+        \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
+        \ |   quit
+        \ | endif
+
+  " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+  autocmd BufEnter *
+        \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
+        \ |   let buf=bufnr('%')
+        \ |   buffer#
+        \ |   execute "normal! \<C-W>w"
+        \ |   execute 'buffer'.buf
+        \ | endif
+augroup END
+
+" e means explore
+nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+
 
 " ---------------- Tag and Linter ----------------
-let g:vista_sidebar_width = 90
-
-nnoremap <silent> <Leader>s :Vista!!<CR>
-
 let g:neomake_python_enabled_makers = ['flake8']
 
 " When writing a buffer, and on normal mode changes (after 750ms).
@@ -120,42 +132,16 @@ let g:neoformat_enabled_python = ['autopep8', 'isort']
 " ---------------- Completor ----------------
 let g:delimitMate_balance_matchpairs = 1
 
+let g:NERDSpaceDelims = 1
+let g:NERDRemoveExtraSpaces = 1
+
 " ---------------- VCS ----------------
 
 " ---------------- Viewer ----------------
 let g:airline#extensions#tabline#enabled = 1        " Enhanced tabline
 let g:airline#extensions#tabline#buffer_nr_show = 1 " Show buffer number
 
-let g:which_key_map = {}
-let g:which_key_map.c = {
-      \ 'name': '+Comment',
-      \ 'c': 'Comment line',
-      \ }
-let g:which_key_map.e = {
-      \ 'name': 'Explorer',
-      \ }
-let g:which_key_map.f = {
-      \ 'name': '+Find',
-      \ }
-let g:which_key_map.g = {
-      \ 'name': '+Git',
-      \ 'd': 'Diff',
-      \ }
-let g:which_key_map.h = {
-      \ 'name': '+Hunk',
-      \ 'p': 'Preview the hunk',
-      \ 's': 'Stage the hunk',
-      \ 'u': 'Undo the hunk',
-      \ }
-let g:which_key_map.s = {
-      \ 'name': 'Symbol',
-      \ }
-call which_key#register('<Space>', "g:which_key_map")
-
-nnoremap <silent> <Leader> :<c-u>WhichKey '<Leader>'<CR>
-vnoremap <silent> <Leader> :<c-u>WhichKeyVisual '<Leader>'<CR>
-nnoremap <silent> <LocalLeader> :<c-u>WhichKey '<LocalLeader>'<CR>
-vnoremap <silent> <LocalLeader> :<c-u>WhichKeyVisual '<LocalLeader>'<CR>
+let g:indent_guides_enable_on_vim_startup = 1
 
 " ================ Command ================
 " Define user commands for updating/cleaning the plugins.

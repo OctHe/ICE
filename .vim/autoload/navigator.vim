@@ -7,39 +7,6 @@
 "
 " =====================================================================
 
-function! navigator#NerdTree(plugin_dir)
-
-  if empty(globpath(a:plugin_dir, 'nerdtree/plugin/NERD_tree.vim'))
-    return
-  endif
-
-  let NERTTreeCaseSensitiveSort = 1
-  let NERDTreeWinSize = 35
-
-  augroup NERDTree
-    au!
-
-    " Close vim if the only window left open is a NERDTree
-    autocmd BufEnter *
-          \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()
-          \ |   quit
-          \ | endif
-
-    " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-    autocmd BufEnter *
-          \ if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1
-          \ |   let buf=bufnr('%')
-          \ |   buffer#
-          \ |   execute "normal! \<C-W>w"
-          \ |   execute 'buffer'.buf
-          \ | endif
-  augroup END
-
-  " e means explore
-  nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
-
-endfunction
-
 function! navigator#Sneak(plugin_dir)
 
   if empty(globpath(a:plugin_dir, 'vim-sneak/plugin/sneak.vim'))
@@ -68,6 +35,21 @@ function! navigator#Undotree(plugin_dir)
   endif
 
   nnoremap <Leader>u :UndotreeToggle<CR>
+
+endfunction
+
+function! navigator#LeaderF(plugin_dir)
+
+  if empty(globpath(a:plugin_dir, 'LeaderF/plugin/leaderf.vim'))
+    return
+  endif
+
+  let g:Lf_WindowPosition = 'popup'
+  let g:Lf_WildIgnore = {'dir': ['.git', '.svn', '.hg'], 'file': ['*~']}
+  let g:Lf_ShortcutF = '<leader>ff'
+  let g:Lf_ShortcutB = '<leader>fb'
+
+  noremap <Leader>fr :Leaderf rg<CR>
 
 endfunction
 

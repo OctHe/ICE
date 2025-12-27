@@ -25,17 +25,6 @@ function! view#Limelight(plugin_dir)
 
 endfunction
 
-function! view#IndentGuides(plugin_dir)
-  if empty(globpath(a:plugin_dir, 'vim-indent-guides/plugin/indent_guides.vim'))
-    return
-  endif
-
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
-
-endfunction
-
 function! view#Whichkey(plugin_dir)
 
   if empty(globpath(a:plugin_dir, 'vim-which-key/plugin/which_key.vim'))

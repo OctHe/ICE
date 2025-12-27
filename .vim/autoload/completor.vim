@@ -7,17 +7,6 @@
 "
 " =====================================================================
 
-function! completor#NerdCommenter(plugin_dir)
-
-  if empty(globpath(a:plugin_dir, 'nerdtree/plugin/nerdcommenter.vim'))
-    return
-  endif
-
-  let g:NERDSpaceDelims = 1
-  let g:NERDRemoveExtraSpaces = 1
-
-endfunction
-
 function! completor#Sandwich(plugin_dir)
 
   if empty(globpath(a:plugin_dir, 'vim-sandwich/plugin/sandwich.vim'))

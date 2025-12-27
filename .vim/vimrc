@@ -61,16 +61,6 @@ autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
 " starsearch: Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
 
-" NERDTree: File explorer.
-Plug 'preservim/nerdtree'
-autocmd User plugin_config call navigator#NerdTree(s:plugin_dir)
-Plug 'preservim/tagbar'
-Plug 'preservim/nerdcommenter'
-autocmd User plugin_config call completor#NerdCommenter(s:plugin_dir)
-Plug 'preservim/vim-indent-guides'
-autocmd User plugin_config call view#IndentGuides(s:plugin_dir)
-Plug 'preservim/vim-pencil'
-
 " Use the latest fzf instead of the system-wide fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -87,8 +77,17 @@ Plug 'junegunn/vim-peekaboo'
 " Colorscheme
 Plug 'junegunn/seoul256.vim'
 
+Plug 'liuchengxu/vista.vim'
+autocmd User plugin_config call lint#Vista(s:plugin_dir)
 Plug 'liuchengxu/vim-which-key'
 autocmd User plugin_config call view#Whichkey(s:plugin_dir)
+
+Plug 'Yggdroot/indentLine'
+" LeaderF: Asynchronous fuzzy finder with popup window
+if  has('python3')
+  Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension'}
+  autocmd User plugin_config call navigator#LeaderF(s:plugin_dir)
+endif
 
 Plug 'mhinz/vim-signify'
 " Grep the results into a quickfix.
@@ -124,6 +123,8 @@ elseif has('python3')
 else
   Plug 'ervandew/supertab'
 endif
+
+Plug 'tomtom/tcomment_vim'
 
 Plug 'voldikss/vim-floaterm'
 autocmd User plugin_config call runner#Floaterm(s:plugin_dir)
