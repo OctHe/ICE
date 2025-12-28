@@ -5,9 +5,8 @@
 "
 " =====================================================================
 
-set background=light
 try
-  colorscheme gruvbox
+  colorscheme seoul256
 catch
   colorscheme peachpuff
 endtry
