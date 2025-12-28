@@ -178,7 +178,7 @@ set colorcolumn=81
 
 try
   " Colorscheme may use plugin
-  colorscheme gruvbox
+  colorscheme iceberg
 catch
   " Builtin colorscheme
   colorscheme desert

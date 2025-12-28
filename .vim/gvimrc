@@ -6,7 +6,7 @@
 " =====================================================================
 
 try
-  colorscheme seoul256
+  colorscheme gruvbox
 catch
   colorscheme peachpuff
 endtry
