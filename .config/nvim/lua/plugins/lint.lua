@@ -2,7 +2,7 @@
 --
 -- Lint and LSP plugins
 -- Author: OctHe
--- Copyright (C): 2024
+-- Copyright (C)
 --
 -- ---------------------------------------------------------------------
 
@@ -11,41 +11,30 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
+            -- vim.lsp.config('lua_ls', {})
+            vim.lsp.enable('lua_ls')
 
-            lspconfig.lua_ls.setup({
-                settings = {
-                    Lua = {
-                        runtime = {
-                            -- Tell the language server which version of Lua (LuaJIT in the case of Neovim)
-                            version = "LuaJIT",
-                        },
-                        diagnostics = {
-                            -- Get the language server to recognize the `vim` global
-                            globals = { "vim" },
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = vim.api.nvim_get_runtime_file("", true),
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false,
-                        },
-                    },
-                },
+            vim.lsp.enable('clangd')
 
-                -- Coorperation with cmp.nvim
-                capabilities = require("cmp_nvim_lsp").default_capabilities(),
-            })
-
-            lspconfig.clangd.setup({})
-            lspconfig.pyright.setup({})
+            vim.lsp.enable('pyright')
         end,
 
         keys = {
             { "gf", "<CMD>lua vim.lsp.buf.definition()<CR>", mode = { "n", "v" }, desc = "Goto file" },
         },
+    },
+
+    {
+        "mason-org/mason.nvim",
+        opts = {
+            ui = {
+                icons = {
+                    package_installed = "✓",
+                    package_pending = "➜",
+                    package_uninstalled = "✗"
+                }
+            }
+        }
     },
 
     {
@@ -188,24 +177,24 @@ return {
                 trouble.setup()
 
                 keymap.set({ "n", "v" }, "<leader>tbw",
-                    function() trouble.toggle("workspace_diagnostics") end,
-                    { desc = "Workspace trouble" }
-                )
-                keymap.set({ "n", "v" }, "<leader>tbd",
-                    function() trouble.toggle("document_diagnostics") end,
-                    { desc = "Document trouble" }
-                )
-                keymap.set({ "n", "v" }, "<leader>tbq",
-                    function() trouble.toggle("quickfix") end,
-                    { desc = "Quickfix list" }
-                )
-                keymap.set({ "n", "v" }, "<leader>tbl",
-                    function() trouble.toggle("loclist") end,
-                    { desc = "Location list" }
-                )
-                keymap.set({ "n", "v" }, "<leader>tbr",
-                    function() trouble.toggle("lsp_references") end,
-                    { desc = "LSP reference" }
+                function() trouble.toggle("workspace_diagnostics") end,
+                { desc = "Workspace trouble" }
+            )
+            keymap.set({ "n", "v" }, "<leader>tbd",
+            function() trouble.toggle("document_diagnostics") end,
+            { desc = "Document trouble" }
+        )
+        keymap.set({ "n", "v" }, "<leader>tbq",
+        function() trouble.toggle("quickfix") end,
+        { desc = "Quickfix list" }
+    )
+    keymap.set({ "n", "v" }, "<leader>tbl",
+    function() trouble.toggle("loclist") end,
+    { desc = "Location list" }
+)
+keymap.set({ "n", "v" }, "<leader>tbr",
+function() trouble.toggle("lsp_references") end,
+{ desc = "LSP reference" }
                 )
             end,
         },
@@ -244,11 +233,11 @@ return {
 
                 -- Uncomment the follows to format after saving the buffer
                 -- vim.api.nvim_create_autocmd('BufWritePost', {
-                --     pattern = '*',
-                --     callback = function()
-                --         vim.cmd([[Format]])
-                --     end,
-                -- })
-            end,
-        },
-    }
+                    --     pattern = '*',
+                    --     callback = function()
+                        --         vim.cmd([[Format]])
+                        --     end,
+                        -- })
+                    end,
+                },
+            }
