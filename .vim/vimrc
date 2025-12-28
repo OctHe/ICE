@@ -58,8 +58,12 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
 
-" starsearch: Enhanced star keymapping. Avoid jumping to next
+" Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
+Plug 'vim-scripts/ZoomWin'
+Plug 'vim-scripts/DrawIt'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/YankRing.vim'
 
 " Use the latest fzf instead of the system-wide fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -179,6 +183,8 @@ autocmd User plugin_config call runner#vimtex(s:plugin_dir)
 
 " vim-signature: Manage marks with column
 Plug 'kshenoy/vim-signature'
+
+Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()

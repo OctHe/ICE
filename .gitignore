@@ -4,12 +4,17 @@
 # README
 !README.md
 
-# Script
 !/.local/
+# Script
 !/.local/bin/
 !/.local/bin/awesome.sh
 !/.local/bin/cmd_online_help.sh
 !/.local/bin/status.sh
+# Desktop entry
+!/.local/share/
+!/.local/share/applications/
+!/.local/share/applications/top.desktop
+
 
 
 # User config directory
@@ -59,7 +64,7 @@
 !.config/tmux/
 !.config/tmux/tmux.conf
 
-# Info 
+# Info
 !/.infokey
 
 # Backupfiles

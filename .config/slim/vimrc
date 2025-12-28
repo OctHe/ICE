@@ -51,6 +51,10 @@ function! PackInit() abort
 
   " starsearch: Enhanced star keymapping. Avoid jumping to next
   call minpac#add('vim-scripts/star-search')
+  call minpac#add('vim-scripts/ZoomWin')
+  call minpac#add('vim-scripts/DrawIt')
+  call minpac#add('vim-scripts/a.vim')
+  call minpac#add('vim-scripts/YankRing.vim')
   call minpac#add('vim-scripts/AutoComplPop')
   call minpac#add('vim-scripts/CCTree')
   call minpac#add('vim-scripts/Gundo')
