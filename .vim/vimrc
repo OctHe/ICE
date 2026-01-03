@@ -62,7 +62,6 @@ autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
 Plug 'vim-scripts/star-search'
 Plug 'vim-scripts/ZoomWin'
 Plug 'vim-scripts/DrawIt'
-Plug 'vim-scripts/a.vim'
 Plug 'vim-scripts/YankRing.vim'
 
 " Use the latest fzf instead of the system-wide fzf
