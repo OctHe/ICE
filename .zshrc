@@ -100,16 +100,68 @@ zinit light agkozak/zsh-z
 # List directory with git features
 zinit light supercrabtree/k
 
-# agnoster prompt requires powerline-fonts
-#   sudo apt install fonts-powerline
-zinit light agnoster/agnoster-zsh-theme
+# TTY uses basic theme
+if [[ $(tty) =~ /dev/tty[0-9]+ ]]; then
 
-# Remove segment 2 of agnoster prompt. Default segments are :
-#     1	prompt_status
-#     2	prompt_context
-#     3	prompt_virtualenv
-#     4	prompt_dir
-#     5	prompt_git
-#     6	prompt_end
-AGNOSTER_PROMPT_SEGMENTS[2]=
+    # Use vcs_info
+    autoload -Uz vcs_info
+
+    zstyle ':vcs_info:*' enable git
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' formats '%F{blue}[%F{green}%b%F{yellow}%u%F{red}%c%F{blue}]%f'
+    zstyle ':vcs_info:*' actionformats '%F{red}[%F{green}%b%F{red}|%F{magenta}%a%F{yellow}%u%F{red}%c%F{red}]%f'
+    zstyle ':vcs_info:*' unstagedstr '*'
+    zstyle ':vcs_info:*' stagedstr '+'
+    setopt prompt_subst
+
+    function enhanced_git_status() {
+        local git_info="${vcs_info_msg_0_}"
+        
+        if [[ -z "$git_info" ]]; then
+            return
+        fi
+        
+        # Remote status
+        if git rev-parse --git-dir > /dev/null 2>&1; then
+            local upstream=$(git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null)
+            
+            if [[ -n "$upstream" ]]; then
+                local remote_stats=($(git rev-list --left-right --count HEAD...$upstream 2>/dev/null))
+                local ahead=${remote_stats[1]}
+                local behind=${remote_stats[2]}
+                
+                if [[ $ahead -gt 0 && $behind -gt 0 ]]; then
+                    git_info="$git_info %F{cyan}↕%f"
+                elif [[ $ahead -gt 0 ]]; then
+                    git_info="$git_info %F{green}↑$ahead%f"
+                elif [[ $behind -gt 0 ]]; then
+                    git_info="$git_info %F{red}↓$behind%f"
+                else
+                    git_info="$git_info %F{green}✓%f"
+                fi
+            else
+                git_info="$git_info %F{red}✗%f"
+            fi
+        fi
+        
+        echo "$git_info"
+    }
+
+    PROMPT='%B%F{green}%n%f%b%F{white}:%F{yellow}%~%f$(enhanced_git_status)%F{white} %#%f '
+    RPROMPT='%F{yellow}%*%f'
+
+elif [[ $(tty) =~ /dev/pts/[0-9]+ ]]; then
+    # agnoster prompt requires powerline-fonts
+    #   sudo apt install fonts-powerline
+    zinit light agnoster/agnoster-zsh-theme
+
+    # Remove segment 2 of agnoster prompt. Default segments are :
+    #     1	prompt_status
+    #     2	prompt_context
+    #     3	prompt_virtualenv
+    #     4	prompt_dir
+    #     5	prompt_git
+    #     6	prompt_end
+    AGNOSTER_PROMPT_SEGMENTS[2]=
+fi
 

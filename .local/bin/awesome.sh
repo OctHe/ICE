@@ -28,6 +28,7 @@ ice_win=(
 
 ice_net=(
     soimort/translate-shell \\n
+    fathyb/carbonyl \\n
 )
 
 ice_editor=(
