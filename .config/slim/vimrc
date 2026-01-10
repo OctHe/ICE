@@ -128,8 +128,12 @@ nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 " ---------------- Tag and Linter ----------------
 let g:neomake_python_enabled_makers = ['flake8']
 
-" When writing a buffer, and on normal mode changes (after 750ms).
-call neomake#configure#automake('nw', 750)
+try
+  " When writing a buffer, and on normal mode changes (after 750ms).
+  call neomake#configure#automake('nw', 750)
+catch
+  echo "An error occurred for neomake"
+endtry
 
 let g:neoformat_enabled_python = ['autopep8', 'isort']
 

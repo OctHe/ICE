@@ -1,4 +1,4 @@
-"
+
 " The default vim config. Make the vim work like an IDE.
 " Author: OctHe
 " Copyright (C)
@@ -32,15 +32,15 @@ nnoremap <silent> <Leader>m :verbose map
 " Try to install vim-plug if not found
 let s:vim_plug = expand('~/.vim/autoload/plug.vim')
 if !filereadable(s:vim_plug)
-  execute '!curl -fLo' s:vim_plug
-        \ '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  call system('curl -fLo'.s:vim_plug.
+        \ '--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
 
-  if empty(s:vim_plug)
+  if v:shell_error != 0
     echo "curl plug.vim from raw.githubusercontent.com failed. Try git clone.\n"
 
-    silent !git clone https://github.com/junegunn/vim-plug /tmp/vim-plug
-    execute '!cp /tmp/vim-plug/plug.vim' s:vim_plug
-    silent !rm -rf /tmp/vim-plug
+    call system('git clone https://github.com/junegunn/vim-plug /tmp/vim-plug')
+    call system('cp /tmp/vim-plug/plug.vim'.s:vim_plug)
+    call system('rm -rf /tmp/vim-plug')
   endif
 
 endif
