@@ -28,6 +28,7 @@ function! lint#ALE(plugin_dir)
 
   let g:ale_linters = {
         \   'python': ['mypy', 'pylint'],
+        \   'spec': ['rpmlint'],
         \ }
 
   " Options for mypy

@@ -74,6 +74,8 @@ function! PackInit() abort
   " Automatic closing of quotes, parenthesis, brackets,
   call minpac#add('Raimondi/delimitMate')
 
+  call minpac#add('psliwka/vim-smoothie')
+
   call minpac#add('timsu92/vim-easymotion')
 
   " Align text

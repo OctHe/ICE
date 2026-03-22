@@ -31,6 +31,10 @@ opt.hidden = true -- Hide unwriten buffer
 opt.clipboard = "unnamedplus" -- Sync with system-level clipboard
 opt.fileencodings = "utf-8,gb18030,latin1"
 
+opt.foldmethod = 'indent'
+opt.foldcolumn = '4'
+opt.foldlevelstart = 5
+
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
 end
