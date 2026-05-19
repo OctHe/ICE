@@ -48,11 +48,6 @@
 # Plugin manager: vim-plug
 /.vim/autoload/plug.vim
 
-!/.config/slim/
-!/.config/slim/**
-/.config/slim/pack/**
-/.config/slim/.netrwhist
-
 # Neovim
 !/.config/nvim/
 !/.config/nvim/**
