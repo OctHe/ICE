@@ -11,10 +11,6 @@
 !/.local/bin/cmd_online_help.sh
 !/.local/bin/status.sh
 !/.local/bin/color_displayer.sh
-# Desktop entry
-!/.local/share/
-!/.local/share/applications/
-!/.local/share/applications/top.desktop
 
 
 
