@@ -64,7 +64,8 @@ Plug 'vim-scripts/ZoomWin'
 Plug 'vim-scripts/DrawIt'
 " Use <C-N>/<C-P> to select different yanks after pasting
 Plug 'vim-scripts/YankRing.vim'
-
+autocmd User plugin_config call navigator#YankRing(s:plugin_dir)
+ 
 " Use the latest fzf instead of the system-wide fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'

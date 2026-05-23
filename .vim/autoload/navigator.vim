@@ -63,4 +63,13 @@ function! navigator#Grepper(plugin_dir)
 
 endfunction
 
+function! navigator#YankRing(plugin_dir)
+  if empty(globpath(a:plugin_dir, 'YankRing.vim/plugin/yankring.vim'))
+    return
+  endif
+
+  let g:yankring_history_dir = '$HOME/.cache/'
+
+endfunction
+
 " vim: set sw=2 sts=2 et fdm=marker:
