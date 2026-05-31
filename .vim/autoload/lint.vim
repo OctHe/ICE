@@ -26,8 +26,9 @@ function! lint#ALE(plugin_dir)
     return
   endif
 
+  " flake8 contains Pyflakes, pycodestyle, and McCabe
   let g:ale_linters = {
-        \   'python': ['mypy', 'pylint'],
+        \   'python': ['mypy', 'flake8'],
         \   'spec': ['rpmlint'],
         \ }
 
@@ -35,8 +36,9 @@ function! lint#ALE(plugin_dir)
   let l:venv_dir = system('which python')
   let g:ale_python_mypy_options = trim('--python-executable ' .. l:venv_dir)
 
+  " Autopep8 and Autoflake are based on pycodestyle and Pyflakes, respectively
   let g:ale_fixers = {
-        \ 'python': ['isort', 'yapf', 'remove_trailing_lines']
+        \ 'python': ['isort', 'yapf', 'autopep8', 'autoflake', 'remove_trailing_lines']
         \}
 
 endfunction

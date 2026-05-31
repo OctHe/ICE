@@ -50,13 +50,30 @@ endif
 let s:plugin_dir = expand('~/.local/share/vim/plugins/')
 call plug#begin(s:plugin_dir)
 
-Plug 'tpope/vim-repeat'
-" speeddating: Use <c-a>/<c-x> to increment datas and times
-Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-endwise'
+" Here are all the tpope plugins that interest me, but I've disabled those that 
+" have better alternatives.
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
+Plug 'tpope/vim-surround'
+" vim-commentary does not support nest comment. Disable it by default
+Plug 'tpope/vim-commentary', {'on': []}
+" Pairs of key mapping
+Plug 'tpope/vim-unimpaired'
+" Change variants of a word at once
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-repeat'
+" Use vim-dirvish instead.
+Plug 'tpope/vim-vinegar', {'on': []}
+" Show buffer options
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-eunuch'
+" Auto save session
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-endwise'
+" speeddating: Use <c-a>/<c-x> to increment datas and times
+Plug 'tpope/vim-speeddating'
 
 " Enhanced star keymapping. Avoid jumping to next
 Plug 'vim-scripts/star-search'
@@ -102,6 +119,9 @@ Plug 'mhinz/vim-startify'
 
 Plug 'itchyny/vim-cursorword'
 Plug 'itchyny/lightline.vim'
+
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-expand-region'
 
 if has('python3')
   " Ultisnips: snippets engine that uses snippet database
@@ -149,9 +169,6 @@ autocmd User plugin_config call navigator#Sneak(s:plugin_dir)
 " Path navigator
 Plug 'justinmk/vim-dirvish'
 
-Plug 'machakann/vim-sandwich'
-autocmd User plugin_config call completor#Sandwich(s:plugin_dir)
-
 " rainbow: Rainbow brackets
 Plug 'luochen1990/rainbow'
 autocmd User plugin_config call view#Rainbow(s:plugin_dir)
@@ -169,13 +186,13 @@ autocmd User plugin_config call lint#ALE(s:plugin_dir)
 
 Plug 'skywind3000/asyncrun.vim'
 
-Plug 'mg979/vim-visual-multi'
-
 Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'wellle/context.vim'
+
+Plug 'andymass/vim-matchup'
 
 Plug 'lervag/vimtex'
 autocmd User plugin_config call runner#vimtex(s:plugin_dir)
