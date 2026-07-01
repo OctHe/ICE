@@ -50,8 +50,8 @@ endif
 let s:plugin_dir = expand('~/.local/share/vim/plugins/')
 call plug#begin(s:plugin_dir)
 
-" Here are all the tpope plugins that interest me, but I've disabled those that 
-" have better alternatives.
+" Here are all tpope's plugins that I'm interested. Those that have better
+" alternatives have been disabled.
 " fugitive: Provide common git options (diff, status, add, commit, etc)
 Plug 'tpope/vim-fugitive'
 autocmd User plugin_config call vcs#Fugitive(s:plugin_dir)
@@ -154,14 +154,8 @@ Plug 'tomtom/tcomment_vim'
 Plug 'voldikss/vim-floaterm'
 autocmd User plugin_config call runner#Floaterm(s:plugin_dir)
 
-" vim-tmux-navigator
-" It requires configuration in tmux
-if isdirectory(glob('~/.local/share/tmux/plugin/vim-tmux-navigator'))
-  " Use the same file for both vim and tmux
-  Plug '~/.local/share/tmux/plugin/vim-tmux-navigator'
-else
-  Plug 'christoomey/vim-tmux-navigator'
-endif
+" vim-tmux-navigator. Use the <C-h/j/k/l> keymapping
+Plug 'christoomey/vim-tmux-navigator'
 
 " Sneak: Jump with 2 chars.
 Plug 'justinmk/vim-sneak'
